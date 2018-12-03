@@ -20,7 +20,7 @@ class CreateTenantsTable extends Migration
             $table->string('phone_1');
             $table->string('phone_2')->nullable();
             $table->string('fax')->nullable();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('co_first_name')->nullable();
             $table->string('co_last_name')->nullable();
             $table->string('co_phone_1')->nullable();
