@@ -509,14 +509,56 @@
         <div class="container task-form-container">
           <form class="row task-form reschedule-task-form">
             <div class="col-6">
+              <div class="form-group flexed">
+                <label for="task-due-date-orig">Task Due Date:</label>
+                <div class="input-group">
+                   <input type="date" readonly disabled class="form-control" id="task-due-date-orig">
+                   <div class="input-group-append">
+                     <div class="input-group-text">
+                       <i class="fas fa-calendar-alt"></i>
+                     </div>
+                   </div>
+                 </div> <!-- input group -->
+              </div> <!-- form group -->
               <div class="form-group">
                  <label for="task-description">Task description:</label>
-                 <textarea disabled class="form-control" id="task-description" rows="5">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                 <textarea readonly disabled class="form-control" id="task-description" rows="5">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nullam id dolor id nibh ultricies vehicula ut id elit.
                  </textarea>
                </div> <!-- form group -->
             </div> <!-- col -->
             <div class="col-6">
-              col b
+              <div class="form-group flexed">
+                <label for="task-quick-reschedule">Quick Reschedule:</label>
+                <div class="input-group">
+                  <select class="form-control" id="task-quick-reschedule">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                       <i class="fas fa-calendar-alt"></i>
+                    </div>
+                  </div>
+                </div> <!-- input group -->
+              </div> <!-- form group -->
+              <div class="form-group flexed">
+                <label for="task-due-date-new">New Due Date:</label>
+                <div class="input-group">
+                   <input type="date" class="form-control" id="task-due-date-new">
+                   <div class="input-group-append">
+                     <div class="input-group-text">
+                       <i class="fas fa-calendar-alt"></i>
+                     </div>
+                   </div>
+                 </div> <!-- input group -->
+              </div> <!-- form group -->
+              <div class="form-group">
+                 <label for="task-note">Add a note:</label>
+                 <textarea class="form-control" id="task-note" rows="2" placeholder="You can add an optional note..."></textarea>
+               </div> <!-- form group -->
             </div> <!-- col -->
           </form> <!-- row -->
         </div> <!-- container -->
