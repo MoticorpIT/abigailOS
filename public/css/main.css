@@ -304,9 +304,9 @@ body{
   color: #1c7be0;
   padding: 10px 0;
   margin: 0;
+  margin-right: auto !important;
   font-size: .9em;
   cursor: pointer;
-  width: 100%;
   text-align: left;
 }
 .switch-link:hover{
@@ -328,8 +328,27 @@ body{
 .form-group:last-child{
   margin-bottom: 0;
 }
+.form-group{
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 1rem;
+}
+.form-group:last-child{
+  border: none;
+  padding-bottom: 0;
+}
 label{
   margin-bottom: .3rem;
+}
+.form-group.flexed{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.form-group.flexed > label{
+  margin: 0 10px 0 0;
+}
+.form-group.flexed > .input-group, .form-group.flexed > input{
+  flex:1;
 }
 
 .task-form-container{
