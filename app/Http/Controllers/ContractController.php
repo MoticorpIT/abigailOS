@@ -14,7 +14,8 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        $contracts = Contract::all();
+        return view('contracts.index', compact('contracts'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+        return view('contracts.create');
     }
 
     /**
@@ -46,7 +47,7 @@ class ContractController extends Controller
      */
     public function show(Contract $contract)
     {
-        //
+        return view('contracts.show');
     }
 
     /**
@@ -57,7 +58,7 @@ class ContractController extends Controller
      */
     public function edit(Contract $contract)
     {
-        //
+        return view('contracts.edit');
     }
 
     /**

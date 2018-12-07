@@ -14,7 +14,8 @@ class AssetController extends Controller
      */
     public function index()
     {
-        //
+        $assets = Asset::orderBy('name')->get();
+        return view('assets.index', compact('assets'));
     }
 
     /**
@@ -24,7 +25,7 @@ class AssetController extends Controller
      */
     public function create()
     {
-        //
+        return view('assets.create');
     }
 
     /**
@@ -46,7 +47,7 @@ class AssetController extends Controller
      */
     public function show(Asset $asset)
     {
-        //
+        return view('assets.show');
     }
 
     /**
@@ -57,7 +58,7 @@ class AssetController extends Controller
      */
     public function edit(Asset $asset)
     {
-        //
+        return view('assets.edit');
     }
 
     /**

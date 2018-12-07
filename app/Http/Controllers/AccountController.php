@@ -14,7 +14,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        //
+        $accounts = Account::orderBy('name')->get();
+        return view('accounts.index', compact('accounts'));
     }
 
     /**
@@ -24,7 +25,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        return view('accounts.create');
     }
 
     /**
@@ -46,7 +47,7 @@ class AccountController extends Controller
      */
     public function show(Account $account)
     {
-        //
+        return view('accounts.show');
     }
 
     /**
@@ -57,7 +58,7 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        //
+        return view('accounts.edit');
     }
 
     /**

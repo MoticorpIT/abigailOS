@@ -14,7 +14,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $payments = Payment::all();
+        return view('payments.index', compact('payments'));
     }
 
     /**
@@ -24,7 +25,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view('payments.create');
     }
 
     /**
@@ -46,7 +47,7 @@ class PaymentController extends Controller
      */
     public function show(Payment $payment)
     {
-        //
+        return view('payments.show');
     }
 
     /**
@@ -57,7 +58,7 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        //
+        return view('payments.edit');
     }
 
     /**
