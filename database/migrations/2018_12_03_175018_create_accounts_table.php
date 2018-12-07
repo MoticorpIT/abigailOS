@@ -32,8 +32,8 @@ class CreateAccountsTable extends Migration
             $table->string('contact_phone_2')->nullable();
             $table->string('contact_email')->nullable();
             $table->integer('account_type_id');
-            $table->integer('company_id');
-            $table->integer('asset_id');
+            $table->integer('company_id')->nullable();
+            $table->integer('asset_id')->nullable();
             $table->integer('status_id');
             $table->timestamps();
         });
