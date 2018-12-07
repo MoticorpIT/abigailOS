@@ -347,10 +347,13 @@ label{
 .form-group.flexed > label{
   margin: 0 10px 0 0;
 }
-.form-group.flexed > .input-group, .form-group.flexed > input{
+.form-group.flexed > .input-group, .form-group.flexed > .form-control{
   flex:1;
 }
 
+#task-quick-reschedule{
+  min-width: 80px;
+}
 .task-form-container{
   padding: 0;
 }
