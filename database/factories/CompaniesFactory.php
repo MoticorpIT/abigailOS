@@ -15,7 +15,7 @@ $factory->define(App\Company::class, function (Faker $faker) {
         'fax' => $faker->optional()->phoneNumber,
         'email' => $faker->optional()->safeEmail,
         'logo' => $faker->imageUrl($width = 640, $height = 480),
-        'incorp_date' => $faker->year($max = 'now'),
+        'incorp_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'corp_id' => $faker->numberBetween($min = 10000000, $max = 99999999),
         'city_lic' => $faker->numberBetween($min = 10000000, $max = 99999999),
         'county_lic' => $faker->numberBetween($min = 10000000, $max = 99999999),
