@@ -146,7 +146,7 @@
               <ul class="db-box-list">
                 <li class="overdue">
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -170,7 +170,7 @@
                 </li>
                 <li class="overdue">
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -194,7 +194,7 @@
                 </li>
                 <li class="overdue">
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -218,7 +218,7 @@
                 </li>
                 <li class="overdue">
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -242,7 +242,7 @@
                 </li>
                 <li class="warning">
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -266,7 +266,7 @@
                 </li>
                 <li class="warning">
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -290,7 +290,7 @@
                 </li>
                 <li class="warning">
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -340,7 +340,7 @@
                 </li>
                 <li>
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -364,7 +364,7 @@
                 </li>
                 <li>
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -388,7 +388,7 @@
                 </li>
                 <li>
                   <div class="task-link-wrapper">
-                    <a href="#0" class="task-link">Curabitur blandit tempus porttitor.</a>
+                    <a href="#0" class="task-link" data-toggle="modal" data-target="#complete-task-modal">Curabitur blandit tempus porttitor.</a>
                     <div class="task-link-dropdown dropdown">
                       <a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
@@ -475,14 +475,85 @@
         </button>
       </div>
       <div class="modal-body">
-        Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+        <div class="container task-form-container">
+          <form class="row task-form reschedule-task-form">
+            <div class="col-6 task-details">
+              <div class="form-group flexed">
+                <label for="task-due-date-orig">Task Due Date:</label>
+                <div class="input-group">
+                   <input type="date" readonly disabled class="form-control" id="task-due-date-orig">
+                   <div class="input-group-append">
+                     <div class="input-group-text">
+                       <i class="fas fa-calendar-alt"></i>
+                     </div>
+                   </div>
+                 </div> <!-- input group -->
+              </div> <!-- form group -->
+              <div class="form-group">
+                 <label for="task-description">Task Description:</label>
+                 <textarea readonly disabled class="form-control" id="task-description" rows="5">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                 </textarea>
+               </div> <!-- form group -->
+            </div> <!-- col -->
+            <div class="col-6">
+              <div class="task-balance-amount-group">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="task-amount-paid">Balance Due:</label>
+                      <div class="input-group">
+                         <input type="text" readonly disabled class="form-control money" id="task-amount-paid" placeholder="$1,500.00">
+                         <div class="input-group-append">
+                           <div class="input-group-text">
+                             <i class="fas fa-file-invoice-dollar"></i>
+                           </div>
+                         </div>
+                      </div> <!-- input group -->
+                    </div> <!-- form group -->
+                  </div> <!-- col -->
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="task-amount-paid">Amount Paid:</label>
+                      <div class="input-group">
+                         <input type="text" class="form-control money" id="task-amount-paid" placeholder="$1,500.00">
+                         <div class="input-group-append">
+                           <div class="input-group-text">
+                             <i class="fas fa-clipboard-check"></i>
+                           </div>
+                         </div>
+                      </div> <!-- input group -->
+                    </div> <!-- form group -->
+                  </div> <!-- col -->
+                </div> <!-- row -->
+              </div> <!-- task-balance-amount-group -->
+              <div class="form-group flexed">
+                <label for="task-amount-paid">Remaining Balance:</label>
+                <div class="input-group">
+                   <input type="text" class="form-control money" id="task-amount-paid" placeholder="$1,500.00">
+                   <div class="input-group-append">
+                     <div class="input-group-text">
+                       <i class="fas fa-file-invoice-dollar"></i>
+                     </div>
+                   </div>
+                </div> <!-- input group -->
+              </div> <!-- form group -->
+              <div class="form-group">
+                 <label for="task-note">Add a note:</label>
+                 <textarea class="form-control" id="task-note" rows="2" placeholder="You can add an optional note..."></textarea>
+               </div> <!-- form group -->
+            </div> <!-- col -->
+          </form> <!-- row -->
+        </div> <!-- container -->
       </div>
       <div class="modal-footer">
         <button type="button" class="switch-link" data-dismiss="modal" data-toggle="modal" data-target="#reschedule-task-modal">
           <i class="fas fa-sync-alt"></i>
           Reschedule this task instead?
         </button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="#0" class="btn btn-secondary">
+          <i class="fas fa-edit"></i>
+          Edit Task
+        </a>
         <button type="button" class="btn btn-primary btn-green">
           <i class="far fa-check-circle"></i>
           Complete Task
@@ -508,7 +579,7 @@
       <div class="modal-body">
         <div class="container task-form-container">
           <form class="row task-form reschedule-task-form">
-            <div class="col-6">
+            <div class="col-6 task-details">
               <div class="form-group flexed">
                 <label for="task-due-date-orig">Task Due Date:</label>
                 <div class="input-group">
