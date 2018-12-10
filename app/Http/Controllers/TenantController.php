@@ -14,7 +14,8 @@ class TenantController extends Controller
      */
     public function index()
     {
-        //
+        $tenants = Tenant::all();
+        return view('tenants.index', compact('tenants'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TenantController extends Controller
      */
     public function create()
     {
-        //
+        return view('tenants.create');
     }
 
     /**
@@ -46,7 +47,7 @@ class TenantController extends Controller
      */
     public function show(Tenant $tenant)
     {
-        //
+        return view('tenants.show');
     }
 
     /**
@@ -57,7 +58,7 @@ class TenantController extends Controller
      */
     public function edit(Tenant $tenant)
     {
-        //
+        return view('tenants.edit');
     }
 
     /**

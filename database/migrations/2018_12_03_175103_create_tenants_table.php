@@ -31,7 +31,7 @@ class CreateTenantsTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zip');
-            $table->string('acct_standing')->default('good');
+            $table->integer('account_standing_id');
             $table->integer('status_id');
             $table->index(['first_name', 'last_name']);
             $table->timestamps();
