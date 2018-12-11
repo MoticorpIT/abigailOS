@@ -6,5 +6,7 @@ namespace App;
 
 class Account extends Model
 {
-    //
+    public function companies() {
+		return $this->belongsTo(Company::class);
+	}
 }

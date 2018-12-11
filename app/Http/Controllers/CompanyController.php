@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Account;
+use App\Asset;
+use App\Note;
+use App\Status;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -45,9 +49,13 @@ class CompanyController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show($id)
     {
-        return view('companies.show');
+        $company = Company::find($id);
+        $assetsByCo = Asset::where('company_id', $id)->get();
+        return view('companies.show', compact('company', 'assetsByCo'));
+
+        
     }
 
     /**

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-Companies - show.blade.php
+<div class="row">
+	Companies - show.blade.php <br />
+	<p>{{ $company }}</p>
+</div>
 @endsection
 
