@@ -16,7 +16,7 @@ $factory->define(App\Asset::class, function (Faker $faker) {
 		'email' => $faker->safeEmail,
 		'rent' => $faker->numberBetween($min = 500, $max = 10000),
 		'deposit' => $faker->numberBetween($min = 250, $max = 20000),
-		'asset_type_id' => $faker->randomElement($array = array ('1','2','3','4','5','6')),
+		'asset_type_id' => $faker->randomElement($array = array ('1','2','3')),
 		'company_id' => $faker->randomElement($array = array ('1','2','3','4','5','6')),
 		'status_id' => $faker->randomElement($array = array ('1','2')),
 	];

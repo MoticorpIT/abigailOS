@@ -3,7 +3,7 @@
 @section('content')
 	Accounts - show.blade.php || <a href="accounts/create">Create account</a>
 	<hr>
-	<h4>Account View</h4>
+	<h4>Account Profile</h4>
 	<ul>
 		<li>id: {{ $account->id }}</li>
 		<li>name: {{ $account->name }}</li>
@@ -32,7 +32,7 @@
 		<li><a href="/accounts">View all accounts</a></li>
 	</ul>
 	<hr>
-	<h4>Notes - see /notes for all fields</h4>
+	<h4>Notes (associated)</h4>
 	@foreach($notes as $note)
 		<ul>
 			<li>id: {{ $note->id }}</li>

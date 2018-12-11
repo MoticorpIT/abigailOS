@@ -3,7 +3,7 @@
 @section('content')
 	Companies - show.blade.php || <a href="companies/create">Create company</a>
 	<hr>
-	<h4>Company View</h4>
+	<h4>Company Profile</h4>
 	<ul>
 		<li>id: {{ $company->id }}</li>
 		<li>name: {{ $company->name }}</li>
@@ -30,7 +30,7 @@
 		<li><a href="/companies">View all companies</a></li>
 	</ul>
 	<hr>
-	<h4>Assets - see /assets for all fields</h4>
+	<h4>Assets (associated)</h4>
 	@foreach($assets as $asset)
 		<ul>
 			<li>id: {{ $asset->id }}</li>
@@ -40,7 +40,7 @@
 		</ul>
 	@endforeach
 	<hr>
-	<h4>Accounts - see /accounts for all fields</h4>
+	<h4>Accounts (associated)</h4>
 	@foreach($accounts as $account)
 		<ul>
 			<li>id: {{ $account->id }}</li>
@@ -50,7 +50,7 @@
 		</ul>
 	@endforeach
 	<hr>
-	<h4>Notes - see /notes for all fields</h4>
+	<h4>Notes (associated)</h4>
 	@foreach($notes as $note)
 		<ul>
 			<li>id: {{ $note->id }}</li>

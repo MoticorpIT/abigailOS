@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Tenant;
+use App\Contract;
+use App\Note;
 use Illuminate\Http\Request;
 
 class TenantController extends Controller
@@ -45,9 +47,12 @@ class TenantController extends Controller
      * @param  \App\Tenant  $tenant
      * @return \Illuminate\Http\Response
      */
-    public function show(Tenant $tenant)
+    public function show($id)
     {
-        return view('tenants.show');
+        $tenant = Tenant::find($id);
+        $notes = Note::where('tenant_id', $id)->get();
+        $contracts = Contract::where('tenant_id', $id)->get();
+        return view('tenants.show', compact('tenant', 'notes', 'contracts'));
     }
 
     /**

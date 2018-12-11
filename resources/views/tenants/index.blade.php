@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	Tenants - index.blade.php
+	Tenants - index.blade.php || <a href="tenants/create">Create Tenant</a>
 	<hr>
-	<a href="tenants/create">Create Tenant</a>
 	@foreach($tenants as $tenant)
 		<ul>
 			<li>id: {{ $tenant->id }}</li>
@@ -23,8 +22,8 @@
 			<li>city: {{ $tenant->city }}</li>
 			<li>state: {{ $tenant->state }}</li>
 			<li>zip: {{ $tenant->zip }}</li>
-			<li>account_standing_id: {{ $tenant->account_standing_id }}</li>
-			<li>status_id: {{ $tenant->status_id }}</li>
+			<li>account_standing: {{ $tenant->accountStanding->name }}</li>
+			<li>status: {{ $tenant->status->name }}</li>
 			<li>created_at: {{ $tenant->created_at }}</li>
 			<li>updated_at: {{ $tenant->updated_at }}</li>
 			<li><a href="tenants/{{ $tenant->id }}/edit">Edit tenant</a></li>
