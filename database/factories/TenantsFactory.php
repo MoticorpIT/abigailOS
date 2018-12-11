@@ -21,5 +21,6 @@ $factory->define(App\Tenant::class, function (Faker $faker) {
         'state' => $faker->state,
         'zip' => $faker->postcode,
         'status_id' => $faker->randomElement($array = array ('1','2')),
+        'account_standing_id' => $faker->randomElement($array = array ('1','2')),
     ];
 });
