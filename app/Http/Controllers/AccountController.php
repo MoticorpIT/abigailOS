@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Note;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -45,9 +46,11 @@ class AccountController extends Controller
      * @param  \App\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function show(Account $account)
+    public function show($id)
     {
-        return view('accounts.show');
+        $account = Account::find($id);
+        $notes = Note::where('account_id', $id)->get();
+        return view('accounts.show', compact('account', 'notes'));
     }
 
     /**
