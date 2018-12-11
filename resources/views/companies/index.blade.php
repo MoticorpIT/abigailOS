@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	Companies - index.blade.php
+	Companies - index.blade.php || <a href="companies/create">Create company</a>
 	<hr>
-	<a href="companies/create">Create company</a>
 	@foreach($companies as $company)
 		<ul>
 			<li>id: {{ $company->id }}</li>
@@ -23,8 +22,8 @@
 			<li>city_lic: {{ $company->city_lic }}</li>
 			<li>county_lic: {{ $company->county_lic }}</li>
 			<li>fed_tax_id: {{ $company->fed_tax_id }}</li>
-			<li>company_type_id: {{ $company->company_type_id }}</li>
-			<li>status_id: {{ $company->status_id }}</li>
+			<li>company_type: {{ $company->companyType->name }}</li>
+			<li>status: {{ $company->status->name}}</li>
 			<li>created_at: {{ $company->created_at }}</li>
 			<li>updated_at: {{ $company->updated_at }}</li>
 			<li><a href="companies/{{ $company->id }}/edit">Edit company</a></li>

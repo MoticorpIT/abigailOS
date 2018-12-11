@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Asset;
+use App\Note;
+use App\Contract;
+use App\Account;
 use Illuminate\Http\Request;
 
 class AssetController extends Controller
@@ -45,9 +48,13 @@ class AssetController extends Controller
      * @param  \App\Asset  $asset
      * @return \Illuminate\Http\Response
      */
-    public function show(Asset $asset)
+    public function show($id)
     {
-        return view('assets.show');
+        $asset = Asset::find($id);
+        $notes = Note::where('asset_id', $id)->get();
+        $accounts = Account::where('asset_id', $id)->get();
+        $contracts = Contract::where('asset_id', $id)->get();
+        return view('assets.show', compact('asset', 'notes', 'accounts', 'contracts'));
     }
 
     /**
