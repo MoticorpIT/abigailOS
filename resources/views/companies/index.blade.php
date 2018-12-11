@@ -23,8 +23,8 @@
 			<li>city_lic: {{ $company->city_lic }}</li>
 			<li>county_lic: {{ $company->county_lic }}</li>
 			<li>fed_tax_id: {{ $company->fed_tax_id }}</li>
-			<li>company_type_id: {{ $company->companyType->name }}</li>
-			<li>status_id: {{ $company->status->name}}</li>
+			<li>company_type: {{ $company->companyType->name }}</li>
+			<li>status: {{ $company->status->name}}</li>
 			<li>created_at: {{ $company->created_at }}</li>
 			<li>updated_at: {{ $company->updated_at }}</li>
 			<li><a href="companies/{{ $company->id }}/edit">Edit company</a></li>

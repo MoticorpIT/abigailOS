@@ -52,8 +52,10 @@ class CompanyController extends Controller
     public function show($id)
     {
         $company = Company::find($id);
-        $assetsByCo = Asset::where('company_id', $id)->get();
-        return view('companies.show', compact('company', 'assetsByCo'));
+        $assets = Asset::where('company_id', $id)->get();
+        $accounts = Account::where('company_id', $id)->get();
+        $notes = Note::where('company_id', $id)->get();
+        return view('companies.show', compact('company', 'assets', 'notes', 'accounts'));
 
         
     }

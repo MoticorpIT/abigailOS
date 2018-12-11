@@ -4,7 +4,10 @@ namespace App;
 
 class Note extends Model
 {
-    public function companies() {
+    public function company() {
 		return $this->belongsTo(Company::class);
+	}
+	public function user() {
+		return $this->belongsTo(User::class);
 	}
 }
