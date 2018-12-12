@@ -1,9 +1,169 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="db-boxes-row row no-gutters">
+	<div class="col-12">
+		<div class="lowerlevel db-box">
+			<h1 class="page-heading">
+				Tenants
+				<a href="tenants/create" class="btn btn-primary">Create Tenant</a>
+			</h1>
+
+			<div class="tenant-table-wrapper">
+
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">First</th>
+				      <th scope="col">Last</th>
+				      <th scope="col">Handle</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">1</th>
+				      <td>Mark</td>
+				      <td>Otto</td>
+				      <td>@mdo</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">2</th>
+				      <td>Jacob</td>
+				      <td>Thornton</td>
+				      <td>@fat</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">3</th>
+				      <td>Larry</td>
+				      <td>the Bird</td>
+				      <td>@twitter</td>
+				    </tr>
+				  </tbody>
+				</table>
+
+
+
+				<table class="tenant-table">
+					<thead>
+						<tr>
+							<th class="id">
+								Tenant ID
+							</th>
+							<th class="first-name">
+								First Name
+							</th>
+							<th class="last-name">
+								Last Name
+							</th>
+							<th class="phone-1">
+								Phone 1
+							</th>
+							<th class="phone-2 d-md-none">
+								Phone 2
+							</th>
+							<th class="fax">
+								Fax
+							</th>
+							<th class="email">
+								Email
+							</th>
+							<th class="street-address-1">
+								Street Address 1
+							</th>
+							<th class="street-address-2">
+								Street Address 2
+							</th>
+							<th class="city">
+								City
+							</th>
+							<th class="state">
+								state
+							</th>
+							<th class="zip">
+								zip
+							</th>
+							<th class="account-standing">
+								Account Standing
+							</th>
+							<th class="status">
+								Status
+							</th>
+							<th class="created-on">
+								Created On
+							</th>
+							<th class="updated-on">
+								Updated On
+							</th>
+							<th class="view-button">
+								View Button
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="id">
+								Tenant ID
+							</td>
+							<td class="first-name">
+								First Name
+							</td>
+							<td class="last-name">
+								Last Name
+							</td>
+							<td class="phone-1">
+								Phone 1
+							</td>
+							<td class="phone-2 d-md-none">
+								Phone 2
+							</td>
+							<td class="fax">
+								Fax
+							</td>
+							<td class="email">
+								Email
+							</td>
+							<td class="street-address-1">
+								Street Address 1
+							</td>
+							<td class="street-address-2">
+								Street Address 2
+							</td>
+							<td class="city">
+								City
+							</td>
+							<td class="state">
+								state
+							</td>
+							<td class="zip">
+								zip
+							</td>
+							<td class="account-standing">
+								Account Standing
+							</td>
+							<td class="status">
+								Status
+							</td>
+							<td class="created-on">
+								Created On
+							</td>
+							<td class="updated-on">
+								Updated On
+							</td>
+							<td class="view-button">
+								View Button
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div> <!-- tenant-table-wrapper -->
+		</div> <!-- db-box -->
+	</div> <!-- col -->
+</div> <!-- db boxes -->
 	Tenants - index.blade.php
 	<hr>
-	<a href="tenants/create">Create Tenant</a>
+
 	@foreach($tenants as $tenant)
 		<ul>
 			<li>id: {{ $tenant->id }}</li>

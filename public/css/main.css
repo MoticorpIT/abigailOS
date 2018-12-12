@@ -74,6 +74,7 @@ body{
 .content{
   padding: 15px;
   flex: 1;
+  padding-bottom: 50px;
 }
 
 
@@ -89,17 +90,20 @@ body{
   height: 100%;
   -webkit-box-shadow: 0rem 0.1rem 0.5rem rgba(0,0,0,.1);
   box-shadow: 0rem 0.1rem 0.5rem rgba(0,0,0,.1);
+  display: flex;
+  flex-direction: column;
 }
 .db-box .heading{
   padding: 0 10px 0;
   margin: 0 0 20px;
   border-bottom: 3px solid #000;
+  font-size: 1.5em;
 }
 .db-box .heading .button-area{
   float: right;
   margin-right: -10px;
   vertical-align: top;
-  font-size: .7em;
+  font-size: .9em;
 }
 .db-box .heading .button-area .task-sum{
   line-height: .7em;
@@ -123,6 +127,11 @@ body{
 }
 .db-box .heading .button-area .badge{
   vertical-align: top;
+  background: none;
+  color: #1f2528;
+}
+.db-box .heading .button-area .badge:hover{
+  background: #f5f5f5;
 }
 .db-box-list{
   margin: 0;
@@ -130,6 +139,7 @@ body{
   list-style: none;
   /* columns: 2;
   column-width: 200px; */
+  flex: 1;
 }
 .db-box-list li{
   padding: 0 0 5px;
@@ -143,10 +153,16 @@ body{
   display: block;
   color: inherit;
   flex: 1;
-  padding: 10px 0;
+  padding: 0;
+  max-height: 60px;
+  overflow: hidden;
+  position: relative;
+}
+.db-box-list li .task-link.long{
+  border-bottom: 1px dotted;
 }
 .db-box-list li .task-link-wrapper{
-  padding: 0 15px;
+  padding: 10px 15px;
   border-radius: 5px;
   /* background: #ffe3ba; */
   display: flex;
@@ -381,4 +397,58 @@ label{
   );
   margin: -1rem 0;
   padding: 1rem;
+}
+
+.db-info-bar-row{
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+.db-info-bar-box{
+  border: 3px solid #999;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.db-info-bar-box .label{
+  background: #999;
+  height: 100%;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: Impact;
+  font-size: 1em;
+  line-height: 1.1em;
+  padding: 10px;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.db-info-bar-box .text{
+  font-size: 3em;
+  line-height: 1em;
+  font-weight: bold;
+  color: #999;
+  padding: 0px 10px 2px;
+  min-width: 65px;
+}
+@media only screen and (max-width: 1135px) {
+  .db-info-bar-box{
+    display: block;
+    height: auto;
+  }
+  .db-info-bar-box .label{
+    min-height: 55px;
+  }
+}
+@media only screen and (max-width: 767px){
+  .db-info-bar-box{
+    margin-bottom: 10px;
+    display: flex;
+  }
+  .db-info-bar-box .label{
+    min-height: 0;
+  }
 }
