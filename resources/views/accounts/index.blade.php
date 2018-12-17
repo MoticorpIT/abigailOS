@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-	Accounts - index.blade.php
+	Accounts - index.blade.php || <a href="accounts/create">Create account</a>
 	<hr>
-	<a href="accounts/create">Create account</a>
 	@foreach($accounts as $account)
 		<ul>
+			<li>id: {{ $account->id }}</li>
 			<li>name: {{ $account->name }}</li>
 			<li>acct_num: {{ $account->acct_num }}</li>
 			<li>url: {{ $account->url }}</li>
@@ -22,14 +22,14 @@
 			<li>contact_phone_1: {{ $account->contact_phone_1 }}</li>
 			<li>contact_phone_2: {{ $account->contact_phone_2 }}</li>
 			<li>contact_email: {{ $account->contact_email }}</li>
-			<li>account_type_id: {{ $account->account_type_id }}</li>
-			<li>company_id: {{ $account->company_id }}</li>
-			<li>asset_id: {{ $account->asset_id }}</li>
-			<li>status_id: {{ $account->status_id }}</li>
+			<li>account_type: {{ $account->accountType->name }}</li>
+			<li>company: {{ $account->company->name }}</li>
+			<li>asset: {{ $account->asset->name }}</li>
+			<li>status: {{ $account->status->name }}</li>
 			<li>created_at: {{ $account->created_at }}</li>
 			<li>updated_at: {{ $account->updated_at }}</li>
-			<li><a href="accounts/{{ $account->id }}/edit">Edit account</a></li>
-			<li><a href="accounts/{{ $account->id }}">Show account</a></li>
+			<li><a href="/accounts/{{ $account->id }}/edit">Edit account</a></li>
+			<li><a href="/accounts/{{ $account->id }}">Show account</a></li>
 		</ul>
 	@endforeach
 @endsection

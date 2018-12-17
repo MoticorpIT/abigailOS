@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	Assets - index.blade.php
+	Assets - index.blade.php || <a href="assets/create">Create asset</a>
 	<hr>
-	<a href="assets/create">Create asset</a>
 	@foreach($assets as $asset)
 		<ul>
 			<li>id: {{ $asset->id }}</li>
@@ -19,9 +18,9 @@
 			<li>email: {{ $asset->email }}</li>
 			<li>rent: {{ $asset->rent }}</li>
 			<li>deposit: {{ $asset->deposit }}</li>
-			<li>asset_type_id: {{ $asset->asset_type_id }}</li>
-			<li>company_id: {{ $asset->company_id }}</li>
-			<li>status_id: {{ $asset->status_id }}</li>
+			<li>asset_type: {{ $asset->assetType->name }}</li>
+			<li>company: {{ $asset->company->name }}</li>
+			<li>status: {{ $asset->status->name }}</li>
 			<li>created_at: {{ $asset->created_at }}</li>
 			<li>updated_at: {{ $asset->updated_at }}</li>
 			<li><a href="assets/{{ $asset->id }}/edit">Edit asset</a></li>

@@ -183,8 +183,8 @@
 			<li>city: {{ $tenant->city }}</li>
 			<li>state: {{ $tenant->state }}</li>
 			<li>zip: {{ $tenant->zip }}</li>
-			<li>account_standing_id: {{ $tenant->account_standing_id }}</li>
-			<li>status_id: {{ $tenant->status_id }}</li>
+			<li>account_standing: {{ $tenant->accountStanding->name }}</li>
+			<li>status: {{ $tenant->status->name }}</li>
 			<li>created_at: {{ $tenant->created_at }}</li>
 			<li>updated_at: {{ $tenant->updated_at }}</li>
 			<li><a href="tenants/{{ $tenant->id }}/edit">Edit tenant</a></li>
