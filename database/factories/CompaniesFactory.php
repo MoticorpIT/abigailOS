@@ -20,7 +20,7 @@ $factory->define(App\Company::class, function (Faker $faker) {
         'city_lic' => $faker->numberBetween($min = 10000000, $max = 99999999),
         'county_lic' => $faker->numberBetween($min = 10000000, $max = 99999999),
         'fed_tax_id' => $faker->numberBetween($min = 10000000, $max = 99999999),
-        'company_type_id' => $faker->randomElement($array = array ('1','2','3','4','5','6')),
+        'company_type_id' => $faker->randomElement($array = array ('1','2')),
         'status_id' => $faker->randomElement($array = array ('1','2')),
     ];
 });
