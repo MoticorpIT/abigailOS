@@ -10,70 +10,21 @@
 				<a href="tenants/create" class="btn btn-primary">Create Tenant</a>
 			</h1>
 
-			<div class="tenant-table-wrapper">
-
-				<table class="table">
-				  <thead>
-				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">First</th>
-				      <th scope="col">Last</th>
-				      <th scope="col">Handle</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td>Larry</td>
-				      <td>the Bird</td>
-				      <td>@twitter</td>
-				    </tr>
-				  </tbody>
-				</table>
-
-
-
-				<table class="tenant-table">
+			<div class="tenant-table-wrapper table-responsive">
+				<table class="tenant-table table table-striped table-hover table-bordered">
 					<thead>
 						<tr>
 							<th class="id">
-								Tenant ID
+								ID
 							</th>
-							<th class="first-name">
-								First Name
+							<th class="name">
+								Name
 							</th>
-							<th class="last-name">
-								Last Name
+							<th class="contact">
+								Contact
 							</th>
-							<th class="phone-1">
-								Phone 1
-							</th>
-							<th class="phone-2 d-md-none">
-								Phone 2
-							</th>
-							<th class="fax">
-								Fax
-							</th>
-							<th class="email">
-								Email
-							</th>
-							<th class="street-address-1">
-								Street Address 1
-							</th>
-							<th class="street-address-2">
-								Street Address 2
+							<th class="street-address">
+								Street Address
 							</th>
 							<th class="city">
 								City
@@ -84,12 +35,6 @@
 							<th class="zip">
 								zip
 							</th>
-							<th class="account-standing">
-								Account Standing
-							</th>
-							<th class="status">
-								Status
-							</th>
 							<th class="created-on">
 								Created On
 							</th>
@@ -97,98 +42,108 @@
 								Updated On
 							</th>
 							<th class="view-button">
-								View Button
+								View
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						@foreach($tenants as $tenant)
+						@if($tenant->status_id =='3')
+							<tr class="status-{{ $tenant->status_id }}">
+						@elseif($tenant->status_id =='2')
+							<tr class="status-{{ $tenant->status_id }}">
+						@else
+						  <tr class="status-{{ $tenant->status_id }}">
+						@endif
 							<td class="id">
-								Tenant ID
+								{{ $tenant->id }}
 							</td>
-							<td class="first-name">
-								First Name
+							<td class="name">
+								<div class="item">{{ $tenant->last_name }},</div>
+								<div class="item">{{ $tenant->first_name }}</div>
 							</td>
-							<td class="last-name">
-								Last Name
+							<td class="contact">
+								<div class="btn-group contact-button">
+								  <a href="tel:{{ $tenant->phone_1 }}" class="btn btn-secondary">
+										<span><i class="fas fa-phone"></i> {{ $tenant->phone_1 }}</span>
+									</a>
+								  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    <span class="sr-only">Toggle Dropdown</span>
+								  </button>
+								  <div class="dropdown-menu dropdown-menu-right">
+								    <a class="dropdown-item" href="tel:{{ $tenant->phone_2 }}">
+											<span><i class="fas fa-phone"></i> {{ $tenant->phone_2 }}</span>
+										</a>
+										<a class="dropdown-item">
+											<span><i class="fas fa-fax"></i> {{ $tenant->fax }}</span>
+										</a>
+										<a class="dropdown-item" href="mailto:{{ $tenant->email }}">
+											<span><i class="fas fa-at"></i> {{ $tenant->email }}</span>
+										</a>
+								  </div>
+								</div> <!-- btn group -->
 							</td>
-							<td class="phone-1">
-								Phone 1
-							</td>
-							<td class="phone-2 d-md-none">
-								Phone 2
-							</td>
-							<td class="fax">
-								Fax
-							</td>
-							<td class="email">
-								Email
-							</td>
-							<td class="street-address-1">
-								Street Address 1
-							</td>
-							<td class="street-address-2">
-								Street Address 2
+							<td class="street-address">
+								<div class="item">{{ $tenant->street_1 }}</div>
+								<div class="item">{{ $tenant->street_2 }}</div>
 							</td>
 							<td class="city">
-								City
+								{{ $tenant->city }}
 							</td>
 							<td class="state">
-								state
+								{{ $tenant->state }}
 							</td>
 							<td class="zip">
-								zip
-							</td>
-							<td class="account-standing">
-								Account Standing
-							</td>
-							<td class="status">
-								Status
+								{{ $tenant->zip }}
 							</td>
 							<td class="created-on">
-								Created On
+								{{ $tenant->created_at }}
 							</td>
 							<td class="updated-on">
-								Updated On
+								{{ $tenant->updated_at }}
 							</td>
 							<td class="view-button">
-								View Button
+								<a href="tenants/{{ $tenant->id }}" class="btn btn-secondary">View</a>
 							</td>
 						</tr>
+						@endforeach
 					</tbody>
-				</table>
+				</table> <!-- tenant table -->
 			</div> <!-- tenant-table-wrapper -->
+
+			<style>
+				.variables{display: none;}
+				.variables:last-child{display: block;}
+			</style>
+			@foreach($tenants as $tenant)
+				<ul class="variables">
+					<li>id: {{ $tenant->id }}</li>
+					<li>first name: {{ $tenant->first_name }}</li>
+					<li>last name: {{ $tenant->last_name }}</li>
+					<li>phone_1: {{ $tenant->phone_1 }}</li>
+					<li>phone_2: {{ $tenant->phone_2 }}</li>
+					<li>fax: {{ $tenant->fax }}</li>
+					<li>email: {{ $tenant->email }}</li>
+					<li>co_first_name: {{ $tenant->co_first_name }}</li>
+					<li>co_last_name: {{ $tenant->co_last_name }}</li>
+					<li>co_phone_1: {{ $tenant->co_phone_1 }}</li>
+					<li>co_phone_2: {{ $tenant->co_phone_2 }}</li>
+					<li>co_email: {{ $tenant->co_email }}</li>
+					<li>street_1: {{ $tenant->street_1 }}</li>
+					<li>street_2: {{ $tenant->street_2 }}</li>
+					<li>city: {{ $tenant->city }}</li>
+					<li>state: {{ $tenant->state }}</li>
+					<li>zip: {{ $tenant->zip }}</li>
+					<li>account_standing_id: {{ $tenant->account_standing_id }}</li>
+					<li>status_id: {{ $tenant->status_id }}</li>
+					<li>created_at: {{ $tenant->created_at }}</li>
+					<li>updated_at: {{ $tenant->updated_at }}</li>
+					<li><a href="tenants/{{ $tenant->id }}/edit">Edit tenant</a></li>
+					<li><a href="tenants/{{ $tenant->id }}">Show tenant</a></li>
+				</ul>
+			@endforeach
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div> <!-- db boxes -->
-	Tenants - index.blade.php
-	<hr>
 
-	@foreach($tenants as $tenant)
-		<ul>
-			<li>id: {{ $tenant->id }}</li>
-			<li>first name: {{ $tenant->first_name }}</li>
-			<li>last name: {{ $tenant->last_name }}</li>
-			<li>phone_1: {{ $tenant->phone_1 }}</li>
-			<li>phone_2: {{ $tenant->phone_2 }}</li>
-			<li>fax: {{ $tenant->fax }}</li>
-			<li>email: {{ $tenant->email }}</li>
-			<li>co_first_name: {{ $tenant->co_first_name }}</li>
-			<li>co_last_name: {{ $tenant->co_last_name }}</li>
-			<li>co_phone_1: {{ $tenant->co_phone_1 }}</li>
-			<li>co_phone_2: {{ $tenant->co_phone_2 }}</li>
-			<li>co_email: {{ $tenant->co_email }}</li>
-			<li>street_1: {{ $tenant->street_1 }}</li>
-			<li>street_2: {{ $tenant->street_2 }}</li>
-			<li>city: {{ $tenant->city }}</li>
-			<li>state: {{ $tenant->state }}</li>
-			<li>zip: {{ $tenant->zip }}</li>
-			<li>account_standing: {{ $tenant->accountStanding->name }}</li>
-			<li>status: {{ $tenant->status->name }}</li>
-			<li>created_at: {{ $tenant->created_at }}</li>
-			<li>updated_at: {{ $tenant->updated_at }}</li>
-			<li><a href="tenants/{{ $tenant->id }}/edit">Edit tenant</a></li>
-			<li><a href="tenants/{{ $tenant->id }}">Show tenant</a></li>
-		</ul>
-	@endforeach
 @endsection

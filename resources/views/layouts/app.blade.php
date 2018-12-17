@@ -18,10 +18,10 @@
 
 	<div class="container-fluid main-content">
 		<div class="row main-content-row">
-			<div class="sidebar">
+			<div class="sidebar col-3">
 				@include('layouts.sidebar')
 			</div>
-			<div class="content">
+			<div class="content col-9">
 				@include('layouts.progressbar')
 				@yield('content')
 			</div>
