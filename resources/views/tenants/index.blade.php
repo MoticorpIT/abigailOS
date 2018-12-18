@@ -7,7 +7,7 @@
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
 				Tenants
-				<a href="tenants/create" class="btn btn-primary">Create Tenant</a>
+				<a href="tenants/create" class="btn btn-primary d-block-small float-right">Create Tenant</a>
 			</h1>
 
 			<div class="tenant-table-wrapper table-responsive">
@@ -36,10 +36,10 @@
 								zip
 							</th>
 							<th class="created-on">
-								Created On
+								Created
 							</th>
 							<th class="updated-on">
-								Updated On
+								Updated
 							</th>
 							<th class="view-button">
 								View
@@ -47,7 +47,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach($tenants as $tenant)
+						@foreach($tenants->sortBy('last_name') as $tenant)
 						@if($tenant->status_id =='3')
 							<tr class="status-{{ $tenant->status_id }}">
 						@elseif($tenant->status_id =='2')
@@ -59,8 +59,8 @@
 								{{ $tenant->id }}
 							</td>
 							<td class="name">
-								<div class="item">{{ $tenant->last_name }},</div>
-								<div class="item">{{ $tenant->first_name }}</div>
+								<span class="last-name">{{ $tenant->last_name }}</span>,
+								<span class="first-name">{{ $tenant->first_name }}</span>
 							</td>
 							<td class="contact">
 								<div class="btn-group contact-button">
@@ -71,21 +71,27 @@
 								    <span class="sr-only">Toggle Dropdown</span>
 								  </button>
 								  <div class="dropdown-menu dropdown-menu-right">
+										@if($tenant->phone_2)
 								    <a class="dropdown-item" href="tel:{{ $tenant->phone_2 }}">
 											<span><i class="fas fa-phone"></i> {{ $tenant->phone_2 }}</span>
 										</a>
+										@endif
+										@if($tenant->fax)
 										<a class="dropdown-item">
 											<span><i class="fas fa-fax"></i> {{ $tenant->fax }}</span>
 										</a>
+										@endif
+										@if($tenant->email)
 										<a class="dropdown-item" href="mailto:{{ $tenant->email }}">
 											<span><i class="fas fa-at"></i> {{ $tenant->email }}</span>
 										</a>
+										@endif
 								  </div>
 								</div> <!-- btn group -->
 							</td>
 							<td class="street-address">
-								<div class="item">{{ $tenant->street_1 }}</div>
-								<div class="item">{{ $tenant->street_2 }}</div>
+								<span class="item">{{ $tenant->street_1 }}</span>
+								<span class="item">{{ $tenant->street_2 }}</span>
 							</td>
 							<td class="city">
 								{{ $tenant->city }}
@@ -97,10 +103,17 @@
 								{{ $tenant->zip }}
 							</td>
 							<td class="created-on">
-								{{ $tenant->created_at }}
+								<span class="date">
+									{{ $tenant->created_at->format('m/d/y') }}
+								</span>
 							</td>
 							<td class="updated-on">
-								{{ $tenant->updated_at }}
+								<span class="date">
+									{{ $tenant->updated_at->format('m/d/y h:i a') }}
+								</span>
+								<span class="date-readable">
+									{{ $tenant->updated_at->diffForHumans($tenant->created_at) }}
+								</span>
 							</td>
 							<td class="view-button">
 								<a href="tenants/{{ $tenant->id }}" class="btn btn-secondary">View</a>

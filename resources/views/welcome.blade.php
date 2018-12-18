@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="content">
+<div class="content-area">
   <div  class="db-info-bar-row row">
     <div class="col-6 col-md-3">
       <div class="db-info-bar-box db-box">
