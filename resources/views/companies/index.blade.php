@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	Companies - index.blade.php || <a href="companies/create">Create company</a>
+	Companies - index.blade.php || <a href="/companies/create">Create company</a>
 	<hr>
 	@foreach($companies as $company)
 		<ul>
