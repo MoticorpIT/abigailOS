@@ -2,9 +2,7 @@
 
 @section('content')
 <style>
-.has-error {
-	border-color: red;
-}
+.has-error { border-color: red; }
 </style>
 
 <h1>Edit Company</h1>
@@ -53,27 +51,27 @@
 			{{-- COMPANY PHONE_1 --}}
 			<div class="form-group">
 				<label>Phone *</label>
-				<input type="text" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" value="{{ $company->phone_1 }}">
+				<input type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" value="{{ $company->phone_1 }}">
 			</div>
 			{{-- COMPANY PHONE_2 --}}
 			<div class="form-group">
 				<label>Phone (optional)</label>
-				<input type="text" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" value="{{ $company->phone_2 }}">
+				<input type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" value="{{ $company->phone_2 }}">
 			</div>
 			{{-- COMPANY FAX --}}
 			<div class="form-group">
 				<label>Fax</label>
-				<input type="text" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" value="{{ $company->fax }}">
+				<input type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" value="{{ $company->fax }}">
 			</div>
 			{{-- COMPANY EMAIL --}}
 			<div class="form-group">
 				<label>Email</label>
-				<input type="text" class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" value="{{ $company->email }}">
+				<input type="email" class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" value="{{ $company->email }}">
 			</div>
 			{{-- COMPANY LOGO --}}
 			<div class="form-group">
 				<label>Logo - This should be an uploader</label>
-				<input type="text" class="form-control {{ $errors->has('logo') ? 'has-error' : '' }}" name="logo" value="{{ $company->logo }}">
+				<input type="file" class="form-control {{ $errors->has('logo') ? 'has-error' : '' }}" name="logo" value="{{ $company->logo }}">
 			</div>
 		</div>
 

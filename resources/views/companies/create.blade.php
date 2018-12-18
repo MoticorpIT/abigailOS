@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+.has-error { border-color: red; }
+</style>
+
 <h1>Add New Company</h1>
+
+@include('layouts.errors')
+
 <form method="POST" action="/companies">
 	{{ csrf_field() }}
 	<div class="row mb-5">
@@ -42,27 +49,27 @@
 			{{-- COMPANY PHONE_1 --}}
 			<div class="form-group">
 				<label>Phone *</label>
-				<input type="text" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="Phone" value="{{ old('phone_1') }}">
+				<input type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="Phone" value="{{ old('phone_1') }}">
 			</div>
 			{{-- COMPANY PHONE_2 --}}
 			<div class="form-group">
 				<label>Phone (optional)</label>
-				<input type="text" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="Phone (optional)" value="{{ old('phone_2') }}">
+				<input type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="Phone (optional)" value="{{ old('phone_2') }}">
 			</div>
 			{{-- COMPANY FAX --}}
 			<div class="form-group">
 				<label>Fax</label>
-				<input type="text" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="Fax" value="{{ old('fax') }}">
+				<input type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="Fax" value="{{ old('fax') }}">
 			</div>
 			{{-- COMPANY EMAIL --}}
 			<div class="form-group">
 				<label>Email</label>
-				<input type="text" class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" placeholder="Email" value="{{ old('email') }}">
+				<input type="email" class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" placeholder="Email" value="{{ old('email') }}">
 			</div>
 			{{-- COMPANY LOGO --}}
 			<div class="form-group">
 				<label>Logo - This should be an uploader</label>
-				<input type="text" class="form-control {{ $errors->has('logo') ? 'has-error' : '' }}" name="logo" placeholder="Path to the Company Logo" value="{{ old('logo') }}">
+				<input type="file" class="form-control {{ $errors->has('logo') ? 'has-error' : '' }}" name="logo" placeholder="Path to the Company Logo" value="{{ old('logo') }}">
 			</div>
 		</div>
 

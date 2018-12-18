@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	Companies - show.blade.php || <a href="companies/create">Create company</a>
+	Companies - show.blade.php || <a href="/companies/create">Create company</a>
 	<hr>
 	<h4>Company Profile</h4>
 	<ul>
@@ -53,11 +53,8 @@
 	<h4>Notes (associated)</h4>
 	@foreach($notes as $note)
 		<ul>
-			<li>id: {{ $note->id }}</li>
 			<li>note: {{ $note->note }}</li>
-			<li>user: {{ $note->user->name }}</li>
-			<li>created_at: {{ $note->created_at }}</li>
-			<li>updated_at: {{ $note->updated_at }}</li>
+			<li>by: {{ $note->user->name }} {{ $note->created_at->diffForHumans() }}</li>
 		</ul>
 	@endforeach
 @endsection

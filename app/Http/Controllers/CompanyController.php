@@ -12,22 +12,14 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /** VIEW ALL COMPANIES */
     public function index()
     {
         $companies = Company::orderBy('name')->get();
         return view('companies.index', compact('companies'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /** VIEW COMPANY CREATE PAGE */
     public function create()
     {
         $company_types = CompanyType::all();
@@ -35,12 +27,7 @@ class CompanyController extends Controller
         return view('companies.create', compact('company_types', 'statuses'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    /** SAVE NEW COMPANY */
     public function store(Request $request)
     {
          /* VALIDATE DATA COMING IN FROM FORM */
@@ -64,7 +51,7 @@ class CompanyController extends Controller
             'company_type_id' => 'required', 
             'status_id' => 'required',
         ]);
-        /* CREATE NEW COMPANY */
+        /* CREATE THE NEW COMPANY */
         $company = new Company(
             [
                 'name' => $request->name,
@@ -87,7 +74,7 @@ class CompanyController extends Controller
                 'status_id' => $request->status_id,
             ]
         );
-        /* SAVE NEW COMPANY TO DATABASE */
+        /* SAVE THE NEW COMPANY TO DATABASE */
         $company->save();
         if (!$company->save()) {
             session()->flash('message', 'Contact Manager. ERROR: Company did not save');
@@ -97,12 +84,7 @@ class CompanyController extends Controller
         return redirect('/companies');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
+    /** VIEW SINGLE COMPANY */
     public function show($id)
     {
         $company = Company::find($id);
@@ -112,26 +94,17 @@ class CompanyController extends Controller
         return view('companies.show', compact('company', 'assets', 'notes', 'accounts'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Company $company)
+    /** VIEW COMPANY EDIT PAGE */
+    public function edit($id)
     {
+        $company = Company::find($id);
         $company_types = CompanyType::all();
         $statuses = Status::where('is_active', 1)->get();
-        return view('companies.edit', compact('company', 'company_types', 'statuses'));
+        $notes = Note::where('company_id', $id)->get();
+        return view('companies.edit', compact('company', 'company_types', 'statuses', 'notes'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
+    /** SAVE COMPANY EDITS */
     public function update(Request $request, Company $company)
     {
         /* VALIDATE DATA COMING IN FROM FORM */
@@ -158,23 +131,13 @@ class CompanyController extends Controller
         /* SAVE VALIDATED DATA TO DATABASE */
         $company->fill($data);
         $company->save();
-        /* CONFIRM CREATION AND REDIRECT USER */
-        // if(!$company->save()) {
-        //     session()->flash('message', 'Contact Manager. ERROR: Company did not update');
-        // } else {
-        //     session()->flash('message', 'Company Updated Successfully');
-        // }
+        /* REDIRECT USER AND CONFIRM CREATION */
+        if(!$company->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Company did not update');
+        } else {
+            session()->flash('message', 'Company Updated Successfully');
+        }
         return redirect('/companies');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Company $company)
-    {
-        //
-    }
 }
