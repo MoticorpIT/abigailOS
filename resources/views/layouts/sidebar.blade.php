@@ -1,4 +1,11 @@
 <ul class="nav-list">
+	<li class="open-link">
+		<a href="#0" class="heading">
+			<i class="fas fa-arrow-circle-right open-icon"></i>
+			<i class="fas fa-arrow-circle-left close-icon"></i>
+			<span class="close-text">Collapse</span>
+		</a>
+	</li>
 	<li>
 		<a href="#0" class="heading">
 			<i class="fas fa-tachometer-alt"></i>
