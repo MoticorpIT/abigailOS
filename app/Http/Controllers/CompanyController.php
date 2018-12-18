@@ -49,7 +49,7 @@ class CompanyController extends Controller
             'street_1' => 'required', 
             'street_2' => 'nullable',
             'city' => 'required', 
-            'state' => 'required', 
+            'state' => 'max:2|required', 
             'zip' => 'required', 
             'phone_1' => 'required', 
             'phone_2' => 'nullable',
@@ -89,15 +89,11 @@ class CompanyController extends Controller
         );
         /* SAVE NEW COMPANY TO DATABASE */
         $company->save();
-        // $company->categories()->attach($request->category);
-        // $company->sizes()->attach($request->size);
-        // $company->stores()->attach($request->store);
-        /* CONFIRM CREATION AND REDIRECT USER */
-        // if (!$company->save()) {
-        //     session()->flash('message', 'Contact Manager. ERROR: Company did not save');
-        // } else {
-        //     session()->flash('message', 'Company Created Successfully');
-        // }
+        if (!$company->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Company did not save');
+        } else {
+            session()->flash('message', 'Company Created Successfully');
+        }
         return redirect('/companies');
     }
 
@@ -114,8 +110,6 @@ class CompanyController extends Controller
         $accounts = Account::where('company_id', $id)->get();
         $notes = Note::where('company_id', $id)->get();
         return view('companies.show', compact('company', 'assets', 'notes', 'accounts'));
-
-        
     }
 
     /**
@@ -126,7 +120,9 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('companies.edit');
+        $company_types = CompanyType::all();
+        $statuses = Status::where('is_active', 1)->get();
+        return view('companies.edit', compact('company', 'company_types', 'statuses'));
     }
 
     /**
@@ -138,7 +134,37 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        /* VALIDATE DATA COMING IN FROM FORM */
+        $data = $request->validate([
+            'name' => 'required',
+            'street_1' => 'required', 
+            'street_2' => 'nullable',
+            'city' => 'required', 
+            'state' => 'max:2|required', 
+            'zip' => 'required', 
+            'phone_1' => 'required', 
+            'phone_2' => 'nullable',
+            'fax' => 'nullable',
+            'email' => 'nullable',
+            'logo' => 'nullable',
+            'incorp_date' => 'nullable',
+            'corp_id' => 'nullable',
+            'city_lic' => 'nullable',
+            'county_lic' => 'nullable',
+            'fed_tax_id' => 'nullable',
+            'company_type_id' => 'required', 
+            'status_id' => 'required', 
+        ]);
+        /* SAVE VALIDATED DATA TO DATABASE */
+        $company->fill($data);
+        $company->save();
+        /* CONFIRM CREATION AND REDIRECT USER */
+        // if(!$company->save()) {
+        //     session()->flash('message', 'Contact Manager. ERROR: Company did not update');
+        // } else {
+        //     session()->flash('message', 'Company Updated Successfully');
+        // }
+        return redirect('/companies');
     }
 
     /**

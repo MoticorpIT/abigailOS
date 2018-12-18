@@ -8,12 +8,12 @@
 		<div class="col-md-6">
 			{{-- COMPANY NAME --}}
 			<div class="form-group">
-				<label>Name</label>
+				<label>Name *</label>
 				<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}" autofocus>
 			</div>
 			{{-- COMPANY STREET_1 --}}
 			<div class="form-group">
-				<label>Street</label>
+				<label>Street *</label>
 				<input type="text" class="form-control {{ $errors->has('street_1') ? 'has-error' : '' }}" name="street_1" placeholder="Street" value="{{ old('street_1') }}">
 			</div>
 			{{-- COMPANY STREET_2 --}}
@@ -23,17 +23,17 @@
 			</div>
 			{{-- COMPANY CITY --}}
 			<div class="form-group">
-				<label>City</label>
+				<label>City *</label>
 				<input type="text" class="form-control {{ $errors->has('city') ? 'has-error' : '' }}" name="city" placeholder="City" value="{{ old('city') }}">
 			</div>
 			{{-- COMPANY STATE --}}
 			<div class="form-group">
-				<label>State</label>
+				<label>State *</label>
 				<input type="text" class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" placeholder="State" value="{{ old('state') }}">
 			</div>
 			{{-- COMPANY ZIP --}}
 			<div class="form-group">
-				<label>Zip</label>
+				<label>Zip *</label>
 				<input type="text" class="form-control {{ $errors->has('zip') ? 'has-error' : '' }}" name="zip" placeholder="Zip" value="{{ old('zip') }}">
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 		<div class="col-md-6">
 			{{-- COMPANY PHONE_1 --}}
 			<div class="form-group">
-				<label>Phone</label>
+				<label>Phone *</label>
 				<input type="text" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="Phone" value="{{ old('phone_1') }}">
 			</div>
 			{{-- COMPANY PHONE_2 --}}
@@ -101,7 +101,7 @@
 		<div class="col-md-6">
 			{{-- COMPANY TYPE DROPDOWN --}}
 			<div class="form-group">
-				<label for="company_type_id">Company Type</label>
+				<label for="company_type_id">Company Type *</label>
 				<select class="form-control" id="company_type_id" name="company_type_id">
 					<option value="">Choose One</option>
 					@foreach($company_types as $company_type)
@@ -111,7 +111,7 @@
 			</div>
 			{{-- STATUS DROPDOWN --}}
 			<div class="form-group">
-				<label for="status_id">Company Type</label>
+				<label for="status_id">Company Type *</label>
 				<select class="form-control" id="status_id" name="status_id">
 					@foreach($statuses as $status)
 						<option value="{{ $status->id }}">{{ $status->name }}</option>
@@ -125,7 +125,7 @@
 	<div class="row mb-5">
 		<div class="col-md-12">
 			<a href="{{ route('companies.index') }}" class="btn btn-round">Cancel</a>
-			<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Save Company</button>
+			<button id="submit-btn" type="submit" class="btn btn-danger btn-round">Add Company</button>
 		</div>
 	</div>
 </form>
