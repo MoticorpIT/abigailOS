@@ -7,7 +7,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="#0" class="heading">
+		<a href="/" class="heading">
 			<i class="fas fa-tachometer-alt"></i>
 			Dashboard
 		</a>
@@ -19,10 +19,10 @@
 		</span>
 		<ul class="nav-sublist">
 			<li>
-				<a href="#0">View Companies</a>
+				<a href="/companies">View Companies</a>
 			</li>
 			<li>
-				<a href="#0">Add Company</a>
+				<a href="/companies/create">Add Company</a>
 			</li>
 		</ul> <!-- nav sub list -->
 	</li>
@@ -33,10 +33,10 @@
 		</span>
 		<ul class="nav-sublist">
 			<li>
-				<a href="#0">View Assets</a>
+				<a href="/assets">View Assets</a>
 			</li>
 			<li>
-				<a href="#0">Add Asset</a>
+				<a href="/assets/create">Add Asset</a>
 			</li>
 		</ul> <!-- nav sub list -->
 	</li>
@@ -47,10 +47,10 @@
 		</span>
 		<ul class="nav-sublist">
 			<li>
-				<a href="#0">View Accounts</a>
+				<a href="/accounts">View Accounts</a>
 			</li>
 			<li>
-				<a href="#0">Add Account</a>
+				<a href="/accounts/create">Add Account</a>
 			</li>
 		</ul> <!-- nav sub list -->
 	</li>
@@ -61,10 +61,10 @@
 		</span>
 		<ul class="nav-sublist">
 			<li>
-				<a href="#0">View Tenants</a>
+				<a href="/tenants">View Tenants</a>
 			</li>
 			<li>
-				<a href="#0">Add Tenant</a>
+				<a href="/tenants/create">Add Tenant</a>
 			</li>
 		</ul> <!-- nav sub list -->
 	</li>
@@ -94,14 +94,17 @@
 			Admin
 		</span>
 		<ul class="nav-sublist">
+			{{-- Once we impliment the login funtion, we can remove this, as anyone seeing the sidebar, will be logged in, so there will always be an Auth::user --}}
+			@if (Auth::user())
 			<li>
-				<a href="#0">My Profile</a>
+				<a href="/users/{{Auth::user()->id}}">My Profile</a>
+			</li>
+			@endif
+			<li>
+				<a href="/users">All Users</a>
 			</li>
 			<li>
-				<a href="#0">All Users</a>
-			</li>
-			<li>
-				<a href="#0">Add User</a>
+				<a href="/users/create">Add User</a>
 			</li>
 			<li>
 				<a href="#0">Settings</a>
