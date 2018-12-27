@@ -34,7 +34,7 @@
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<img src="https://via.placeholder.com/300x300" />
+								<img src="https://via.placeholder.com/400x400" />
 							</div> <!-- profile image -->
 
 							<div class="col-12 col profile-image-updater">
@@ -42,7 +42,7 @@
 								<div class="form-group">
 									<label>
 										Logo
-										<span class="optional">(300 x 300)</span>
+										<span class="optional">(400 x 400)</span>
 									</label>
 									<input type="file" class="form-control {{ $errors->has('logo') ? 'has-error' : '' }}" name="logo" placeholder="Path to the Company Logo" value="{{ old('logo') }}">
 								</div>
@@ -71,7 +71,7 @@
 											<span class="required">*</span>
 										</label>
 										<div class="input-group">
-							        <input type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="(555) 555-555" value="{{ old('phone_1') }}">
+							        <input type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="(555) 555-5555" value="{{ old('phone_1') }}">
 											<div class="input-group-append d-none d-lg-block">
 							          <div class="input-group-text">
 							          	<i class="fas fa-phone"></i>
@@ -174,7 +174,10 @@
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col">
-									<h4 class="heading divider">Address</h4>
+									<h4 class="heading divider">
+										<i class="fas fa-globe-americas"></i>
+										Address
+									</h4>
 								</div> <!-- col -->
 								<div class="col-12 col-md-6 col">
 									{{-- COMPANY STREET_1 --}}
@@ -281,7 +284,10 @@
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col">
-									<h4 class="heading divider">Information</h4>
+									<h4 class="heading divider">
+										<i class="fas fa-info-circle"></i>
+										Information
+									</h4>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
 									{{-- COMPANY INCORP_DATE --}}
