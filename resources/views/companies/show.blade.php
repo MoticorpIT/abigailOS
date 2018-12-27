@@ -12,7 +12,7 @@
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
 					<a href="{{ route('companies.index') }}" class="btn btn-round">Go Back</a>
-					<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Edit Company</button>
+					<a href="/companies/{{ $company->id }}/edit" id="submit-btn" class="btn btn-primary d-block d-sm-inline">Edit Company</a>
 				</div>
 				<div class="clear"></div>
 			</h1>
@@ -29,7 +29,7 @@
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<img src="https://via.placeholder.com/300x300" />
+								<img src="https://via.placeholder.com/400x400" />
 							</div> <!-- profile image -->
 
 							<nav class="profile-tabs">
@@ -115,6 +115,52 @@
 									</div>
 								</div>
 							</div>
+
+							<nav class="profile-tabs associated">
+								<div class="nav nav-pills nav-justified" id="assoc-nav-tab" role="tablist">
+									<a class="nav-item nav-link active" id="assoc-acc-tab-button" data-toggle="tab" href="#assoc-acc-tab-content" role="tab" aria-controls="assoc-nav-tab" aria-selected="true">
+										<i class="fas fa-file-alt"></i>
+										Accounts
+									</a>
+									<a class="nav-item nav-link" id="assoc-ass-tab-button" data-toggle="tab" href="#assoc-ass-tab-content" role="tab" aria-controls="assoc-nav-tab" aria-selected="false">
+										<i class="fas fa-briefcase"></i>
+										Assets
+									</a>
+									<a class="nav-item nav-link d-sm-none" id="assoc-hide-tab-button" data-toggle="tab" href="#assoc-hide-tab-content" role="tab" aria-selected="false">
+										<i class="fas fa-minus-square"></i>
+									</a>
+								</div>
+							</nav>
+							<div class="tab-content profile-tabs-content" id="">
+								<div class="tab-pane fade show active" id="assoc-acc-tab-content" role="tabpanel" aria-labelledby="assoc-acc-tab-button">
+									<ul class="reset assoc-list acc">
+									@foreach($accounts as $account)
+										<li class="assoc-list-item">
+											<a href="#0" class="assoc-list-link">
+												<span class="name">
+													{{ $account->name }}
+												</span>
+											</a>
+										</li>
+									@endforeach
+									</ul>
+								</div>
+								<div class="tab-pane fade" id="assoc-ass-tab-content" role="tabpanel" aria-labelledby="assoc-ass-tab-button">
+									<ul class="reset assoc-list acc">
+									@foreach($assets as $asset)
+										<li class="assoc-list-item">
+											<a href="#0" class="assoc-list-link">
+												<span class="name">
+													{{ $asset->name }}
+												</span>
+											</a>
+										</li>
+									@endforeach
+									</ul>
+								</div>
+								<div class="tab-pane fade" id="assoc-hide-tab-content" role="tabpanel" aria-labelledby="assoc-hide-tab-button">
+								</div>
+							</div>
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
@@ -149,7 +195,10 @@
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col">
-									<h4 class="heading divider">Address</h4>
+									<h4 class="heading divider">
+										<i class="fas fa-globe-americas"></i>
+										Address
+									</h4>
 								</div> <!-- col -->
 								<div class="col-12 col-md-6 col">
 									{{-- COMPANY STREET_1 --}}
@@ -202,7 +251,10 @@
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col">
-									<h4 class="heading divider">Information</h4>
+									<h4 class="heading divider">
+										<i class="fas fa-info-circle"></i>
+										Information
+									</h4>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
 									{{-- COMPANY INCORP_DATE --}}
@@ -240,6 +292,35 @@
 									</div>
 								</div> <!-- col -->
 
+								<div class="col-12 col">
+									<h4 class="heading divider">
+										<i class="fas fa-comment"></i>
+										Notes
+									</h4>
+								</div> <!-- col -->
+								<div class="col-12 col">
+									<ul class="reset notes-list">
+									@foreach($notes as $note)
+										<li class="notes-list-item">
+											<div class="media">
+											  <img src="http://placehold.it/50x50" class="mr-3" />
+											  <div class="media-body">
+											    <h5 class="mt-0 author">{{ $note->user->name }}</h5>
+													<span class="timeago float-right">
+														{{ $note->created_at->diffForHumans() }}
+													</span>
+													<span class="text">
+														{{ $note->note }}
+													</span>
+											  </div>
+											</div>
+
+
+
+										</li>
+									@endforeach
+								</ul> <!-- notes list -->
+								</div> <!-- col -->
 							</div> <!-- row -->
 						</div> <!-- col -->
 					</div> <!-- row -->
