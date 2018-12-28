@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	Tenants - show.blade.php || <a href="tenants/create">Create Tenant</a>
+	Tenants - show.blade.php || <a href="/tenants/create">Create Tenant</a>
 	<hr>
 	<h4>Tenant Profile</h4>
 	<ul>
@@ -26,7 +26,7 @@
 		<li>status: {{ $tenant->status->name }}</li>
 		<li>created_at: {{ $tenant->created_at }}</li>
 		<li>updated_at: {{ $tenant->updated_at }}</li>
-		<li><a href="tenants/{{ $tenant->id }}/edit">Edit tenant</a></li>
+		<li><a href="/tenants/{{ $tenant->id }}/edit">Edit tenant</a></li>
 		<li><a href="/tenants">View all tenants</a></li>
 	</ul>
 	<hr>
