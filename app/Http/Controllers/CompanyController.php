@@ -99,7 +99,7 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $company_types = CompanyType::all();
-        $statuses = Status::where('is_active', 1)->get();
+        $statuses = Status::all();
         $notes = Note::where('company_id', $id)->get();
         return view('companies.edit', compact('company', 'company_types', 'statuses', 'notes'));
     }
