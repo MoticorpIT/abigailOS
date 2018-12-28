@@ -10,8 +10,8 @@
 				<a href="tenants/create" class="btn btn-primary d-block-small float-right">Create Tenant</a>
 			</h1>
 
-			<div class="tenant-table-wrapper table-responsive">
-				<table class="tenant-table table table-striped table-hover table-bordered">
+			<div class="tenant-table-wrapper table-wrapper table-responsive">
+				<table class="tenant-table data-table table table-striped table-hover table-bordered">
 					<thead>
 						<tr>
 							<th class="id">
