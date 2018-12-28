@@ -323,7 +323,13 @@ body{
 .db-box-list .warning .dropdown-menu::before{
   border-bottom-color: #94741a;
 }
-
+.cancel-link:hover{
+  text-decoration: none;
+}
+.modal-header{
+  background: #0586ff;
+  color: #fff;
+}
 #complete-task-modal .modal-header{
   background: #1ab394;
   color: #fff;
@@ -533,42 +539,42 @@ form span.optional{
 } /* (max-width: 430px) */
 
 /* Tenant Table */
-.tenant-table{
+.data-table{
   text-align: center;
   font-size: 14px;
   line-height: 1.2em;
   border-radius: 5px;
   overflow: hidden;
 }
-.tenant-table.table thead th{
+.data-table.table thead th{
   background: #414141;
   color: #fff;
 }
-.tenant-table.table tbody td{
+.data-table.table tbody td{
   vertical-align: middle;
 }
-.tenant-table.table tbody td.street-address,
-.tenant-table.table tbody td.name{
+.data-table.table tbody td.street-address,
+.data-table.table tbody td.name{
   text-align: left;
 }
-.tenant-table.table tbody td.name{
+.data-table.table tbody td.name{
   min-width: 150px;
 }
-.tenant-table tbody tr{
+.data-table tbody tr{
   border-left: 10px solid #e4e8eb;
   border-right: 10px solid #e4e8eb;
 }
-.tenant-table tbody tr.status-2{
+.data-table tbody tr.status-2{
   border-left: 10px solid #ffc107;
   border-right: 10px solid #ffc107;
 }
-.tenant-table.table-bordered tbody tr:last-child td{
+.data-table.table-bordered tbody tr:last-child td{
   border-bottom: 6px solid #e4e8eb;
 }
-.tenant-table .date{
+.data-table .date{
   text-transform: uppercase;
 }
-.tenant-table .date-readable{
+.data-table .date-readable{
   display: block;
   font-style: italic;
   font-size: .9em;
@@ -610,39 +616,39 @@ form span.optional{
   background: #80888f;
 }
 @media only screen and (max-width: 1300px){
-  .tenant-table.table tbody td.name{
+  .data-table.table tbody td.name{
     min-width: 0;
   }
 } /* (max-width: 1300px) */
 
 @media only screen and (max-width: 1435px) and (min-width: 1250px){
-  table.tenant-table .created-on,
-  table.tenant-table .updated-on{
+  table.data-table .created-on,
+  table.data-table .updated-on{
     display: none;
   }
 } /* (max-width: 1435px) and (min-width: 1250px) */
 
 @media only screen and (max-width: 1251px){
-  table.tenant-table,
-  table.tenant-table thead,
-  table.tenant-table tbody,
-  table.tenant-table th,
-  table.tenant-table tr,
-  table.tenant-table td{
+  table.data-table,
+  table.data-table thead,
+  table.data-table tbody,
+  table.data-table th,
+  table.data-table tr,
+  table.data-table td{
     display: block;
   }
-  table.tenant-table tbody{
+  table.data-table tbody{
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     justify-content: space-between;
   }
-  table.tenant-table tbody::after {
+  table.data-table tbody::after {
     content: "";
     flex: 1;
     max-width: 33%;
   }
-  table.tenant-table tr{
+  table.data-table tr{
     max-width: 33%;
     margin-bottom: 10px;
     border: 5px solid #555;
@@ -655,70 +661,70 @@ form span.optional{
   .table-striped tbody tr:nth-of-type(even){
     background: #fff;
   }
-  table.tenant-table tr td{
+  table.data-table tr td{
     width: 100%;
   }
-  table.tenant-table tr td.created-on{
+  table.data-table tr td.created-on{
     flex: 1;
   }
-  table.tenant-table tr td.updated-on{
+  table.data-table tr td.updated-on{
     flex: 2;
   }
-  table.tenant-table thead,
-  table.tenant-table .id{
+  table.data-table thead,
+  table.data-table .id{
     display: none;
   }
-  table.tenant-table .name{
+  table.data-table .name{
     font-size: 1.5em;
     line-height: 1em;
     font-weight: bold;
   }
-  table.tenant-table .view-button .btn{
+  table.data-table .view-button .btn{
     width: 100%;
   }
 
-  table.tenant-table .street-address::before{
+  table.data-table .street-address::before{
     content: 'Street Address: ';
     width: 100%;
   }
-  table.tenant-table .city::before{
+  table.data-table .city::before{
     content: 'City: ';
   }
-  table.tenant-table .state::before{
+  table.data-table .state::before{
     content: 'State: ';
   }
-  table.tenant-table .zip::before{
+  table.data-table .zip::before{
     content: 'Zip: ';
   }
-  table.tenant-table .created-on::before{
+  table.data-table .created-on::before{
     content: 'Created: ';
     width: 100%;
   }
-  table.tenant-table .updated-on::before{
+  table.data-table .updated-on::before{
     content: 'Updated: ';
     width: 100%;
   }
-  .tenant-table tbody tr.status-2{
+  .data-table tbody tr.status-2{
     border: 5px solid #ffc107;
   }
-  .tenant-table.table-bordered tbody tr:last-child td{
+  .data-table.table-bordered tbody tr:last-child td{
     border-bottom: 1px solid #dee2e6;
   }
-  table.tenant-table td::before{
+  table.data-table td::before{
     font-weight: bold;
   }
-  table.tenant-table td.updated-on::before,
-  table.tenant-table td.street-address::before{
+  table.data-table td.updated-on::before,
+  table.data-table td.street-address::before{
     display: block;
   }
-  table.tenant-table td.city,
-  table.tenant-table td.state,
-  table.tenant-table td.zip{
+  table.data-table td.city,
+  table.data-table td.state,
+  table.data-table td.zip{
     display: flex;
   }
-  table.tenant-table td.city::before,
-  table.tenant-table td.state::before,
-  table.tenant-table td.zip::before{
+  table.data-table td.city::before,
+  table.data-table td.state::before,
+  table.data-table td.zip::before{
     max-width: 50px;
     padding-right: 5px;
     flex: 1;
@@ -799,7 +805,7 @@ form span.optional{
 } /* (max-width: 1000px) */
 
 @media only screen and (max-width: 850px){
-  table.tenant-table tr{
+  table.data-table tr{
     max-width: 49%;
   }
   .db-boxes-row{
@@ -812,11 +818,11 @@ form span.optional{
 } /* (max-width: 850px) */
 
 @media only screen and (max-width: 660px){
-  table.tenant-table tr{
+  table.data-table tr{
     max-width: 300px;
     margin: 0 auto 10px;
   }
-  table.tenant-table tbody{
+  table.data-table tbody{
     flex-direction: column;
   }
 }
@@ -826,7 +832,7 @@ form span.optional{
 } /* (min-width: 576px) */
 
 @media only screen and (max-width: 430px){
-  table.tenant-table tr{
+  table.data-table tr{
     max-width: 100%;
   }
   .db-boxes-row{
@@ -969,6 +975,15 @@ form span.optional{
   #assoc-hide-tab-button{
     max-width: 34px;
   }
+  .note-item .timeago{
+    float: none !important;
+    margin: 0 0 5px;
+    display: block;
+  }
+  .note-item .author{
+    display: block;
+    margin: 0;
+  }
 } /* (max-width: 767px) */
 
 
@@ -995,24 +1010,29 @@ form span.optional{
 .notes-list{
   margin-top: 1rem;
 }
-.notes-list .notes-list-item{
+.note-item{
   padding: 1rem;
   background: #f5f5f5;
-  margin-bottom: 10px;
-  display: block;
   border-radius: 5px;
+}
+.notes-list .notes-list-item{
+  margin-bottom: 10px;
 }
 .notes-list .notes-list-item:last-child{
   margin-bottom: 0;
 }
-.notes-list .author{
+.note-item .author{
   display: inline-block;
 }
-.notes-list .text{
+.note-item .text{
   line-height: 1.2em;
   display: block;
 }
-.notes-list .timeago{
+.note-item .timeago{
   font-style: italic;
   font-size: .9em;
+}
+.user-image{
+  border-radius: 3px;
+  margin-top: 3px;
 }
