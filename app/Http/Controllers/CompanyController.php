@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
+    /** CHECK IF USER IS LOGGED IN */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /** VIEW ALL COMPANIES */
     public function index()
     {
@@ -139,5 +145,4 @@ class CompanyController extends Controller
         }
         return redirect('/companies');
     }
-
 }

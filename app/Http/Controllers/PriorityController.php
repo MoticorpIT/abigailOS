@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class PriorityController extends Controller
 {
+    /** CHECK IF USER IS LOGGED IN */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
