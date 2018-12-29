@@ -32,7 +32,7 @@ class CreateCompaniesTable extends Migration
             $table->string('county_lic')->nullable();
             $table->string('fed_tax_id')->nullable();
             $table->integer('company_type_id');
-            $table->integer('status_id');
+            $table->integer('status_id')->default(1);
             $table->timestamps();
         });
     }

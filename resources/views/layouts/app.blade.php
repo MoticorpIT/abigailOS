@@ -28,7 +28,6 @@
 		</div>
 	</div> <!-- main content -->
 
-	@include('layouts.modals')
 	@include('layouts.scripts')
 
 </body>

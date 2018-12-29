@@ -135,7 +135,7 @@
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-6 col">
 									{{-- Tenant First Name --}}
 									<div class="form-group">
 										<label>
@@ -145,7 +145,7 @@
 										<input class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="first_name" value="{{ old('first_name') }}" >
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-6 col">
 									{{-- Tenant Last Name --}}
 									<div class="form-group">
 										<label>
@@ -153,36 +153,6 @@
 											<span class="required">*</span>
 										</label>
 										<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="{{ old('last_name') }}" >
-									</div>
-								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
-									{{-- Account Standing --}}
-									<div class="form-group">
-										<label for="account_standing_id">
-											Account Standing
-											<span class="required">*</span>
-										</label>
-										<select class="form-control" id="account_standing_id" name="account_standing_id">
-											@foreach($account_standings as $account_standing)
-												<option value="{{ $account_standing->id }}">
-													{{ $account_standing->name }}
-												</option>
-											@endforeach
-										</select>
-									</div>
-								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
-									{{-- STATUS DROPDOWN --}}
-									<div class="form-group">
-										<label for="status_id">
-											Tenant Status
-											<span class="required">*</span>
-										</label>
-										<select class="form-control" id="status_id" name="status_id">
-											@foreach($statuses as $status)
-												<option value="{{ $status->id }}">{{ $status->name }}</option>
-											@endforeach
-										</select>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col">

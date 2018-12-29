@@ -54,8 +54,7 @@ class CompanyController extends Controller
             'city_lic' => 'nullable',
             'county_lic' => 'nullable',
             'fed_tax_id' => 'nullable',
-            'company_type_id' => 'required', 
-            'status_id' => 'required',
+            'company_type_id' => 'required'
         ]);
         /* CREATE THE NEW COMPANY */
         $company = new Company(
@@ -77,7 +76,6 @@ class CompanyController extends Controller
                 'county_lic' => $request->county_lic,
                 'fed_tax_id' => $request->fed_tax_id,
                 'company_type_id' => $request->company_type_id,
-                'status_id' => $request->status_id,
             ]
         );
         /* SAVE THE NEW COMPANY TO DATABASE */
