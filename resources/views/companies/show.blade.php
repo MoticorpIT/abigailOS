@@ -303,25 +303,30 @@
 								</div> <!-- col -->
 								<div class="col-12 col">
 									<ul class="reset notes-list">
-									@foreach($notes as $note)
-										<li class="notes-list-item">
-											<div class="media note-item">
-											  <img src="http://placehold.it/50x50" class="mr-3 user-image" />
-											  <div class="media-body">
-											    <h5 class="mt-0 author">{{ $note->user->name }}</h5>
-													<span class="timeago float-right">
-														{{ $note->created_at->diffForHumans() }}
-													</span>
-													<span class="text">
-														{{ $note->note }}
-													</span>
-											  </div>
-											</div>
-
-
-
-										</li>
-									@endforeach
+										@if (!empty($notes))
+											<li class="notes-list-item">
+												<div class="note-item text-center">
+													No notes. Click the 'Add Note' to change that!
+												</div>
+											</li>
+										@else
+											@foreach($notes as $note)
+												<li class="notes-list-item">
+													<div class="media note-item">
+													  <img src="http://placehold.it/50x50" class="mr-3 user-image" />
+													  <div class="media-body">
+													    <h5 class="mt-0 author">{{ $note->user->name }}</h5>
+															<span class="timeago float-right">
+																{{ $note->created_at->diffForHumans() }}
+															</span>
+															<span class="text">
+																{{ $note->note }}
+															</span>
+													  </div>
+													</div>
+												</li>
+											@endforeach
+										@endif
 								</ul> <!-- notes list -->
 								</div> <!-- col -->
 							</div> <!-- row -->
@@ -338,49 +343,10 @@
 </div> <!-- db boxes -->
 
 <!-- Add Note Modal -->
-<div class="modal fade" id="add-note-modal" tabindex="-1" role="dialog" aria-labelledby="add-note-link" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="reschedule-task-modal-heading">
-          <i class="fas fa-comment"></i>
-          Add a Note
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-				<div class="media note-item">
-					<img src="http://placehold.it/50x50" class="mr-3 user-image" />
-					<div class="media-body">
-						<h5 class="mt-0 author">{{ $note->user->name }}</h5>
-						<span class="timeago float-right">
-							{{ $note->created_at->diffForHumans() }}
-						</span>
-						<span class="text">
-							<textarea class="form-control" id="task-note" rows="2" placeholder="Enter your note..."></textarea>
-						</span>
-					</div>
-				</div>
-      </div>
-      <div class="modal-footer">
-        <a href="#0" data-dismiss="modal" class="cancel-link">
-          Cancel
-        </a>
-        <button type="button" class="btn btn-primary">
-          <i class="fas fa-comment"></i>
-          Add Note
-        </button>
-      </div>
-    </div>
-  </div>
-</div> <!-- reschedule task modal -->
+@include('layouts/modals/note-add')
+@include('layouts/modals/note-edit')
 
-
-
-
-
+{{-- VARIABLES --}}
 <div class="d-none">
 	Companies - show.blade.php || <a href="/companies/create">Create company</a>
 	<hr>

@@ -610,4 +610,10 @@
     </div> <!-- col -->
   </div> <!-- boxes wrapper -->
 </div>
+
+@include('layouts/modals/task-complete')
+@include('layouts/modals/task-reschedule')
+
 @endsection
+
+
