@@ -11,22 +11,17 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// LOGIN ROUTE - IF LOGGED IN, GOING TO / WILL REDIRECT TO /dashboard
 Route::get('/', function () {
     return view('auth/login');
 });
 
-// LOGIN/LOGOUT (AUTHENTICATION ROUTES)
-// Prevented Guest Registration by Breaking out Auth Routes Required for login/logout only
-// This replaces the default...  Auth::routes();
+// LOGIN/LOGOUT (AUTHENTICATION ROUTES) - Registration Prevented
 $this->get('/', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
-// Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+// DASHBOARD ROUTE
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
@@ -48,3 +43,4 @@ Route::resource('tasks', 'TaskController');
 Route::resource('taskTypes', 'TaskTypeController');
 Route::resource('tenants', 'TenantController');
 Route::resource('users', 'UserController');
+

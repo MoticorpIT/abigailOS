@@ -303,7 +303,7 @@
 								</div> <!-- col -->
 								<div class="col-12 col">
 									<ul class="reset notes-list">
-										@if (!empty($notes))
+										@if ($notes == '')
 											<li class="notes-list-item">
 												<div class="note-item text-center">
 													No notes. Click the 'Add Note' to change that!
@@ -323,8 +323,16 @@
 																{{ $note->note }}
 															</span>
 													  </div>
+													  <a href="#0" class="badge badge-secondary float-right edit-note-link ml-2" data-toggle="modal" data-target="#edit-note-modal">
+															<i class="fas fa-pencil-alt"></i>
+														</a>
+														<a href="#0" class="badge badge-secondary float-right delete-note-link ml-2" data-toggle="modal" data-target="#delete-note-modal">
+															<i class="fas fa-trash-alt"></i>
+														</a>
 													</div>
 												</li>
+												{{-- Must include the Note-Edit-Modal in the notes foreach loop, or page will error --}}
+												@include('layouts/modals/note-edit')
 											@endforeach
 										@endif
 								</ul> <!-- notes list -->
@@ -344,7 +352,7 @@
 
 <!-- Add Note Modal -->
 @include('layouts/modals/note-add')
-@include('layouts/modals/note-edit')
+
 
 {{-- VARIABLES --}}
 <div class="d-none">
