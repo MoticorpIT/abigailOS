@@ -30,7 +30,7 @@ class CreateAssetsTable extends Migration
             $table->date('acquired_date')->nullable();
             $table->integer('asset_type_id');
             $table->integer('company_id');
-            $table->integer('status_id');
+            $table->integer('status_id')->default(1);
             $table->timestamps();
         });
     }

@@ -34,7 +34,7 @@ class CreateAccountsTable extends Migration
             $table->integer('account_type_id');
             $table->integer('company_id')->nullable();
             $table->integer('asset_id')->nullable();
-            $table->integer('status_id');
+            $table->integer('status_id')->default(1);
             $table->timestamps();
         });
     }
