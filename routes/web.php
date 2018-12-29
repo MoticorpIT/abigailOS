@@ -11,13 +11,25 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
-Auth::routes();
+// LOGIN/LOGOUT (AUTHENTICATION ROUTES)
+// Prevented Guest Registration by Breaking out Auth Routes Required for login/logout only
+// This replaces the default...  Auth::routes();
+$this->get('/', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('/', 'Auth\LoginController@login');
+$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
 
 Route::resource('accounts', 'AccountController');
 Route::resource('accountTypes', 'AccountTypeController');
