@@ -57,6 +57,9 @@ class CompanyController extends Controller
             'company_type_id' => 'required'
         ]);
         /* CREATE THE NEW COMPANY */
+
+        $upload = $request->logo->store('companies');
+
         $company = new Company(
             [
                 'name' => $request->name,
@@ -69,7 +72,7 @@ class CompanyController extends Controller
                 'phone_2' => $request->phone_2,
                 'fax' => $request->fax,
                 'email' => $request->email,
-                'logo' => $request->logo,
+                'logo' => $upload,
                 'incorp_date' => $request->incorp_date,
                 'corp_id' => $request->corp_id,
                 'city_lic' => $request->city_lic,
