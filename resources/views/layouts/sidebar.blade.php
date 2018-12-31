@@ -7,7 +7,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="/" class="heading">
+		<a href="/dashboard" class="heading">
 			<i class="fas fa-tachometer-alt"></i>
 			Dashboard
 		</a>
@@ -94,12 +94,9 @@
 			Admin
 		</span>
 		<ul class="nav-sublist">
-			{{-- Once we impliment the login funtion, we can remove this, as anyone seeing the sidebar, will be logged in, so there will always be an Auth::user --}}
-			@if (Auth::user())
 			<li>
 				<a href="/users/{{Auth::user()->id}}">My Profile</a>
 			</li>
-			@endif
 			<li>
 				<a href="/users">All Users</a>
 			</li>
@@ -108,6 +105,15 @@
 			</li>
 			<li>
 				<a href="#0">Settings</a>
+			</li>
+			<li>
+				<a href="{{ route('logout') }}" onclick="event.preventDefault();
+					document.getElementById('logout-form').submit();">
+					<span class="sidebar-normal"> {{ __('Logout') }} </span>
+				</a>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+					@csrf
+				</form>
 			</li>
 		</ul> <!-- nav sub list -->
 	</li>

@@ -144,7 +144,7 @@
 										<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}" autofocus>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-6 col">
 									{{-- COMPANY TYPE DROPDOWN --}}
 									<div class="form-group">
 										<label for="company_type_id">
@@ -159,20 +159,7 @@
 										</select>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
-									{{-- STATUS DROPDOWN --}}
-									<div class="form-group">
-										<label for="status_id">
-											Company Status
-											<span class="required">*</span>
-										</label>
-										<select class="form-control" id="status_id" name="status_id">
-											@foreach($statuses as $status)
-												<option value="{{ $status->id }}">{{ $status->name }}</option>
-											@endforeach
-										</select>
-									</div>
-								</div> <!-- col -->
+								 <!-- col -->
 								<div class="col-12 col">
 									<h4 class="heading divider">
 										<i class="fas fa-globe-americas"></i>

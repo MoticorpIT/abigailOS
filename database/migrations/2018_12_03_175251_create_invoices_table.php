@@ -22,7 +22,7 @@ class CreateInvoicesTable extends Migration
             $table->decimal('balance', 8, 2)->nullable();
             $table->integer('contract_id');
             $table->integer('priority_id')->nullable();
-            $table->integer('status_id');
+            $table->integer('status_id')->default(1);
             $table->timestamps();
         });
     }
