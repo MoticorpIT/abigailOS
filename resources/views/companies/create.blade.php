@@ -8,7 +8,7 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/companies">
+			<form method="POST" action="/companies" enctype="multipart/form-data">
 				{{ csrf_field() }}
 			<h1 class="page-heading">
 				Add New Company
