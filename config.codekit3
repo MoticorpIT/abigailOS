@@ -219,13 +219,6 @@
 		"oAP": "/app/Http/Controllers/Controller.php",
 		"oF": 0
 		},
-	"/app/Http/Controllers/HomeController.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/app/Http/Controllers/HomeController.php",
-		"oF": 0
-		},
 	"/app/Http/Controllers/InvoiceController.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1077,16 +1070,6 @@
 		"oF": 0,
 		"oS": 3
 		},
-	"/public/css/main.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/public/css/main-min.css",
-		"oF": 0,
-		"oS": 3
-		},
 	"/public/favicon.ico": {
 		"cB": 0,
 		"ft": 8192,
@@ -1348,6 +1331,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"/resources/sass/main.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/public/css/main.css",
+		"oF": 2,
+		"oS": 0,
+		"uL": 1
+		},
 	"/resources/views/accounts/create.blade.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1495,11 +1491,11 @@
 		"oAP": "/resources/views/contracts/show.blade.php",
 		"oF": 0
 		},
-	"/resources/views/home.blade.php": {
+	"/resources/views/dashboard.blade.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "/resources/views/home.blade.php",
+		"oAP": "/resources/views/dashboard.blade.php",
 		"oF": 0
 		},
 	"/resources/views/invoices/create.blade.php": {
@@ -1558,11 +1554,32 @@
 		"oAP": "/resources/views/layouts/header.blade.php",
 		"oF": 0
 		},
-	"/resources/views/layouts/modals.blade.php": {
+	"/resources/views/layouts/modals/note-add.blade.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "/resources/views/layouts/modals.blade.php",
+		"oAP": "/resources/views/layouts/modals/note-add.blade.php",
+		"oF": 0
+		},
+	"/resources/views/layouts/modals/note-edit.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/modals/note-edit.blade.php",
+		"oF": 0
+		},
+	"/resources/views/layouts/modals/task-complete.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/modals/task-complete.blade.php",
+		"oF": 0
+		},
+	"/resources/views/layouts/modals/task-reschedule.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/modals/task-reschedule.blade.php",
 		"oF": 0
 		},
 	"/resources/views/layouts/progressbar.blade.php": {
@@ -1698,13 +1715,6 @@
 		"oAP": "/resources/views/users/show.blade.php",
 		"oF": 0
 		},
-	"/resources/views/welcome.blade.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/resources/views/welcome.blade.php",
-		"oF": 0
-		},
 	"/routes/api.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1787,6 +1797,13 @@
 		"oAP": "/storage/framework/views/.gitignore",
 		"oF": 0
 		},
+	"/storage/framework/views/069f09ce3758075527c796f1c7d365533a317d88.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/069f09ce3758075527c796f1c7d365533a317d88.php",
+		"oF": 0
+		},
 	"/storage/framework/views/0dc93e569ba64856d047c8af4b91da0b94d6a9ea.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1799,6 +1816,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/0ec7c0c235ac94ae6d4cdf9d5b2fc4ca11cfa416.php",
+		"oF": 0
+		},
+	"/storage/framework/views/1913910ccb27ab6e439c558746541adcf47fd611.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/1913910ccb27ab6e439c558746541adcf47fd611.php",
 		"oF": 0
 		},
 	"/storage/framework/views/4908d475e56f6421f36ab1c35aaf26686f9040dc.php": {
@@ -1836,11 +1860,25 @@
 		"oAP": "/storage/framework/views/5c0590d374b07b669aaba2a36fcffb515e1dfe8f.php",
 		"oF": 0
 		},
+	"/storage/framework/views/5fd88bbad8ead4be03e6218db473ca8bded79406.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/5fd88bbad8ead4be03e6218db473ca8bded79406.php",
+		"oF": 0
+		},
 	"/storage/framework/views/689f2ce7e10bb4bacf7f267c01775d770744da93.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/689f2ce7e10bb4bacf7f267c01775d770744da93.php",
+		"oF": 0
+		},
+	"/storage/framework/views/6ff47254481a019b08ca9e477aeabc10b3a4c0bc.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/6ff47254481a019b08ca9e477aeabc10b3a4c0bc.php",
 		"oF": 0
 		},
 	"/storage/framework/views/7702912f3c32059a60cbcd3d9bf0a6d114644f45.php": {
@@ -1876,6 +1914,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/b4cd80fd572f2a86e66c4e5fdc6b8c7c239dd2d5.php",
+		"oF": 0
+		},
+	"/storage/framework/views/c49501ad1828587d40ed765ef4b43836e8ac3a2b.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/c49501ad1828587d40ed765ef4b43836e8ac3a2b.php",
 		"oF": 0
 		},
 	"/storage/framework/views/d1d79944247d3a9c6f92ecd2113f15d4d7afe46b.php": {
