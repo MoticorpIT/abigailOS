@@ -48,13 +48,7 @@
 					</thead>
 					<tbody>
 						@foreach($tenants->sortBy('last_name') as $tenant)
-						@if($tenant->status_id =='3')
-							<tr class="status-{{ $tenant->status_id }}">
-						@elseif($tenant->status_id =='2')
-							<tr class="status-{{ $tenant->status_id }}">
-						@else
-						  <tr class="status-{{ $tenant->status_id }}">
-						@endif
+						<tr class="status-{{ $tenant->status_id }}">
 							<td class="id">
 								{{ $tenant->id }}
 							</td>
