@@ -9,6 +9,7 @@ use App\Asset;
 use App\Note;
 use App\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class CompanyController extends Controller
 {
@@ -28,9 +29,11 @@ class CompanyController extends Controller
     /** VIEW COMPANY CREATE PAGE */
     public function create()
     {
-        $company_types = CompanyType::all();
-        $statuses = Status::where('is_active', 1)->get();
-        return view('companies.create', compact('company_types', 'statuses'));
+        // States + Company_Types are pulled from Config/constants.php
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $states = Config::get('constants.states');
+        $company_types = Config::get('constants.company_types');
+        return view('companies.create', compact('company_types', 'states'));
     }
 
     /** SAVE NEW COMPANY */
