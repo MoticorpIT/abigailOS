@@ -11,7 +11,10 @@ $( document ).ready(function() {
 		// SET FORM DATA VARIABLE
 		var formData = {
 			user_id: $("#add-note-modal").find("input[name='user_id']").val(),
+			account_id: $("#add-note-modal").find("input[name='account_id']").val(),
+			asset_id: $("#add-note-modal").find("input[name='asset_id']").val(),
 			company_id: $("#add-note-modal").find("input[name='company_id']").val(),
+			tenant_id: $("#add-note-modal").find("input[name='tenant_id']").val(),
 			status_id: $("#add-note-modal").find("input[name='status_id']").val(),
 			note: document.getElementById("note-add").value,
 		};
@@ -54,7 +57,10 @@ $( document ).ready(function() {
 			user_id: $("#edit-note-modal").find("input[name='user_id']").val(),
 			status_id: $("#edit-note-modal").find("input[name='status_id']").val(),
 			edited_by_user_id: $("#edit-note-modal").find("input[name='edited_by_user_id']").val(),
+			account_id: $("#edit-note-modal").find("input[name='account_id']").val(),
+			asset_id: $("#edit-note-modal").find("input[name='asset_id']").val(),
 			company_id: $("#edit-note-modal").find("input[name='company_id']").val(),
+			tenant_id: $("#edit-note-modal").find("input[name='tenant_id']").val(),
 			note: document.getElementById("note-edit").value,
 		};
 
