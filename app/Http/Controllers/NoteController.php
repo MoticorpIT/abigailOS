@@ -7,86 +7,86 @@ use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    /** CHECK IF USER IS LOGGED IN */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $notes = Note::all();
-        return view('notes.index', compact('notes'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('notes.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    /** SAVE A NEWLY CREATED NOTE */
+    /** Notes are created from: 
+        - companies.show
+        - assets.show
+        - accounts.show
+        - tenants.show */
     public function store(Request $request)
     {
-        //
+         /* VALIDATE DATA COMING IN FROM FORM */
+        $this->validate(request(), [
+            'note' => 'required',
+            'company_id' => 'nullable', 
+            'account_id' => 'nullable',
+            'asset_id' => 'nullable', 
+            'tenant_id' => 'nullable', 
+            'user_id' => 'required',
+            'edited_by_user_id' => 'nullable',
+            'status_id' => 'required'
+        ]);
+        /* CREATE THE NEW COMPANY */
+        $note = new Note(
+            [
+                'note' => $request->note,
+                'company_id' => $request->company_id,
+                'account_id' => $request->account_id,
+                'asset_id' => $request->asset_id,
+                'tenant_id' => $request->tenant_id,
+                'user_id' => $request->user_id,
+                'edited_by_user_id' => $request->edited_by_user_id,
+                'status_id' => $request->status_id
+            ]
+        );
+        /* SAVE THE NEW COMPANY TO DATABASE */
+        $note->save();
+        if (!$note->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Note did not save');
+        } else {
+            session()->flash('message', 'Note Saved Successfully');
+        }
+        return response()->json($note);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Note $note)
-    {
-        return view('notes.show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Note $note)
-    {
-        return view('notes.edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Note  $note
-     * @return \Illuminate\Http\Response
-     */
+    /** UPDATE AN EXISTING NOTE */
+    /** Notes are edited from: 
+        - companies.show
+        - assets.show
+        - accounts.show
+        - tenants.show */
     public function update(Request $request, Note $note)
     {
-        //
+        /* VALIDATE DATA COMING IN FROM FORM */
+        $this->validate(request(), [
+            'note' => 'required',
+            'company_id' => 'nullable', 
+            'account_id' => 'nullable',
+            'asset_id' => 'nullable', 
+            'tenant_id' => 'nullable', 
+            'user_id' => 'required',
+            'edited_by_user_id' => 'nullable',
+            'status_id' => 'required'    
+        ]);
+        /* CREATE UPDATED ITEM */
+        $note->update( [
+            'note' => $request->note,
+            'company_id' => $request->company_id,
+            'account_id' => $request->account_id,
+            'asset_id' => $request->asset_id,
+            'tenant_id' => $request->tenant_id,
+            'user_id' => $request->user_id,
+            'edited_by_user_id' => $request->edited_by_user_id,
+            'status_id' => $request->status_id,
+        ]);
+        /* REDIRECT USER AND CONFIRM CREATION */
+        if(!$note->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: Note did not update');
+        } else {
+            session()->flash('message', 'Note Updated Successfully');
+        }
+        return response()->json($note);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Note $note)
-    {
-        //
-    }
 }

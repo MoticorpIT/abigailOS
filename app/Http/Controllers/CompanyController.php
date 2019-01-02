@@ -60,10 +60,14 @@ class CompanyController extends Controller
             'fed_tax_id' => 'nullable',
             'company_type_id' => 'required'
         ]);
+
+        /* SET THE UPLOAD - Used below for logo */
+        $upload = '';
+        if($request->logo) {
+            $upload = $request->logo->store('companies');
+        };
+
         /* CREATE THE NEW COMPANY */
-
-        $upload = $request->logo->store('companies');
-
         $company = new Company(
             [
                 'name' => $request->name,
