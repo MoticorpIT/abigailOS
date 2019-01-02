@@ -8,6 +8,7 @@ use App\Note;
 use App\AccountStanding;
 use App\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class TenantController extends Controller
 {
@@ -35,9 +36,13 @@ class TenantController extends Controller
      */
     public function create()
     {
-        $statuses = Status::all();
-        $account_standings = AccountStanding::all();
-        return view('tenants.create', compact('statuses', 'account_standings'));
+        // CONFIG/CONSTANTS.PHP 'QUERIES'
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $states = Config::get('constants.states');
+        $statuses = Config::get('constants.statuses');
+        $account_standings = Config::get('constants.account_standings');
+
+        return view('tenants.create', compact('statuses','account_standings','states'));
     }
 
     /**
@@ -109,7 +114,7 @@ class TenantController extends Controller
         $tenant = Tenant::find($id);
         $notes = Note::where('tenant_id', $id)->get();
         $contracts = Contract::where('tenant_id', $id)->get();
-        return view('tenants.show', compact('tenant', 'notes', 'contracts'));
+        return view('tenants.show', compact('tenant','notes','contracts'));
     }
 
     /**
@@ -120,12 +125,18 @@ class TenantController extends Controller
      */
     public function edit($id)
     {
+        // DATABASE QUERIES
         $tenant = Tenant::find($id);
         $notes = Note::where('tenant_id', $id)->get();
         $contracts = Contract::where('tenant_id', $id)->get();
-        $statuses = Status::all();
-        $account_standings = AccountStanding::all();
-        return view('tenants.edit', compact('tenant','notes','statuses','account_standings', 'contracts'));
+
+        // CONFIG/CONSTANTS.PHP 'QUERIES'
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $states = Config::get('constants.states');
+        $account_standings = Config::get('constants.account_standings');
+        $statuses = Config::get('constants.statuses');
+
+        return view('tenants.edit', compact('tenant','notes','statuses','account_standings','contracts','states'));
     }
 
     /**
