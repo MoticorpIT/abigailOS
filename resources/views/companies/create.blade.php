@@ -151,7 +151,7 @@
 											Company Type
 											<span class="required">*</span>
 										</label>
-										<select class="form-control" id="company_type_id" name="company_type_id">
+										<select class="form-control {{ $errors->has('company_type_id') ? 'has-error' : '' }}" id="company_type_id" name="company_type_id">
 											<option value="" selected>Choose One</option>
 											@foreach($company_types as $id => $company_type)
 												<option value="{{ $id }}">{{ $company_type }}</option>
@@ -234,13 +234,13 @@
 										<label>Incorporated Date</label>
 										<input type="text" class="d-none form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="Date Company was Incorporated" value="{{ old('incorp_date') }}">
 										<div class="input-group">
-		                  <input type="date" class="form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="01/01/2010" value="{{ old('incorp_date') }}">
-		                  <div class="input-group-append">
-		                    <div class="input-group-text">
-		                      <i class="fas fa-calendar-alt"></i>
-		                    </div>
-		                  </div>
-		                </div> <!-- input group -->
+						                  <input type="date" class="form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="01/01/2010" value="{{ old('incorp_date') }}">
+						                  <div class="input-group-append">
+						                    <div class="input-group-text">
+						                      <i class="fas fa-calendar-alt"></i>
+						                    </div>
+						                  </div>
+						                </div> <!-- input group -->
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
