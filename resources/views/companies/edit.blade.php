@@ -155,9 +155,9 @@
 										</label>
 										<select class="form-control" id="company_type_id" name="company_type_id">
 											<option value="">None</option>
-											@foreach($company_types as $company_type)
-												<option value="{{ $company_type->id }}" {{ $company_type->id == $company->company_type_id ? 'selected' : '' }}>
-													{{ $company_type->name }}
+											@foreach($company_types as $id => $company_type)
+												<option value="{{ $id }}" {{ $company->company_type_id == $id ? 'selected' : '' }}>
+													{{ $company_type }}
 												</option>
 											@endforeach
 										</select>
@@ -171,9 +171,9 @@
 											<span class="required">*</span>
 										</label>
 										<select class="form-control" id="status_id" name="status_id">
-											@foreach($statuses as $status)
-												<option value="{{ $status->id }}" {{ $status->id == $status->status_id ? 'selected' : '' }}>
-													{{ $status->name }}
+											@foreach($statuses as $id => $status)
+												<option value="{{ $id }}" {{ $company->status_id == $id ? 'selected' : '' }}>
+													{{ $status }}
 												</option>
 											@endforeach
 										</select>
@@ -218,64 +218,16 @@
 								<div class="col-12 col-md-4 col">
 									{{-- COMPANY STATE --}}
 									<div class="form-group">
-										<label>
-											State
-											<span class="required">*</span>
-										</label>
-										<input type="text" class="d-none form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ $company->state }}" placeholder="n/a">
-										<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ $company->state }}">
-											<option value="AL" {{ $company->state == "AL" ? 'selected' : '' }}>Alabama</option>
-											<option value="AK" {{ $company->state == "AK" ? 'selected' : '' }}>Alaska</option>
-											<option value="AZ" {{ $company->state == "AZ" ? 'selected' : '' }}>Arizona</option>
-											<option value="AR" {{ $company->state == "AR" ? 'selected' : '' }}>Arkansas</option>
-											<option value="CA" {{ $company->state == "CA" ? 'selected' : '' }}>California</option>
-											<option value="CO" {{ $company->state == "CO" ? 'selected' : '' }}>Colorado</option>
-											<option value="CT" {{ $company->state == "CT" ? 'selected' : '' }}>Connecticut</option>
-											<option value="DE" {{ $company->state == "DE" ? 'selected' : '' }}>Delaware</option>
-											<option value="DC" {{ $company->state == "DC" ? 'selected' : '' }}>District Of Columbia</option>
-											<option value="FL" {{ $company->state == "FL" ? 'selected' : '' }}>Florida</option>
-											<option value="GA" {{ $company->state == "GA" ? 'selected' : '' }}>Georgia</option>
-											<option value="HI" {{ $company->state == "HI" ? 'selected' : '' }}>Hawaii</option>
-											<option value="ID" {{ $company->state == "ID" ? 'selected' : '' }}>Idaho</option>
-											<option value="IL" {{ $company->state == "IL" ? 'selected' : '' }}>Illinois</option>
-											<option value="IN" {{ $company->state == "IN" ? 'selected' : '' }}>Indiana</option>
-											<option value="IA" {{ $company->state == "IA" ? 'selected' : '' }}>Iowa</option>
-											<option value="KS" {{ $company->state == "KS" ? 'selected' : '' }}>Kansas</option>
-											<option value="KY" {{ $company->state == "KY" ? 'selected' : '' }}>Kentucky</option>
-											<option value="LA" {{ $company->state == "LA" ? 'selected' : '' }}>Louisiana</option>
-											<option value="ME" {{ $company->state == "ME" ? 'selected' : '' }}>Maine</option>
-											<option value="MD" {{ $company->state == "MD" ? 'selected' : '' }}>Maryland</option>
-											<option value="MA" {{ $company->state == "MA" ? 'selected' : '' }}>Massachusetts</option>
-											<option value="MI" {{ $company->state == "MI" ? 'selected' : '' }}>Michigan</option>
-											<option value="MN" {{ $company->state == "MN" ? 'selected' : '' }}>Minnesota</option>
-											<option value="MS" {{ $company->state == "MS" ? 'selected' : '' }}>Mississippi</option>
-											<option value="MO" {{ $company->state == "MO" ? 'selected' : '' }}>Missouri</option>
-											<option value="MT" {{ $company->state == "MT" ? 'selected' : '' }}>Montana</option>
-											<option value="NE" {{ $company->state == "NE" ? 'selected' : '' }}>Nebraska</option>
-											<option value="NV" {{ $company->state == "NV" ? 'selected' : '' }}>Nevada</option>
-											<option value="NH" {{ $company->state == "NH" ? 'selected' : '' }}>New Hampshire</option>
-											<option value="NJ" {{ $company->state == "NJ" ? 'selected' : '' }}>New Jersey</option>
-											<option value="NM" {{ $company->state == "NM" ? 'selected' : '' }}>New Mexico</option>
-											<option value="NY" {{ $company->state == "NY" ? 'selected' : '' }}>New York</option>
-											<option value="NC" {{ $company->state == "NC" ? 'selected' : '' }}>North Carolina</option>
-											<option value="ND" {{ $company->state == "ND" ? 'selected' : '' }}>North Dakota</option>
-											<option value="OH" {{ $company->state == "OH" ? 'selected' : '' }}>Ohio</option>
-											<option value="OK" {{ $company->state == "OK" ? 'selected' : '' }}>Oklahoma</option>
-											<option value="OR" {{ $company->state == "OR" ? 'selected' : '' }}>Oregon</option>
-											<option value="PA" {{ $company->state == "PA" ? 'selected' : '' }}>Pennsylvania</option>
-											<option value="RI" {{ $company->state == "RI" ? 'selected' : '' }}>Rhode Island</option>
-											<option value="SC" {{ $company->state == "SC" ? 'selected' : '' }}>South Carolina</option>
-											<option value="SD" {{ $company->state == "SD" ? 'selected' : '' }}>South Dakota</option>
-											<option value="TN" {{ $company->state == "TN" ? 'selected' : '' }}>Tennessee</option>
-											<option value="TX" {{ $company->state == "TX" ? 'selected' : '' }}>Texas</option>
-											<option value="UT" {{ $company->state == "UT" ? 'selected' : '' }}>Utah</option>
-											<option value="VT" {{ $company->state == "VT" ? 'selected' : '' }}>Vermont</option>
-											<option value="VA" {{ $company->state == "VA" ? 'selected' : '' }}>Virginia</option>
-											<option value="WA" {{ $company->state == "WA" ? 'selected' : '' }}>Washington</option>
-											<option value="WV" {{ $company->state == "WV" ? 'selected' : '' }}>West Virginia</option>
-											<option value="WI" {{ $company->state == "WI" ? 'selected' : '' }}>Wisconsin</option>
-											<option value="WY" {{ $company->state == "WY" ? 'selected' : '' }}>Wyoming</option>
-										</select>
+									    <label>
+									        State
+									        <span class="required">*</span>
+									    </label>
+									    <input type="text" class="d-none form-control" name="state" placeholder="South Carolina" value="{{ $company->state }}">
+									    <select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ $company->state }}">
+									        @foreach ($states as $abbr => $name)
+									            <option value="{{$abbr}}" {{ $company->state == "$abbr" ? 'selected' : '' }}>{{ $name }}</option>
+									        @endforeach
+									    </select>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
@@ -300,13 +252,13 @@
 										<label>Incorporated Date</label>
 										<input type="text" class="d-none form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="n/a" value="{{ $company->incorp_date }}">
 										<div class="input-group">
-		                  <input type="date" class="form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="n/a" value="{{ $company->incorp_date }}">
-		                  <div class="input-group-append">
-		                    <div class="input-group-text">
-		                      <i class="fas fa-calendar-alt"></i>
-		                    </div>
-		                  </div>
-		                </div> <!-- input group -->
+						                  <input type="date" class="form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="n/a" value="{{ $company->incorp_date }}">
+						                  <div class="input-group-append">
+						                    <div class="input-group-text">
+						                      <i class="fas fa-calendar-alt"></i>
+						                    </div>
+						                  </div>
+						                </div> <!-- input group -->
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
@@ -461,7 +413,7 @@
 
 			<div class="col-md-6">
 				{{-- COMPANY TYPE DROPDOWN --}}
-				<div class="form-group">
+				{{-- <div class="form-group">
 					<label for="company_type_id">Company Type *</label>
 					<select class="form-control" id="company_type_id" name="company_type_id">
 						<option value="">None</option>
@@ -471,9 +423,9 @@
 							</option>
 						@endforeach
 					</select>
-				</div>
+				</div> --}}
 				{{-- STATUS DROPDOWN --}}
-				<div class="form-group">
+				{{-- <div class="form-group">
 					<label for="status_id">Company Type *</label>
 					<select class="form-control" id="status_id" name="status_id">
 						@foreach($statuses as $status)
@@ -482,7 +434,7 @@
 							</option>
 						@endforeach
 					</select>
-				</div>
+				</div> --}}
 			</div>
 
 		</div>

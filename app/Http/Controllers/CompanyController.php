@@ -29,10 +29,11 @@ class CompanyController extends Controller
     /** VIEW COMPANY CREATE PAGE */
     public function create()
     {
-        // States + Company_Types are pulled from Config/constants.php
+        // CONFIG/CONSTANTS.PHP 'QUERIES'
         // If either need to be changed, they need to be changed in the constants.php file AND on the DB
         $states = Config::get('constants.states');
         $company_types = Config::get('constants.company_types');
+
         return view('companies.create', compact('company_types', 'states'));
     }
 
@@ -107,11 +108,17 @@ class CompanyController extends Controller
     /** VIEW COMPANY EDIT PAGE */
     public function edit($id)
     {
+        // DATABASE QUERIES
         $company = Company::find($id);
-        $company_types = CompanyType::all();
-        $statuses = Status::all();
         $notes = Note::where('company_id', $id)->get();
-        return view('companies.edit', compact('company', 'company_types', 'statuses', 'notes'));
+
+        // CONFIG/CONSTANTS.PHP 'QUERIES'
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $company_types = Config::get('constants.company_types');
+        $statuses = Config::get('constants.statuses');
+        $states = Config::get('constants.states');
+
+        return view('companies.edit', compact('company', 'company_types', 'statuses', 'notes', 'states'));
     }
 
     /** SAVE COMPANY EDITS */
