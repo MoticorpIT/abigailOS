@@ -81,10 +81,20 @@
 				<label>city:</label> 
 				<input type="tel" class="form-control {{ $errors->has('city') ? 'has-error' : '' }}" name="city" value="{{ $tenant->city }}" >
 			</div>
-			
+
+			{{-- TENANT STATE --}}
 			<div class="form-group">
-				<label>state:</label> 
-				<input type="tel" class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ $tenant->state }}" >
+			    <label>
+			        State
+			        <span class="required">*</span>
+			    </label>
+			    <input class="d-none form-control" name="state" value="{{ old('state') }}">
+			    <select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ old('state') }}">
+			        <option value="" selected>Choose One</option>
+			        @foreach ($states as $abbr => $name)
+			            <option value="{{$abbr}}">{{ $name }}</option>
+			        @endforeach
+			    </select>
 			</div>
 			
 			<div class="form-group">
@@ -95,9 +105,9 @@
 			<div class="form-group">
 				<label>account_standing:</label>
 				<select class="form-control" id="account_standing_id" name="account_standing_id">
-					@foreach($account_standings as $account_standing)
-						<option value="{{ $account_standing->id }}" {{ $account_standing->id == $account_standing->account_standing_id ? 'selected' : '' }}>
-							{{ $account_standing->name }}
+					@foreach($account_standings as $id => $account_standing)
+						<option value="{{ $id }}" {{ $id == $tenant->account_standing_id ? 'selected' : '' }}>
+							{{ $account_standing }}
 						</option>
 					@endforeach
 				</select>
@@ -106,9 +116,9 @@
 			<div class="form-group">
 				<label>status</label>
 				<select class="form-control" id="status_id" name="status_id">
-					@foreach($statuses as $status)
-						<option value="{{ $status->id }}" {{ $status->id == $status->status_id ? 'selected' : '' }}>
-							{{ $status->name }}
+					@foreach($statuses as $id => $status)
+						<option value="{{ $id }}" {{ $id == $tenant->status_id ? 'selected' : '' }}>
+							{{ $status }}
 						</option>
 					@endforeach
 				</select>
