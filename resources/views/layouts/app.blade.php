@@ -29,6 +29,7 @@
 	</div> <!-- main content -->
 
 	@include('layouts.scripts')
+	@yield('ajax-scripts')
 
 </body>
 </html>

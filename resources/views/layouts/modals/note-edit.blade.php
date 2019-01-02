@@ -23,6 +23,12 @@
 								{{-- Hidden User Field - Pulls user_id from DB --}}
 								<input type="hidden" name="user_id" value="{{ $note->user_id }}">
 
+								{{-- Hidden Note Id Field - Used for ajax edit --}}
+								<input type="hidden" name="id" value="{{ $note->id }}">
+
+								{{-- Hidden Status Id Field --}}
+								<input type="hidden" name="status_id" value="1">
+
 								{{-- Hidden Edited_By User Field - Will need to add edited_by_user_id field to notes table --}}
 								<input type="hidden" name="edited_by_user_id" value="{{ Auth::user()->id }}">
 								
@@ -46,14 +52,15 @@
 
 							{{-- Note field --}}
 							<span class="text">
-								<textarea class="form-control" id="note" rows="2">{{ $note->note }}</textarea>
+								<textarea class="form-control" id="note-edit" rows="2" autofocus>{{ $note->note }}</textarea>
 							</span>
 						</div>
 					</div>
 				</div>
+				{{-- Form Buttons --}}
 				<div class="modal-footer">
 					<a href="" data-dismiss="modal" class="cancel-link">Cancel</a>
-					<button id="submit-btn" type="button" class="btn btn-primary">Edit Note</button>
+					<button id="submit-btn" type="button" class="edit-note-ajax btn btn-primary">Edit Note</button>
 				</div>
 			</form>
 		</div>
