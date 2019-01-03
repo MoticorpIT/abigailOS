@@ -606,10 +606,6 @@
     .data-table.table tbody td{
       vertical-align: middle;
     }
-    .data-table.table th.id,
-    .data-table.table td.id{
-      display: none;
-    }
     .data-table.table tbody td.street-address,
     .data-table.table tbody td.name{
       text-align: left;
@@ -632,7 +628,7 @@
       text-transform: uppercase;
     }
     .data-table .date-readable{
-      display: block;
+      display: inline-block;
       font-style: italic;
       font-size: .9em;
       line-height: 1em;
@@ -672,126 +668,28 @@
     .contact-button .dropdown-item:hover{
       background: #80888f;
     }
-    @media only screen and (max-width: 1300px){
-      .data-table.table tbody td.name{
-        min-width: 0;
-      }
-    } /* (max-width: 1300px) */
+    table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before{
+      top: auto !important;
+    }
+    table.dataTable>tbody>tr.child ul.dtr-details{
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
 
-    @media only screen and (max-width: 1435px) and (min-width: 1250px){
-      table.data-table .created-on,
-      table.data-table .updated-on{
-        display: none;
-      }
-    } /* (max-width: 1435px) and (min-width: 1250px) */
-
-    @media only screen and (max-width: 1251px){
-      table.data-table,
-      table.data-table thead,
-      table.data-table tbody,
-      table.data-table th,
-      table.data-table tr,
-      table.data-table td{
+    @media only screen and (max-width: 600px)  {
+      table.dataTable>tbody>tr.child li[data-dt-column="2"] span.dtr-title,
+      table.dataTable>tbody>tr.child li[data-dt-column="3"] span.dtr-title,
+      table.dataTable>tbody>tr.child li[data-dt-column="8"] span.dtr-title{
         display: block;
       }
-      table.data-table tbody{
-        display: flex;
-        flex-wrap: wrap;
-        align-items: stretch;
-        justify-content: space-between;
-      }
-      table.data-table tbody::after {
-        content: "";
-        flex: 1;
-        max-width: 33%;
-      }
-      table.data-table tr{
-        max-width: 33%;
-        margin-bottom: 10px;
-        border: 5px solid #555;
-        text-align: left;
-        display: flex;
-        flex: 1;
-        flex-wrap: wrap;
-      }
-      .table-striped tbody tr:nth-of-type(odd),
-      .table-striped tbody tr:nth-of-type(even){
-        background: #fff;
-      }
-      table.data-table tr td{
-        width: 100%;
-      }
-      table.data-table tr td.created-on{
-        flex: 1;
-      }
-      table.data-table tr td.updated-on{
-        flex: 2;
-      }
-      table.data-table thead,
-      table.data-table .id{
+      table.dataTable>tbody>tr.child li[data-dt-column="9"] span.dtr-title{
         display: none;
       }
-      table.data-table .name{
-        font-size: 1.5em;
-        line-height: 1em;
-        font-weight: bold;
-      }
-      table.data-table .view-button .btn{
-        width: 100%;
-      }
-
-      table.data-table .street-address::before{
-        content: 'Street Address: ';
-        width: 100%;
-      }
-      table.data-table .city::before{
-        content: 'City: ';
-      }
-      table.data-table .state::before{
-        content: 'State: ';
-      }
-      table.data-table .zip::before{
-        content: 'Zip: ';
-      }
-      table.data-table .created-on::before{
-        content: 'Created: ';
-        width: 100%;
-      }
-      table.data-table .updated-on::before{
-        content: 'Updated: ';
-        width: 100%;
-      }
-      .data-table tbody tr.status-2{
-        border: 5px solid #ffc107;
-      }
-      .data-table.table-bordered tbody tr:last-child td{
-        border-bottom: 1px solid #dee2e6;
-      }
-      table.data-table td::before{
-        font-weight: bold;
-      }
-      table.data-table td.updated-on::before,
-      table.data-table td.street-address::before{
+      table.dataTable>tbody>tr.child li[data-dt-column="9"] .btn{
         display: block;
       }
-      table.data-table td.city,
-      table.data-table td.state,
-      table.data-table td.zip{
-        display: flex;
-      }
-      table.data-table td.city::before,
-      table.data-table td.state::before,
-      table.data-table td.zip::before{
-        max-width: 50px;
-        padding-right: 5px;
-        flex: 1;
-      }
-
-      .contact-button a.btn{
-        max-width: none;
-      }
-    } /* (max-width: 1251px) */
-
+    } /* (max-width: 600px)  */
     @media only screen and (min-width: 1001px){
       .sidebar .nav-list li.open-link{
         display: none;

@@ -3,4 +3,11 @@ $(function(){
     container: 'body'
   });
 
+  $('.data-table').DataTable({
+    responsive: true,
+    "columnDefs": [
+        { "targets": [9], "orderable": false}
+    ]
+  });
+
 });

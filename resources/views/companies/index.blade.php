@@ -11,14 +11,14 @@
 			</h1>
 
 			<div class="company-table-wrapper table-wrapper table-responsive">
-				<table class="company-table data-table table table-striped table-hover table-bordered">
+				<table class="company-table data-table table table-striped table-hover table-bordered" width="100%">
 					<thead>
 						<tr>
-							<th class="id">
-								ID
-							</th>
-							<th class="name">
+							<th class="name all">
 								Name
+							</th>
+							<th class="id none">
+								ID
 							</th>
 							<th class="contact">
 								Contact
@@ -35,13 +35,13 @@
 							<th class="zip">
 								zip
 							</th>
-							<th class="created-on">
+							<th class="created-on none">
 								Created
 							</th>
-							<th class="updated-on">
+							<th class="updated-on none">
 								Updated
 							</th>
-							<th class="view-button">
+							<th class="view-button not-mobile-p">
 								View
 							</th>
 						</tr>
@@ -55,11 +55,11 @@
 						@else
 							<tr class="status-{{ $company->status_id }}">
 						@endif
-							<td class="id">
-								{{ $company->id }}
-							</td>
-							<td class="name">
+							<td class="name all">
 								<span class="name-span">{{ $company->name }}</span>
+							</td>
+							<td class="id none">
+								{{ $company->id }}
 							</td>
 							<td class="contact">
 								<div class="btn-group contact-button">
@@ -101,12 +101,12 @@
 							<td class="zip">
 								{{ $company->zip }}
 							</td>
-							<td class="created-on">
+							<td class="created-on none">
 								<span class="date">
 									{{ $company->created_at->format('m/d/y') }}
 								</span>
 							</td>
-							<td class="updated-on">
+							<td class="updated-on none">
 								<span class="date">
 									{{ $company->updated_at->format('m/d/y h:i a') }}
 								</span>
@@ -114,7 +114,7 @@
 									{{ $company->updated_at->diffForHumans($company->created_at) }}
 								</span>
 							</td>
-							<td class="view-button">
+							<td class="view-button not-mobile-p">
 								<a href="companies/{{ $company->id }}" class="btn btn-secondary">View</a>
 							</td>
 						</tr>
