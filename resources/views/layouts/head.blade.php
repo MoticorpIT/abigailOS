@@ -13,5 +13,10 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/main.css">
 
+{{-- DataTables --}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/r-2.2.2/datatables.min.css"/>
+
+
+
 {{-- REQUIRED FOR AJAX USE --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">

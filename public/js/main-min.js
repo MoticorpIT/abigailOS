@@ -1,0 +1,1 @@
+$(function(){$('[data-toggle="tooltip"]').tooltip({container:"body"}),$(".data-table").DataTable({responsive:!0,columnDefs:[{targets:[9],orderable:!1}]})});

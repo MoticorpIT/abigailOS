@@ -11,14 +11,14 @@
 			</h1>
 
 			<div class="tenant-table-wrapper table-wrapper table-responsive">
-				<table class="tenant-table data-table table table-striped table-hover table-bordered">
+				<table class="tenant-table data-table dt-responsive table table-striped table-hover table-bordered" width="100%">
 					<thead>
 						<tr>
-							<th class="id">
-								ID
-							</th>
-							<th class="name">
+							<th class="name all">
 								Name
+							</th>
+							<th class="id none">
+								ID
 							</th>
 							<th class="contact">
 								Contact
@@ -30,18 +30,18 @@
 								City
 							</th>
 							<th class="state">
-								state
+								State
 							</th>
 							<th class="zip">
-								zip
+								ZIP
 							</th>
-							<th class="created-on">
+							<th class="created-on none">
 								Created
 							</th>
-							<th class="updated-on">
+							<th class="updated-on none">
 								Updated
 							</th>
-							<th class="view-button">
+							<th class="view-button not-mobile-p">
 								View
 							</th>
 						</tr>
@@ -49,12 +49,12 @@
 					<tbody>
 						@foreach($tenants->sortBy('last_name') as $tenant)
 						<tr class="status-{{ $tenant->status_id }}">
-							<td class="id">
-								{{ $tenant->id }}
-							</td>
-							<td class="name">
+							<td class="name all">
 								<span class="last-name">{{ $tenant->last_name }}</span>,
 								<span class="first-name">{{ $tenant->first_name }}</span>
+							</td>
+							<td class="id none">
+								{{ $tenant->id }}
 							</td>
 							<td class="contact">
 								<div class="btn-group contact-button">
@@ -96,12 +96,12 @@
 							<td class="zip">
 								{{ $tenant->zip }}
 							</td>
-							<td class="created-on">
+							<td class="created-on none">
 								<span class="date">
 									{{ $tenant->created_at->format('m/d/y') }}
 								</span>
 							</td>
-							<td class="updated-on">
+							<td class="updated-on none">
 								<span class="date">
 									{{ $tenant->updated_at->format('m/d/y h:i a') }}
 								</span>
@@ -109,7 +109,7 @@
 									{{ $tenant->updated_at->diffForHumans($tenant->created_at) }}
 								</span>
 							</td>
-							<td class="view-button">
+							<td class="view-button not-mobile-p">
 								<a href="tenants/{{ $tenant->id }}" class="btn btn-secondary">View</a>
 							</td>
 						</tr>
@@ -118,37 +118,7 @@
 				</table> <!-- tenant table -->
 			</div> <!-- tenant-table-wrapper -->
 
-			<style>
-				.variables{display: none;}
-				.variables:last-child{display: block;}
-			</style>
-			@foreach($tenants as $tenant)
-				<ul class="variables">
-					<li>id: {{ $tenant->id }}</li>
-					<li>first name: {{ $tenant->first_name }}</li>
-					<li>last name: {{ $tenant->last_name }}</li>
-					<li>phone_1: {{ $tenant->phone_1 }}</li>
-					<li>phone_2: {{ $tenant->phone_2 }}</li>
-					<li>fax: {{ $tenant->fax }}</li>
-					<li>email: {{ $tenant->email }}</li>
-					<li>co_first_name: {{ $tenant->co_first_name }}</li>
-					<li>co_last_name: {{ $tenant->co_last_name }}</li>
-					<li>co_phone_1: {{ $tenant->co_phone_1 }}</li>
-					<li>co_phone_2: {{ $tenant->co_phone_2 }}</li>
-					<li>co_email: {{ $tenant->co_email }}</li>
-					<li>street_1: {{ $tenant->street_1 }}</li>
-					<li>street_2: {{ $tenant->street_2 }}</li>
-					<li>city: {{ $tenant->city }}</li>
-					<li>state: {{ $tenant->state }}</li>
-					<li>zip: {{ $tenant->zip }}</li>
-					<li>account_standing_id: {{ $tenant->account_standing_id }}</li>
-					<li>status_id: {{ $tenant->status_id }}</li>
-					<li>created_at: {{ $tenant->created_at }}</li>
-					<li>updated_at: {{ $tenant->updated_at }}</li>
-					<li><a href="tenants/{{ $tenant->id }}/edit">Edit tenant</a></li>
-					<li><a href="tenants/{{ $tenant->id }}">Show tenant</a></li>
-				</ul>
-			@endforeach
+
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div> <!-- db boxes -->
