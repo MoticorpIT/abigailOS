@@ -10,6 +10,7 @@ $factory->define(App\Note::class, function (Faker $faker) {
         'asset_id' => $faker->optional()->randomElement($array = array ('1','2','3','4','5','6')),
         'tenant_id' => $faker->randomElement($array = array ('1','2','3','4','5','6')),
         'user_id' => $faker->randomElement($array = array ('1','2','3')),
+        'edited_by_user_id' => null,
         'status_id' => $faker->randomElement($array = array ('1','2')),
     ];
 });

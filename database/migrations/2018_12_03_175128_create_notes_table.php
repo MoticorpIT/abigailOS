@@ -21,6 +21,7 @@ class CreateNotesTable extends Migration
             $table->integer('asset_id')->nullable();
             $table->integer('tenant_id')->nullable();
             $table->integer('user_id')->nullable();
+            $table->integer('edited_by_user_id')->nullable();
             $table->integer('status_id')->default(1);
             $table->timestamps();
         });
