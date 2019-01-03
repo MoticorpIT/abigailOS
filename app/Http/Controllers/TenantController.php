@@ -111,10 +111,17 @@ class TenantController extends Controller
      */
     public function show($id)
     {
+        // CONFIG/CONSTANTS.PHP 'QUERIES'
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $states = Config::get('constants.states');
+        $statuses = Config::get('constants.statuses');
+        $account_standings = Config::get('constants.account_standings');
+
+        // DATABASE QUERIES
         $tenant = Tenant::find($id);
         $notes = Note::where('tenant_id', $id)->get();
         $contracts = Contract::where('tenant_id', $id)->get();
-        return view('tenants.show', compact('tenant','notes','contracts'));
+        return view('tenants.show', compact('tenant','notes','contracts', 'states', 'statuses', 'account_standings'));
     }
 
     /**
