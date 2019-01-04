@@ -95,16 +95,16 @@
 		</span>
 		<ul class="nav-sublist">
 			<li>
-				<a href="/users/{{Auth::user()->id}}">My Profile</a>
-			</li>
-			<li>
 				<a href="/users">All Users</a>
 			</li>
 			<li>
 				<a href="/users/create">Add User</a>
 			</li>
 			<li>
-				<a href="#0">Settings</a>
+				<a href="/users/{{Auth::user()->id}}">My Profile</a>
+			</li>
+			<li>
+				<a href="/users/{{Auth::user()->id}}/edit-pw">Change Password</a>
 			</li>
 			<li>
 				<a href="{{ route('logout') }}" onclick="event.preventDefault();

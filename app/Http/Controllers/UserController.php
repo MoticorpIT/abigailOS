@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdatePassword;
 
 class UserController extends Controller
@@ -113,6 +113,29 @@ class UserController extends Controller
             session()->flash('message', 'User Updated Successfully');
         }
         /* REDIRECT USER */
+        return redirect('users');
+    }
+
+
+    /** SHOW FORM FOR EDITING USER PASSWORD */
+    public function editPassword(User $user)
+    {
+        return view('users/edit-pw', compact('user'));
+    }
+
+
+    /** SAVE UPDATED PASSWORD TO DATABASE */
+    public function updatePassword(UpdatePassword $request, User $user)
+    {
+        /* SAVE VALIDATED DATA TO DATABASE */
+        $user->password = Hash::make(request('password'));
+        /* SET SESSION MESSAGE AND REDIRECT USER */
+        if (!$user->save()) { 
+            session()->flash('message', 'Contact Manager: ERROR: Password did not update');
+        } else {
+            session()->flash('message', 'Password Updated Successfully');
+        }
+
         return redirect('users');
     }
 
