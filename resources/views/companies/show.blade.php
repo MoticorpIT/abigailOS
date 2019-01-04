@@ -33,7 +33,7 @@
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<img src="{{ $logo }}" />
+								<img src="{{ ($company->logo != null) ? $logo : 'https://via.placeholder.com/400x400' }}" />
 							</div> <!-- profile image -->
 
 							<nav class="profile-tabs">
