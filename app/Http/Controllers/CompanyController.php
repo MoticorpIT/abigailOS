@@ -10,6 +10,7 @@ use App\Note;
 use App\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -106,7 +107,9 @@ class CompanyController extends Controller
         $assets = Asset::where('company_id', $id)->get();
         $accounts = Account::where('company_id', $id)->get();
         $notes = Note::where('company_id', $id)->get();
-        return view('companies.show', compact('company', 'assets', 'notes', 'accounts'));
+        $logo = Storage::url($company->logo);
+        
+        return view('companies.show', compact('company', 'assets', 'notes', 'accounts', 'logo'));
     }
 
     /** VIEW COMPANY EDIT PAGE */
