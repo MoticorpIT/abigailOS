@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdatePassword;
 
 class UserController extends Controller
 {
@@ -42,7 +44,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* VALIDATE DATA COMING IN FROM FORM */
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5'
+        ]);
+        /* CREATE AND SAVE NEW USER TO DATABASE */
+        User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => Hash::make(request('password'))
+        ]);
+        /* REDIRECT USER AFTER SAVE */
+        session()->flash('message', 'User Added Successfully');
+        return redirect('users');
     }
 
     /**
@@ -53,7 +69,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('users.show');
+        $user = User::find($id);
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -64,7 +81,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('users.edit');
+        $user = User::find($id);
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -74,19 +92,51 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        /* VALIDATE DATA COMING IN FROM FORM */
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'is_active' => 'required|boolean'
+        ]);
+        /* SAVE VALIDATED DATA TO DATABASE */
+        $user->fill([
+            'name' => request('name'),
+            'email' => request('email'),
+            'is_active' => request('is_active')
+        ])->save();
+        /* CONFIRM UPDATE AND REDIRECT USER */
+        if(!$user->save()) {
+            session()->flash('message', 'Contact Manager. ERROR: User did not update');
+        } else {
+            session()->flash('message', 'User Updated Successfully');
+        }
+        /* REDIRECT USER */
+        return redirect('users');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    /** SHOW FORM FOR EDITING USER PASSWORD */
+    public function editPassword(User $user)
     {
-        //
+        return view('users/edit-pw', compact('user'));
     }
+
+
+    /** SAVE UPDATED PASSWORD TO DATABASE */
+    public function updatePassword(UpdatePassword $request, User $user)
+    {
+        /* SAVE VALIDATED DATA TO DATABASE */
+        $user->password = Hash::make(request('password'));
+        /* SET SESSION MESSAGE AND REDIRECT USER */
+        if (!$user->save()) { 
+            session()->flash('message', 'Contact Manager: ERROR: Password did not update');
+        } else {
+            session()->flash('message', 'Password Updated Successfully');
+        }
+
+        return redirect('users');
+    }
+
 }

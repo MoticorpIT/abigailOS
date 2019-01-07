@@ -42,5 +42,7 @@ Route::resource('statuses', 'StatusController');
 Route::resource('tasks', 'TaskController');
 Route::resource('taskTypes', 'TaskTypeController');
 Route::resource('tenants', 'TenantController');
+Route::get('users/{user}/edit-pw', 'UserController@editPassword'); // Change Password view
+Route::put('users/{user}/update-pw', 'UserController@updatePassword'); // Change Password save
 Route::resource('users', 'UserController');
 
