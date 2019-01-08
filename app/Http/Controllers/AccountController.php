@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Http\Controllers;
 
 use App\Account;
 use App\Note;
+use App\AccountType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 
 class AccountController extends Controller
 {
@@ -32,7 +35,12 @@ class AccountController extends Controller
      */
     public function create()
     {
-        return view('accounts.create');
+    	// CONFIG/CONSTANTS.PHP 'QUERIES'
+		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
+		$states = Config::get('constants.states');
+		$account_types = Config::get('constants.account_types');
+
+        return view('accounts.create', compact('states', 'account_types'));
     }
 
     /**
@@ -55,8 +63,10 @@ class AccountController extends Controller
     public function show($id)
     {
         $account = Account::find($id);
-        $notes = Note::where('account_id', $id)->get();
-        return view('accounts.show', compact('account', 'notes'));
+        $notes = Note::where('account_id', $id)->where('status_id',1)->orderBy('updated_at', 'desc')->get();
+		$assets = Account::where('account_id', $id)->get();
+		$contracts = Contract::where('account_id', $id)->get();
+        return view('accounts.show', compact('account', 'notes', 'assets', 'contracts'));
     }
 
     /**
@@ -67,7 +77,16 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        return view('accounts.edit');
+    	// DATABASE QUERIES
+        $account = Company::find($id);
+
+        // CONFIG/CONSTANTS.PHP 'QUERIES'
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $account_types = Config::get('constants.account_types');
+        $statuses = Config::get('constants.statuses');
+        $states = Config::get('constants.states');
+
+        return view('accounts.edit', compact('account', 'account_types', 'statuses', 'states');
     }
 
     /**
@@ -81,15 +100,5 @@ class AccountController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Account $account)
-    {
-        //
-    }
+    
 }
