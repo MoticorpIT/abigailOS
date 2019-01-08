@@ -88,7 +88,7 @@ class AccountController extends Controller
         $statuses = Config::get('constants.statuses');
         $states = Config::get('constants.states');
 
-        return view('accounts.edit', compact('account', 'account_types', 'statuses', 'states');
+        return view('accounts.edit', compact('account', 'account_types', 'statuses', 'states'));
     }
 
     /**
