@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit-note-modal" tabindex="-1" role="dialog" aria-labelledby="edit-note-link" aria-hidden="true">
+<div class="modal fade" id="edit-note-modal-{{$note->id}}" tabindex="-1" role="dialog" aria-labelledby="edit-note-link" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-md" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -52,7 +52,7 @@
 
 							{{-- Note field --}}
 							<span class="text">
-								<textarea class="form-control" id="note-edit" rows="2" autofocus>{{ $note->note }}</textarea>
+								<textarea class="form-control" id="note-edit-{{ $note->id }}" rows="2" autofocus>{{ $note->note }}</textarea>
 							</span>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 				{{-- Form Buttons --}}
 				<div class="modal-footer">
 					<a href="" data-dismiss="modal" class="cancel-link">Cancel</a>
-					<button id="submit-btn" type="button" class="edit-note-ajax btn btn-primary">Edit Note</button>
+					<button id="submit-btn" type="button" class="edit-note-ajax btn btn-primary" value="{{ $note->id }}">Edit Note</button>
 				</div>
 			</form>
 		</div>
