@@ -66,9 +66,7 @@ class AccountController extends Controller
     {
         $account = Account::find($id);
         $notes = Note::where('account_id', $id)->where('status_id',1)->orderBy('updated_at', 'desc')->get();
-		$assets = Asset::where('account_id', $id)->get();
-		$contracts = Contract::where('account_id', $id)->get();
-        return view('accounts.show', compact('account', 'notes', 'assets', 'contracts'));
+        return view('accounts.show', compact('account', 'notes'));
     }
 
     /**
@@ -77,10 +75,10 @@ class AccountController extends Controller
      * @param  \App\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function edit(Account $account)
+    public function edit($id)
     {
     	// DATABASE QUERIES
-        $account = Company::find($id);
+        $account = Account::find($id);
 
         // CONFIG/CONSTANTS.PHP 'QUERIES'
         // If either need to be changed, they need to be changed in the constants.php file AND on the DB

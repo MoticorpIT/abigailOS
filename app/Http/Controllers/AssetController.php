@@ -79,7 +79,7 @@ class AssetController extends Controller
 	public function edit($id)
 	{
 		// DATABASE QUERIES
-		$asset = Company::find($id);
+		$asset = Asset::find($id);
 
 		// CONFIG/CONSTANTS.PHP 'QUERIES'
 		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
