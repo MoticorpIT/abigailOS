@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Controllers;
+namespace App\Http\Controllers;
 
 use App\Account;
 use App\Asset;
@@ -88,7 +88,7 @@ class AccountController extends Controller
         $statuses = Config::get('constants.statuses');
         $states = Config::get('constants.states');
 
-        return view('accounts.edit', compact('account', 'account_types', 'statuses', 'states');
+        return view('accounts.edit', compact('account', 'account_types', 'statuses', 'states'));
     }
 
     /**
