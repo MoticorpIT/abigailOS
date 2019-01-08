@@ -1,1 +1,1 @@
-$(function(){$('[data-toggle="tooltip"]').tooltip({container:"body"}),$(".data-table").DataTable({responsive:!0,columnDefs:[{targets:[9],orderable:!1}]})});
+$(function(){$('[data-toggle="tooltip"]').tooltip({container:"body"}),$(".data-table").DataTable({responsive:!0,columnDefs:[{targets:["view-button"],orderable:!1}],pageLength:25,language:{search:"_INPUT_",searchPlaceholder:"Search...",paginate:{previous:"Prev"}}})});
