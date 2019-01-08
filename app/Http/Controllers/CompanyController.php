@@ -106,7 +106,7 @@ class CompanyController extends Controller
         $company = Company::find($id);
         $assets = Asset::where('company_id', $id)->get();
         $accounts = Account::where('company_id', $id)->get();
-        $notes = Note::where('company_id', $id)->where('status_id',1)->get();
+        $notes = Note::where('company_id', $id)->where('status_id',1)->orderBy('updated_at', 'desc')->get();
         $logo = Storage::url($company->logo);
         
         return view('companies.show', compact('company', 'assets', 'notes', 'accounts', 'logo'));

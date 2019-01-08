@@ -9,7 +9,6 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/companies">
 			<h1 class="page-heading">
 				Company Profile
 
@@ -344,16 +343,23 @@
 											@foreach($notes as $note)
 												<li class="notes-list-item">
 													<div class="media note-item">
+														{{-- USER IMAGE --}}
 														<img src="http://placehold.it/50x50" class="mr-3 user-image" />
+
+														{{-- NOTE HEADER --}}
 														<div class="media-body">
-															<h5 class="mt-0 author">{{ $note->user->name }}</h5>
+															<h5 class="mt-0 author text-capitalize">{{ $note->user->name }}</h5>
 															<span class="timeago float-right">{{ $note->created_at->diffForHumans() }}</span>
 															<span class="text">{{ $note->note }}</span>
 														</div>
+														
+														{{-- EDIT NOTE BUTTON --}}
 														<button type="button" class="badge badge-secondary float-right edit-note-link ml-2" data-toggle="modal" data-target="#edit-note-modal-{{ $note->id }}">
 															<i class="fas fa-pencil-alt"></i>
 														</button>
-														<form id="delete-note-modal" method="POST" action="/notes/{{ $note->id }}">
+														
+														{{-- 'DELETE' NOTE BUTTON - FORM USES AJAX TO UPDATE NOTES STATUS_ID --}}
+														<form id="delete-note-form-{{ $note->id }}" method="POST" action="/notes/{{ $note->id }}">
 															{{ csrf_field() }}
 															{{ method_field('PATCH') }}
 															{{-- HIDEEN FIELDS --}}
@@ -367,7 +373,7 @@
 																<input type="hidden" name="edited_by_user_id" value="{{ $note->edited_by_user_id }}">
 
 																{{-- Hidden Note Field --}}
-																<input type="hidden" id="note-delete" name="note" value="{{ $note->note }}">
+																<input type="hidden" id="note-delete-{{ $note->id }}" name="note" value="{{ $note->note }}">
 																
 																{{-- Hidden Id fields - Wrapped in conditials - This allows the modal to be used globally --}}
 																@if (Request::segment(1) == 'accounts')
@@ -387,6 +393,7 @@
 																<i class="fas fa-trash-alt"></i>
 															</button>
 														</form>
+
 													</div>
 													
 												</li>

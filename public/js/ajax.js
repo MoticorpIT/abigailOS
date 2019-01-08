@@ -63,9 +63,6 @@ $( document ).ready(function() {
 			note: document.getElementById("note-edit-"+note_id).value,
 		};
 
-		// console.log(formData);
-		// debugger;
-
 		// GRAB CSRF TOKEN FROM HTML HEAD
 		$.ajaxSetup({
 			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -88,29 +85,26 @@ $( document ).ready(function() {
 		})
 	});
 
-	// DELETE NOTE
+	// 'DELETE' NOTE - Actually changes status_id to 2 (inactive)
 	$(".delete-note-ajax").click(function(e){
 		// PREVENT BUTTON'S DEFAULT BEHAVIOR
 		e.preventDefault();
 
 		// SET AJAX VARIABLES
-		var url = $("#delete-note-modal").find("form").attr("action");
-		var link_id = $("#delete-note-modal").find("input[name='id']").val();
+		var note_id = $(this).val();
 
 		// SET FORM DATA VARIABLE
 		var formData = {
-			id: $("#delete-note-modal").find("input[name='id']").val(),
-			user_id: $("#delete-note-modal").find("input[name='user_id']").val(),
-			status_id: $("#delete-note-modal").find("input[name='status_id']").val(),
-			edited_by_user_id: $("#delete-note-modal").find("input[name='edited_by_user_id']").val(),
-			account_id: $("#delete-note-modal").find("input[name='account_id']").val(),
-			asset_id: $("#delete-note-modal").find("input[name='asset_id']").val(),
-			company_id: $("#delete-note-modal").find("input[name='company_id']").val(),
-			tenant_id: $("#delete-note-modal").find("input[name='tenant_id']").val(),
-			note: document.getElementById("note-delete").value,
+			id: $("#delete-note-form-"+note_id).find("input[name='id']").val(),
+			user_id: $("#delete-note-form-"+note_id).find("input[name='user_id']").val(),
+			status_id: $("#delete-note-form-"+note_id).find("input[name='status_id']").val(),
+			edited_by_user_id: $("#delete-note-form-"+note_id).find("input[name='edited_by_user_id']").val(),
+			account_id: $("#delete-note-form-"+note_id).find("input[name='account_id']").val(),
+			asset_id: $("#delete-note-form-"+note_id).find("input[name='asset_id']").val(),
+			company_id: $("#delete-note-form-"+note_id).find("input[name='company_id']").val(),
+			tenant_id: $("#delete-note-form-"+note_id).find("input[name='tenant_id']").val(),
+			note: document.getElementById("note-delete-"+note_id).value,
 		};
-
-		console.log(formData.id); 
 
 		// GRAB CSRF TOKEN FROM HTML HEAD
 		$.ajaxSetup({
@@ -120,7 +114,7 @@ $( document ).ready(function() {
 		// PERFORM AJAX
 		$.ajax({
 			type: "PUT",
-			url: "/notes/"+link_id,
+			url: "/notes/"+note_id,
 			data: formData,
 			success: function (data) {
 				// Close Modal
