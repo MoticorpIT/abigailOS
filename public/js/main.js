@@ -6,8 +6,16 @@ $(function(){
   $('.data-table').DataTable({
     responsive: true,
     "columnDefs": [
-        { "targets": [9], "orderable": false}
-    ]
+        { "targets": ["view-button"], "orderable": false}
+    ],
+    "pageLength": 25,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search...",
+        "paginate": {
+          "previous": "Prev"
+        }
+    }
   });
 
 });

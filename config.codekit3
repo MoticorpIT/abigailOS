@@ -345,6 +345,13 @@
 		"oAP": "/app/Http/Middleware/VerifyCsrfToken.php",
 		"oF": 0
 		},
+	"/app/Http/Requests/UpdatePassword.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/app/Http/Requests/UpdatePassword.php",
+		"oF": 0
+		},
 	"/app/Invoice.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1741,6 +1748,13 @@
 		"oAP": "/resources/views/users/create.blade.php",
 		"oF": 0
 		},
+	"/resources/views/users/edit-pw.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/users/edit-pw.blade.php",
+		"oF": 0
+		},
 	"/resources/views/users/edit.blade.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1844,6 +1858,13 @@
 		"oAP": "/storage/framework/views/.gitignore",
 		"oF": 0
 		},
+	"/storage/framework/views/02a028ba2df0bc8526fd6e26198f5a9c123657ce.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/02a028ba2df0bc8526fd6e26198f5a9c123657ce.php",
+		"oF": 0
+		},
 	"/storage/framework/views/069f09ce3758075527c796f1c7d365533a317d88.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1891,6 +1912,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/53c0e410f1d6ff4af3028c6fe7f6b709da84434c.php",
+		"oF": 0
+		},
+	"/storage/framework/views/581fee0bf23a19f6a9843c14e76dbbfd2e4e04e2.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/581fee0bf23a19f6a9843c14e76dbbfd2e4e04e2.php",
 		"oF": 0
 		},
 	"/storage/framework/views/583b732ddb75f34421ee6f394da31ac5e8e430cd.php": {
@@ -1954,6 +1982,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/9a1928a18fdae24acaf2f6e3175e38b7c203a973.php",
+		"oF": 0
+		},
+	"/storage/framework/views/afe0e87c69e63330b15e192e20091be818e8b22d.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/afe0e87c69e63330b15e192e20091be818e8b22d.php",
 		"oF": 0
 		},
 	"/storage/framework/views/b4cd80fd572f2a86e66c4e5fdc6b8c7c239dd2d5.php": {
@@ -52043,7 +52078,7 @@
 		},
 	"esLintConfigFileHandlingType": 0,
 	"esLintECMAVersion": 7,
-	"esLintEnvironmentsMask": 1,
+	"esLintEnvironmentsMask": 8193,
 	"esLintRules": {
 		"accessor-pairs": {
 			"active": 0,
