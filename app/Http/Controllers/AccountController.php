@@ -3,7 +3,9 @@
 namespace Http\Controllers;
 
 use App\Account;
+use App\Asset;
 use App\Note;
+use App\Contract;
 use App\AccountType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -64,7 +66,7 @@ class AccountController extends Controller
     {
         $account = Account::find($id);
         $notes = Note::where('account_id', $id)->where('status_id',1)->orderBy('updated_at', 'desc')->get();
-		$assets = Account::where('account_id', $id)->get();
+		$assets = Asset::where('account_id', $id)->get();
 		$contracts = Contract::where('account_id', $id)->get();
         return view('accounts.show', compact('account', 'notes', 'assets', 'contracts'));
     }
