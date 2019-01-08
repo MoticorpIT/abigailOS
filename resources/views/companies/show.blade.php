@@ -31,11 +31,15 @@
 						</div>
 					</div> <!-- row -->
 					<div class="row profile-row">
+
+						{{-- LEFT COLUMN CONTENT --}}
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
+							{{-- Image --}}
 							<div class="profile-image">
 								<img src="{{ ($company->logo != null) ? $logo : 'https://via.placeholder.com/400x400' }}" />
 							</div> <!-- profile image -->
 
+							{{-- Contact Tabs --}}
 							<nav class="profile-tabs">
 								<div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
 									<a class="nav-item nav-link active" id="phone-tab-button" data-toggle="tab" href="#phone-tab-content" role="tab" aria-controls="phone-tab" aria-selected="true">
@@ -120,6 +124,7 @@
 								</div>
 							</div>
 
+							{{-- Associated Tabs --}}
 							<nav class="profile-tabs associated">
 								<div class="nav nav-pills nav-justified" id="assoc-nav-tab" role="tablist">
 									<a class="nav-item nav-link active" id="assoc-acc-tab-button" data-toggle="tab" href="#assoc-acc-tab-content" role="tab" aria-controls="assoc-nav-tab" aria-selected="true">
@@ -166,10 +171,13 @@
 								</div>
 							</div>
 						</div> <!-- col -->
+
+						{{-- RIGHT COLUMN CONTENT --}}
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
+
+								{{-- COMPANY NAME --}}
 								<div class="col-12 col-md-6 col">
-									{{-- COMPANY NAME --}}
 									<div class="form-group">
 										<label>
 											Name
@@ -178,8 +186,9 @@
 										<input type="text" class="form-control" name="name" value="{{ $company->name }}" autofocus disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- COMPANY TYPE DROPDOWN --}}
 								<div class="col-12 col-md-3 col">
-									{{-- COMPANY TYPE DROPDOWN --}}
 									<div class="form-group">
 										<label for="company_type_id">
 											Company Type
@@ -188,8 +197,9 @@
 										<input type="text" class="form-control" name="type" value="{{ $company->companyType->name }}" autofocus disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- STATUS DROPDOWN --}}
 								<div class="col-12 col-md-3 col">
-									{{-- STATUS DROPDOWN --}}
 									<div class="form-group">
 										<label for="status_id">
 											Company Status
@@ -198,14 +208,17 @@
 										<input type="text" class="form-control" name="status" value="{{ $company->status->name}}" autofocus disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- ADDRESS SECTION HEADING --}}
 								<div class="col-12 col">
 									<h4 class="heading divider">
 										<i class="fas fa-globe-americas"></i>
 										Address
 									</h4>
 								</div> <!-- col -->
+
+								{{-- COMPANY STREET_1 --}}
 								<div class="col-12 col-md-6 col">
-									{{-- COMPANY STREET_1 --}}
 									<div class="form-group">
 										<label>
 											Street Address
@@ -214,8 +227,9 @@
 										<input type="text" class="form-control" name="street_1" value="{{ $company->street_1 }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- COMPANY STREET_2 --}}
 								<div class="col-12 col-md-6 col">
-									{{-- COMPANY STREET_2 --}}
 									<div class="form-group">
 										<label>
 											Street Address 2
@@ -224,8 +238,9 @@
 										<input type="text" class="form-control" name="street_2" value="{{ $company->street_2 }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- COMPANY CITY --}}
 								<div class="col-12 col-md-4 col">
-									{{-- COMPANY CITY --}}
 									<div class="form-group">
 										<label>
 											City
@@ -234,8 +249,9 @@
 										<input type="text" class="form-control" name="city" value="{{ $company->city }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-4 col">
-									{{-- COMPANY STATE --}}
+								
+								{{-- COMPANY STATE --}}
+								<div class="col-12 col-md-4 col">	
 									<div class="form-group">
 										<label>
 											State
@@ -244,8 +260,9 @@
 										<input type="text" class="form-control" name="state" value="{{ $company->state }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- COMPANY ZIP --}}
 								<div class="col-12 col-md-4 col">
-									{{-- COMPANY ZIP --}}
 									<div class="form-group">
 										<label>
 											ZIP
@@ -254,48 +271,56 @@
 										<input type="text" class="form-control" name="zip" value="{{ $company->zip }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- INFORMATION SECTION HEADING --}}
 								<div class="col-12 col">
 									<h4 class="heading divider">
 										<i class="fas fa-info-circle"></i>
 										Information
 									</h4>
 								</div> <!-- col -->
+
+								{{-- COMPANY INCORP_DATE --}}
 								<div class="col-12 col-md-4 col">
-									{{-- COMPANY INCORP_DATE --}}
 									<div class="form-group">
 										<label>Incorporated Date</label>
 										<input type="text" class="form-control" name="incorp_date" value="{{ $company->incorp_date }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- COMPANY CORP_ID --}}
 								<div class="col-12 col-md-4 col">
-									{{-- COMPANY CORP_ID --}}
 									<div class="form-group">
 										<label>Corporation ID</label>
 										<input type="text" class="form-control" name="corp_id" value="{{ $company->corp_id }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- COMPANY FED_TAX_ID --}}
 								<div class="col-12 col-md-4 col">
-									{{-- COMPANY FED_TAX_ID --}}
 									<div class="form-group">
 										<label>Federal Tax ID</label>
 										<input type="text" class="form-control" name="fed_tax_id" value="{{ $company->fed_tax_id }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- COMPANY CITY_LIC --}}
 								<div class="col-12 col-md-6 col">
-									{{-- COMPANY CITY_LIC --}}
 									<div class="form-group">
 										<label>City License</label>
 										<input type="text" class="form-control" name="city_lic" value="{{ $company->city_lic }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								{{-- COMPANY COUNTY_LIC --}}
 								<div class="col-12 col-md-6 col">
-									{{-- COMPANY COUNTY_LIC --}}
 									<div class="form-group">
 										<label>County License</label>
 										<input type="text" class="form-control" name="county_lic" value="{{ $company->county_lic }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
+								{{-- NOTES SECTION HEADER --}}
 								<div class="col-12 col">
 									<h4 class="heading divider">
 										<i class="fas fa-comment"></i>
@@ -305,6 +330,8 @@
 										</a>
 									</h4>
 								</div> <!-- col -->
+
+								{{-- COMPANY NOTES --}}
 								<div class="col-12 col">
 									<ul class="reset notes-list">
 										@if ($notes == '')
@@ -317,32 +344,62 @@
 											@foreach($notes as $note)
 												<li class="notes-list-item">
 													<div class="media note-item">
-													  <img src="http://placehold.it/50x50" class="mr-3 user-image" />
-													  <div class="media-body">
-													    <h5 class="mt-0 author">{{ $note->user->name }}</h5>
-															<span class="timeago float-right">
-																{{ $note->created_at->diffForHumans() }}
-															</span>
-															<span class="text">
-																{{ $note->note }}
-															</span>
-													  </div>
-													  <a href="#0" class="badge badge-secondary float-right edit-note-link ml-2" data-toggle="modal" data-target="#edit-note-modal">
+														<img src="http://placehold.it/50x50" class="mr-3 user-image" />
+														<div class="media-body">
+															<h5 class="mt-0 author">{{ $note->user->name }}</h5>
+															<span class="timeago float-right">{{ $note->created_at->diffForHumans() }}</span>
+															<span class="text">{{ $note->note }}</span>
+														</div>
+														<button type="button" class="badge badge-secondary float-right edit-note-link ml-2" data-toggle="modal" data-target="#edit-note-modal-{{ $note->id }}">
 															<i class="fas fa-pencil-alt"></i>
-														</a>
-														<a href="#0" class="badge badge-secondary float-right delete-note-link ml-2" data-toggle="modal" data-target="#delete-note-modal">
-															<i class="fas fa-trash-alt"></i>
-														</a>
+														</button>
+														<form id="delete-note-modal" method="POST" action="/notes/{{ $note->id }}">
+															{{ csrf_field() }}
+															{{ method_field('PATCH') }}
+															{{-- HIDEEN FIELDS --}}
+																{{-- Hidden User Field - Pulls user_id from DB --}}
+																<input type="hidden" name="user_id" value="{{ $note->user_id }}">
+
+																{{-- Hidden Status Id Field --}}
+																<input type="hidden" name="status_id" value="2">
+
+																{{-- Hidden Edited_By User Field - Will need to add edited_by_user_id field to notes table --}}
+																<input type="hidden" name="edited_by_user_id" value="{{ $note->edited_by_user_id }}">
+
+																{{-- Hidden Note Field --}}
+																<input type="hidden" id="note-delete" name="note" value="{{ $note->note }}">
+																
+																{{-- Hidden Id fields - Wrapped in conditials - This allows the modal to be used globally --}}
+																@if (Request::segment(1) == 'accounts')
+																	<input type="hidden" name="account_id" value="{{ $account->id }}">
+																@endif
+																@if (Request::segment(1) == 'assets')
+																	<input type="hidden" name="asset_id" value="{{ $asset->id }}">
+																@endif
+																@if (Request::segment(1) == 'companies')
+																	<input type="hidden" name="company_id" value="{{ $company->id }}">
+																@endif
+																@if (Request::segment(1) == 'tenants')
+																	<input type="hidden" name="tenant_id" value="{{ $tenant->id }}">
+																@endif
+															{{-- HIDDEN FIELDS END --}}
+															<button type="button" class="badge badge-secondary float-right delete-note-ajax delete-note-link ml-2" value="{{ $note->id }}">
+																<i class="fas fa-trash-alt"></i>
+															</button>
+														</form>
 													</div>
+													
 												</li>
+
 												{{-- Must include the Note-Edit-Modal in the notes foreach loop, or page will error --}}
 												@include('layouts/modals/note-edit')
 											@endforeach
 										@endif
-								</ul> <!-- notes list -->
+									</ul> <!-- notes list -->
 								</div> <!-- col -->
-							</div> <!-- row -->
-						</div> <!-- col -->
+
+							</div> <!-- row - right column content -->
+						</div> <!-- col - right column content -->
 					</div> <!-- row -->
 
 				</section>
@@ -357,64 +414,4 @@
 <!-- Add Note Modal -->
 @include('layouts/modals/note-add')
 
-
-{{-- VARIABLES --}}
-<div class="d-none">
-	Companies - show.blade.php || <a href="/companies/create">Create company</a>
-	<hr>
-	<h4>Company Profile</h4>
-	<ul>
-		<li>id: {{ $company->id }}</li>
-		<li>name: {{ $company->name }}</li>
-		<li>street_1: {{ $company->street_1 }}</li>
-		<li>street_2: {{ $company->street_2 }}</li>
-		<li>city: {{ $company->city }}</li>
-		<li>state: {{ $company->state }}</li>
-		<li>zip: {{ $company->zip }}</li>
-		<li>phone_1: {{ $company->phone_1 }}</li>
-		<li>phone_2: {{ $company->phone_2 }}</li>
-		<li>fax: {{ $company->fax }}</li>
-		<li>email: {{ $company->email }}</li>
-		<li>logo: {{ $company->logo }}</li>
-		<li>incorp_date: {{ $company->incorp_date }}</li>
-		<li>corp_id: {{ $company->corp_id }}</li>
-		<li>city_lic: {{ $company->city_lic }}</li>
-		<li>county_lic: {{ $company->county_lic }}</li>
-		<li>fed_tax_id: {{ $company->fed_tax_id }}</li>
-		<li>company_type: {{ $company->companyType->name }}</li>
-		<li>status: {{ $company->status->name}}</li>
-		<li>created_at: {{ $company->created_at }}</li>
-		<li>updated_at: {{ $company->updated_at }}</li>
-		<li><a href="/companies/{{ $company->id }}/edit">Edit company</a></li>
-		<li><a href="/companies">View all companies</a></li>
-	</ul>
-	<hr>
-	<h4>Assets (associated)</h4>
-	@foreach($assets as $asset)
-		<ul>
-			<li>id: {{ $asset->id }}</li>
-			<li>name: {{ $asset->name }}</li>
-			<li>created_at: {{ $asset->created_at }}</li>
-			<li>updated_at: {{ $asset->updated_at }}</li>
-		</ul>
-	@endforeach
-	<hr>
-	<h4>Accounts (associated)</h4>
-	@foreach($accounts as $account)
-		<ul>
-			<li>id: {{ $account->id }}</li>
-			<li>name: {{ $account->name }}</li>
-			<li>created_at: {{ $account->created_at }}</li>
-			<li>updated_at: {{ $account->updated_at }}</li>
-		</ul>
-	@endforeach
-	<hr>
-	<h4>Notes (associated)</h4>
-	@foreach($notes as $note)
-		<ul>
-			<li>note: {{ $note->note }}</li>
-			<li>by: {{ $note->user->name }} {{ $note->created_at->diffForHumans() }}</li>
-		</ul>
-	@endforeach
-</div> <!-- hidden -->
 @endsection

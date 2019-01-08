@@ -48,21 +48,69 @@ $( document ).ready(function() {
 		e.preventDefault();
 
 		// SET AJAX VARIABLES
-		var url = $("#edit-note-modal").find("form").attr("action");
-		var link_id = $("#edit-note-modal").find("input[name='id']").val();
+		var note_id = $(this).val();
 
 		// SET FORM DATA VARIABLE
 		var formData = {
-			id: $("#edit-note-modal").find("input[name='id']").val(),
-			user_id: $("#edit-note-modal").find("input[name='user_id']").val(),
-			status_id: $("#edit-note-modal").find("input[name='status_id']").val(),
-			edited_by_user_id: $("#edit-note-modal").find("input[name='edited_by_user_id']").val(),
-			account_id: $("#edit-note-modal").find("input[name='account_id']").val(),
-			asset_id: $("#edit-note-modal").find("input[name='asset_id']").val(),
-			company_id: $("#edit-note-modal").find("input[name='company_id']").val(),
-			tenant_id: $("#edit-note-modal").find("input[name='tenant_id']").val(),
-			note: document.getElementById("note-edit").value,
+			id: $("#edit-note-modal-"+note_id).find("input[name='id']").val(),
+			user_id: $("#edit-note-modal-"+note_id).find("input[name='user_id']").val(),
+			status_id: $("#edit-note-modal-"+note_id).find("input[name='status_id']").val(),
+			edited_by_user_id: $("#edit-note-modal-"+note_id).find("input[name='edited_by_user_id']").val(),
+			account_id: $("#edit-note-modal-"+note_id).find("input[name='account_id']").val(),
+			asset_id: $("#edit-note-modal-"+note_id).find("input[name='asset_id']").val(),
+			company_id: $("#edit-note-modal-"+note_id).find("input[name='company_id']").val(),
+			tenant_id: $("#edit-note-modal-"+note_id).find("input[name='tenant_id']").val(),
+			note: document.getElementById("note-edit-"+note_id).value,
 		};
+
+		// console.log(formData);
+		// debugger;
+
+		// GRAB CSRF TOKEN FROM HTML HEAD
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+		})
+
+		// PERFORM AJAX
+		$.ajax({
+			type: "PUT",
+			url: "/notes/"+note_id,
+			data: formData,
+			success: function (data) {
+				// Close Modal
+				$(".modal").modal('hide');
+				// Reload Page
+				location.reload();
+			},
+			error: function (data) {
+				console.log('Error: ',data);
+			}
+		})
+	});
+
+	// DELETE NOTE
+	$(".delete-note-ajax").click(function(e){
+		// PREVENT BUTTON'S DEFAULT BEHAVIOR
+		e.preventDefault();
+
+		// SET AJAX VARIABLES
+		var url = $("#delete-note-modal").find("form").attr("action");
+		var link_id = $("#delete-note-modal").find("input[name='id']").val();
+
+		// SET FORM DATA VARIABLE
+		var formData = {
+			id: $("#delete-note-modal").find("input[name='id']").val(),
+			user_id: $("#delete-note-modal").find("input[name='user_id']").val(),
+			status_id: $("#delete-note-modal").find("input[name='status_id']").val(),
+			edited_by_user_id: $("#delete-note-modal").find("input[name='edited_by_user_id']").val(),
+			account_id: $("#delete-note-modal").find("input[name='account_id']").val(),
+			asset_id: $("#delete-note-modal").find("input[name='asset_id']").val(),
+			company_id: $("#delete-note-modal").find("input[name='company_id']").val(),
+			tenant_id: $("#delete-note-modal").find("input[name='tenant_id']").val(),
+			note: document.getElementById("note-delete").value,
+		};
+
+		console.log(formData.id); 
 
 		// GRAB CSRF TOKEN FROM HTML HEAD
 		$.ajaxSetup({
