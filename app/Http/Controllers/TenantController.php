@@ -119,7 +119,7 @@ class TenantController extends Controller
 
         // DATABASE QUERIES
         $tenant = Tenant::find($id);
-        $notes = Note::where('tenant_id', $id)->get();
+        $notes = Note::where('tenant_id',$id)->where('status_id',1)->orderBy('updated_at','desc')->get();
         $contracts = Contract::where('tenant_id', $id)->get();
         return view('tenants.show', compact('tenant','notes','contracts', 'states', 'statuses', 'account_standings'));
     }
