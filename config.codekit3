@@ -1636,6 +1636,13 @@
 		"oAP": "/resources/views/layouts/modals/task-reschedule.blade.php",
 		"oF": 0
 		},
+	"/resources/views/layouts/modals/update-images.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/modals/update-images.blade.php",
+		"oF": 0
+		},
 	"/resources/views/layouts/progressbar.blade.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1900,6 +1907,20 @@
 		"oAP": "/storage/framework/views/4908d475e56f6421f36ab1c35aaf26686f9040dc.php",
 		"oF": 0
 		},
+	"/storage/framework/views/4fd69b1d18f0de554c57d746e865ff2256bb7f8f.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/4fd69b1d18f0de554c57d746e865ff2256bb7f8f.php",
+		"oF": 0
+		},
+	"/storage/framework/views/52252aad73d455ef8afba8244cac0f03dd3037d4.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/52252aad73d455ef8afba8244cac0f03dd3037d4.php",
+		"oF": 0
+		},
 	"/storage/framework/views/52ec532c10b3abc18d59b15f1a43941aeb45fec8.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1912,6 +1933,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/53c0e410f1d6ff4af3028c6fe7f6b709da84434c.php",
+		"oF": 0
+		},
+	"/storage/framework/views/570169ae1524a345519ed298e254211d78f9dcf3.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/570169ae1524a345519ed298e254211d78f9dcf3.php",
 		"oF": 0
 		},
 	"/storage/framework/views/581fee0bf23a19f6a9843c14e76dbbfd2e4e04e2.php": {

@@ -23,11 +23,20 @@
     $default-text: #333;
     $dark-grey: #414141;
     $mid-grey: #6c757d;
+    $tone-grey: #ced4da;
     $light-grey: #f5f5f5;
     $danger: #e60707; /* red */
     $warning: #ffc107; /* gold */
     $primary: #0b9c7f; /* teal */
     $accent: #007bff; /* blue */
+    .btn-danger{
+      background: $danger;
+      border-color: $danger;
+    }
+    .btn-info{
+      background: $primary;
+      border-color: $primary;
+    }
 
 
 /* ==========================================================================
@@ -385,6 +394,45 @@
     #reschedule-task-modal .modal-header{
       background: #0586ff;
       color: #fff;
+    }
+    @media only screen and (min-width: 1200px)  {
+      .modal-xl{
+        max-width: 1140px;
+      }
+    } /* (max-width: 1200px)  */
+
+    /* Images Carousel */
+    .images-carousel .carousel-indicators{
+      position: static;
+      margin: 0;
+      justify-content: space-between;
+      max-height: 460px;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      padding: 0 10px;
+      flex-wrap: wrap;
+
+      .thumbnail-item{
+        padding: 10px;
+        background: $light-grey;
+        border-radius: 5px;
+        margin: 0 0 10px;
+        border: 1px solid $tone-grey;
+        width: 48%;
+
+        img{
+          border-radius: 5px;
+          border: 1px solid $tone-grey;
+          cursor: pointer;
+        }
+      }
+      .button-group{
+        display: flex;
+
+        a{
+          flex: 1;
+        }
+      }
     }
 
 
@@ -928,6 +976,17 @@
       margin: 0;
       border: none;
       padding: 0;
+
+      input{
+        font-size: 1em;
+        font-weight: bold;
+      }
+    }
+    .has-error{
+      border-color: red;
+    }
+    .profile-heading.heading{
+      padding: 0 10px;
     }
     .profile-wrapper .profile-image img{
       width: 100%;
@@ -974,7 +1033,7 @@
     .profile-tabs .nav-item{
       margin: 0 0 5px;
       background: #e9ecef;
-      border: 1px solid #ced4da;
+      border: 1px solid $tone-grey;
       color: #414141;
       max-width: 32%;
       padding: .2rem .5rem;
@@ -988,7 +1047,7 @@
     }
     .profile-tabs-content{
       padding: 0 1rem 1rem;
-      border: 1px solid #ced4da;
+      border: 1px solid $tone-grey;
       border-radius: 5px;
     }
 
@@ -1053,7 +1112,7 @@
       margin-bottom: 5px;
       color: #212529;
       font-weight: bold;
-      border: 1px solid #ced4da;
+      border: 1px solid $tone-grey;
     }
     .assoc-list-item:last-child .assoc-list-link{
       margin-bottom: 0;

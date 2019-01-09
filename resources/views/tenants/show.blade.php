@@ -5,9 +5,7 @@
 @endsection
 
 @section('content')
-<style>
-.has-error { border-color: red; }
-</style>
+
 
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
@@ -18,16 +16,15 @@
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
 					<a href="" class="btn btn-round">Go Back</a>
-					<a href="/tenants/{{ $tenant->id }}/edit" id="submit-btn" class="btn btn-primary d-block d-sm-inline">Edit Tenant</a>
+					<a href="/tenants/{{ $tenant->id }}/edit" id="submit-btn" class="btn btn-primary">Edit Tenant</a>
 				</div>
 				<div class="clear"></div>
 			</h1>
 
 			<div class="profile-wrapper">
-				@include('layouts.errors')
 
 				<section class="profile-head">
-					<div class="row subhead">
+					<div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
 							<h2 class="heading">{{ $tenant->first_name }} {{ $tenant->last_name }}</h2>
@@ -38,17 +35,6 @@
 							<div class="profile-image">
 								<img src="https://via.placeholder.com/400x400" />
 							</div> <!-- profile image -->
-
-							<div class="col-12 col profile-image-updater">
-								{{-- Tenant image --}}
-								<div class="form-group">
-									<label>
-										Photo
-										<span class="optional">(400 x 400)</span>
-									</label>
-									<input type="file" class="form-control {{ $errors->has('logo') ? 'has-error' : '' }}" name="logo" placeholder="Path to the Company Logo" value="{{ old('logo') }}">
-								</div>
-							</div> <!-- col -->
 
 							<nav class="profile-tabs">
 							  <div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
@@ -70,10 +56,9 @@
 										<label>
 											<i class="fas fa-phone d-lg-none"></i>
 											Phone 1
-											<span class="required">*</span>
 										</label>
 										<div class="input-group">
-							        <input class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" value="{{ $tenant->phone_1 }}" readonly disabled placeholder="n/a">
+							        <input class="form-control" name="phone_1" value="{{ $tenant->phone_1 }}" readonly disabled placeholder="n/a">
 											<div class="input-group-append d-none d-lg-block">
 							          <div class="input-group-text">
 							          	<i class="fas fa-phone"></i>
@@ -86,10 +71,9 @@
 										<label>
 											<i class="fas fa-phone d-lg-none"></i>
 											Phone 2
-											<span class="optional">(optional)</span>
 										</label>
 										<div class="input-group">
-							        <input class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" value="{{ $tenant->phone_2 }}" placeholder="n/a" readonly disabled >
+							        <input class="form-control" name="phone_2" value="{{ $tenant->phone_2 }}" placeholder="n/a" readonly disabled >
 											<div class="input-group-append d-none d-lg-block">
 							          <div class="input-group-text">
 							          	<i class="fas fa-phone"></i>
@@ -106,7 +90,7 @@
 											Fax
 										</label>
 										<div class="input-group">
-							        <input class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" value="{{ $tenant->fax }}" placeholder="n/a" readonly disabled>
+							        <input class="form-control" name="fax" value="{{ $tenant->fax }}" placeholder="n/a" readonly disabled>
 											<div class="input-group-append d-none d-lg-block">
 							          <div class="input-group-text">
 							          	<i class="fas fa-fax"></i>
@@ -123,7 +107,7 @@
 											Email
 										</label>
 										<div class="input-group">
-							        <input class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" value="{{ $tenant->email }}" placeholder="n/a" readonly disabled>
+							        <input class="form-control" name="email" value="{{ $tenant->email }}" placeholder="n/a" readonly disabled>
 											<div class="input-group-append d-none d-lg-block">
 							          <div class="input-group-text">
 							          	<i class="fas fa-at"></i>
@@ -180,26 +164,43 @@
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
-								<div class="col-12 col-md-6 col">
-									{{-- Tenant First Name --}}
+
+								<div class="col-12 col-md-3 col">
 									<div class="form-group">
-										<label>
-											First Name
-											<span class="required">*</span>
+										<label for="created-at">
+											Created On
 										</label>
-										<input class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="first_name" value="{{ $tenant->first_name }}" placeholder="n/a" readonly disabled >
+										<input type="text" class="form-control" name="created-at" value="{{ $tenant->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-6 col">
-									{{-- Tenant Last Name --}}
+
+								<div class="col-12 col-md-3 col">
 									<div class="form-group">
-										<label>
-											Last Name
-											<span class="required">*</span>
+										<label for="updated-at">
+											Updated On
 										</label>
-										<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="{{ $tenant->last_name }}" placeholder="n/a" readonly disabled>
+										<input type="text" class="form-control" name="updated-at" value="{{ $tenant->updated_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
+								<div class="col-12 col-md-3 col">
+									<div class="form-group">
+										<label for="account-standing">
+											Account Standing
+										</label>
+										<input type="text" class="form-control" name="account-standing" value="{{ $tenant->accountStanding->name }}" disabled readonly placeholder="n/a">
+									</div>
+								</div> <!-- col -->
+
+								<div class="col-12 col-md-3 col">
+									<div class="form-group">
+										<label for="status">
+											Tenant Status
+										</label>
+										<input type="text" class="form-control" name="status" value="{{ $tenant->status->name }}" disabled readonly placeholder="n/a">
+									</div>
+								</div> <!-- col -->
+
 								<div class="col-12 col">
 									<h4 class="heading divider">
 										<i class="fas fa-user"></i>
@@ -210,35 +211,35 @@
 									{{-- Co-Tenant First Name --}}
 									<div class="form-group">
 										<label>Co-Tenant First Name:</label>
-										<input class="form-control {{ $errors->has('co_first_name') ? 'has-error' : '' }}" name="co_first_name" value="{{ $tenant->co_first_name }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="co_first_name" value="{{ $tenant->co_first_name }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-6 col">
 									{{-- Co-Tenant Last Name --}}
 									<div class="form-group">
 										<label>Co-Tenant Last Name:</label>
-										<input class="form-control {{ $errors->has('co_last_name') ? 'has-error' : '' }}" name="co_last_name" value="{{ $tenant->co_last_name }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="co_last_name" value="{{ $tenant->co_last_name }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
 									{{-- Co-Tenant Phone 1 --}}
 									<div class="form-group">
 										<label>Co-Tenant Phone 1:</label>
-										<input class="form-control {{ $errors->has('co_phone_1') ? 'has-error' : '' }}" name="co_phone_1" value="{{ $tenant->co_phone_1 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="co_phone_1" value="{{ $tenant->co_phone_1 }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
 									{{-- Co-Tenant Phone 2 --}}
 									<div class="form-group">
 										<label>Co-Tenant Phone 2:</label>
-										<input class="form-control {{ $errors->has('co_phone_2') ? 'has-error' : '' }}" name="co_phone_2" value="{{ $tenant->co_phone_2 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="co_phone_2" value="{{ $tenant->co_phone_2 }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
 									{{-- Co-Tenant Email --}}
 									<div class="form-group">
 										<label>Co-Tenant Email:</label>
-										<input class="form-control {{ $errors->has('co_email') ? 'has-error' : '' }}" name="co_email" value="{{ $tenant->co_email }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="co_email" value="{{ $tenant->co_email }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col">
@@ -252,9 +253,8 @@
 									<div class="form-group">
 										<label>
 											Street Address
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('street_1') ? 'has-error' : '' }}" name="street_1" value="{{ $tenant->street_1 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="street_1" value="{{ $tenant->street_1 }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-6 col">
@@ -262,9 +262,8 @@
 									<div class="form-group">
 										<label>
 											Street Address 2
-											<span class="optional">(optional)</span>
 										</label>
-										<input class="form-control {{ $errors->has('street_2') ? 'has-error' : '' }}" name="street_2" value="{{ $tenant->street_2 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="street_2" value="{{ $tenant->street_2 }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
@@ -272,9 +271,8 @@
 									<div class="form-group">
 										<label>
 											City
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('city') ? 'has-error' : '' }}" name="city" value="{{ $tenant->city }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="city" value="{{ $tenant->city }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
@@ -282,10 +280,9 @@
 									<div class="form-group">
 									    <label>
 									        State
-									        <span class="required">*</span>
 									    </label>
 									    <input class="d-none form-control" name="state" value="{{ $tenant->state }}">
-									    <select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ $tenant->state }}" readonly disabled>
+									    <select class="form-control" name="state" value="{{ $tenant->state }}" readonly disabled>
 									        <option value="" selected>{{ $tenant->state }}</option>
 									    </select>
 									</div>
@@ -295,9 +292,8 @@
 									<div class="form-group">
 										<label>
 											ZIP
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('zip') ? 'has-error' : '' }}" name="zip" value="{{ $tenant->zip }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="zip" value="{{ $tenant->zip }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 

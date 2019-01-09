@@ -26,7 +26,7 @@
 				@include('layouts.errors')
 
 				<section class="profile-head">
-					<div class="row subhead">
+					<div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
 							<h2 class="heading">Tenant Name</h2>
