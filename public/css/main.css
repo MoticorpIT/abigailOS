@@ -21,6 +21,14 @@
 /* gold */
 /* teal */
 /* blue */
+.btn-danger {
+  background: #e60707;
+  border-color: #e60707; }
+
+.btn-info {
+  background: #0b9c7f;
+  border-color: #0b9c7f; }
+
 /* ==========================================================================
    #Typography
    ========================================================================== */
@@ -364,6 +372,37 @@ body {
 #reschedule-task-modal .modal-header {
   background: #0586ff;
   color: #fff; }
+
+@media only screen and (min-width: 1200px) {
+  .modal-xl {
+    max-width: 1140px; } }
+
+/* (max-width: 1200px)  */
+/* Images Carousel */
+.images-carousel .carousel-indicators {
+  position: static;
+  margin: 0;
+  justify-content: space-between;
+  max-height: 460px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0 10px;
+  flex-wrap: wrap; }
+  .images-carousel .carousel-indicators .thumbnail-item {
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    margin: 0 0 10px;
+    border: 1px solid #ced4da;
+    width: 48%; }
+    .images-carousel .carousel-indicators .thumbnail-item img {
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+      cursor: pointer; }
+  .images-carousel .carousel-indicators .button-group {
+    display: flex; }
+    .images-carousel .carousel-indicators .button-group a {
+      flex: 1; }
 
 /* ==========================================================================
    #Components
@@ -818,6 +857,15 @@ table.dataTable > tbody > tr.child ul.dtr-details {
   margin: 0;
   border: none;
   padding: 0; }
+  .profile-head .heading input {
+    font-size: 1em;
+    font-weight: bold; }
+
+.has-error {
+  border-color: red; }
+
+.profile-heading.heading {
+  padding: 0 10px; }
 
 .profile-wrapper .profile-image img {
   width: 100%;

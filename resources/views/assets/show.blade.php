@@ -2,10 +2,6 @@
 
 @section('content')
 
-<style>
-.has-error { border-color: red; }
-</style>
-
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
@@ -23,13 +19,12 @@
 			</h1>
 
 			<div class="profile-wrapper">
-				@include('layouts.errors')
 
 				<section class="profile-head">
-					<div class="row subhead">
+					<div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
-							<h2 class="heading">{{ $asset->name }}</h2>
+							<h2 class="profile-heading heading">{{ $asset->name }}</h2>
 						</div>
 					</div> <!-- row -->
 					<div class="row profile-row">
@@ -37,17 +32,6 @@
 							<div class="profile-image">
 								<img src="https://via.placeholder.com/400x400" />
 							</div> <!-- profile image -->
-
-							<div class="col-12 col profile-image-updater">
-								{{-- Asset image --}}
-								<div class="form-group">
-									<label>
-										<i class="far fa-image"></i> Photo
-										<span class="optional">(400 x 400)</span>
-									</label>
-									<input type="button" class="form-control btn btn-primary" name="Asset Photo" value="Update Image" />
-								</div>
-							</div> <!-- col -->
 
 							<nav class="profile-tabs">
 							  <div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
@@ -69,10 +53,9 @@
 										<label>
 											<i class="fas fa-phone d-lg-none"></i>
 											Phone 1
-											<span class="required">*</span>
 										</label>
 										<div class="input-group">
-							        <input class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" value="{{ $asset->phone_1 }}" readonly disabled placeholder="n/a">
+							        <input class="form-control" name="phone_1" value="{{ $asset->phone_1 }}" readonly disabled placeholder="n/a">
 											<div class="input-group-append d-none d-lg-block">
 							          <div class="input-group-text">
 							          	<i class="fas fa-phone"></i>
@@ -85,10 +68,9 @@
 										<label>
 											<i class="fas fa-phone d-lg-none"></i>
 											Phone 2
-											<span class="optional">(optional)</span>
 										</label>
 										<div class="input-group">
-							        <input class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" value="{{ $asset->phone_2 }}" placeholder="n/a" readonly disabled >
+							        <input class="form-control" name="phone_2" value="{{ $asset->phone_2 }}" placeholder="n/a" readonly disabled >
 											<div class="input-group-append d-none d-lg-block">
 							          <div class="input-group-text">
 							          	<i class="fas fa-phone"></i>
@@ -105,7 +87,7 @@
 											Fax
 										</label>
 										<div class="input-group">
-							        <input class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" value="{{ $asset->fax }}" placeholder="n/a" readonly disabled>
+							        <input class="form-control" name="fax" value="{{ $asset->fax }}" placeholder="n/a" readonly disabled>
 											<div class="input-group-append d-none d-lg-block">
 							          <div class="input-group-text">
 							          	<i class="fas fa-fax"></i>
@@ -122,7 +104,7 @@
 											Email
 										</label>
 										<div class="input-group">
-							        <input class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" value="{{ $asset->email }}" placeholder="n/a" readonly disabled>
+							        <input class="form-control" name="email" value="{{ $asset->email }}" placeholder="n/a" readonly disabled>
 											<div class="input-group-append d-none d-lg-block">
 							          <div class="input-group-text">
 							          	<i class="fas fa-at"></i>
@@ -140,8 +122,8 @@
 										Accounts
 									</a>
 									<a class="nav-item nav-link" id="assoc-ass-tab-button" data-toggle="tab" href="#assoc-ass-tab-content" role="tab" aria-controls="assoc-nav-tab" aria-selected="false">
-										<i class="fas fa-briefcase"></i>
-										Undecided
+										<i class="fas fa-file-alt"></i>
+										Contracts
 									</a>
 									<a class="nav-item nav-link d-sm-none" id="assoc-hide-tab-button" data-toggle="tab" href="#assoc-hide-tab-content" role="tab" aria-selected="false">
 										<i class="fas fa-minus-square"></i>
@@ -164,13 +146,15 @@
 								</div>
 								<div class="tab-pane fade" id="assoc-ass-tab-content" role="tabpanel" aria-labelledby="assoc-ass-tab-button">
 									<ul class="reset assoc-list acc">
-										<li class="assoc-list-item">
-											<a href="#0" class="assoc-list-link">
-												<span class="name">
-													Undecided
-												</span>
-											</a>
-										</li>
+										@foreach($contracts as $contract)
+											<li class="assoc-list-item">
+												<a href="#0" class="assoc-list-link">
+													<span class="name">
+														{{ $contract->tenant->last_name }}, {{ $contract->tenant->first_name }}
+													</span>
+												</a>
+											</li>
+										@endforeach
 									</ul>
 								</div>
 								<div class="tab-pane fade" id="assoc-hide-tab-content" role="tabpanel" aria-labelledby="assoc-hide-tab-button">
@@ -179,14 +163,22 @@
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
-								<div class="col-12 col-md-6 col">
-									{{-- Asset Name --}}
+								<div class="col-12 col-md-3 col">
+									{{-- Asset Type --}}
 									<div class="form-group">
 										<label>
-											Name
-											<span class="required">*</span>
+											Created On
 										</label>
-										<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="name" value="{{ $asset->name }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="created-at" value="{{ $asset->created_at->format('m/d/y') }}" placeholder="n/a" readonly disabled>
+									</div>
+								</div> <!-- col -->
+								<div class="col-12 col-md-3 col">
+									{{-- Asset Type --}}
+									<div class="form-group">
+										<label>
+											Updated On
+										</label>
+										<input class="form-control" name="updated-at" value="{{ $asset->updated_at->format('m/d/y') }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -194,9 +186,8 @@
 									<div class="form-group">
 										<label>
 											Asset Type
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="{{ $asset->assetType->name }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="asset-type" value="{{ $asset->assetType->name }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -204,9 +195,8 @@
 									<div class="form-group">
 										<label>
 											Asset Status
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="{{ $asset->status->name }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="asset-status" value="{{ $asset->status->name }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col">
@@ -220,9 +210,8 @@
 									<div class="form-group">
 										<label>
 											Street Address
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('street_1') ? 'has-error' : '' }}" name="street_1" value="{{ $asset->street_1 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="street_1" value="{{ $asset->street_1 }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-6 col">
@@ -230,9 +219,8 @@
 									<div class="form-group">
 										<label>
 											Street Address 2
-											<span class="optional">(optional)</span>
 										</label>
-										<input class="form-control {{ $errors->has('street_2') ? 'has-error' : '' }}" name="street_2" value="{{ $asset->street_2 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="street_2" value="{{ $asset->street_2 }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
@@ -240,9 +228,8 @@
 									<div class="form-group">
 										<label>
 											City
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('city') ? 'has-error' : '' }}" name="city" value="{{ $asset->city }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="city" value="{{ $asset->city }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
@@ -250,10 +237,8 @@
 									<div class="form-group">
 								    <label>
 							        State
-							        <span class="required">*</span>
 								    </label>
-								    <input class="d-none form-control" name="state" value="{{ $asset->state }}">
-								    <select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ $asset->state }}" readonly disabled>
+								    <select class="form-control" name="state" value="{{ $asset->state }}" readonly disabled>
 								        <option value="" selected>{{ $asset->state }}</option>
 								    </select>
 									</div>
@@ -263,9 +248,8 @@
 									<div class="form-group">
 										<label>
 											ZIP
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('zip') ? 'has-error' : '' }}" name="zip" value="{{ $asset->zip }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="zip" value="{{ $asset->zip }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col">
@@ -274,14 +258,22 @@
 										Information
 									</h4>
 								</div> <!-- col -->
-								<div class="col-12 col-md-6 col">
+								<div class="col-12 col-md-3 col">
 									{{-- Asset Company Name --}}
 									<div class="form-group">
 										<label>
 											Company
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="Compant Name" value="{{ $asset->company->name }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="company-name" value="{{ $asset->company->name }}" placeholder="n/a" readonly disabled>
+									</div>
+								</div> <!-- col -->
+								<div class="col-12 col-md-3 col">
+									{{-- Asset Company Name --}}
+									<div class="form-group">
+										<label>
+											Acquired Date
+										</label>
+										<input class="form-control" name="acquired-date" value="{{ $asset->acquired_date }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -289,9 +281,8 @@
 									<div class="form-group">
 										<label>
 											Asset Rent
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="rent" value="${{ $asset->rent }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="rent" value="${{ $asset->rent }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -299,9 +290,8 @@
 									<div class="form-group">
 										<label>
 											Asset Deposit
-											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="deposit" value="${{ $asset->deposit }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="deposit" value="${{ $asset->deposit }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 
@@ -364,76 +354,4 @@
 	</div> <!-- col -->
 </div> <!-- db boxes -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<hr />
-	Assets - show.blade.php || <a href="assets/create">Create asset</a>
-	<hr>
-	<h4>Asset Profile</h4>
-	<ul>
-		<li>id: {{ $asset->id }}</li>
-		<li>name: {{ $asset->name }}</li>
-		<li>street_1: {{ $asset->street_1 }}</li>
-		<li>street_2: {{ $asset->street_2 }}</li>
-		<li>city: {{ $asset->city }}</li>
-		<li>state: {{ $asset->state }}</li>
-		<li>zip: {{ $asset->zip }}</li>
-		<li>phone_1: {{ $asset->phone_1 }}</li>
-		<li>phone_2: {{ $asset->phone_2 }}</li>
-		<li>fax: {{ $asset->fax }}</li>
-		<li>email: {{ $asset->email }}</li>
-		<li>rent: {{ $asset->rent }}</li>
-		<li>deposit: {{ $asset->deposit }}</li>
-		<li>asset_type: {{ $asset->assetType->name }}</li>
-		<li>company: {{ $asset->company->name }}</li>
-		<li>status: {{ $asset->status->name }}</li>
-		<li>created_at: {{ $asset->created_at }}</li>
-		<li>updated_at: {{ $asset->updated_at }}</li>
-		<li><a href="assets/{{ $asset->id }}/edit">Edit asset</a></li>
-		<li><a href="/assets">View all assets</a></li>
-	</ul>
-	<hr>
-	<h4>Accounts (associated)</h4>
-	@foreach($accounts as $account)
-		<ul>
-			<li>id: {{ $account->id }}</li>
-			<li>name: {{ $account->name }}</li>
-			<li>created_at: {{ $account->created_at }}</li>
-			<li>updated_at: {{ $account->updated_at }}</li>
-		</ul>
-	@endforeach
-	<hr>
-	<h4>Notes (associated)</h4>
-	@foreach($notes as $note)
-		<ul>
-			<li>id: {{ $note->id }}</li>
-			<li>note: {{ $note->note }}</li>
-			<li>user: {{ $note->user->name }}</li>
-			<li>created_at: {{ $note->created_at }}</li>
-			<li>updated_at: {{ $note->updated_at }}</li>
-		</ul>
-	@endforeach
-	<hr>
-	<h4>Contracts (associated)</h4>
-	@foreach($contracts as $contract)
-		<ul>
-			<li>id: {{ $contract->id }}</li>
-			<li>tenant: {{ $contract->tenant->last_name }}, {{ $contract->tenant->first_name }}</li>
-			<li>created_at: {{ $contract->created_at }}</li>
-			<li>updated_at: {{ $contract->updated_at }}</li>
-		</ul>
-	@endforeach
 @endsection

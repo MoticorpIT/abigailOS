@@ -23,7 +23,7 @@
 			<div class="profile-wrapper">
 
 				<section class="profile-head">
-					<div class="row subhead">
+					<div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
 							<h2 class="heading">{{ $company->name }}</h2>
@@ -59,7 +59,6 @@
 										<label>
 											<i class="fas fa-phone d-lg-none"></i>
 											Phone 1
-											<span class="required">*</span>
 										</label>
 										<div class="input-group">
 											<input type="tel" class="form-control" name="phone_1" value="{{ $company->phone_1 }}" disabled readonly placeholder="n/a">
@@ -75,7 +74,6 @@
 										<label>
 											<i class="fas fa-phone d-lg-none"></i>
 											Phone 2
-											<span class="optional">(optional)</span>
 										</label>
 										<div class="input-group">
 											<input type="tel" class="form-control" name="phone_2" value="{{ $company->phone_2 }}" disabled readonly placeholder="n/a">
@@ -175,14 +173,21 @@
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
 
-								{{-- COMPANY NAME --}}
-								<div class="col-12 col-md-6 col">
+                <div class="col-12 col-md-3 col">
 									<div class="form-group">
-										<label>
-											Name
-											<span class="required">*</span>
+										<label for="created-at">
+											Created On
 										</label>
-										<input type="text" class="form-control" name="name" value="{{ $company->name }}" autofocus disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="created-at" value="{{ $company->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+									</div>
+								</div> <!-- col -->
+
+                <div class="col-12 col-md-3 col">
+									<div class="form-group">
+										<label for="updated-at">
+											Updated On
+										</label>
+										<input type="text" class="form-control" name="updated-at" value="{{ $company->updated_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -191,9 +196,8 @@
 									<div class="form-group">
 										<label for="company_type_id">
 											Company Type
-											<span class="required">*</span>
 										</label>
-										<input type="text" class="form-control" name="type" value="{{ $company->companyType->name }}" autofocus disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="type" value="{{ $company->companyType->name }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -202,9 +206,8 @@
 									<div class="form-group">
 										<label for="status_id">
 											Company Status
-											<span class="required">*</span>
 										</label>
-										<input type="text" class="form-control" name="status" value="{{ $company->status->name}}" autofocus disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="status" value="{{ $company->status->name}}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -221,7 +224,6 @@
 									<div class="form-group">
 										<label>
 											Street Address
-											<span class="required">*</span>
 										</label>
 										<input type="text" class="form-control" name="street_1" value="{{ $company->street_1 }}" disabled readonly placeholder="n/a">
 									</div>
@@ -232,7 +234,6 @@
 									<div class="form-group">
 										<label>
 											Street Address 2
-											<span class="optional">(optional)</span>
 										</label>
 										<input type="text" class="form-control" name="street_2" value="{{ $company->street_2 }}" disabled readonly placeholder="n/a">
 									</div>
@@ -243,20 +244,20 @@
 									<div class="form-group">
 										<label>
 											City
-											<span class="required">*</span>
 										</label>
 										<input type="text" class="form-control" name="city" value="{{ $company->city }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
-								
+
 								{{-- COMPANY STATE --}}
-								<div class="col-12 col-md-4 col">	
+								<div class="col-12 col-md-4 col">
 									<div class="form-group">
 										<label>
 											State
-											<span class="required">*</span>
 										</label>
-										<input type="text" class="form-control" name="state" value="{{ $company->state }}" disabled readonly placeholder="n/a">
+                    <select class="form-control" name="state" value="{{ $company->state }}" readonly disabled>
+								        <option value="" selected>{{ $company->state }}</option>
+								    </select>
 									</div>
 								</div> <!-- col -->
 
@@ -265,7 +266,6 @@
 									<div class="form-group">
 										<label>
 											ZIP
-											<span class="required">*</span>
 										</label>
 										<input type="text" class="form-control" name="zip" value="{{ $company->zip }}" disabled readonly placeholder="n/a">
 									</div>
