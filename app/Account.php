@@ -2,8 +2,6 @@
 
 namespace App;
 
-// use Illuminate\Database\Eloquent\Model;
-
 class Account extends Model
 {
     public function company() {
@@ -20,5 +18,8 @@ class Account extends Model
 	}
 	public function notes() {
 		return $this->hasMany(Note::class);
+	}
+	public function images() {
+		return $this->hasMany(Image::class);
 	}
 }

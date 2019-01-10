@@ -19,4 +19,10 @@ class Asset extends Model
 	public function contracts() {
 		return $this->belongsTo(Contract::class);
 	}
+	public function notes() {
+		return $this->hasMany(Note::class);
+	}
+	public function images() {
+		return $this->hasMany(Image::class);
+	}
 }
