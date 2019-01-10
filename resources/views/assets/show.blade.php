@@ -1,19 +1,44 @@
 @extends('layouts.app')
 
+@section('ajax-scripts')
+    <script src="{{ asset('/js/ajax.js') }}"></script>
+@endsection
+
 @section('content')
 
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/tenants">
-				{{ csrf_field() }}
+			{{ csrf_field() }}
+
+			<nav aria-label="breadcrumb" class="d-none d-sm-block">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item">
+						<a href="/dashboard/">
+							Dashboard
+						</a>
+					</li>
+			    <li class="breadcrumb-item">
+						<a href="/assets/">
+							Asset Table
+						</a>
+					</li>
+			    <li class="breadcrumb-item active" aria-current="page">
+						Asset Profile<span class="d-none d-sm-inline">: {{ $asset->name }}</span>
+					</li>
+			  </ol>
+			</nav>
+
 			<h1 class="page-heading">
 				Asset Profile
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="" class="btn btn-round">Go Back</a>
-					<a href="/assets/{{ $asset->id }}/edit" id="submit-btn" class="btn btn-primary d-block d-sm-inline">Edit Asset</a>
+					<a href="/assets/" class="btn btn-round">Go Back</a>
+					<a href="/assets/{{ $asset->id }}/edit" class="btn btn-primary">
+						<i class="fas fa-edit"></i>
+						Edit Asset
+					</a>
 				</div>
 				<div class="clear"></div>
 			</h1>
@@ -30,8 +55,18 @@
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<img src="https://via.placeholder.com/400x400" />
+								<a href="#0" class="" data-toggle="modal" data-target="#view-images">
+										<img src="https://via.placeholder.com/400x400" />
+                </a>
 							</div> <!-- profile image -->
+							<div class="col-12 col profile-image-updater">
+							  {{-- Asset image --}}
+							  <div class="form-group">
+                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#view-images">
+                    <i class="fas fa-images"></i> View Images
+                  </a>
+							  </div>
+							</div> <!-- col -->
 
 							<nav class="profile-tabs">
 							  <div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
@@ -295,51 +330,8 @@
 									</div>
 								</div> <!-- col -->
 
-								<div class="col-12 col">
-									<h4 class="heading divider">
-										<i class="fas fa-comment"></i>
-										Notes
-										<a href="#0" class="badge badge-secondary float-right add-note-link" data-toggle="modal" data-target="#add-note-modal">
-											<i class="fas fa-plus-square"></i> Add Note
-										</a>
-									</h4>
-								</div> <!-- col -->
-								<div class="col-12 col">
-									<ul class="reset notes-list">
-										@if ($notes == '')
-											<li class="notes-list-item">
-												<div class="note-item text-center">
-													No notes. Click the 'Add Note' to change that!
-												</div>
-											</li>
-										@else
-											@foreach($notes as $note)
-												<li class="notes-list-item">
-													<div class="media note-item">
-													  <img src="http://placehold.it/50x50" class="mr-3 user-image" />
-													  <div class="media-body">
-													    <h5 class="mt-0 author">{{ $note->user->name }}</h5>
-															<span class="timeago float-right">
-																{{ $note->created_at->diffForHumans() }}
-															</span>
-															<span class="text">
-																{{ $note->note }}
-															</span>
-													  </div>
-													  <a href="#0" class="badge badge-secondary float-right edit-note-link ml-2" data-toggle="modal" data-target="#edit-note-modal">
-															<i class="fas fa-pencil-alt"></i>
-														</a>
-														<a href="#0" class="badge badge-secondary float-right delete-note-link ml-2" data-toggle="modal" data-target="#delete-note-modal">
-															<i class="fas fa-trash-alt"></i>
-														</a>
-													</div>
-												</li>
-												{{-- Must include the Note-Edit-Modal in the notes foreach loop, or page will error --}}
-												@include('layouts/modals/note-edit')
-											@endforeach
-										@endif
-								</ul> <!-- notes list -->
-								</div> <!-- col -->
+								{{-- NOTES SECTION - WHICH INCLUDES LAYOUTS/MODALS/NOTE-EDIT --}}
+								@include('layouts/components/notes')
 
 							</div> <!-- row -->
 						</div> <!-- col -->
@@ -348,10 +340,12 @@
 				</section>
 
 			</div> <!-- profile wrapper -->
-
-			</form>
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div> <!-- db boxes -->
+
+@include('layouts/modals/view-images')
+<!-- ADD NOTES MODEL -->
+@include('layouts/modals/note-add')
 
 @endsection
