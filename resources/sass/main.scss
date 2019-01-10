@@ -27,7 +27,7 @@
     $light-grey: #f5f5f5;
     $danger: #e60707; /* red */
     $warning: #ffc107; /* gold */
-    $primary: #0b9c7f; /* teal */
+    $primary: #1ab394; /* teal */
     $accent: #007bff; /* blue */
     .btn-danger{
       background: $danger;
@@ -402,38 +402,83 @@
     } /* (max-width: 1200px)  */
 
     /* Images Carousel */
-    .images-carousel .carousel-indicators{
-      position: static;
-      margin: 0;
-      justify-content: space-between;
-      max-height: 460px;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      padding: 0 10px;
-      flex-wrap: wrap;
-
-      .thumbnail-item{
-        padding: 10px;
-        background: $light-grey;
-        border-radius: 5px;
-        margin: 0 0 10px;
-        border: 1px solid $tone-grey;
-        width: 48%;
-
-        img{
-          border-radius: 5px;
-          border: 1px solid $tone-grey;
-          cursor: pointer;
-        }
-      }
-      .button-group{
-        display: flex;
-
-        a{
-          flex: 1;
-        }
-      }
+    #view-images .modal-header{
+      background: $primary;
     }
+    .images-carousel {
+      .carousel-indicators{
+        position: static;
+        margin: 0;
+        justify-content: space-between;
+        height: 31.5vw;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding: 0 10px;
+        flex-wrap: wrap;
+
+        @media only screen and (max-width: 767px)  {
+          &{
+            height: 280px;
+            margin-top: 10px;
+          }
+        } /* (max-width: 767px)  */
+
+        .thumbnail-item{
+          padding: 10px;
+          background: $light-grey;
+          border-radius: 5px;
+          margin: 0 0 10px;
+          border: 1px solid $tone-grey;
+          width: 48%;
+          height: auto;
+          text-indent: initial;
+
+          @media only screen and (min-width: 768px) and (max-width: 910px)  {
+            &{
+              width: 100%;
+            }
+          } /* (max-width: 910px)  */
+
+          @media only screen and (max-width: 767px)  {
+            &{
+              width: 23%;
+            }
+          } /* (max-width: 767px)  */
+
+          @media only screen and (max-width: 500px)  {
+            &{
+              width: 48%;
+            }
+          } /* (max-width: 500px)  */
+
+          &.active{
+            background: $tone-grey;
+            border: 2px solid $accent;
+          }
+
+          img{
+            border-radius: 5px;
+            border: 1px solid $tone-grey;
+            cursor: pointer;
+          }
+
+        }
+        .button-group{
+          display: flex;
+
+          a{
+            flex: 1;
+          }
+        }
+      }
+    } /* images carousel */
+    @media only screen and (min-width: 576px)  {
+      .images-modal .modal-dialog {
+        max-width: 80%;
+      }
+    } /* (min-width: 576px)  */
+
+
 
 
 /* ==========================================================================
@@ -988,12 +1033,24 @@
     .profile-heading.heading{
       padding: 0 10px;
     }
-    .profile-wrapper .profile-image img{
+    .profile-wrapper .profile-image{
       width: 100%;
       max-width: 100%;
       border: .5rem solid #414141;
       border-radius: 20px;
       margin-top: -60px;
+      position: relative;
+
+      img{
+        max-width: 100%;
+        border-radius: 10px;
+      }
+      a{
+        display: block;
+      }
+      span{
+
+      }
     }
     .profile-row{
       padding: 0 20px;
@@ -1017,10 +1074,16 @@
     .profile-image-updater{
       background: #414141;
       border-radius: 0 0 20px 20px;
-      margin: -2rem 0 0;
-      padding: 1rem;
+      margin: -1.5rem 0 0;
+      padding: .5rem;
       color: #fff;
       z-index: 0;
+
+      a{
+        border-radius: 10px;
+        white-space: normal;
+        line-height: 1.2em;
+      }
     }
     .profile-image{
       z-index: 1;
@@ -1056,7 +1119,7 @@
         font-size: 1.5rem;
         text-align: center;
       }
-      .profile-wrapper .profile-image img{
+      .profile-wrapper .profile-image{
         margin-top: 5px;
       }
       .profile-row,
@@ -1073,6 +1136,7 @@
       }
       .button-set .btn{
         width: 100%;
+        margin-bottom: 5px;
       }
       .profile-detail-col > .row > *{
         padding-left: 0;
@@ -1128,6 +1192,7 @@
       padding: 1rem;
       background: #f5f5f5;
       border-radius: 5px;
+      position: relative;
     }
     .notes-list .notes-list-item{
       margin-bottom: 10px;
@@ -1149,4 +1214,34 @@
     .user-image{
       border-radius: 3px;
       margin-top: 3px;
+    }
+    .notes-button-set{
+      margin-left: 10px;
+
+      .notes-button{
+        max-width: 30px;
+        margin-bottom: 5px;
+      } /* notes button */
+
+      @media only screen and (max-width: 767px)  {
+        &{
+          margin: 0;
+          position: absolute;
+          left: 25px;
+          top: 75px;
+        }
+      } /* (max-width: 767px)  */
+    } /* notes button set */
+    .breadcrumb{
+      padding: 0;
+      line-height: 1em;
+      background: none;
+      margin: 0 0 5px;
+
+      @media only screen and (max-width: 575px)  {
+        &{
+          margin-top: 5px;
+          justify-content: center;
+        }
+      } /* (max-width: 575px)  */
     }

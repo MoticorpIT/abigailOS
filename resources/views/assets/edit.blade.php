@@ -11,10 +11,18 @@
 				Edit Asset
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="" class="btn btn-round">Go Back</a>
-          <a href="/assets/{{ $asset->id }}" class="btn btn-secondary">View Asset</a>
-          <button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Save Asset</button>
-				</div>
+					<a href="/assets/" class="btn btn-round">
+						Go Back
+					</a>
+          <a href="/assets/{{ $asset->id }}" class="btn btn-secondary">
+						<i class="fas fa-eye"></i>
+						View Asset
+					</a>
+          <button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
+						<i class="far fa-check-circle"></i>
+						Save Asset
+					</button>
+				</div> <!-- button set -->
 				<div class="clear"></div>
 			</h1>
 
@@ -31,17 +39,17 @@
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<img src="https://via.placeholder.com/400x400" />
+								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
+									<img src="https://via.placeholder.com/400x400" />
+								</a>
 							</div> <!-- profile image -->
 
               <div class="col-12 col profile-image-updater">
 							  {{-- Asset image --}}
 							  <div class="form-group">
-							    <label>
-							      <i class="far fa-image"></i> Photo
-							      <span class="optional">(400 x 400)</span>
-							    </label>
-							    <input type="button" class="form-control btn btn-primary" name="Asset Photo" value="Update Images" data-toggle="modal" data-target="#update-images" />
+                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
+                    <i class="fas fa-images"></i> Update Images
+                  </a>
 							  </div>
 							</div> <!-- col -->
 

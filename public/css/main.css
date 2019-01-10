@@ -26,8 +26,8 @@
   border-color: #e60707; }
 
 .btn-info {
-  background: #0b9c7f;
-  border-color: #0b9c7f; }
+  background: #1ab394;
+  border-color: #1ab394; }
 
 /* ==========================================================================
    #Typography
@@ -379,22 +379,47 @@ body {
 
 /* (max-width: 1200px)  */
 /* Images Carousel */
+#view-images .modal-header {
+  background: #1ab394; }
+
 .images-carousel .carousel-indicators {
   position: static;
   margin: 0;
   justify-content: space-between;
-  max-height: 460px;
+  height: 31.5vw;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 0 10px;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  /* (max-width: 767px)  */ }
+  @media only screen and (max-width: 767px) {
+    .images-carousel .carousel-indicators {
+      height: 280px;
+      margin-top: 10px; } }
   .images-carousel .carousel-indicators .thumbnail-item {
     padding: 10px;
     background: #f5f5f5;
     border-radius: 5px;
     margin: 0 0 10px;
     border: 1px solid #ced4da;
-    width: 48%; }
+    width: 48%;
+    height: auto;
+    text-indent: initial;
+    /* (max-width: 910px)  */
+    /* (max-width: 767px)  */
+    /* (max-width: 500px)  */ }
+    @media only screen and (min-width: 768px) and (max-width: 910px) {
+      .images-carousel .carousel-indicators .thumbnail-item {
+        width: 100%; } }
+    @media only screen and (max-width: 767px) {
+      .images-carousel .carousel-indicators .thumbnail-item {
+        width: 23%; } }
+    @media only screen and (max-width: 500px) {
+      .images-carousel .carousel-indicators .thumbnail-item {
+        width: 48%; } }
+    .images-carousel .carousel-indicators .thumbnail-item.active {
+      background: #ced4da;
+      border: 2px solid #007bff; }
     .images-carousel .carousel-indicators .thumbnail-item img {
       border-radius: 5px;
       border: 1px solid #ced4da;
@@ -404,6 +429,12 @@ body {
     .images-carousel .carousel-indicators .button-group a {
       flex: 1; }
 
+/* images carousel */
+@media only screen and (min-width: 576px) {
+  .images-modal .modal-dialog {
+    max-width: 80%; } }
+
+/* (min-width: 576px)  */
 /* ==========================================================================
    #Components
    ========================================================================== */
@@ -867,12 +898,18 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 .profile-heading.heading {
   padding: 0 10px; }
 
-.profile-wrapper .profile-image img {
+.profile-wrapper .profile-image {
   width: 100%;
   max-width: 100%;
   border: .5rem solid #414141;
   border-radius: 20px;
-  margin-top: -60px; }
+  margin-top: -60px;
+  position: relative; }
+  .profile-wrapper .profile-image img {
+    max-width: 100%;
+    border-radius: 10px; }
+  .profile-wrapper .profile-image a {
+    display: block; }
 
 .profile-row {
   padding: 0 20px; }
@@ -896,10 +933,14 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 .profile-image-updater {
   background: #414141;
   border-radius: 0 0 20px 20px;
-  margin: -2rem 0 0;
-  padding: 1rem;
+  margin: -1.5rem 0 0;
+  padding: .5rem;
   color: #fff;
   z-index: 0; }
+  .profile-image-updater a {
+    border-radius: 10px;
+    white-space: normal;
+    line-height: 1.2em; }
 
 .profile-image {
   z-index: 1;
@@ -933,7 +974,7 @@ table.dataTable > tbody > tr.child ul.dtr-details {
   .page-heading {
     font-size: 1.5rem;
     text-align: center; }
-  .profile-wrapper .profile-image img {
+  .profile-wrapper .profile-image {
     margin-top: 5px; }
   .profile-row,
   .profile-row > *,
@@ -945,7 +986,8 @@ table.dataTable > tbody > tr.child ul.dtr-details {
   .button-set {
     float: none !important; }
   .button-set .btn {
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 5px; }
   .profile-detail-col > .row > * {
     padding-left: 0;
     padding-right: 0; } }
@@ -993,7 +1035,8 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 .note-item {
   padding: 1rem;
   background: #f5f5f5;
-  border-radius: 5px; }
+  border-radius: 5px;
+  position: relative; }
 
 .notes-list .notes-list-item {
   margin-bottom: 10px; }
@@ -1015,3 +1058,29 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 .user-image {
   border-radius: 3px;
   margin-top: 3px; }
+
+.notes-button-set {
+  margin-left: 10px;
+  /* notes button */
+  /* (max-width: 767px)  */ }
+  .notes-button-set .notes-button {
+    max-width: 30px;
+    margin-bottom: 5px; }
+  @media only screen and (max-width: 767px) {
+    .notes-button-set {
+      margin: 0;
+      position: absolute;
+      left: 25px;
+      top: 75px; } }
+
+/* notes button set */
+.breadcrumb {
+  padding: 0;
+  line-height: 1em;
+  background: none;
+  margin: 0 0 5px;
+  /* (max-width: 575px)  */ }
+  @media only screen and (max-width: 575px) {
+    .breadcrumb {
+      margin-top: 5px;
+      justify-content: center; } }

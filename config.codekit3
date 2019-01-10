@@ -219,6 +219,13 @@
 		"oAP": "/app/Http/Controllers/Controller.php",
 		"oF": 0
 		},
+	"/app/Http/Controllers/ImageController.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/app/Http/Controllers/ImageController.php",
+		"oF": 0
+		},
 	"/app/Http/Controllers/InvoiceController.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -350,6 +357,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/app/Http/Requests/UpdatePassword.php",
+		"oF": 0
+		},
+	"/app/Image.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/app/Image.php",
 		"oF": 0
 		},
 	"/app/Invoice.php": {
@@ -805,6 +819,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/database/migrations/2018_12_06_230946_create_account_standings_table.php",
+		"oF": 0
+		},
+	"/database/migrations/2019_01_09_214145_create_images_table.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/database/migrations/2019_01_09_214145_create_images_table.php",
 		"oF": 0
 		},
 	"/database/seeds/AccountsTableSeeder.php": {
@@ -1587,6 +1608,13 @@
 		"oAP": "/resources/views/layouts/app.blade.php",
 		"oF": 0
 		},
+	"/resources/views/layouts/components/notes.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/components/notes.blade.php",
+		"oF": 0
+		},
 	"/resources/views/layouts/errors.blade.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1641,6 +1669,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/resources/views/layouts/modals/update-images.blade.php",
+		"oF": 0
+		},
+	"/resources/views/layouts/modals/view-images.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/modals/view-images.blade.php",
 		"oF": 0
 		},
 	"/resources/views/layouts/progressbar.blade.php": {
@@ -1900,6 +1935,13 @@
 		"oAP": "/storage/framework/views/1913910ccb27ab6e439c558746541adcf47fd611.php",
 		"oF": 0
 		},
+	"/storage/framework/views/4669186df1d049ce84df24a2025ec94b81e9551a.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/4669186df1d049ce84df24a2025ec94b81e9551a.php",
+		"oF": 0
+		},
 	"/storage/framework/views/4908d475e56f6421f36ab1c35aaf26686f9040dc.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -2010,6 +2052,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/9a1928a18fdae24acaf2f6e3175e38b7c203a973.php",
+		"oF": 0
+		},
+	"/storage/framework/views/aa1c631c604163d0c11730806caf395e1dff61fd.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/aa1c631c604163d0c11730806caf395e1dff61fd.php",
 		"oF": 0
 		},
 	"/storage/framework/views/afe0e87c69e63330b15e192e20091be818e8b22d.php": {
