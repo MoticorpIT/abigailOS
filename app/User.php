@@ -33,4 +33,7 @@ class User extends Authenticatable
     public function notes() {
         return $this->hasMany(Note::class);
     }
+	public function images() {
+		return $this->hasMany(Image::class);
+	}
 }
