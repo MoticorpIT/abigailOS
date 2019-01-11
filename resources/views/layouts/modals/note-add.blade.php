@@ -21,7 +21,7 @@
 							{{-- Hidden User Field - Pulls Current Authenticated User (account logged in) --}}
 							<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 							<input type="hidden" name="status_id" value="1">
-							
+
 							{{-- Hidden Id fields - Wrapped in conditials - This allows the modal to be used globally --}}
 							@if (Request::segment(1) == 'accounts')
 								<input type="hidden" name="account_id" value="{{ $account->id }}">
@@ -38,7 +38,7 @@
 
 							{{-- Note field --}}
 							<span class="text">
-								<textarea class="form-control add-note-field" id="note-add" rows="2" placeholder="Enter your note..." autofocus></textarea>
+								<textarea class="form-control add-note-field" id="note-add" rows="4" placeholder="Enter your note..." autofocus></textarea>
 							</span>
 						</div>
 					</div>
@@ -46,9 +46,12 @@
 				{{-- Form Buttons --}}
 				<div class="modal-footer">
 					<a href="" data-dismiss="modal" class="cancel-link">Cancel</a>
-					<button id="submit-btn" type="button" class="add-note-ajax btn btn-primary">Add Note</button>
+					<button id="submit-btn" type="button" class="add-note-ajax btn btn-primary">
+						<i class="far fa-check-circle"></i>
+						Add Note
+					</button>
 				</div>
 			</form>
 		</div>
 	</div>
-</div> 
+</div>

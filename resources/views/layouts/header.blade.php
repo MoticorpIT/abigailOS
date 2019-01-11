@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<nav class="navbar navbar-expand-lg">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<button class="navbar-toggler close-sidebar" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="navbar-toggler-icon">
 					<i class="fas fa-bars"></i>
 				</span>

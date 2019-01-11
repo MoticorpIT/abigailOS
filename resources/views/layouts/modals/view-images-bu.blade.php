@@ -1,11 +1,11 @@
 <!-- Update Images Modal -->
-<div class="modal fade images-modal" id="update-images" tabindex="-1" role="dialog" aria-labelledby="modal-heading" aria-hidden="true">
+<div class="modal fade images-modal" id="view-images" tabindex="-1" role="dialog" aria-labelledby="modal-heading" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="modal-heading">
 					<i class="fas fa-images"></i>
-					Update Images
+					View Images
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -64,16 +64,6 @@
 													<img src="http://lorempixel.com/800/500/food/1" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary disabled btn-sm">
-													<i class="fas fa-star"></i>
-												</a>
-												<a href="#0" class="btn btn-primary btn-sm">
-													<i class="fas fa-download"></i>
-												<a href="#0" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash-alt"></i>
-												</a>
-											</div> <!-- col -->
 										</div> <!-- row -->
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
@@ -82,16 +72,6 @@
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="1">
 													<img src="http://lorempixel.com/800/500/city/1" class="d-block w-100" alt="...">
 												</div>
-											</div> <!-- col -->
-											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
-												<a href="#0" class="btn btn-primary btn-sm">
-													<i class="fas fa-download"></i>
-												<a href="#0" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash-alt"></i>
-												</a>
 											</div> <!-- col -->
 										</div> <!-- row -->
 									</li> <!-- thumbnail item -->
@@ -102,16 +82,6 @@
 													<img src="http://lorempixel.com/800/500/nightlife/1" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
-												<a href="#0" class="btn btn-primary btn-sm">
-													<i class="fas fa-download"></i>
-												<a href="#0" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash-alt"></i>
-												</a>
-											</div> <!-- col -->
 										</div> <!-- row -->
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
@@ -120,17 +90,6 @@
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="3">
 													<img src="http://lorempixel.com/800/500/nightlife/2" class="d-block w-100" alt="...">
 												</div>
-											</div> <!-- col -->
-											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
-												<a href="#0" class="btn btn-primary btn-sm">
-													<i class="fas fa-download"></i>
-												</a>
-												<a href="#0" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash-alt"></i>
-												</a>
 											</div> <!-- col -->
 										</div> <!-- row -->
 									</li> <!-- thumbnail item -->
@@ -141,16 +100,6 @@
 													<img src="http://lorempixel.com/800/500/nightlife/3" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
-												<a href="#0" class="btn btn-primary btn-sm">
-													<i class="fas fa-download"></i>
-												<a href="#0" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash-alt"></i>
-												</a>
-											</div> <!-- col -->
 										</div> <!-- row -->
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
@@ -159,16 +108,6 @@
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="5">
 													<img src="http://lorempixel.com/800/500/nightlife/4" class="d-block w-100" alt="...">
 												</div>
-											</div> <!-- col -->
-											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
-												<a href="#0" class="btn btn-primary btn-sm">
-													<i class="fas fa-download"></i>
-												<a href="#0" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash-alt"></i>
-												</a>
 											</div> <!-- col -->
 										</div> <!-- row -->
 									</li> <!-- thumbnail item -->
@@ -179,16 +118,6 @@
 													<img src="http://lorempixel.com/800/500/nightlife/5" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
-												<a href="#0" class="btn btn-primary btn-sm">
-													<i class="fas fa-download"></i>
-												<a href="#0" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash-alt"></i>
-												</a>
-											</div> <!-- col -->
 										</div> <!-- row -->
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
@@ -197,16 +126,6 @@
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="7">
 													<img src="http://lorempixel.com/800/500/nightlife/6" class="d-block w-100" alt="...">
 												</div>
-											</div> <!-- col -->
-											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
-												<a href="#0" class="btn btn-primary btn-sm">
-													<i class="fas fa-download"></i>
-												<a href="#0" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash-alt"></i>
-												</a>
 											</div> <!-- col -->
 										</div> <!-- row -->
 									</li> <!-- thumbnail item -->
@@ -217,16 +136,6 @@
 													<img src="http://lorempixel.com/800/500/nightlife/7" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
-												<a href="#0" class="btn btn-primary btn-sm">
-													<i class="fas fa-download"></i>
-												<a href="#0" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash-alt"></i>
-												</a>
-											</div> <!-- col -->
 										</div> <!-- row -->
 									</li> <!-- thumbnail item -->
 								</ol> <!-- carousel indicators -->
@@ -236,11 +145,11 @@
 				</div> <!-- updating images wrapper -->
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
-				<button type="button" class="btn btn-primary">
-					<i class="fas fa-plus-square"></i>
-					Add Image
-				</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<a href="/assets/{{ $asset->id }}/edit#update-images" class="btn btn-primary">
+					<i class="fas fa-images"></i>
+					Update Images
+				</a>
 			</div>
 		</div>
 	</div>

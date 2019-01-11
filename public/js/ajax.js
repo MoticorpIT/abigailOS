@@ -16,9 +16,9 @@ $( document ).ready(function() {
 			company_id: $("#add-note-modal").find("input[name='company_id']").val(),
 			tenant_id: $("#add-note-modal").find("input[name='tenant_id']").val(),
 			status_id: $("#add-note-modal").find("input[name='status_id']").val(),
-			note: document.getElementById("note-add").value,
+			note: document.getElementById("note-add").value
 		};
-		
+
 		// GRAB CSRF TOKEN FROM HTML HEAD
 		$.ajaxSetup({
 			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -60,7 +60,7 @@ $( document ).ready(function() {
 			asset_id: $("#edit-note-modal-"+note_id).find("input[name='asset_id']").val(),
 			company_id: $("#edit-note-modal-"+note_id).find("input[name='company_id']").val(),
 			tenant_id: $("#edit-note-modal-"+note_id).find("input[name='tenant_id']").val(),
-			note: document.getElementById("note-edit-"+note_id).value,
+			note: document.getElementById("note-edit-"+note_id).value
 		};
 
 		// GRAB CSRF TOKEN FROM HTML HEAD
@@ -103,7 +103,7 @@ $( document ).ready(function() {
 			asset_id: $("#delete-note-form-"+note_id).find("input[name='asset_id']").val(),
 			company_id: $("#delete-note-form-"+note_id).find("input[name='company_id']").val(),
 			tenant_id: $("#delete-note-form-"+note_id).find("input[name='tenant_id']").val(),
-			note: document.getElementById("note-delete-"+note_id).value,
+			note: document.getElementById("note-delete-"+note_id).value
 		};
 
 		// GRAB CSRF TOKEN FROM HTML HEAD

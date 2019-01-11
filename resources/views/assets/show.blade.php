@@ -62,8 +62,8 @@
 							<div class="col-12 col profile-image-updater">
 							  {{-- Asset image --}}
 							  <div class="form-group">
-                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#view-images">
-                    <i class="fas fa-images"></i> View Images
+                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
+                    <i class="fas fa-images"></i> Update Images
                   </a>
 							  </div>
 							</div> <!-- col -->
