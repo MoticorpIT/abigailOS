@@ -1129,6 +1129,16 @@
 		"oAP": "/public/index.php",
 		"oF": 0
 		},
+	"/public/js/ajax-min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/public/js/ajax-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/public/js/ajax.js": {
 		"ft": 64,
 		"ma": 0,
@@ -1671,6 +1681,13 @@
 		"oAP": "/resources/views/layouts/modals/update-images.blade.php",
 		"oF": 0
 		},
+	"/resources/views/layouts/modals/view-images-bu.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/modals/view-images-bu.blade.php",
+		"oF": 0
+		},
 	"/resources/views/layouts/modals/view-images.blade.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1933,6 +1950,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/1913910ccb27ab6e439c558746541adcf47fd611.php",
+		"oF": 0
+		},
+	"/storage/framework/views/25503e161bd4c8f8b5e7c5be21ca870467c9d103.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/25503e161bd4c8f8b5e7c5be21ca870467c9d103.php",
 		"oF": 0
 		},
 	"/storage/framework/views/4669186df1d049ce84df24a2025ec94b81e9551a.php": {

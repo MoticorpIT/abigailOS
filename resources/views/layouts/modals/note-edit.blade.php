@@ -31,7 +31,7 @@
 
 								{{-- Hidden Edited_By User Field - Will need to add edited_by_user_id field to notes table --}}
 								<input type="hidden" name="edited_by_user_id" value="{{ Auth::user()->id }}">
-								
+
 								{{-- Hidden Id fields - Wrapped in conditials - This allows the modal to be used globally --}}
 								@if (Request::segment(1) == 'accounts')
 									<input type="hidden" name="account_id" value="{{ $account->id }}">
@@ -48,11 +48,11 @@
 							{{-- HIDDEN FIELDS END --}}
 
 							{{-- Original Author of the Note --}}
-							<h5 class="mt-0 author">{{ $note->user->name }}</h5>
+							<h5 class="mt-0 author text-capitalize">{{ $note->user->name }}</h5>
 
 							{{-- Note field --}}
 							<span class="text">
-								<textarea class="form-control" id="note-edit-{{ $note->id }}" rows="2" autofocus>{{ $note->note }}</textarea>
+								<textarea class="form-control" id="note-edit-{{ $note->id }}" rows="4" autofocus>{{ $note->note }}</textarea>
 							</span>
 						</div>
 					</div>
@@ -60,9 +60,12 @@
 				{{-- Form Buttons --}}
 				<div class="modal-footer">
 					<a href="" data-dismiss="modal" class="cancel-link">Cancel</a>
-					<button id="submit-btn" type="button" class="edit-note-ajax btn btn-primary" value="{{ $note->id }}">Edit Note</button>
+					<button id="submit-btn" type="button" class="edit-note-ajax btn btn-primary" value="{{ $note->id }}">
+						<i class="far fa-check-circle"></i>
+						Update Note
+					</button>
 				</div>
 			</form>
 		</div>
 	</div>
-</div> 
+</div>
