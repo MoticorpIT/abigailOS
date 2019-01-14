@@ -11,7 +11,7 @@
     #Header
     #Content
     #Footer
-  Pages / Components
+  #Pages / #Components
     #Tables
     #Modals
 */
@@ -36,6 +36,11 @@
     .btn-info{
       background: $primary;
       border-color: $primary;
+
+      &:hover{
+        background: darken($primary, 10%);
+        border-color: darken($primary, 10%);
+      }
     }
 
 
@@ -621,6 +626,99 @@
     } /* (min-width: 576px)  */
 
 
+
+/* ==========================================================================
+   #Pages
+   ========================================================================== */
+
+    /* #Login Page */
+    .login-page{
+      background: darken($primary, 15%);
+
+      .content{
+        padding: 10vw 5vw;
+      }
+      .db-box{
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 400px;
+        width: 100%;
+      }
+      .db-boxes-row{
+        flex-direction: column;
+      }
+      .top-nav-bar{
+        padding: 0 20px;
+
+        a{
+          width: 100%;
+          text-align: center;
+          margin: 0;
+          font-size: 2em;
+        }
+      }
+      .btn{
+        background: #44A08D;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, $primary, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, $primary, #44A08D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        &:hover{
+          background: darken(#44A08D, 10%);  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to bottom, darken($primary, 10%), darken(#44A08D, 10%));  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to bottom, darken($primary, 10%), darken(#44A08D, 10%)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          border-color: darken($primary, 10%);
+        }
+      } /* btn */
+      .tagline{
+        background: none;
+        padding: 20px 25px;
+        margin: 30px auto 0;
+        font-weight: bold;
+        line-height: 1.2em;
+        font-size: 5.5vw;
+        font-family: Bookman;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 0 2px #000;
+        position: relative;
+        overflow: hidden;
+        border-color: $primary;
+        opacity: .5;
+
+        &:hover{
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 500px)  {
+          &{
+            font-size: 1.6rem;
+          }
+        } /* (min-width: 500px)  */
+
+        &::before, &::after{
+          text-shadow: none;
+          position: absolute;
+          font-size: 9rem;
+          line-height: .9em;
+          display: block;
+          height: 60px;
+          font-family: Georgia;
+          opacity: .2;
+          z-index: -1;
+          color: $primary;
+        }
+        &::before{
+          content: '“';
+          top: -12px;
+          left: -7px;
+        }
+        &::after{
+          content: '”';
+          bottom: -12px;
+          right: -6px;
+        }
+      } /* tagline */
+    }
 
 
 /* ==========================================================================
@@ -1306,15 +1404,13 @@
       } /* (max-width: 767px)  */
     } /* notes button set */
     .breadcrumb{
-      padding: 0;
-      line-height: 1em;
-      background: none;
-      margin: 0 0 5px;
-
-      @media only screen and (max-width: 575px)  {
-        &{
-          margin-top: 5px;
-          justify-content: center;
-        }
-      } /* (max-width: 575px)  */
+      padding: 5px 10px;
+      background: $light-grey;
+      margin: -15px -20px 5px;
+      border-radius: 0;
+      border-bottom: 1px solid #eee;
+    }
+    .breadcrumb-item+.breadcrumb-item::before{
+      content: '»';
+      opacity: .5;
     }

@@ -3,7 +3,7 @@
 
 <title>abigailOS</title>
 
-<meta name="description" content="When you need to know something, ask Abigail.">
+<meta name="description" content="When you need to know something, just ask Abigail.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 

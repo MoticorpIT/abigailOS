@@ -22,7 +22,7 @@ $( document ).ready(function() {
 		// GRAB CSRF TOKEN FROM HTML HEAD
 		$.ajaxSetup({
 			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-		})
+		});
 
 		// PERFORM AJAX
 		$.ajax({
@@ -66,7 +66,7 @@ $( document ).ready(function() {
 		// GRAB CSRF TOKEN FROM HTML HEAD
 		$.ajaxSetup({
 			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-		})
+		});
 
 		// PERFORM AJAX
 		$.ajax({
@@ -82,7 +82,7 @@ $( document ).ready(function() {
 			error: function (data) {
 				console.log('Error: ',data);
 			}
-		})
+		});
 	});
 
 	// 'DELETE' NOTE - Actually changes status_id to 2 (inactive)
@@ -109,7 +109,7 @@ $( document ).ready(function() {
 		// GRAB CSRF TOKEN FROM HTML HEAD
 		$.ajaxSetup({
 			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-		})
+		});
 
 		// PERFORM AJAX
 		$.ajax({
@@ -125,7 +125,7 @@ $( document ).ready(function() {
 			error: function (data) {
 				console.log('Error: ',data);
 			}
-		})
+		});
 	});
 
 });

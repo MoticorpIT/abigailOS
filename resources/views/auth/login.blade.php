@@ -1,135 +1,91 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+
 <head>
-	<style>
-		@import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
-		@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
-		html { height: 100%; }
-		body {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-family: 'lato', sans-serif;
-			color: #fff;
-			background: linear-gradient(to top, #16222A , #3A6073);
-		}
-		.container {
-			background:rgba(58,63,68,0.5);
-			border-radius: 5px;
-			box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
-			width:450px;
-			display: flex;  
-			flex-direction: column;
-		}
-		.logo{
-			font-size: 40px;
-			text-align: center;
-			padding: 20px 20px 0;
-			margin:0;
-		}
-		.login-item {
-			color: #ffff;
-			padding:25px 25px 0;
-			margin: 20px 20px 0;    
-			border-radius: 3px;
-		}
-		input {
-			border: 0;
-			color: inherit;
-			font: inherit;
-			margin: 0;
-			outline: 0;
-			padding: 0;
-			-webkit-transition: background-color .3s;
-			transition: background-color .3s;
-		}
-		.user:before {
-			content: '\f007';
-			font: 14px fontawesome;
-			color: #5b5b5b;
-		}
-		.lock:before {
-			content: '\f023';
-			font: 14px fontawesome;
-			color: #5b5b5b;
-		}
-		.form input[type="password"], .form input[type="email"], .form input[type="submit"] {
-			width: 100%;
-		}
-		.form-login label,
-		.form-login input[type="email"],
-		.form-login input[type="password"],
-		.form-login input[type="submit"] {
-			border-radius: 0.25rem;
-			padding: 1rem;
-			color: #3A3F44; 
-		}
-		.form-login label {
-			background-color: #222222;
-			border-bottom-right-radius: 0;
-			border-top-right-radius: 0;
-			padding-left: 1.25rem;
-			padding-right: 1.25rem;
-		}
-		.form-login input[type="email"], .form-login input[type="password"] {
-			background-color: #ffffff;
-			border-bottom-left-radius: 0;
-			border-top-left-radius: 0;
-		}
-		.form-login input[type="email"]:focus, .form-login input[type="email"]:hover, .form-login input[type="password"]:focus, .form-login input[type="password"]:hover {
-			background-color: #eeeeee;
-		}
-		.form-login input[type="submit"] {
-			background-color: #00B9BC;
-			color: #eee;
-			font-weight: bold;
-			text-transform: uppercase;
-		}
-		.form-login input[type="submit"]:focus, .form-login input[type="submit"]:hover {
-			background-color: #197071;
-		}
-		.form-field {
-			display: -webkit-box;
-			display: -webkit-flex;
-			display: -ms-flexbox;
-			display: flex;
-			margin-bottom: 2rem;
-		}
-		.hidden {
-			border: 0;
-			clip: rect(0 0 0 0);
-			height: 1px;
-			margin: -1px;
-			overflow: hidden;
-			padding: 0;
-			position: absolute;
-			width: 1px;
-		}
-		.text--center { text-align: center; }
-	</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>abigailOS</title>
+
+	<meta name="description" content="When you need to know something, ask Abigail.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex, nofollow">
+
+	{{-- Font Awesome --}}
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
-	<div class="container">
-		<div class="logo">AbigailOS</div>
-		@include('layouts.errors')
-		<div class="login-item">
-		
-			<form action="" method="post" class="form form-login">
-				@csrf
-				<div class="form-field">
-					<label class="user" for="email"><span class="hidden">Email</span></label>
-					<input id="email" type="email" name="email" class="form-input{{ $errors->has('email') ? ' has-error' : '' }}" placeholder="Email" required autofocus>
-				</div>
 
-				<div class="form-field">
-					<label class="lock" for="password"><span class="hidden">Password</span></label>
-					<input id="password" type="password" name="password" class="form-input{{ $errors->has('password') ? ' has-error' : '' }}" placeholder="Password" required>
-				</div>
-
-				<div class="form-field">
-					<input type="submit" value="Log in">
-				</div>
-			</form>
-
+<body class="login-page">
+	<!--[if lt IE 8]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+	<div class="container-fluid top-nav-bar shadow">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-expand-lg">
+					<a class="navbar-brand" href="#">abigail<strong>OS</strong></a>
+				</nav>
+			</div>
 		</div>
-	</div>
-</body>
+	</div> <!-- container top-nav-bar -->
 
+	<div class="container-fluid main-content">
+		<div class="row main-content-row">
+			<div class="content col-12">
+				<div class="content-area">
+					<div class="db-boxes-row row">
+						<div class="db-box">
+								@include('layouts.errors')
+								<form action="" method="post" class="form form-login">
+									@csrf
+
+									<div class="form-group">
+										<label for="email" class="d-none">
+											Email
+										</label>
+										<div class="input-group">
+							        <input id="email" type="email" name="email" class="form-control {{ $errors->has('email') ? ' has-error' : '' }}" placeholder="Email" required autofocus>
+											<div class="input-group-append">
+							          <div class="input-group-text">
+							          	<i class="fas fa-user"></i>
+							          </div>
+							        </div>
+							      </div> <!-- input group -->
+									</div> <!-- form group -->
+
+									<div class="form-group">
+										<label for="password" class="d-none">
+											Password
+										</label>
+										<div class="input-group">
+							        <input id="password" type="password" name="password" class="form-control {{ $errors->has('password') ? ' has-error' : '' }}" placeholder="Password" required>
+											<div class="input-group-append">
+							          <div class="input-group-text">
+							          	<i class="fas fa-unlock-alt"></i>
+							          </div>
+							        </div>
+							      </div> <!-- input group -->
+									</div> <!-- form group -->
+
+									<div class="form-group">
+										<input type="submit" value="Log in" class="btn btn-info btn-block">
+									</div> <!-- form group -->
+								</form>
+							</div> <!-- db box -->
+							<blockquote class="tagline db-box">
+								When you need to know something, just ask Abigail.
+							</blockquote>
+					</div> <!-- db box -->
+				</div> <!-- content area -->
+			</div>
+		</div>
+	</div> <!-- main content -->
+
+</body>
+</html>
