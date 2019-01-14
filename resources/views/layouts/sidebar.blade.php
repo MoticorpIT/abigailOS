@@ -1,7 +1,7 @@
 <ul class="nav-list">
 	<li class="open-link">
 		<div class="heading">
-			<a href="#0" class="heading-link toggle-nav">
+			<a href="#0" class="heading-link toggle-nav" data-toggle="collapse" data-target=".navbar-collapse.show">
 				<i class="fas fa-arrow-circle-right open-icon heading-icon"></i>
 				<i class="fas fa-arrow-circle-left close-icon heading-icon"></i>
 				<span class="close-text heading-label">Collapse</span>

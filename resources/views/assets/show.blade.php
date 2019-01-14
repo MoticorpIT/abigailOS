@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('ajax-scripts')
-    <script src="{{ asset('/js/ajax.js') }}"></script>
+  <script src="{{ asset('/js/ajax.js') }}"></script>
 @endsection
 
 @section('content')
