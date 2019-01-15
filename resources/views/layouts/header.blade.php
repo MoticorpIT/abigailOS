@@ -1,47 +1,46 @@
 <div class="row">
 	<div class="col-md-12">
-		<nav class="navbar navbar-expand-lg">
-			<button class="navbar-toggler close-sidebar" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="navbar-toggler-icon">
-					<i class="fas fa-bars"></i>
-				</span>
-			</button> <a class="navbar-brand" href="#">abigail<strong>OS</strong></a>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="navbar-nav">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-							<div class="dropdown-divider">
-							</div> <a class="dropdown-item" href="#">Separated link</a>
-						</div>
-					</li>
-				</ul>
-				<form class="form-inline">
-					<input class="form-control mr-sm-2" type="text" />
-					<button class="btn btn-primary my-2 my-sm-0" type="submit">
-						Search
-					</button>
-				</form>
-				<ul class="navbar-nav ml-md-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" hreComplete Taska> <a class="dropdown-item" href="#">Reschedulection</a
-							</div> <a class="dropdown-item" href="#">Separated link</a>
-						</div>
-					</li>
-				</ul>
+		<nav class="navbar navbar-expand-sm">
+			<div class="navbar-brand" href="/">
+				<a href="/">
+					abigail<strong>OS</strong>
+				</a>
 			</div>
+			<form class="form-inline search-form">
+				<input class="form-control search-form-field" type="search" placeholder="Search" aria-label="Search">
+				<button class="search-form-button" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+			<div class="profile-link-wrapper ">
+				<a class="nav-link dropdown-toggle btn btn-info btn-sm profile-link" href="#0" id="navbarDropdownMenuLink" data-toggle="dropdown">
+					<span class="profile-link-image">
+						<img src="http://placehold.it/40x40/" />
+					</span>
+					<span class="profile-link-username text-capitalize">
+						{{ Auth::user()->name }}
+					</span>
+				</a>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="/users/{{Auth::user()->id}}">
+						<i class="fas fa-user-circle profile-link-icon"></i>
+						My Profile
+					</a>
+					<a class="dropdown-item" href="/users/{{Auth::user()->id}}/edit-pw">
+						<i class="fas fa-unlock-alt profile-link-icon"></i>
+						Change Password
+					</a>
+
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+						@csrf
+					</form>
+					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						<i class="fas fa-sign-out-alt profile-link-icon"></i>
+						{{ __('Logout') }}
+					</a>
+				</div>
+			</div> <!-- profile link wrapper -->
 		</nav>
 	</div>
 </div>
