@@ -73,41 +73,21 @@
 	</li>
 	<li>
 		<div class="heading">
-			<a href="/reports/" class="heading-link">
-				<i class="fas fa-chart-bar heading-icon"></i>
-				<span class="heading-label">Reports</span>
+			<a class="heading-link" href="/users">
+				<i class="fas fa-user-cog heading-icon"></i>
+				<span class="heading-label">Users</span>
+		  </a>
+			<a href="/users/create" class="add-link btn btn-secondary btn-sm">
+				<i class="fas fa-plus-square"></i>
 			</a>
 		</div>
 	</li>
 	<li>
 		<div class="heading">
-			<a class="heading-link" data-toggle="collapse" href="#nav-sublist" role="button">
-				<i class="fas fa-cogs heading-icon"></i>
-				<span class="heading-label">Admin</span>
-		  </a>
+			<a href="/reports/" class="heading-link">
+				<i class="fas fa-chart-bar heading-icon"></i>
+				<span class="heading-label">Reports</span>
+			</a>
 		</div>
-		<ul id="nav-sublist" class="nav-sublist collapse">
-			<li>
-				<a href="/users">All Users</a>
-			</li>
-			<li>
-				<a href="/users/create">Add User</a>
-			</li>
-			<li>
-				<a href="/users/{{Auth::user()->id}}">My Profile</a>
-			</li>
-			<li>
-				<a href="/users/{{Auth::user()->id}}/edit-pw">Change Password</a>
-			</li>
-			<li>
-				<a href="{{ route('logout') }}" onclick="event.preventDefault();
-					document.getElementById('logout-form').submit();">
-					<span class="sidebar-normal"> {{ __('Logout') }} </span>
-				</a>
-				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-					@csrf
-				</form>
-			</li>
-		</ul> <!-- nav sub list -->
 	</li>
 </ul> <!-- nav list -->

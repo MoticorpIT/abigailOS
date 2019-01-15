@@ -1,4 +1,5 @@
 $(function(){
+
   // Tooltip Initializer
   // https://getbootstrap.com/docs/4.2/components/tooltips/
   $('[data-toggle="tooltip"]').tooltip({
@@ -25,10 +26,10 @@ $(function(){
   // Toggle for mobile sidebar menu
   $('.toggle-nav').click(function() {
     $('.sidebar').toggleClass("open");
-    $('body').toggleClass("sidebar-open");
+    $('html').toggleClass("sidebar-open");
   });
   $('.close-sidebar').click(function() {
     $('.sidebar').removeClass("open");
-    $('body').removeClass("sidebar-open");
+    $('html').removeClass("sidebar-open");
   });
 });
