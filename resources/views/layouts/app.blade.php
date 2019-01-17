@@ -24,6 +24,7 @@
 			</div>
 			<div class="content col-9">
 				@include('layouts.progressbar')
+				@include('layouts.alerts')
 				@yield('content')
 			</div>
 		</div>

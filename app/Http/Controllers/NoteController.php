@@ -81,11 +81,17 @@ class NoteController extends Controller
             'status_id' => $request->status_id,
         ]);
         /* REDIRECT USER AND CONFIRM CREATION */
-        if(!$note->save()) {
-            session()->flash('message', 'Contact Manager. ERROR: Note did not update');
-        } else {
-            session()->flash('message', 'Note Updated Successfully');
+        if(!$note->save()) { 
+        	// if not saved
+        	session()->flash('message', 'Contract Manager. ERROR: Note did not update');
+        } elseif($request->status_id == 2) { 
+        	// if deleted
+        	session()->flash('message', 'Note Deleted Successfully');
+        } else { 
+        	// if edited
+        	session()->flash('message', 'Note Updated Successfully');
         }
+        /* RETURN THE RESPONSE - AS JSON */
         return response()->json($note);
     }
 
