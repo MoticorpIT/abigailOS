@@ -7,7 +7,10 @@
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
 				Companies
-				<a href="companies/create" class="btn btn-primary d-block-small float-right">Create Company</a>
+				<a href="/companies/create" class="btn btn-primary d-block-small float-right">
+					<i class="fas fa-plus-square"></i>
+					Create Company
+				</a>
 			</h1>
 
 			<div class="company-table-wrapper table-wrapper table-responsive">

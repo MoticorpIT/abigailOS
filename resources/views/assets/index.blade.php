@@ -7,7 +7,10 @@
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
 				Assets
-				<a href="assets/create" class="btn btn-primary d-block-small float-right">Create Asset</a>
+				<a href="/assets/create" class="btn btn-primary d-block-small float-right">
+					<i class="fas fa-plus-square"></i>
+					Create Asset
+				</a>
 			</h1>
 
 			<div class="asset-table-wrapper table-wrapper table-responsive">

@@ -15,7 +15,7 @@
 		@if ($notes->count() == 0)
 			<li class="notes-list-item">
 				<div class="note-item text-center">
-					No notes. Click the 'Add Note' to change that!
+					No notes. Click 'Add Note' to change that!
 				</div>
 			</li>
 		@else

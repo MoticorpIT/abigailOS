@@ -1,22 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-.has-error { border-color: red; }
-</style>
 
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
 			<form method="POST" action="/companies" enctype="multipart/form-data">
 				{{ csrf_field() }}
+
+				<nav aria-label="breadcrumb" class="d-none d-sm-block">
+				  <ol class="breadcrumb">
+				    <li class="breadcrumb-item">
+							<a href="/dashboard/">
+								Dashboard
+							</a>
+						</li>
+				    <li class="breadcrumb-item">
+							<a href="/companies/">
+								Company Table
+							</a>
+						</li>
+				    <li class="breadcrumb-item active" aria-current="page">
+							Create Company
+						</li>
+				  </ol>
+				</nav>
+
 			<h1 class="page-heading">
 				Add New Company
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
 					<a href="{{ route('companies.index') }}" class="btn btn-round">Cancel</a>
-					<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Save Company</button>
+					<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
+						<i class="fas fa-check-circle"></i>
+						Save Company
+					</button>
 				</div>
 				<div class="clear"></div>
 			</h1>
@@ -28,7 +47,9 @@
 					<div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
-							<h2 class="heading">Company Name</h2>
+							<h2 class="profile-heading heading">
+								<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}" autofocus>
+							</h2>
 						</div>
 					</div> <!-- row -->
 					<div class="row profile-row">
@@ -134,18 +155,24 @@
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
-								<div class="col-12 col-md-6 col">
-									{{-- COMPANY NAME --}}
+								<div class="col-12 col-md-3 col">
 									<div class="form-group">
 										<label>
-											Name
-											<span class="required">*</span>
+											Created On
 										</label>
-										<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}" autofocus>
+										<input class="form-control" name="created-at" value="Now" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-6 col">
-									{{-- COMPANY TYPE DROPDOWN --}}
+								<div class="col-12 col-md-3 col">
+									<div class="form-group">
+										<label>
+											Updated On
+										</label>
+										<input class="form-control" name="updated-at" value="n/a" placeholder="n/a" readonly disabled>
+									</div>
+								</div> <!-- col -->
+								<div class="col-12 col-md-3 col">
+									{{-- COMPANY Type --}}
 									<div class="form-group">
 										<label for="company_type_id">
 											Company Type
@@ -158,6 +185,20 @@
 											@endforeach
 										</select>
 									</div>
+								</div> <!-- col -->
+								<div class="col-12 col-md-3 col">
+									<div class="form-group">
+										<label>
+											Company Status
+										</label>
+                    <select class="form-control" id="status_id" name="status_id" readonly disabled>
+											<option selected>Active</option>
+										</select>
+									</div>
+								</div> <!-- col -->
+								<div class="col-12 col-md-6 col">
+									{{-- COMPANY TYPE DROPDOWN --}}
+
 								</div> <!-- col -->
 								 <!-- col -->
 								<div class="col-12 col">
