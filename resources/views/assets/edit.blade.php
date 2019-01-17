@@ -33,7 +33,9 @@
 					<div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
-							<h2 class="profile-heading heading"><input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="{{ $asset->name }}" placeholder="n/a"></h2>
+							<h2 class="profile-heading heading">
+								<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="{{ $asset->name }}" placeholder="n/a">
+							</h2>
 						</div>
 					</div> <!-- row -->
 					<div class="row profile-row">
