@@ -44,9 +44,9 @@ class NoteController extends Controller
         $note->save();
         /* SET THE NOTIFICATIONS */
         if (!$note->save()) {
-            toastr()->error('An error has occurred please try again.');
+            toastr()->error('An error has occurred please try again.', 'Abigail Says...');
         } else {
-        	toastr()->success('Note has been saved successfully!');
+        	toastr()->success('Your note was saved successfully!', 'Abigail Says...');
         }
         /* RETURN THE RESPONSE - AS JSON */
         return response()->json($note);
@@ -88,10 +88,10 @@ class NoteController extends Controller
             toastr()->error('An error has occurred. If it persists, contact the manager.');
         } elseif($request->status_id == 2) { 
         	// if deleted
-        	toastr()->success('Note Deleted Successfully');
+        	toastr()->success('Your note was deleted successfully', 'Abigail Says...');
         } else {
         	// if edited
-        	toastr()->success('Note Edited Successfully!');
+        	toastr()->success('Your note was edited successfully!', 'Abigail Says...');
         }
         /* RETURN THE RESPONSE - AS JSON */
         return response()->json($note);
