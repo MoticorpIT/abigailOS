@@ -3,7 +3,7 @@
 
 <title>abigailOS</title>
 
-<meta name="description" content="When you need to know something, ask Abigail.">
+<meta name="description" content="When you need to know something, just ask Abigail.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 
@@ -16,7 +16,8 @@
 {{-- DataTables --}}
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/b-colvis-1.5.4/r-2.2.2/datatables.min.css"/>
 
-
+{{-- Toastr Notifications --}}
+@toastr_css
 
 {{-- REQUIRED FOR AJAX USE --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">

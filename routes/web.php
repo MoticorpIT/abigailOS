@@ -22,8 +22,10 @@ $this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // DASHBOARD ROUTE
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::group( ['middleware' => 'auth' ], function() {
+	Route::get('/dashboard', function () {
+	    return view('dashboard');
+	});
 });
 
 Route::resource('accounts', 'AccountController');

@@ -2,22 +2,40 @@
 
 @section('content')
 
-<style>
-.has-error { border-color: red; }
-</style>
-
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
 			<form method="POST" action="/tenants">
 				{{ csrf_field() }}
+
+				<nav aria-label="breadcrumb" class="d-none d-sm-block">
+				  <ol class="breadcrumb">
+				    <li class="breadcrumb-item">
+							<a href="/dashboard/">
+								Dashboard
+							</a>
+						</li>
+				    <li class="breadcrumb-item">
+							<a href="/tenants/">
+								Tenant Table
+							</a>
+						</li>
+				    <li class="breadcrumb-item active" aria-current="page">
+							Create Tenant
+						</li>
+				  </ol>
+				</nav>
+
 			<h1 class="page-heading">
 				Add New Tenant
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
 					<a href="#0" class="btn btn-round">Cancel</a>
-					<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Save Tenant</button>
+					<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
+						<i class="fas fa-check-circle"></i>
+						Save Tenant
+					</button>
 				</div>
 				<div class="clear"></div>
 			</h1>

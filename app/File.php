@@ -2,11 +2,8 @@
 
 namespace App;
 
-class Note extends Model
+class File extends Model
 {
-	public function scopeActive($query) {
-    	return $query->where('status_id',1);
-	}
     public function company() {
 		return $this->belongsTo(Company::class);
 	}
@@ -18,5 +15,8 @@ class Note extends Model
 	}
 	public function asset() {
 		return $this->belongsTo(Asset::class);
+	}
+	public function user() {
+		return $this->belongsTo(User::class);
 	}
 }

@@ -27,7 +27,7 @@ class NoteController extends Controller
             'edited_by_user_id' => 'nullable',
             'status_id' => 'required'
         ]);
-        /* CREATE THE NEW COMPANY */
+        /* CREATE THE NEW NOTE */
         $note = new Note(
             [
                 'note' => $request->note,
@@ -40,13 +40,15 @@ class NoteController extends Controller
                 'status_id' => $request->status_id
             ]
         );
-        /* SAVE THE NEW COMPANY TO DATABASE */
+        /* SAVE THE NEW NOTE TO DATABASE */
         $note->save();
+        /* SET THE NOTIFICATIONS */
         if (!$note->save()) {
-            session()->flash('message', 'Contact Manager. ERROR: Note did not save');
+            toastr()->error('An error has occurred please try again.', 'Abigail Says...');
         } else {
-            session()->flash('message', 'Note Saved Successfully');
+        	toastr()->success('Your note was saved successfully!', 'Abigail Says...');
         }
+        /* RETURN THE RESPONSE - AS JSON */
         return response()->json($note);
     }
 
@@ -80,12 +82,18 @@ class NoteController extends Controller
             'edited_by_user_id' => $request->edited_by_user_id,
             'status_id' => $request->status_id,
         ]);
-        /* REDIRECT USER AND CONFIRM CREATION */
-        if(!$note->save()) {
-            session()->flash('message', 'Contact Manager. ERROR: Note did not update');
+        /* SET THE NOTIFICATIONS */
+        if (!$note->save()) {
+        	// if not saved
+            toastr()->error('An error has occurred. If it persists, contact the manager.');
+        } elseif($request->status_id == 2) { 
+        	// if deleted
+        	toastr()->success('Your note was deleted successfully', 'Abigail Says...');
         } else {
-            session()->flash('message', 'Note Updated Successfully');
+        	// if edited
+        	toastr()->success('Your note was edited successfully!', 'Abigail Says...');
         }
+        /* RETURN THE RESPONSE - AS JSON */
         return response()->json($note);
     }
 

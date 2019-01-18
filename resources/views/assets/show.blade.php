@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('ajax-scripts')
-    <script src="{{ asset('/js/ajax.js') }}"></script>
+  <script src="{{ asset('/js/ajax.js') }}"></script>
 @endsection
 
 @section('content')
@@ -55,7 +55,7 @@
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<a href="#0" class="" data-toggle="modal" data-target="#view-images">
+								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
 										<img src="https://via.placeholder.com/400x400" />
                 </a>
 							</div> <!-- profile image -->
