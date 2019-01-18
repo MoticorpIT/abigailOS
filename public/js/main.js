@@ -22,14 +22,7 @@ $(function(){
     }
   });
 
-  // Captures Hashtag string in url to
-  // navigate to page and open bootstrap modal
-  var url = window.location.href;
-  var modalToOpen = url.substring(url.indexOf("#"));
-
-  if(window.location.href.indexOf(modalToOpen) != -1) {
-      $(modalToOpen).modal("show");
-  }
+  
 
   // Toggle for mobile sidebar menu
   $('.toggle-nav').click(function() {
@@ -40,4 +33,12 @@ $(function(){
     $('.sidebar').removeClass("open");
     $('body').removeClass("sidebar-open");
   });
+
+  // File upload button
+  $('.uploadFileButton').on('click', function(){
+    $('#uploadFileField').click();
+  });
+
+  
+
 });

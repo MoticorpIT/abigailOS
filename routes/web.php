@@ -35,6 +35,7 @@ Route::resource('companyTypes', 'CompanyTypeController');
 Route::resource('contracts', 'ContractController');
 Route::resource('invoices', 'InvoiceController');
 Route::resource('notes', 'NoteController');
+Route::resource('images', 'ImageController');
 Route::resource('payments', 'PaymentController');
 Route::resource('priorities', 'PriorityController');
 Route::resource('repeats', 'RepeatController');
@@ -42,6 +43,7 @@ Route::resource('statuses', 'StatusController');
 Route::resource('tasks', 'TaskController');
 Route::resource('taskTypes', 'TaskTypeController');
 Route::resource('tenants', 'TenantController');
+
 Route::get('users/{user}/edit-pw', 'UserController@editPassword'); // Change Password view
 Route::put('users/{user}/update-pw', 'UserController@updatePassword'); // Change Password save
 Route::resource('users', 'UserController');
