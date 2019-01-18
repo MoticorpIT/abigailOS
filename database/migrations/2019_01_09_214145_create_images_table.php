@@ -20,7 +20,7 @@ class CreateImagesTable extends Migration
             $table->integer('account_id')->nullable();
             $table->integer('asset_id')->nullable();
             $table->integer('tenant_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->integer('status_id')->default(1);
             $table->timestamps();
         });
     }

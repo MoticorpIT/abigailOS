@@ -32,4 +32,12 @@ $(function(){
     $('.sidebar').removeClass("open");
     $('html').removeClass("sidebar-open");
   });
+
+  // File upload button
+  $('.uploadFileButton').on('click', function(){
+    $('#uploadFileField').click();
+  });
+
+  
+
 });
