@@ -1,5 +1,43 @@
 $( document ).ready(function() {
 
+	// IMAGE SELECT->SUBMIT
+	$('#uploadFileField').on('change', function(){
+
+
+		var url = $(this).parent('#uploadFileForm').attr("action");
+
+		var formData = new FormData();
+		formData.append('status_id', $("#statusIdField").val());
+		formData.append('account_id', $("#accoutnIdField").val());
+		formData.append('asset_id', $("#assetIdField").val());
+		formData.append('company_id', $("#companyIdField").val());
+		formData.append('tenant_id', $("#tenantIdField").val());
+		formData.append('image', $('#uploadFileField')[0].files[0]); 
+
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+		})
+
+		$.ajax({
+		    url: url,
+		    data: formData,
+		    type: 'POST',
+		    contentType: false, 
+		    processData: false, 
+		    success: function (data) {
+				console.log('ajax complete');
+			},
+			error: function (data) {
+				console.log('Error:', data);
+			}
+		});
+
+	    return false;
+	})
+
+
+
+
 	// STORE NOTE
 	$(".add-note-ajax").click(function(e){
 		// PREVENT BUTTON'S DEFAULT BEHAVIOR
