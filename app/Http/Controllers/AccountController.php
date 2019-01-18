@@ -121,7 +121,7 @@ class AccountController extends Controller
     public function show($id)
     {
         $account = Account::findOrFail($id);
-        $notes = Note::where('account_id', $id)->active()->orderBy('updated_at', 'desc')->get();
+        $notes = Note::where('account_id', $id)->active()->ordered()->get();
         return view('accounts.show', compact('account', 'notes'));
     }
 
