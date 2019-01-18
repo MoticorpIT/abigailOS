@@ -26,7 +26,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts = Account::orderBy('name')->get();
+        $accounts = Account::all();
         return view('accounts.index', compact('accounts'));
     }
 
@@ -53,7 +53,63 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* VALIDATE THE REQUEST */
+		$this->validate(request(), [
+			'name' => 'unique:accounts|required',
+			'acct_num' => 'nullable',
+			'url' => 'nullable',
+			'street_1' => 'required',
+			'street_2' => 'nullable',
+			'city' => 'required',
+			'state' => 'required',
+			'zip' => 'required',
+			'phone_1' => 'required',
+			'phone_2' => 'nullable',
+			'fax' => 'nullable',
+			'email' => 'nullable',
+			'contact_name' => 'nullable',
+			'contact_phone_1' => 'nullable',
+			'contact_phone_2' => 'nullable',
+			'contact_email' => 'nullable',
+			'account_type_id' => 'required',
+			'company_id' => 'nullable',
+			'asset_id' => 'nullable'
+		]);
+		/* CREATE THE ACCOUNT */
+		$account = new Account(
+			[
+				'name' => $request->name,
+				'street_1' => $request->street_1,
+				'street_2' => $request->street_2,
+				'city' => $request->city,
+				'state' => $request->state,
+				'zip' => $request->zip,
+				'phone_1' => $request->phone_1,
+				'phone_2' => $request->phone_2,
+				'fax' => $request->fax,
+				'email' => $request->email,
+				'acct_num' => $request->acct_num,
+				'url' => $request->url,
+				'contact_name' => $request->contact_name,
+				'contact_phone_1' => $request->contact_phone_1,
+				'contact_phone_2' => $request->contact_phone_2,
+				'contact_email' => $request->contact_email,
+				'account_type_id' => $request->account_type_id,
+				'company_id' => $request->company_id,
+				'asset_id' => $request->asset_id,
+				'status_id' => $request->status_id
+			]
+		);
+		/* SAVE THE ACCOUNT */
+		$account->save();
+		/* SET NOTIFICATIONS */
+		if (!$account->save()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The account was saved successfully!', 'Abigail Says...');
+		}
+		/* REDIRECT */
+		return redirect('/accounts');
     }
 
     /**
@@ -64,8 +120,8 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        $account = Account::find($id);
-        $notes = Note::where('account_id', $id)->where('status_id',1)->orderBy('updated_at', 'desc')->get();
+        $account = Account::findOrFail($id);
+        $notes = Note::where('account_id', $id)->active()->orderBy('updated_at', 'desc')->get();
         return view('accounts.show', compact('account', 'notes'));
     }
 
@@ -78,7 +134,7 @@ class AccountController extends Controller
     public function edit($id)
     {
     	// DATABASE QUERIES
-        $account = Account::find($id);
+        $account = Account::findOrFail($id);
 
         // CONFIG/CONSTANTS.PHP 'QUERIES'
         // If either need to be changed, they need to be changed in the constants.php file AND on the DB
@@ -98,7 +154,40 @@ class AccountController extends Controller
      */
     public function update(Request $request, Account $account)
     {
-        //
+        /* VALIDATE DATA FROM FORM */
+		$data = $request->validate([
+			'name' => 'unique:accounts|required',
+			'acct_num' => 'nullable',
+			'url' => 'nullable',
+			'street_1' => 'required',
+			'street_2' => 'nullable',
+			'city' => 'required',
+			'state' => 'required',
+			'zip' => 'required',
+			'phone_1' => 'required',
+			'phone_2' => 'nullable',
+			'fax' => 'nullable',
+			'email' => 'nullable',
+			'contact_name' => 'nullable',
+			'contact_phone_1' => 'nullable',
+			'contact_phone_2' => 'nullable',
+			'contact_email' => 'nullable',
+			'account_type_id' => 'required',
+			'company_id' => 'nullable',
+			'asset_id' => 'nullable',
+			'status_id' => 'required'
+		]);
+		/* FILL DATA AND SAVE */
+		$account->fill($data);
+		$account->save();
+		/* CREATE FLASH MESSAGES */
+		if(!$account->save()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The account was updated successfully!', 'Abigail Says...');
+		}
+		/* REDIRECT USER */
+		return redirect('/accounts');
     }
     
 }
