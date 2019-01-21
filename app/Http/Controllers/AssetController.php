@@ -52,7 +52,54 @@ class AssetController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//
+		/* VALIDATE THE REQUEST */
+		$this->validate(request(), [
+			'name' => 'unique:assets|required',
+			'street_1' => 'required',
+			'street_2' => 'nullable',
+			'city' => 'required',
+			'state' => 'required',
+			'zip' => 'required',
+			'phone_1' => 'required',
+			'phone_2' => 'nullable',
+			'fax' => 'nullable',
+			'email' => 'nullable',
+			'rent' => 'nullable',
+			'deposit' => 'nullable',
+			'aquired_date' => 'nullable',
+			'asset_type_id' => 'required',
+			'company_id' => 'required'
+		]);
+		/* CREATE THE ASSET */
+		$asset = new Asset(
+			[
+				'name' => $request->name,
+				'street_1' => $request->street_1,
+				'street_2' => $request->street_2,
+				'city' => $request->city,
+				'state' => $request->state,
+				'zip' => $request->zip,
+				'phone_1' => $request->phone_1,
+				'phone_2' => $request->phone_2,
+				'fax' => $request->fax,
+				'email' => $request->email,
+				'rent' => $request->rent,
+				'deposit' => $request->deposit,
+				'aquired_date' => $request->aquired_date,
+				'asset_type_id' => $request->asset_type_id,
+				'company_id' => $request->company_id
+			]
+		);
+		/* SAVE THE ACCOUNT */
+		$asset->save();
+		/* SET NOTIFICATIONS */
+		if (!$asset->save()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The asset was saved successfully!', 'Abigail Says...');
+		}
+		/* REDIRECT */
+		return redirect('/assets');
 	}
 
 	/**
@@ -63,8 +110,8 @@ class AssetController extends Controller
 	 */
 	public function show($id)
 	{
-		$asset = Asset::find($id);
-		$notes = Note::where('asset_id', $id)->get();
+		$asset = Asset::findOrFail($id);
+		$notes = Note::where('asset_id', $id)->active()->ordered()->get();
 		$accounts = Account::where('asset_id', $id)->get();
 		$contracts = Contract::where('asset_id', $id)->get();
 		return view('assets.show', compact('asset', 'notes', 'accounts', 'contracts'));
@@ -79,7 +126,7 @@ class AssetController extends Controller
 	public function edit($id)
 	{
 		// DATABASE QUERIES
-		$asset = Asset::find($id);
+		$asset = Asset::findOrFail($id);
 
 		// CONFIG/CONSTANTS.PHP 'QUERIES'
 		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
@@ -99,6 +146,40 @@ class AssetController extends Controller
 	 */
 	public function update(Request $request, Asset $asset)
 	{
-		//
+		/* VALIDATE DATA FROM FORM */
+		$data = $request->validate([
+			'name' => 'unique:assets|required',
+			'street_1' => 'required',
+			'street_2' => 'nullable',
+			'city' => 'required',
+			'state' => 'required',
+			'zip' => 'required',
+			'phone_1' => 'required',
+			'phone_2' => 'nullable',
+			'fax' => 'nullable',
+			'email' => 'nullable',
+			'rent' => 'nullable',
+			'deposit' => 'nullable',
+			'aquired_date' => 'nullable',
+			'asset_type_id' => 'required',
+			'company_id' => 'required',
+			'status_id' => 'required'
+		]);
+		/* FILL DATA AND SAVE */
+		$asset->fill($data);
+		$asset->save();
+		/* CREATE FLASH MESSAGES */
+		if (!$asset->save()) {
+        	// if not saved
+            toastr()->error('An error has occurred. If it persists, contact the manager.');
+        } elseif($request->status_id == 2) { 
+        	// if deleted
+        	toastr()->success('The asset was deleted successfully', 'Abigail Says...');
+        } else {
+        	// if edited
+        	toastr()->success('The asset was edited successfully!', 'Abigail Says...');
+        }
+		/* REDIRECT USER */
+		return redirect('/accounts');
 	}
 }

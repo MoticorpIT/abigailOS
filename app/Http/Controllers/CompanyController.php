@@ -92,11 +92,15 @@ class CompanyController extends Controller
         );
         /* SAVE THE NEW COMPANY TO DATABASE */
         $company->save();
+
+        /* SET TOASTR FLASH MESSAGES */
         if (!$company->save()) {
-            session()->flash('message', 'Contact Manager. ERROR: Company did not save');
-        } else {
-            session()->flash('message', 'Company Created Successfully');
-        }
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The company was saved successfully!', 'Abigail Says...');
+		}
+
+		/* Redirect User After Save */
         return redirect('/companies');
     }
 
@@ -154,12 +158,18 @@ class CompanyController extends Controller
         /* SAVE VALIDATED DATA TO DATABASE */
         $company->fill($data);
         $company->save();
-        /* REDIRECT USER AND CONFIRM CREATION */
-        if(!$company->save()) {
-            session()->flash('message', 'Contact Manager. ERROR: Company did not update');
+        /* SET TOASTR FLASH MESSAGES */
+        if (!$company->save()) {
+        	// if not saved
+            toastr()->error('An error has occurred. If it persists, contact the manager.');
+        } elseif($request->status_id == 2) { 
+        	// if deleted
+        	toastr()->success('The company was deleted successfully', 'Abigail Says...');
         } else {
-            session()->flash('message', 'Company Updated Successfully');
+        	// if edited
+        	toastr()->success('The company was edited successfully!', 'Abigail Says...');
         }
+		/* REDIRECT USER AFTER SAVE */
         return redirect('/companies');
     }
 }

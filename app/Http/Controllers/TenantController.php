@@ -96,10 +96,10 @@ class TenantController extends Controller
         /* SAVE THE NEW COMPANY TO DATABASE */
         $tenant->save();
         if (!$tenant->save()) {
-            session()->flash('message', 'Contact Manager. ERROR: Tenant did not save');
-        } else {
-            session()->flash('message', 'Tenant Created Successfully');
-        }
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The tenant was saved successfully!', 'Abigail Says...');
+		}
         return redirect('/tenants');
     }
 
@@ -180,10 +180,15 @@ class TenantController extends Controller
         $tenant->fill($data);
         $tenant->save();
         /* REDIRECT USER AND CONFIRM CREATION */
-        if(!$tenant->save()) {
-            session()->flash('message', 'Contact Manager. ERROR: Tenant did not update');
+        if (!$tenant->save()) {
+        	// if not saved
+            toastr()->error('An error has occurred. If it persists, contact the manager.');
+        } elseif($request->status_id == 2) { 
+        	// if deleted
+        	toastr()->success('The tenant was deleted successfully', 'Abigail Says...');
         } else {
-            session()->flash('message', 'Tenant Updated Successfully');
+        	// if edited
+        	toastr()->success('The tenant was edited successfully!', 'Abigail Says...');
         }
         return redirect('/tenants');
     }

@@ -7,6 +7,9 @@ class Note extends Model
 	public function scopeActive($query) {
     	return $query->where('status_id',1);
 	}
+	public function scopeOrdered($query) {
+    	return $query->orderBy('updated_at', 'desc');
+	}
     public function company() {
 		return $this->belongsTo(Company::class);
 	}
