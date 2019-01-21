@@ -9,13 +9,36 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
+      {{ csrf_field() }}
+
+      <nav aria-label="breadcrumb" class="d-none d-sm-block">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/dashboard/">
+              Dashboard
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="/companies/">
+              Company Table
+            </a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Company Profile<span class="d-none d-sm-inline">: {{ $company->name }}</span>
+          </li>
+        </ol>
+      </nav>
+
 			<h1 class="page-heading">
 				Company Profile
 
-				{{-- BUTTON SET --}}
+        {{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="{{ route('companies.index') }}" class="btn btn-round">Go Back</a>
-					<a href="/companies/{{ $company->id }}/edit" id="submit-btn" class="btn btn-primary d-block d-sm-inline">Edit Company</a>
+					<a href="/companies/" class="btn btn-round">Go Back</a>
+					<a href="/companies/{{ $company->id }}/edit" class="btn btn-primary">
+						<i class="fas fa-edit"></i>
+						Edit Company
+					</a>
 				</div>
 				<div class="clear"></div>
 			</h1>
@@ -33,10 +56,19 @@
 
 						{{-- LEFT COLUMN CONTENT --}}
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
-							{{-- Image --}}
-							<div class="profile-image">
-								<img src="{{ ($company->logo != null) ? $logo : 'https://via.placeholder.com/400x400' }}" />
+              <div class="profile-image">
+								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
+										<img src="https://via.placeholder.com/400x400" />
+                </a>
 							</div> <!-- profile image -->
+							<div class="col-12 col profile-image-updater">
+							  {{-- Asset image --}}
+							  <div class="form-group">
+                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
+                    <i class="fas fa-images"></i> Update Images
+                  </a>
+							  </div>
+							</div> <!-- col -->
 
 							{{-- Contact Tabs --}}
 							<nav class="profile-tabs">
@@ -335,6 +367,9 @@
 	</div> <!-- col -->
 </div> <!-- db boxes -->
 
+
+<!-- Images Modal -->
+@include('layouts/modals/view-images')
 <!-- ADD NOTES MODEL -->
 @include('layouts/modals/note-add')
 

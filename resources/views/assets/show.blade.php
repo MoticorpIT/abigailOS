@@ -344,6 +344,7 @@
 	</div> <!-- col -->
 </div> <!-- db boxes -->
 
+<!-- Images Modal -->
 @include('layouts/modals/view-images')
 <!-- ADD NOTES MODEL -->
 @include('layouts/modals/note-add')
