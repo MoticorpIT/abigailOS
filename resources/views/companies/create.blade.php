@@ -55,18 +55,17 @@
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<img src="https://via.placeholder.com/400x400" />
+								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
+										<img src="https://via.placeholder.com/400x400" />
+                </a>
 							</div> <!-- profile image -->
-
 							<div class="col-12 col profile-image-updater">
-								{{-- COMPANY LOGO --}}
-								<div class="form-group">
-									<label>
-										Logo
-										<span class="optional">(400 x 400)</span>
-									</label>
-									<input type="file" class="form-control {{ $errors->has('logo') ? 'has-error' : '' }}" name="logo" placeholder="Path to the Company Logo" value="{{ old('logo') }}">
-								</div>
+							  {{-- Asset image --}}
+							  <div class="form-group">
+                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
+                    <i class="fas fa-images"></i> Update Images
+                  </a>
+							  </div>
 							</div> <!-- col -->
 
 							<nav class="profile-tabs">
@@ -168,7 +167,7 @@
 										<label>
 											Updated On
 										</label>
-										<input class="form-control" name="updated-at" value="n/a" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="updated-at" value="Now" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -325,5 +324,8 @@
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div> <!-- db boxes -->
+
+<!-- Images Modal -->
+@include('layouts/modals/view-images')
 
 @endsection

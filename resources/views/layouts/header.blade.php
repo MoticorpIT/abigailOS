@@ -13,7 +13,7 @@
 				</button>
 			</form>
 			<div class="profile-link-wrapper ">
-				<a class="nav-link dropdown-toggle btn btn-info btn-sm profile-link" href="#0" id="navbarDropdownMenuLink" data-toggle="dropdown">
+				<a class="nav-link dropdown-toggle btn btn-info btn-sm profile-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown">
 					<span class="profile-link-image">
 						<img src="http://placehold.it/40x40/" />
 					</span>

@@ -1299,6 +1299,17 @@
 		"oAP": "/public/media/fonts/glyphicons-halflings-regular.woff",
 		"oF": 0
 		},
+	"/public/media/images/favicon.png": {
+		"ft": 32768,
+		"iS": 2401,
+		"oA": 0,
+		"oAP": "/public/media/images/favicon.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
 	"/public/robots.txt": {
 		"cB": 0,
 		"ft": 8192,
@@ -1630,6 +1641,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/resources/views/invoices/show.blade.php",
+		"oF": 0
+		},
+	"/resources/views/layouts/alerts.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/alerts.blade.php",
 		"oF": 0
 		},
 	"/resources/views/layouts/app.blade.php": {
@@ -2167,6 +2185,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/d68fb45212f645ec09973f66f5c063fd008f9d29.php",
+		"oF": 0
+		},
+	"/storage/framework/views/dd5486e9bcb97a295533ee4f2c3ebd6f0ff59bad.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/dd5486e9bcb97a295533ee4f2c3ebd6f0ff59bad.php",
 		"oF": 0
 		},
 	"/storage/framework/views/e2bd5548c1950324305ce49fed939b88d337dc40.php": {
