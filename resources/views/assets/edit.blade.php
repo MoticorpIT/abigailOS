@@ -6,7 +6,26 @@
 	<div class="col-12">
 		<div class="lowerlevel db-box">
 			<form method="POST" action="/tenants">
-				{{ csrf_field() }}
+			{{ csrf_field() }}
+
+			<nav aria-label="breadcrumb" class="d-none d-sm-block">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item">
+						<a href="/dashboard/">
+							Dashboard
+						</a>
+					</li>
+			    <li class="breadcrumb-item">
+						<a href="/assets/">
+							Asset Table
+						</a>
+					</li>
+			    <li class="breadcrumb-item active" aria-current="page">
+						Edit Asset<span class="d-none d-sm-inline">: {{ $asset->name }}</span>
+					</li>
+			  </ol>
+			</nav>
+
 			<h1 class="page-heading">
 				Edit Asset
 				{{-- BUTTON SET --}}
@@ -298,6 +317,7 @@
 	</div> <!-- col -->
 </div> <!-- db boxes -->
 
-@include('layouts/modals/update-images')
+<!-- Images Modal -->
+@include('layouts/modals/view-images')
 
 @endsection

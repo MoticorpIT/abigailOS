@@ -1,7 +1,7 @@
 $(function(){
-
+  // Bootstrap Initializers
+  // https://getbootstrap.com/docs/4.2/components/
   // Tooltip Initializer
-  // https://getbootstrap.com/docs/4.2/components/tooltips/
   $('[data-toggle="tooltip"]').tooltip({
     container: 'body'
   });

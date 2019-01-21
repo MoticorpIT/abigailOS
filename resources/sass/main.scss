@@ -241,6 +241,10 @@
       } /* (max-width: 575px)  */
     } /* top nav bar */
 
+    #toast-container>div{
+      opacity: 1;
+    }
+
 
 
 
@@ -350,7 +354,7 @@
     }
     .sidebar-overlay{
       display: none;
-      position: absolute;
+      position: fixed;
       width: 100%;
       left: 0;
       right: 0;
@@ -726,6 +730,8 @@
           width: 48%;
           height: auto;
           text-indent: initial;
+          box-sizing: border-box;
+          opacity: 1;
 
           @media only screen and (min-width: 768px) and (max-width: 1100px)  {
             &{
@@ -1174,6 +1180,10 @@
       overflow: hidden;
       flex: 1;
       max-width: 170px;
+      white-space: nowrap;
+    }
+    .contact-button .dropdown-toggle{
+      flex: none;
     }
     .contact-button .dropdown-menu{
       /* width: 100%; */
@@ -1334,6 +1344,18 @@
       background: #414141;
       border-radius: 5px;
       color: #fff;
+
+      @media only screen and (max-width: 575px)  {
+        &{
+          position: sticky;
+          top: 0;
+          padding: 5px;
+          margin-left: -10px;
+          margin-right: -10px;
+          z-index: 2;
+          border-radius: 0;
+        }
+      } /* (max-width: 567px)  */
     }
     .profile-head .heading{
       margin: 0;

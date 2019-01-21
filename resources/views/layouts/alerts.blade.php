@@ -1,8 +1,32 @@
 {{-- ALERT USERS OF MESSAGE - Confirmation when adding, editing, etc. entries --}}
+
 @if($flash = session('message'))
-	<div class="row">
-		<div id="flash-message" class="col-md-12 alert alert-success" role="alert">
-			<h6 class="mt-auto mb-auto">{{ $flash }}</h6>
-		</div>
-	</div>
+	<script>
+		$(document).ready(function() {
+			// Toastr Initializer
+			// https://codeseven.github.io/toastr/
+			function toastrOptions(){
+				toastr.options = {
+					"closeButton": true,
+					"debug": false,
+					"newestOnTop": false,
+					"progressBar": true,
+					"positionClass": "toast-top-right",
+					"preventDuplicates": false,
+					"onclick": null,
+					"showDuration": "300",
+					"hideDuration": "1000",
+					"timeOut": "5000",
+					"extendedTimeOut": "2500",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut"
+				};
+			};
+
+			toastrOptions();
+			toastr.info("{{ $flash }}");
+		});
+	</script>
 @endif

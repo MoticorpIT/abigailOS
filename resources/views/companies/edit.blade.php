@@ -8,15 +8,42 @@
 			<form method="POST" action="/companies/{{ $company->id }}">
 				{{ csrf_field() }}
 				{{ method_field('PATCH') }}
+
+			<nav aria-label="breadcrumb" class="d-none d-sm-block">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item">
+						<a href="/dashboard/">
+							Dashboard
+						</a>
+					</li>
+			    <li class="breadcrumb-item">
+						<a href="/companies/">
+							Company Table
+						</a>
+					</li>
+			    <li class="breadcrumb-item active" aria-current="page">
+						Edit Company<span class="d-none d-sm-inline">: {{ $company->name }}</span>
+					</li>
+			  </ol>
+			</nav>
+
 			<h1 class="page-heading">
 				Edit Company
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="{{ route('companies.index') }}" class="btn btn-round">Cancel</a>
-					<a href="/companies/{{ $company->id }}" class="btn btn-secondary">View Company</a>
-					<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Save Company</button>
-				</div>
+					<a href="/companies/" class="btn btn-round">
+						Go Back
+					</a>
+          <a href="/companies/{{ $company->id }}" class="btn btn-secondary">
+						<i class="fas fa-eye"></i>
+						View Company
+					</a>
+          <button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
+						<i class="far fa-check-circle"></i>
+						Save Company
+					</button>
+				</div> <!-- button set -->
 				<div class="clear"></div>
 			</h1>
 
@@ -39,17 +66,17 @@
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<img src="https://via.placeholder.com/400x400" />
+								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
+									<img src="https://via.placeholder.com/400x400" />
+								</a>
 							</div> <!-- profile image -->
 
 							<div class="col-12 col profile-image-updater">
 							  {{-- Asset image --}}
 							  <div class="form-group">
-							    <label>
-							      <i class="far fa-image"></i> Logo
-							      <span class="optional">(400 x 400)</span>
-							    </label>
-							    <input type="button" class="form-control btn btn-primary" name="company-logo" value="Update Image" />
+                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
+                    <i class="fas fa-images"></i> Update Images
+                  </a>
 							  </div>
 							</div> <!-- col -->
 
@@ -306,4 +333,7 @@
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div> <!-- db boxes -->
+
+<!-- Images Modal -->
+@include('layouts/modals/view-images')
 @endsection
