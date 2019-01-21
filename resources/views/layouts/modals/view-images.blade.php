@@ -237,11 +237,47 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
-				<button type="button" class="btn btn-primary">
+
+				<!-- Asset Upload  -->
+				<form id="uploadFileForm" name="uploadFileField"  method="POST" action="/images" enctype="multipart/form-data">
+
+					
+					{{ csrf_field() }}
+					{{ method_field('PATCH') }}
+					{{-- HIDEEN FIELDS --}}
+						
+					{{-- Hidden Id fields - Wrapped in conditials - This allows the modal to be used globally --}}
+
+					<input type="hidden" name="status_id" id="statusIdField" value="1">
+					
+					@if (Request::segment(1) == 'accounts')
+						<input type="hidden" name="account_id" id="accountIdField" value="{{ $account->id }}">
+					@endif
+					@if (Request::segment(1) == 'assets')
+						<input type="hidden" name="asset_id" id="assetIdField" value="{{ $asset->id }}">
+					@endif
+					@if (Request::segment(1) == 'companies')
+						<input type="hidden" name="company_id" id="companyIdField" value="{{ $company->id }}">
+					@endif
+					@if (Request::segment(1) == 'tenants')
+						<input type="hidden" name="tenant_id" id="tenantIdField" value="{{ $tenant->id }}">
+					@endif
+
+					{{-- HIDDEN FIELDS END --}}
+
+					<input type="file" id="uploadFileField" name="file" class="d-none">
+
+				</form>
+
+				<button type="button" class="btn btn-primary uploadFileButton">
 					<i class="fas fa-plus-square"></i>
 					Add Image
 				</button>
+				<!-- End Asset Upload -->
+
 			</div>
 		</div>
 	</div>
 </div> <!-- update images -->
+
+
