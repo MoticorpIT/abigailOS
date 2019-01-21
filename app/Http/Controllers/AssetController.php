@@ -169,11 +169,16 @@ class AssetController extends Controller
 		$asset->fill($data);
 		$asset->save();
 		/* CREATE FLASH MESSAGES */
-		if(!$asset->save()) {
-			toastr()->error('An error has occured please try again.', 'Abigail Says...');
-		} else {
-			toastr()->success('The asset was updated successfully!', 'Abigail Says...');
-		}
+		if (!$asset->save()) {
+        	// if not saved
+            toastr()->error('An error has occurred. If it persists, contact the manager.');
+        } elseif($request->status_id == 2) { 
+        	// if deleted
+        	toastr()->success('The asset was deleted successfully', 'Abigail Says...');
+        } else {
+        	// if edited
+        	toastr()->success('The asset was edited successfully!', 'Abigail Says...');
+        }
 		/* REDIRECT USER */
 		return redirect('/accounts');
 	}

@@ -103,7 +103,7 @@ class AccountController extends Controller
 		/* SAVE THE ACCOUNT */
 		$account->save();
 		/* SET NOTIFICATIONS */
-		if (!$account->save()) {
+		if(!$account->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The account was saved successfully!', 'Abigail Says...');
@@ -181,11 +181,16 @@ class AccountController extends Controller
 		$account->fill($data);
 		$account->save();
 		/* CREATE FLASH MESSAGES */
-		if(!$account->save()) {
-			toastr()->error('An error has occured please try again.', 'Abigail Says...');
-		} else {
-			toastr()->success('The account was updated successfully!', 'Abigail Says...');
-		}
+		if (!$account->save()) {
+        	// if not saved
+            toastr()->error('An error has occurred. If it persists, contact the manager.');
+        } elseif($request->status_id == 2) { 
+        	// if deleted
+        	toastr()->success('Your account was deleted successfully', 'Abigail Says...');
+        } else {
+        	// if edited
+        	toastr()->success('Your account was edited successfully!', 'Abigail Says...');
+        }
 		/* REDIRECT USER */
 		return redirect('/accounts');
     }

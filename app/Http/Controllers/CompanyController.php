@@ -160,10 +160,15 @@ class CompanyController extends Controller
         $company->save();
         /* SET TOASTR FLASH MESSAGES */
         if (!$company->save()) {
-			toastr()->error('An error has occured please try again.', 'Abigail Says...');
-		} else {
-			toastr()->success('The company was updated successfully!', 'Abigail Says...');
-		}
+        	// if not saved
+            toastr()->error('An error has occurred. If it persists, contact the manager.');
+        } elseif($request->status_id == 2) { 
+        	// if deleted
+        	toastr()->success('The company was deleted successfully', 'Abigail Says...');
+        } else {
+        	// if edited
+        	toastr()->success('The company was edited successfully!', 'Abigail Says...');
+        }
 		/* REDIRECT USER AFTER SAVE */
         return redirect('/companies');
     }
