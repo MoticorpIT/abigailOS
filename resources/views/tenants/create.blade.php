@@ -31,7 +31,7 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="#0" class="btn btn-round">Cancel</a>
+					<a href="/tenants" class="btn btn-round">Cancel</a>
 					<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
 						<i class="fas fa-check-circle"></i>
 						Save Tenant
@@ -47,24 +47,33 @@
 					<div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
-							<h2 class="heading">Tenant Name</h2>
+							<h2 class="heading">
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<input type="text" class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="name" value="" placeholder="First Name">
+									</div> <!-- col -->
+									<div class="col-12 col-md-6">
+										<input type="text" class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="name" value="" placeholder="Last Name">
+									</div> <!-- col -->
+								</div> <!-- row -->
+							</h2>
 						</div>
 					</div> <!-- row -->
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<img src="https://via.placeholder.com/400x400" />
+								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
+									<img src="https://via.placeholder.com/400x400" />
+								</a>
 							</div> <!-- profile image -->
 
-							<div class="col-12 col profile-image-updater">
-								{{-- Tenant image --}}
-								<div class="form-group">
-									<label>
-										Photo
-										<span class="optional">(400 x 400)</span>
-									</label>
-									<input type="file" class="form-control {{ $errors->has('logo') ? 'has-error' : '' }}" name="logo" placeholder="Path to the Company Logo" value="{{ old('logo') }}">
-								</div>
+              <div class="col-12 col profile-image-updater">
+							  {{-- Asset image --}}
+							  <div class="form-group">
+                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
+                    <i class="fas fa-images"></i> Update Images
+                  </a>
+							  </div>
 							</div> <!-- col -->
 
 							<nav class="profile-tabs">
@@ -153,24 +162,44 @@
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
-								<div class="col-12 col-md-6 col">
-									{{-- Tenant First Name --}}
+								<div class="col-12 col-md-3 col">
 									<div class="form-group">
-										<label>
-											First Name
-											<span class="required">*</span>
+										<label for="created-at">
+											Created On
 										</label>
-										<input class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="first_name" value="{{ old('first_name') }}" >
+										<input type="text" class="form-control" name="created-at" value="Now" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-6 col">
-									{{-- Tenant Last Name --}}
+
+                <div class="col-12 col-md-3 col">
 									<div class="form-group">
-										<label>
-											Last Name
+										<label for="updated-at">
+											Updated On
+										</label>
+										<input type="text" class="form-control" name="updated-at" value="Now" disabled readonly placeholder="n/a">
+									</div>
+								</div> <!-- col -->
+
+								<div class="col-12 col-md-3 col">
+									{{-- Tenant Account Standing DROPDOWN --}}
+									<div class="form-group">
+										<label for="account_standing_id">
+											Account Standing
 											<span class="required">*</span>
 										</label>
-										<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="{{ old('last_name') }}" >
+										<select class="form-control" id="account_standing_id" name="account_standing_id" disabled readonly>
+											<option value="">Current</option>
+										</select>
+									</div>
+								</div> <!-- col -->
+								<div class="col-12 col-md-3 col">
+									<div class="form-group">
+										<label>
+											Tenant Status
+										</label>
+                    <select class="form-control" id="status_id" name="status_id" readonly disabled>
+											<option selected>Active</option>
+										</select>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col">
@@ -291,125 +320,6 @@
 </div> <!-- db boxes -->
 
 
-
-
-
-
-	<div class="col-md-12">
-		Tenants - create.blade.php || <a href="/tenants/create">Create Tenant</a>
-		<hr>
-		<h4>Create Tenant</h4>
-	</div>
-	@include('layouts.errors')
-	<div class="col-md-12">
-		<form method="POST" action="/tenants">
-			{{ csrf_field() }}
-			<div class="form-group">
-				<label>first name:</label>
-				<input class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="first_name" value="{{ old('first_name') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>last name:</label>
-				<input class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="{{ old('last_name') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>phone_1:</label>
-				<input class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" value="{{ old('phone_1') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>phone_2:</label>
-				<input class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" value="{{ old('phone_2') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>fax:</label>
-				<input class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" value="{{ old('fax') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>email:</label>
-				<input class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" value="{{ old('email') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>co_first_name:</label>
-				<input class="form-control {{ $errors->has('co_first_name') ? 'has-error' : '' }}" name="co_first_name" value="{{ old('co_first_name') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>co_last_name:</label>
-				<input class="form-control {{ $errors->has('co_last_name') ? 'has-error' : '' }}" name="co_last_name" value="{{ old('co_last_name') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>co_phone_1:</label>
-				<input class="form-control {{ $errors->has('co_phone_1') ? 'has-error' : '' }}" name="co_phone_1" value="{{ old('co_phone_1') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>co_phone_2:</label>
-				<input class="form-control {{ $errors->has('co_phone_2') ? 'has-error' : '' }}" name="co_phone_2" value="{{ old('co_phone_2') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>co_email:</label>
-				<input class="form-control {{ $errors->has('co_email') ? 'has-error' : '' }}" name="co_email" value="{{ old('co_email') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>street_1:</label>
-				<input class="form-control {{ $errors->has('street_1') ? 'has-error' : '' }}" name="street_1" value="{{ old('street_1') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>street_2:</label>
-				<input class="form-control {{ $errors->has('street_2') ? 'has-error' : '' }}" name="street_2" value="{{ old('street_2') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>city:</label>
-				<input class="form-control {{ $errors->has('city') ? 'has-error' : '' }}" name="city" value="{{ old('city') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>state:</label>
-				<input class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ old('state') }}" >
-			</div>
-
-			<div class="form-group">
-				<label>zip:</label>
-				<input class="form-control {{ $errors->has('zip') ? 'has-error' : '' }}" name="zip" value="{{ old('zip') }}" >
-			</div>{{--
-
-			<div class="form-group">
-				<label>account_standing:</label>
-				<select class="form-control" id="account_standing_id" name="account_standing_id">
-					@foreach($account_standings as $account_standing)
-						<option value="{{ $account_standing->id }}">
-							{{ $account_standing->name }}
-						</option>
-					@endforeach
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label>status</label>
-				<select class="form-control" id="status_id" name="status_id">
-					@foreach($statuses as $status)
-						<option value="{{ $status->id }}">
-							{{ $status->name }}
-						</option>
-					@endforeach
-				</select>
-			</div> --}}
-
-			<div class="form-group">
-				<a href="{{ route('tenants.index') }}" class="btn btn-round">Cancel</a>
-				<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Save Tenant</button>
-			</div>
-		</form>
-	</div>
+<!-- Images Modal -->
+{{-- @include('layouts/modals/view-images') --}}
 @endsection

@@ -10,13 +10,35 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
+
+      <nav aria-label="breadcrumb" class="d-none d-sm-block">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/dashboard/">
+              Dashboard
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="/tenants/">
+              Tenant Table
+            </a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Tenant Profile<span class="d-none d-sm-inline">: {{ $tenant->first_name }} {{ $tenant->last_name }}</span>
+          </li>
+        </ol>
+      </nav>
+
 			<h1 class="page-heading">
 				Tenant Profile
 
-				{{-- BUTTON SET --}}
+        {{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="" class="btn btn-round">Go Back</a>
-					<a href="/tenants/{{ $tenant->id }}/edit" id="submit-btn" class="btn btn-primary">Edit Tenant</a>
+					<a href="/tenants/" class="btn btn-round">Go Back</a>
+					<a href="/tenants/{{ $tenant->id }}/edit" class="btn btn-primary">
+						<i class="fas fa-edit"></i>
+						Edit Tenant
+					</a>
 				</div>
 				<div class="clear"></div>
 			</h1>
@@ -32,9 +54,20 @@
 					</div> <!-- row -->
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
-							<div class="profile-image">
-								<img src="https://via.placeholder.com/400x400" />
+              <div class="profile-image">
+								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
+									<img src="https://via.placeholder.com/400x400" />
+								</a>
 							</div> <!-- profile image -->
+
+              <div class="col-12 col profile-image-updater">
+							  {{-- Asset image --}}
+							  <div class="form-group">
+                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
+                    <i class="fas fa-images"></i> Update Images
+                  </a>
+							  </div>
+              </div> <!-- col -->
 
 							<nav class="profile-tabs">
 							  <div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
@@ -314,5 +347,7 @@
 
 <!-- ADD NOTE MODAL -->
 @include('layouts/modals/note-add')
+<!-- Images Modal -->
+@include('layouts/modals/view-images')
 
 @endsection

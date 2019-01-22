@@ -113,7 +113,7 @@
 								</span>
 							</td>
 							<td class="view-button not-mobile-p">
-								<a href="tenants/{{ $tenant->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+								<a href="/tenants/{{ $tenant->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
 							</td>
 						</tr>
 						@endforeach

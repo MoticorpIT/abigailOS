@@ -21,6 +21,7 @@
 
 {{-- Toastr Notifications --}}
 @toastr_css
+
 <link rel="stylesheet" href="/css/main.css">
 
 {{-- REQUIRED FOR AJAX USE --}}
