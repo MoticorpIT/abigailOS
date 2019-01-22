@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Payment;
+use App\Invoice;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -51,9 +52,10 @@ class PaymentController extends Controller
      * @param  \App\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show($id)
     {
-        return view('payments.show');
+    	$payment = Payment::with('invoice')->findOrFail($id);
+        return view('payments.show', compact('payment'));
     }
 
     /**
@@ -64,7 +66,7 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        return view('payments.edit');
+        return view('payments.edit', compact('payment'));
     }
 
     /**
@@ -75,17 +77,6 @@ class PaymentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Payment $payment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Payment $payment)
     {
         //
     }

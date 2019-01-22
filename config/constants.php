@@ -90,5 +90,11 @@ return [
         '1' => 'Task Type 1',
 		'2' => 'Task Type 2',
 		'3' => 'Task Type 3'
+    ],
+
+    'priorities' => [
+        '1' => 'Low',
+		'2' => 'Medium',
+		'3' => 'High'
     ]
 ];

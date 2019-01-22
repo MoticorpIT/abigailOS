@@ -56,8 +56,13 @@ class UserController extends Controller
             'email' => request('email'),
             'password' => Hash::make(request('password'))
         ]);
-        /* REDIRECT USER AFTER SAVE */
-        session()->flash('message', 'User Added Successfully');
+        /* SET TOASTR FLASH MESSAGES */
+        if (!$user->save()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The user was saved successfully!', 'Abigail Says...');
+		}
+		/* REDIRECT USER AFTER SAVE */
         return redirect('users');
     }
 
@@ -107,10 +112,15 @@ class UserController extends Controller
             'is_active' => request('is_active')
         ])->save();
         /* CONFIRM UPDATE AND REDIRECT USER */
-        if(!$user->save()) {
-            session()->flash('message', 'Contact Manager. ERROR: User did not update');
+        if (!$user->save()) {
+        	// if not saved
+            toastr()->error('An error has occurred. If it persists, contact the manager.');
+        } elseif($request->status_id == 2) { 
+        	// if deleted
+        	toastr()->success('The user was deleted successfully', 'Abigail Says...');
         } else {
-            session()->flash('message', 'User Updated Successfully');
+        	// if edited
+        	toastr()->success('The user was edited successfully!', 'Abigail Says...');
         }
         /* REDIRECT USER */
         return redirect('users');
@@ -129,13 +139,13 @@ class UserController extends Controller
     {
         /* SAVE VALIDATED DATA TO DATABASE */
         $user->password = Hash::make(request('password'));
-        /* SET SESSION MESSAGE AND REDIRECT USER */
-        if (!$user->save()) { 
-            session()->flash('message', 'Contact Manager: ERROR: Password did not update');
-        } else {
-            session()->flash('message', 'Password Updated Successfully');
-        }
-
+        /* SET TOASTER SESSION MESSAGES */
+        if (!$user->save()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('Your password was updated successfully!', 'Abigail Says...');
+		}
+		/* REDIRECT USER AFTER SAVE */
         return redirect('users');
     }
 
