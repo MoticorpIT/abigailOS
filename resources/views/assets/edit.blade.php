@@ -5,7 +5,7 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/tenants">
+			<form method="POST" action="/assets">
 			{{ csrf_field() }}
 
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">

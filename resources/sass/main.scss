@@ -1219,9 +1219,6 @@
       table.dataTable>tbody>tr.child li[data-dt-column="8"] span.dtr-title{
         display: block;
       }
-      table.dataTable>tbody>tr.child li:last-child span.dtr-title{
-        display: none;
-      }
       table.dataTable>tbody>tr.child li:last-child .btn{
         display: block;
       }
@@ -1267,6 +1264,12 @@
 
 
     } /* (max-width: 577px)  */
+
+    @media only screen and (max-width: 320px)  {
+      table.dataTable>tbody>tr.child li:last-child span.dtr-title{
+        display: none;
+      }
+    }
 
     @media only screen and (max-width: 767px)  {
       div.table-responsive>div.dataTables_wrapper>div.row:last-child>div{

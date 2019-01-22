@@ -8,15 +8,42 @@
 			<form method="POST" action="/tenants/{{ $tenant->id }}">
 				{{ csrf_field() }}
 				{{ method_field('PATCH') }}
+
+			<nav aria-label="breadcrumb" class="d-none d-sm-block">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="/dashboard/">
+							Dashboard
+						</a>
+					</li>
+					<li class="breadcrumb-item">
+						<a href="/tenants/">
+							Tenant Table
+						</a>
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">
+						Edit Tenant<span class="d-none d-sm-inline">: {{ $tenant->first_name }} {{ $tenant->last_name }}</span>
+					</li>
+				</ol>
+			</nav>
+
 			<h1 class="page-heading">
 				Edit Tenant
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="{{ route('tenants.index') }}" class="btn btn-round">Cancel</a>
-					<a href="/tenants/{{ $tenant->id }}" class="btn btn-secondary">View Tenant</a>
-					<button id="submit-btn" type="submit" class="btn btn-primary">Save Tenant</button>
-				</div>
+					<a href="/tenants/" class="btn btn-round">
+						Go Back
+					</a>
+          <a href="/tenants/{{ $tenant->id }}" class="btn btn-secondary">
+						<i class="fas fa-eye"></i>
+						View Tenant
+					</a>
+          <button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
+						<i class="far fa-check-circle"></i>
+						Save Tenant
+					</button>
+				</div> <!-- button set -->
 				<div class="clear"></div>
 			</h1>
 
@@ -30,10 +57,10 @@
 							<h2 class="heading">
 								<div class="row">
 									<div class="col-12 col-md-6">
-										<input type="text" class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="name" value="{{ $tenant->first_name }}" placeholder="n/a">
+										<input type="text" class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="name" value="{{ $tenant->first_name }}" placeholder="First Name">
 									</div> <!-- col -->
 									<div class="col-12 col-md-6">
-										<input type="text" class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="name" value="{{ $tenant->last_name }}" placeholder="n/a">
+										<input type="text" class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="name" value="{{ $tenant->last_name }}" placeholder="Last Name">
 									</div> <!-- col -->
 								</div> <!-- row -->
 							</h2>
@@ -42,17 +69,17 @@
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<img src="https://via.placeholder.com/400x400" />
+								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
+									<img src="https://via.placeholder.com/400x400" />
+								</a>
 							</div> <!-- profile image -->
 
-							<div class="col-12 col profile-image-updater">
+              <div class="col-12 col profile-image-updater">
 							  {{-- Asset image --}}
 							  <div class="form-group">
-							    <label>
-							      <i class="far fa-image"></i> Photo
-							      <span class="optional">(400 x 400)</span>
-							    </label>
-							    <input type="button" class="form-control btn btn-primary" name="Asset Photo" value="Update Image" />
+                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
+                    <i class="fas fa-images"></i> Update Images
+                  </a>
 							  </div>
 							</div> <!-- col -->
 
@@ -310,4 +337,6 @@
 	</div> <!-- col -->
 </div> <!-- db boxes -->
 
+<!-- Images Modal -->
+@include('layouts/modals/view-images')
 @endsection

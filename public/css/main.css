@@ -1036,8 +1036,6 @@ table.dataTable > tbody > tr.child ul.dtr-details {
   table.dataTable > tbody > tr.child li[data-dt-column="3"] span.dtr-title,
   table.dataTable > tbody > tr.child li[data-dt-column="8"] span.dtr-title {
     display: block; }
-  table.dataTable > tbody > tr.child li:last-child span.dtr-title {
-    display: none; }
   table.dataTable > tbody > tr.child li:last-child .btn {
     display: block; }
   div.dataTables_wrapper div.dataTables_filter input {
@@ -1070,6 +1068,10 @@ table.dataTable > tbody > tr.child ul.dtr-details {
     width: 98%; } }
 
 /* (max-width: 577px)  */
+@media only screen and (max-width: 320px) {
+  table.dataTable > tbody > tr.child li:last-child span.dtr-title {
+    display: none; } }
+
 @media only screen and (max-width: 767px) {
   div.table-responsive > div.dataTables_wrapper > div.row:last-child > div {
     padding: 0; }

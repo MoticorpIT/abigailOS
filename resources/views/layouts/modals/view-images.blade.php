@@ -236,20 +236,25 @@
 				</div> <!-- updating images wrapper -->
 			</div>
 			<div class="modal-footer">
+				<button type="button" class="download-all-link btn btn-secondary mr-auto">
+					<i class="fas fa-download"></i>
+					Download all images
+				</button>
+
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
 
 				<!-- Asset Upload  -->
-				<form id="uploadFileForm" name="uploadFileField"  method="POST" action="/images" enctype="multipart/form-data">
+				<form id="uploadFileForm" class="m-0" name="uploadFileField"  method="POST" action="/images" enctype="multipart/form-data">
 
-					
+
 					{{ csrf_field() }}
 					{{ method_field('PATCH') }}
 					{{-- HIDEEN FIELDS --}}
-						
+
 					{{-- Hidden Id fields - Wrapped in conditials - This allows the modal to be used globally --}}
 
 					<input type="hidden" name="status_id" id="statusIdField" value="1">
-					
+
 					@if (Request::segment(1) == 'accounts')
 						<input type="hidden" name="account_id" id="accountIdField" value="{{ $account->id }}">
 					@endif
@@ -279,5 +284,3 @@
 		</div>
 	</div>
 </div> <!-- update images -->
-
-
