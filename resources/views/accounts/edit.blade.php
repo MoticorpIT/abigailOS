@@ -28,7 +28,7 @@
           </nav>
 
           <h1 class="page-heading">
-            Edit Account
+            <i class="fas fa-file-alt"></i> Edit Account
 
             {{-- BUTTON SET --}}
     				<div class="float-right button-set">

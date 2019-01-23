@@ -6,7 +6,7 @@
 		<div class="col-12">
 			<div class="lowerlevel db-box">
 				<h1 class="page-heading">
-					Accounts
+					<i class="fas fa-file-alt"></i> Accounts
 					<a href="/accounts/create" class="btn btn-primary d-block-small float-right">
 						<i class="fas fa-plus-square"></i>
 						Create Account

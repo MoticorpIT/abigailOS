@@ -28,7 +28,7 @@
           </nav>
 
           <h1 class="page-heading">
-            Create Asset
+            <i class="fas fa-briefcase"></i> Create Asset
 
             {{-- BUTTON SET --}}
             <div class="float-right button-set">

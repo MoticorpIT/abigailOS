@@ -28,7 +28,7 @@
           </nav>
 
           <h1 class="page-heading">
-            Account Profile
+            <i class="fas fa-file-alt"></i> Account Profile
 
 						{{-- BUTTON SET --}}
 						<div class="float-right button-set">

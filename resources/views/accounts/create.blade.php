@@ -28,7 +28,7 @@
           </nav>
 
           <h1 class="page-heading">
-            Add New Account
+            <i class="fas fa-file-alt"></i> Add New Account
 
             {{-- BUTTON SET --}}
             <div class="float-right button-set">

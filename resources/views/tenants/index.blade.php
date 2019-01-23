@@ -6,7 +6,7 @@
 	<div class="col-12">
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
-				Tenants
+				<i class="fas fa-users"></i> Tenants
 				<a href="/tenants/create" class="btn btn-primary d-block-small float-right">
 					<i class="fas fa-plus-square"></i>
 					Create Tenant

@@ -28,7 +28,7 @@
 			</nav>
 
 			<h1 class="page-heading">
-				Edit Tenant
+				<i class="fas fa-users"></i> Edit Tenant
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
