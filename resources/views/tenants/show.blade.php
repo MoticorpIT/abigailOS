@@ -30,7 +30,7 @@
       </nav>
 
 			<h1 class="page-heading">
-				Tenant Profile
+				<i class="fas fa-users"></i> Tenant Profile
 
         {{-- BUTTON SET --}}
 				<div class="float-right button-set">

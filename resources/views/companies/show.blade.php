@@ -30,6 +30,7 @@
       </nav>
 
 			<h1 class="page-heading">
+        <i class="fas fa-building"></i>
 				Company Profile
 
         {{-- BUTTON SET --}}

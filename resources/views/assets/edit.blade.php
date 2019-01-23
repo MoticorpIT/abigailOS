@@ -27,7 +27,7 @@
 			</nav>
 
 			<h1 class="page-heading">
-				Edit Asset
+				<i class="fas fa-briefcase"></i> Edit Asset
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
 					<a href="/assets/" class="btn btn-round">

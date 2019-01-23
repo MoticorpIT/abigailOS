@@ -6,7 +6,7 @@
 	<div class="col-12">
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
-				Assets
+				<i class="fas fa-briefcase"></i> Assets
 				<a href="/assets/create" class="btn btn-primary d-block-small float-right">
 					<i class="fas fa-plus-square"></i>
 					Create Asset

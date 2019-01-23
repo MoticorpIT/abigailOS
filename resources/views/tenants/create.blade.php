@@ -27,7 +27,7 @@
 				</nav>
 
 			<h1 class="page-heading">
-				Add New Tenant
+				<i class="fas fa-users"></i> Add New Tenant
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">

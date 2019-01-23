@@ -28,6 +28,7 @@
 			</nav>
 
 			<h1 class="page-heading">
+				<i class="fas fa-building"></i>
 				Edit Company
 
 				{{-- BUTTON SET --}}

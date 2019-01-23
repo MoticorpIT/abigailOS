@@ -30,7 +30,7 @@
 			</nav>
 
 			<h1 class="page-heading">
-				Asset Profile
+				<i class="fas fa-briefcase"></i> Asset Profile
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
