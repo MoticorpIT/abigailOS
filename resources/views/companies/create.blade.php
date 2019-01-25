@@ -327,6 +327,6 @@
 </div> <!-- db boxes -->
 
 <!-- Images Modal -->
-@include('layouts/modals/view-images')
+{{-- @include('layouts/modals/view-images') --}}
 
 @endsection

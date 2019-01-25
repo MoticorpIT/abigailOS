@@ -1,11 +1,11 @@
 <!-- Update Images Modal -->
-<div class="modal fade images-modal" id="update-images" tabindex="-1" role="dialog" aria-labelledby="modal-heading" aria-hidden="true">
+<div class="modal fade images-modal" id="update-documents" tabindex="-1" role="dialog" aria-labelledby="modal-heading" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="modal-heading">
-					<i class="fas fa-images"></i>
-					Update Images
+					<i class="fas fa-copy"></i>
+					Update Documents
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -13,7 +13,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="updating-images-wrapper">
-					<div id="images-carousel" class="images-carousel carousel slide" data-interval="false">
+					<div id="docs-carousel" class="images-carousel carousel slide" data-interval="false">
 						<div class="row no-gutters">
 							<div class="col-12 col-md-8">
 								<div class="carousel-inner">
@@ -46,11 +46,11 @@
 									</div>
 								</div> <!-- inner -->
 
-								<a class="carousel-control-prev" href="#images-carousel" role="button" data-slide="prev">
+								<a class="carousel-control-prev" href="#docs-carousel" role="button" data-slide="prev">
 									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 									<span class="sr-only">Previous</span>
 								</a>
-								<a class="carousel-control-next" href="#images-carousel" role="button" data-slide="next">
+								<a class="carousel-control-next" href="#docs-carousel" role="button" data-slide="next">
 									<span class="carousel-control-next-icon" aria-hidden="true"></span>
 									<span class="sr-only">Next</span>
 								</a>
@@ -59,15 +59,13 @@
 								<ol class="image-thumbnails carousel-indicators">
 									<li class="thumbnail-item active">
 										<div class="row no-gutters">
+											<div class="title">Document Title</div>
 											<div class="col-12 img-group">
-												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="0" class="active">
+												<div class="carousel-indicator" data-target="#docs-carousel" data-slide-to="0" class="active">
 													<img src="http://lorempixel.com/800/500/food/1" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary disabled btn-sm">
-													<i class="fas fa-star"></i>
-												</a>
 												<a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-download"></i>
 												<a href="#0" class="btn btn-danger btn-sm">
@@ -78,15 +76,13 @@
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
 										<div class="row no-gutters">
+											<div class="title">Document Title</div>
 											<div class="col-12 img-group">
-												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="1">
+												<div class="carousel-indicator" data-target="#docs-carousel" data-slide-to="1">
 													<img src="http://lorempixel.com/800/500/city/1" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
 												<a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-download"></i>
 												<a href="#0" class="btn btn-danger btn-sm">
@@ -97,15 +93,13 @@
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
 										<div class="row no-gutters">
+											<div class="title">Document Title</div>
 											<div class="col-12 img-group">
-												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="2">
+												<div class="carousel-indicator" data-target="#docs-carousel" data-slide-to="2">
 													<img src="http://lorempixel.com/800/500/nightlife/1" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
 												<a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-download"></i>
 												<a href="#0" class="btn btn-danger btn-sm">
@@ -116,15 +110,13 @@
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
 										<div class="row no-gutters">
+											<div class="title">Document Title</div>
 											<div class="col-12 img-group">
-												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="3">
+												<div class="carousel-indicator" data-target="#docs-carousel" data-slide-to="3">
 													<img src="http://lorempixel.com/800/500/nightlife/2" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
 												<a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-download"></i>
 												</a>
@@ -136,15 +128,13 @@
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
 										<div class="row no-gutters">
+											<div class="title">Document Title</div>
 											<div class="col-12 img-group">
-												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="4">
+												<div class="carousel-indicator" data-target="#docs-carousel" data-slide-to="4">
 													<img src="http://lorempixel.com/800/500/nightlife/3" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
 												<a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-download"></i>
 												<a href="#0" class="btn btn-danger btn-sm">
@@ -155,15 +145,13 @@
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
 										<div class="row no-gutters">
+											<div class="title">Document Title</div>
 											<div class="col-12 img-group">
-												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="5">
+												<div class="carousel-indicator" data-target="#docs-carousel" data-slide-to="5">
 													<img src="http://lorempixel.com/800/500/nightlife/4" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
 												<a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-download"></i>
 												<a href="#0" class="btn btn-danger btn-sm">
@@ -174,15 +162,13 @@
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
 										<div class="row no-gutters">
+											<div class="title">Document Title</div>
 											<div class="col-12 img-group">
-												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="6">
+												<div class="carousel-indicator" data-target="#docs-carousel" data-slide-to="6">
 													<img src="http://lorempixel.com/800/500/nightlife/5" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
 												<a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-download"></i>
 												<a href="#0" class="btn btn-danger btn-sm">
@@ -193,15 +179,13 @@
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
 										<div class="row no-gutters">
+											<div class="title">Document Title</div>
 											<div class="col-12 img-group">
-												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="7">
+												<div class="carousel-indicator" data-target="#docs-carousel" data-slide-to="7">
 													<img src="http://lorempixel.com/800/500/nightlife/6" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
 												<a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-download"></i>
 												<a href="#0" class="btn btn-danger btn-sm">
@@ -212,15 +196,13 @@
 									</li> <!-- thumbnail item -->
 									<li class="thumbnail-item">
 										<div class="row no-gutters">
+											<div class="title">Document Title</div>
 											<div class="col-12 img-group">
-												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="8">
+												<div class="carousel-indicator" data-target="#docs-carousel" data-slide-to="8">
 													<img src="http://lorempixel.com/800/500/nightlife/7" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
-												<a href="#0" class="btn btn-secondary btn-sm">
-													<i class="far fa-star"></i>
-												</a>
 												<a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-download"></i>
 												<a href="#0" class="btn btn-danger btn-sm">
@@ -238,7 +220,7 @@
 			<div class="modal-footer">
 				<button type="button" class="download-all-link btn btn-secondary mr-auto">
 					<i class="fas fa-download"></i>
-					Download All Images
+					Download All Documents
 				</button>
 
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
@@ -276,7 +258,7 @@
 
 				<button type="button" class="btn btn-primary uploadFileButton">
 					<i class="fas fa-plus-square"></i>
-					Add Image
+					Add Document
 				</button>
 				<!-- End Asset Upload -->
 

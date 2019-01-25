@@ -1720,6 +1720,13 @@
 		"oAP": "/resources/views/layouts/modals/update-images.blade.php",
 		"oF": 0
 		},
+	"/resources/views/layouts/modals/view-documents.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/modals/view-documents.blade.php",
+		"oF": 0
+		},
 	"/resources/views/layouts/modals/view-images-bu.blade.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -2096,6 +2103,13 @@
 		"oAP": "/storage/framework/views/583b732ddb75f34421ee6f394da31ac5e8e430cd.php",
 		"oF": 0
 		},
+	"/storage/framework/views/592f355e21dc9868cf40176bb4c9d8926a633470.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/592f355e21dc9868cf40176bb4c9d8926a633470.php",
+		"oF": 0
+		},
 	"/storage/framework/views/5c0590d374b07b669aaba2a36fcffb515e1dfe8f.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -2164,6 +2178,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/aa1c631c604163d0c11730806caf395e1dff61fd.php",
+		"oF": 0
+		},
+	"/storage/framework/views/ad9561622ec0633c542663ad12a54c69681fb86f.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/ad9561622ec0633c542663ad12a54c69681fb86f.php",
 		"oF": 0
 		},
 	"/storage/framework/views/afe0e87c69e63330b15e192e20091be818e8b22d.php": {

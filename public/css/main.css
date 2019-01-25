@@ -620,6 +620,10 @@ body {
     /* (max-width: 910px)  */
     /* (max-width: 767px)  */
     /* (max-width: 500px)  */ }
+    .images-carousel .carousel-indicators .thumbnail-item .title {
+      font-weight: bold;
+      line-height: 1em;
+      margin-bottom: 5px; }
     @media only screen and (min-width: 768px) and (max-width: 1100px) {
       .images-carousel .carousel-indicators .thumbnail-item {
         width: 100%; } }

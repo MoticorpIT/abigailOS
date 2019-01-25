@@ -79,6 +79,9 @@
 							    <a class="nav-item nav-link" id="email-tab-button" data-toggle="tab" href="#email-tab-content" role="tab" aria-controls="email-tab" aria-selected="false">
 										<i class="fas fa-at"></i>
 									</a>
+                  <a class="nav-item nav-link" id="docs-tab-button" data-toggle="tab" href="#docs-tab-content" role="tab" aria-controls="docs-tab" aria-selected="false">
+										<i class="fas fa-copy"></i>
+									</a>
 							  </div>
 							</nav>
 							<div class="tab-content profile-tabs-content" id="nav-tabContent">
@@ -146,6 +149,46 @@
 							          </div>
 							        </div>
 							      </div>
+									</div>
+							  </div>
+                <div class="tab-pane fade" id="docs-tab-content" role="tabpanel" aria-labelledby="docs-tab-button">
+									{{-- Asset EMAIL --}}
+									<div class="form-group">
+										<label class="ml-1">
+											<i class="fas fa-copy"></i>
+											Documents
+										</label>
+                    <ul class="reset assoc-list doc mt-1">
+  										<li class="assoc-list-item">
+  											<a href="#0" class="assoc-list-link">
+                          <i class="fas fa-file-word"></i>
+                          <span class="assoc-list-span">Word Document</span>
+  											</a>
+  										</li>
+                      <li class="assoc-list-item">
+                        <a href="#0" class="assoc-list-link">
+                          <i class="fas fa-file-invoice"></i>
+                          <span class="assoc-list-span">Invoice Document</span>
+  											</a>
+  										</li>
+                      <li class="assoc-list-item">
+                        <a href="#0" class="assoc-list-link">
+                          <i class="fas fa-file-pdf"></i>
+                          <span class="assoc-list-span">PDF Document</span>
+  											</a>
+  										</li>
+                      <li class="assoc-list-item">
+                        <a href="#0" class="assoc-list-link">
+                          <i class="fas fa-file-contract"></i>
+                          <span class="assoc-list-span">Contract Document</span>
+  											</a>
+  										</li>
+  									</ul>
+									</div>
+                  <div class="form-group">
+                    <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-documents">
+                    <i class="fas fa-copy"></i> Update Documents
+                  </a>
 									</div>
 							  </div>
 							</div>
@@ -344,6 +387,8 @@
 	</div> <!-- col -->
 </div> <!-- db boxes -->
 
+<!-- Documents Modal -->
+@include('layouts/modals/view-documents')
 <!-- Images Modal -->
 @include('layouts/modals/view-images')
 <!-- ADD NOTES MODEL -->
