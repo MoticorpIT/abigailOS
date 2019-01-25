@@ -34,10 +34,10 @@
 								City
 							</th>
 							<th class="state">
-								state
+								State
 							</th>
 							<th class="zip">
-								zip
+								Zip
 							</th>
 							<th class="created-on none">
 								Created

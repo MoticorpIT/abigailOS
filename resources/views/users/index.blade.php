@@ -39,7 +39,7 @@
 										{{ $user->id }}
 									</td>
 									<td class="view-button not-mobile-p">
-										<a href="/accounts/{{ $user->id }}" class="btn btn-secondary btn-sm user-edit-link"><i class="fas fa-edit"></i> Edit User</i></a>
+										<a href="/users/{{ $user->id }}" class="btn btn-secondary btn-sm user-edit-link"><i class="fas fa-edit"></i> Edit User</i></a>
 										<a href="/users/{{ $user->id }}" class="btn btn-secondary btn-sm user-view-link"><i class="fas fa-eye"></i> View Profile</a>
 									</td>
 								</tr>

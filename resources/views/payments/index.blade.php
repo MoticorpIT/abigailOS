@@ -35,7 +35,7 @@
 								<th class="created-on">
 									Created
 								</th>
-								<th class="updated-on">
+								<th class="updated-on none">
 									Updated
 								</th>
 								<th class="view-button not-mobile-p">
@@ -66,7 +66,7 @@
 											{{ $payment->created_at->format('m/d/y') }}
 										</span>
 									</td>
-									<td class="updated-on">
+									<td class="updated-on none">
 										<span class="date">
 											{{ $payment->updated_at->format('m/d/y h:i a') }}
 										</span>
