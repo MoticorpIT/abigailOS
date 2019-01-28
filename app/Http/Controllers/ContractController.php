@@ -6,6 +6,7 @@ use App\Contract;
 use App\Asset;
 use App\Tenant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class ContractController extends Controller
 {
@@ -37,7 +38,11 @@ class ContractController extends Controller
     	$assets = Asset::active()->get();
     	$tenants = Tenant::active()->notevicted()->get();
 
-        return view('contracts.create', compact('assets', 'tenants'));
+    	// CONFIG/CONSTANTS.PHP 'QUERIES'
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $term_lengths = Config::get('constants.term_lengths');
+
+        return view('contracts.create', compact('assets', 'tenants', 'term_lengths'));
     }
 
     /**
@@ -114,7 +119,11 @@ class ContractController extends Controller
    		$tenants = Tenant::active()->notevicted()->get();
     	$assets = Asset::active()->get();
 
-        return view('contracts.edit', compact('contract', 'tenants', 'assets'));
+    	// CONFIG/CONSTANTS.PHP 'QUERIES'
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $term_lengths = Config::get('constants.term_lengths');
+
+        return view('contracts.edit', compact('contract', 'tenants', 'assets', 'term_lengths'));
     }
 
     /**
