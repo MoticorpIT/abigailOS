@@ -2,7 +2,7 @@
 
 @section('content')
 
-<p>This page will not exsist in the production version. To view contracts, visit assets and/or tenants. Leaving it here for now because contract.store and contract.update are currently redirecting here. Once the redirect location is determined, this page/route will be gone</p>
+<p>This page will not exsist in the production version. To view contracts, visit assets and/or tenants. Leaving it here for now because contract.store and contract.update are currently redirecting here. Once the redirect location is determined, this view/route will be gone</p>
 
 <div class="db-boxes-row row no-gutters mb-3">
 	<div class="col-12">
@@ -22,10 +22,10 @@
 							<th class="id">
 								ID
 							</th>
-							<th>Tenant</th>
-							<th>Asset</th>
-							<th>Terms</th>
-							<th class="view-button not-mobile-p">
+							<th class="text-left">Tenant</th>
+							<th class="text-left">Asset</th>
+							<th class="text-left">Terms</th>
+							<th class="view-button text-left not-mobile-p">
 								View
 							</th>
 						</tr>
@@ -73,10 +73,10 @@
 							<th class="id">
 								ID
 							</th>
-							<th>Tenant</th>
-							<th>Asset</th>
-							<th>Terms</th>
-							<th class="view-button not-mobile-p">
+							<th class="text-left">Tenant</th>
+							<th class="text-left">Asset</th>
+							<th class="text-left">Terms</th>
+							<th class="view-button text-left not-mobile-p">
 								View
 							</th>
 						</tr>
