@@ -5,8 +5,9 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/assets">
+			<form method="POST" action="/assets/{{ $asset->id }}">
 			{{ csrf_field() }}
+			{{ method_field('PATCH') }}
 
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 			  <ol class="breadcrumb">
@@ -182,7 +183,7 @@
 										<label>
 											Asset Type
 										</label>
-                    <select class="form-control" id="asset-type" name="asset-type">
+                						<select class="form-control" id="asset_type_id" name="asset_type_id">
 											@foreach($asset_types as $id => $asset_type)
 												<option value="{{ $id }}" {{ $asset->asset_type_id == $id ? 'selected' : '' }}>
 													{{ $asset_type }}
@@ -273,7 +274,13 @@
 										<label>
 											Company
 										</label>
-										<input class="form-control {{ $errors->has('$asset->company->name') ? 'has-error' : '' }}" name="company-name" value="{{ $asset->company->name }}" placeholder="n/a" >
+                						<select class="form-control {{ $errors->has('$asset->company_id') ? 'has-error' : '' }}" id="company_id" name="company_id">
+											@foreach($companies as $company)
+												<option value="{{ $company->id }}" {{ $asset->company_id == $company->id ? 'selected' : '' }}>
+													{{ $company->name }}
+												</option>
+											@endforeach
+										</select>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -291,7 +298,7 @@
 										<label>
 											Asset Rent
 										</label>
-										<input class="form-control {{ $errors->has('rent') ? 'has-error' : '' }}" name="rent" value="${{ $asset->rent }}" placeholder="n/a" >
+										<input class="form-control {{ $errors->has('rent') ? 'has-error' : '' }}" name="rent" value="{{ $asset->rent }}" placeholder="n/a" >
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -300,7 +307,7 @@
 										<label>
 											Asset Deposit
 										</label>
-										<input class="form-control {{ $errors->has('deposit') ? 'has-error' : '' }}" name="deposit" value="${{ $asset->deposit }}" placeholder="n/a" >
+										<input class="form-control {{ $errors->has('deposit') ? 'has-error' : '' }}" name="deposit" value="{{ $asset->deposit }}" placeholder="n/a" >
 									</div>
 								</div> <!-- col -->
 

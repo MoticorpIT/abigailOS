@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use App\Asset;
+use App\Company;
 use App\Note;
 use App\Contract;
 use App\AccountType;
@@ -37,12 +38,16 @@ class AccountController extends Controller
      */
     public function create()
     {
+    	// DATABASE QUERIES
+    	$companies = Company::active()->get();
+    	$assets = Asset::active()->get();
+
     	// CONFIG/CONSTANTS.PHP 'QUERIES'
 		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
 		$states = Config::get('constants.states');
 		$account_types = Config::get('constants.account_types');
 
-        return view('accounts.create', compact('states', 'account_types'));
+        return view('accounts.create', compact('states', 'account_types', 'assets', 'companies'));
     }
 
     /**
@@ -97,7 +102,6 @@ class AccountController extends Controller
 				'account_type_id' => $request->account_type_id,
 				'company_id' => $request->company_id,
 				'asset_id' => $request->asset_id,
-				'status_id' => $request->status_id
 			]
 		);
 		/* SAVE THE ACCOUNT */
@@ -109,7 +113,7 @@ class AccountController extends Controller
 			toastr()->success('The account was saved successfully!', 'Abigail Says...');
 		}
 		/* REDIRECT */
-		return redirect('/accounts');
+		return redirect('accounts');
     }
 
     /**
@@ -135,6 +139,8 @@ class AccountController extends Controller
     {
     	// DATABASE QUERIES
         $account = Account::findOrFail($id);
+        $assets = Asset::active()->get();
+        $companies = Company::active()->get();
 
         // CONFIG/CONSTANTS.PHP 'QUERIES'
         // If either need to be changed, they need to be changed in the constants.php file AND on the DB
@@ -142,7 +148,7 @@ class AccountController extends Controller
         $statuses = Config::get('constants.statuses');
         $states = Config::get('constants.states');
 
-        return view('accounts.edit', compact('account', 'account_types', 'statuses', 'states'));
+        return view('accounts.edit', compact('account', 'account_types', 'statuses', 'states', 'assets', 'companies'));
     }
 
     /**
@@ -156,7 +162,7 @@ class AccountController extends Controller
     {
         /* VALIDATE DATA FROM FORM */
 		$data = $request->validate([
-			'name' => 'unique:accounts|required',
+			'name' => 'required',
 			'acct_num' => 'nullable',
 			'url' => 'nullable',
 			'street_1' => 'required',
@@ -192,7 +198,7 @@ class AccountController extends Controller
         	toastr()->success('Your account was edited successfully!', 'Abigail Says...');
         }
 		/* REDIRECT USER */
-		return redirect('/accounts');
+		return redirect('accounts');
     }
     
 }

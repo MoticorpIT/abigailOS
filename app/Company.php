@@ -4,6 +4,9 @@ namespace App;
 
 class Company extends Model
 {
+	public function scopeActive($query) {
+    	return $query->where('status_id',1);
+	}
     public function status() {
 		return $this->belongsTo(Status::class);
 	}
