@@ -1592,3 +1592,64 @@
       content: '»';
       opacity: .5;
     }
+
+    .documents-container{
+      padding-top: 10px;
+
+      .document-item{
+        width: 110px;
+        background: #e9ecef;
+        border-radius: 5px;
+        text-align: center;
+        border: 1px solid $tone-grey;
+        position: relative;
+
+        &:hover{
+          border-color: $dark-grey;
+        }
+
+        &::before{
+          content: '';
+          width: 20px;
+          height: 20px;
+          background: $tone-grey;
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          display: none;
+        }
+
+        .title{
+          padding: 5px;
+          font-size: 1em;
+          margin: 0;
+          line-height: 1em;
+          font-weight: bold;
+        } /* document title */
+        .icon{
+          font-size: 3em;
+          line-height: 1em;
+          padding-bottom: 5px;
+        }
+        .link{
+          color: inherit;
+          &:hover{
+            text-decoration: none;
+            color: inherit;
+          }
+        }
+        .button-group{
+          background: $tone-grey;
+          padding: 5px 0 4px;
+          font-size: 1em;
+          text-align: center;
+          line-height: 1em;
+
+          .btn{
+            padding: 0.1em 0.4em;
+          }
+        }
+      } /* document item */
+
+
+    } /* documents container */

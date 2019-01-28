@@ -18,31 +18,31 @@
 							<div class="col-12 col-md-8">
 								<div class="carousel-inner">
 									<div class="carousel-item active">
-										<img src="http://lorempixel.com/800/500/food/1" class="d-block w-100" alt="...">
+										<img src="https://via.placeholder.com/800x500.jpg?text=Image+1" class="d-block w-100" alt="...">
 									</div>
 									<div class="carousel-item">
-										<img src="http://lorempixel.com/800/500/city/1" class="d-block w-100" alt="...">
+										<img src="https://via.placeholder.com/800x500.jpg?text=Image+2" class="d-block w-100" alt="...">
 									</div>
 									<div class="carousel-item">
-										<img src="http://lorempixel.com/800/500/nightlife/1" class="d-block w-100" alt="...">
+										<img src="https://via.placeholder.com/800x500.jpg?text=Image+3" class="d-block w-100" alt="...">
 									</div>
 									<div class="carousel-item">
-										<img src="http://lorempixel.com/800/500/nightlife/2" class="d-block w-100" alt="...">
+										<img src="https://via.placeholder.com/800x500.jpg?text=Image+4" class="d-block w-100" alt="...">
 									</div>
 									<div class="carousel-item">
-										<img src="http://lorempixel.com/800/500/nightlife/3" class="d-block w-100" alt="...">
+										<img src="https://via.placeholder.com/800x500.jpg?text=Image+5" class="d-block w-100" alt="...">
 									</div>
 									<div class="carousel-item">
-										<img src="http://lorempixel.com/800/500/nightlife/4" class="d-block w-100" alt="...">
+										<img src="https://via.placeholder.com/800x500.jpg?text=Image+6" class="d-block w-100" alt="...">
 									</div>
 									<div class="carousel-item">
-										<img src="http://lorempixel.com/800/500/nightlife/5" class="d-block w-100" alt="...">
+										<img src="https://via.placeholder.com/800x500.jpg?text=Image+7" class="d-block w-100" alt="...">
 									</div>
 									<div class="carousel-item">
-										<img src="http://lorempixel.com/800/500/nightlife/6" class="d-block w-100" alt="...">
+										<img src="https://via.placeholder.com/800x500.jpg?text=Image+8" class="d-block w-100" alt="...">
 									</div>
 									<div class="carousel-item">
-										<img src="http://lorempixel.com/800/500/nightlife/7" class="d-block w-100" alt="...">
+										<img src="https://via.placeholder.com/800x500.jpg?text=Image+9" class="d-block w-100" alt="...">
 									</div>
 								</div> <!-- inner -->
 
@@ -61,7 +61,7 @@
 										<div class="row no-gutters">
 											<div class="col-12 img-group">
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="0" class="active">
-													<img src="http://lorempixel.com/800/500/food/1" class="d-block w-100" alt="...">
+													<img src="https://via.placeholder.com/800x500.jpg?text=Image+1" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
@@ -80,7 +80,7 @@
 										<div class="row no-gutters">
 											<div class="col-12 img-group">
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="1">
-													<img src="http://lorempixel.com/800/500/city/1" class="d-block w-100" alt="...">
+													<img src="https://via.placeholder.com/800x500.jpg?text=Image+2" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
@@ -99,7 +99,7 @@
 										<div class="row no-gutters">
 											<div class="col-12 img-group">
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="2">
-													<img src="http://lorempixel.com/800/500/nightlife/1" class="d-block w-100" alt="...">
+													<img src="https://via.placeholder.com/800x500.jpg?text=Image+3" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
@@ -118,7 +118,7 @@
 										<div class="row no-gutters">
 											<div class="col-12 img-group">
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="3">
-													<img src="http://lorempixel.com/800/500/nightlife/2" class="d-block w-100" alt="...">
+													<img src="https://via.placeholder.com/800x500.jpg?text=Image+4" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
@@ -138,7 +138,7 @@
 										<div class="row no-gutters">
 											<div class="col-12 img-group">
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="4">
-													<img src="http://lorempixel.com/800/500/nightlife/3" class="d-block w-100" alt="...">
+													<img src="https://via.placeholder.com/800x500.jpg?text=Image+5" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
@@ -157,7 +157,7 @@
 										<div class="row no-gutters">
 											<div class="col-12 img-group">
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="5">
-													<img src="http://lorempixel.com/800/500/nightlife/4" class="d-block w-100" alt="...">
+													<img src="https://via.placeholder.com/800x500.jpg?text=Image+6" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
@@ -176,7 +176,7 @@
 										<div class="row no-gutters">
 											<div class="col-12 img-group">
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="6">
-													<img src="http://lorempixel.com/800/500/nightlife/5" class="d-block w-100" alt="...">
+													<img src="https://via.placeholder.com/800x500.jpg?text=Image+7" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
@@ -195,7 +195,7 @@
 										<div class="row no-gutters">
 											<div class="col-12 img-group">
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="7">
-													<img src="http://lorempixel.com/800/500/nightlife/6" class="d-block w-100" alt="...">
+													<img src="https://via.placeholder.com/800x500.jpg?text=Image+8" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
@@ -214,7 +214,7 @@
 										<div class="row no-gutters">
 											<div class="col-12 img-group">
 												<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="8">
-													<img src="http://lorempixel.com/800/500/nightlife/7" class="d-block w-100" alt="...">
+													<img src="https://via.placeholder.com/800x500.jpg?text=Image+9" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
 											<div class="col-12 button-group">
