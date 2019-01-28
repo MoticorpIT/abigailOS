@@ -4,6 +4,12 @@ namespace App;
 
 class Tenant extends Model
 {
+	public function scopeActive($query) {
+    	return $query->where('status_id',1);
+	}
+	public function scopeNotevicted($query) {
+    	return $query->whereIn('account_standing_id', [1, 2]);
+	}
     public function status() {
 		return $this->belongsTo(Status::class);
 	}
