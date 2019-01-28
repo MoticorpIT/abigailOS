@@ -387,8 +387,6 @@
 	</div> <!-- col -->
 </div> <!-- db boxes -->
 
-<!-- Documents Modal -->
-@include('layouts/modals/view-documents')
 <!-- Images Modal -->
 @include('layouts/modals/view-images')
 <!-- ADD NOTES MODEL -->

@@ -1713,27 +1713,6 @@
 		"oAP": "/resources/views/layouts/modals/task-reschedule.blade.php",
 		"oF": 0
 		},
-	"/resources/views/layouts/modals/update-images.blade.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/resources/views/layouts/modals/update-images.blade.php",
-		"oF": 0
-		},
-	"/resources/views/layouts/modals/view-documents.blade.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/resources/views/layouts/modals/view-documents.blade.php",
-		"oF": 0
-		},
-	"/resources/views/layouts/modals/view-images-bu.blade.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/resources/views/layouts/modals/view-images-bu.blade.php",
-		"oF": 0
-		},
 	"/resources/views/layouts/modals/view-images.blade.php": {
 		"cB": 0,
 		"ft": 8192,

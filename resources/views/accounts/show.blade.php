@@ -188,6 +188,7 @@
 										<input type="text" class="form-control" name="status" value="{{ $account->status->name}}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
+
 								<div class="col-12 col">
 									<h4 class="heading divider">
 										<i class="fas fa-globe-americas"></i>
@@ -246,6 +247,7 @@
 										<input type="text" class="form-control {{ $errors->has('zip') ? 'has-error' : '' }}" name="zip" readonly disabled placeholder="n/a" value="{{ $account->zip }}">
 									</div>
 								</div> <!-- col -->
+
 								<div class="col-12 col">
 									<h4 class="heading divider">
 										<i class="fas fa-user"></i>
@@ -280,6 +282,7 @@
 										<input class="form-control {{ $errors->has('contact_email') ? 'has-error' : '' }}" name="contact_email" readonly disabled placeholder="n/a" value="{{ $account->contact_email }}" >
 									</div>
 								</div> <!-- col -->
+
 								<div class="col-12 col">
 									<h4 class="heading divider">
 										<i class="fas fa-info-circle"></i>
@@ -317,6 +320,86 @@
 									</div>
 								</div> <!-- col -->
 
+                <div class="col-12 col">
+									<h4 class="heading divider">
+										<i class="fas fa-copy"></i>
+										Documents
+									</h4>
+								</div> <!-- col -->
+								<div class="col-12 col">
+									<div class="documents-container">
+                    <div class="document-item">
+                      <a href="#0" class="d-block link">
+                        <h4 class="title">Word Document</h4>
+                        <i class="fas fa-file-word icon"></i>
+                      </a>
+                      <div class="button-group">
+                        <a href="#0" class="btn btn-primary btn-sm">
+													<i class="fas fa-eye"></i>
+												</a>
+                        <a href="#0" class="btn btn-secondary btn-sm">
+													<i class="fas fa-download"></i>
+                        </a>
+												<a href="#0" class="btn btn-danger btn-sm">
+													<i class="fas fa-trash-alt"></i>
+												</a>
+                      </div> <!-- button group -->
+                    </div> <!-- document item -->
+                    <div class="document-item">
+                      <a href="#0" class="d-block link">
+                        <h4 class="title">Word Document</h4>
+                        <i class="fas fa-file-word icon"></i>
+                      </a>
+                      <div class="button-group">
+                        <a href="#0" class="btn btn-primary btn-sm">
+													<i class="fas fa-eye"></i>
+												</a>
+                        <a href="#0" class="btn btn-secondary btn-sm">
+													<i class="fas fa-download"></i>
+                        </a>
+												<a href="#0" class="btn btn-danger btn-sm">
+													<i class="fas fa-trash-alt"></i>
+												</a>
+                      </div> <!-- button group -->
+                    </div> <!-- document item -->
+                    <div class="document-item">
+                      <a href="#0" class="d-block link">
+                        <h4 class="title">Word Document</h4>
+                        <i class="fas fa-file-word icon"></i>
+                      </a>
+                      <div class="button-group">
+                        <a href="#0" class="btn btn-primary btn-sm">
+													<i class="fas fa-eye"></i>
+												</a>
+                        <a href="#0" class="btn btn-secondary btn-sm">
+													<i class="fas fa-download"></i>
+                        </a>
+												<a href="#0" class="btn btn-danger btn-sm">
+													<i class="fas fa-trash-alt"></i>
+												</a>
+                      </div> <!-- button group -->
+                    </div> <!-- document item -->
+                    <div class="document-item">
+                      <a href="#0" class="d-block link">
+                        <h4 class="title">Word Document</h4>
+                        <i class="fas fa-file-word icon"></i>
+                      </a>
+                      <div class="button-group">
+                        <a href="#0" class="btn btn-primary btn-sm">
+													<i class="fas fa-eye"></i>
+												</a>
+                        <a href="#0" class="btn btn-secondary btn-sm">
+													<i class="fas fa-download"></i>
+                        </a>
+												<a href="#0" class="btn btn-danger btn-sm">
+													<i class="fas fa-trash-alt"></i>
+												</a>
+                      </div> <!-- button group -->
+                    </div> <!-- document item -->
+                  </div> <!-- documents container -->
+								</div> <!-- col -->
+
+
 								{{-- NOTES SECTION - WHICH INCLUDES LAYOUTS/MODALS/NOTE-EDIT --}}
 								@include('layouts/components/notes')
 
@@ -331,7 +414,7 @@
 </div> <!-- db boxes -->
 
 <!-- Images Modal -->
-{{-- @include('layouts/modals/view-images') --}}
+@include('layouts/modals/view-images')
 <!-- ADD NOTES MODEL -->
 @include('layouts/modals/note-add')
 

@@ -1344,3 +1344,51 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 .breadcrumb-item + .breadcrumb-item::before {
   content: '»';
   opacity: .5; }
+
+.documents-container {
+  padding-top: 10px;
+  /* document item */ }
+  .documents-container .document-item {
+    width: 110px;
+    background: #e9ecef;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    position: relative;
+    /* document title */ }
+    .documents-container .document-item:hover {
+      border-color: #414141; }
+    .documents-container .document-item::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: #ced4da;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      display: none; }
+    .documents-container .document-item .title {
+      padding: 5px;
+      font-size: 1em;
+      margin: 0;
+      line-height: 1em;
+      font-weight: bold; }
+    .documents-container .document-item .icon {
+      font-size: 3em;
+      line-height: 1em;
+      padding-bottom: 5px; }
+    .documents-container .document-item .link {
+      color: inherit; }
+      .documents-container .document-item .link:hover {
+        text-decoration: none;
+        color: inherit; }
+    .documents-container .document-item .button-group {
+      background: #ced4da;
+      padding: 5px 0 4px;
+      font-size: 1em;
+      text-align: center;
+      line-height: 1em; }
+      .documents-container .document-item .button-group .btn {
+        padding: 0.1em 0.4em; }
+
+/* documents container */
