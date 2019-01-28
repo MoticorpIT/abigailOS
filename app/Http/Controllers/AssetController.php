@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Asset;
+use App\Company;
 use App\Note;
 use App\Contract;
 use App\Account;
@@ -36,12 +37,15 @@ class AssetController extends Controller
 	 */
 	public function create()
 	{
+		// DATABASE QUERIES
+		$companies = Company::active()->get();
+
 		// CONFIG/CONSTANTS.PHP 'QUERIES'
 		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
 		$states = Config::get('constants.states');
 		$asset_types = Config::get('constants.asset_types');
 
-		return view('assets.create', compact('states', 'asset_types'));
+		return view('assets.create', compact('states', 'asset_types', 'companies'));
 	}
 
 	/**
@@ -66,7 +70,7 @@ class AssetController extends Controller
 			'email' => 'nullable',
 			'rent' => 'nullable',
 			'deposit' => 'nullable',
-			'aquired_date' => 'nullable',
+			'acquired_date' => 'nullable',
 			'asset_type_id' => 'required',
 			'company_id' => 'required'
 		]);
@@ -85,7 +89,7 @@ class AssetController extends Controller
 				'email' => $request->email,
 				'rent' => $request->rent,
 				'deposit' => $request->deposit,
-				'aquired_date' => $request->aquired_date,
+				'acquired_date' => $request->aquired_date,
 				'asset_type_id' => $request->asset_type_id,
 				'company_id' => $request->company_id
 			]
@@ -127,6 +131,7 @@ class AssetController extends Controller
 	{
 		// DATABASE QUERIES
 		$asset = Asset::findOrFail($id);
+		$companies = Company::active()->get();
 
 		// CONFIG/CONSTANTS.PHP 'QUERIES'
 		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
@@ -134,7 +139,7 @@ class AssetController extends Controller
 		$statuses = Config::get('constants.statuses');
 		$states = Config::get('constants.states');
 		
-		return view('assets.edit', compact('asset', 'asset_types', 'statuses', 'states'));
+		return view('assets.edit', compact('asset', 'asset_types', 'statuses', 'states', 'companies'));
 	}
 
 	/**
@@ -148,7 +153,7 @@ class AssetController extends Controller
 	{
 		/* VALIDATE DATA FROM FORM */
 		$data = $request->validate([
-			'name' => 'unique:assets|required',
+			'name' => 'required',
 			'street_1' => 'required',
 			'street_2' => 'nullable',
 			'city' => 'required',
@@ -160,7 +165,7 @@ class AssetController extends Controller
 			'email' => 'nullable',
 			'rent' => 'nullable',
 			'deposit' => 'nullable',
-			'aquired_date' => 'nullable',
+			'acquired_date' => 'nullable',
 			'asset_type_id' => 'required',
 			'company_id' => 'required',
 			'status_id' => 'required'
@@ -180,6 +185,6 @@ class AssetController extends Controller
         	toastr()->success('The asset was edited successfully!', 'Abigail Says...');
         }
 		/* REDIRECT USER */
-		return redirect('/accounts');
+		return redirect('/assets');
 	}
 }

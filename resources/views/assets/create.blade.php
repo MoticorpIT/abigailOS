@@ -162,7 +162,7 @@
                         <label>
                           Created On
                         </label>
-                        <input class="form-control" name="created-at" value="Now" placeholder="" readonly disabled>
+                        <input class="form-control" name="created_at" value="Now" placeholder="" readonly disabled>
                       </div>
                     </div> <!-- col -->
                     <div class="col-12 col-md-3 col">
@@ -171,7 +171,7 @@
                         <label>
                           Updated On
                         </label>
-                        <input class="form-control" name="updated-at" value="Now" placeholder="" readonly disabled>
+                        <input class="form-control" name="updated_at" value="Now" placeholder="" readonly disabled>
                       </div>
                     </div> <!-- col -->
                     <div class="col-12 col-md-3 col">
@@ -180,7 +180,7 @@
                         <label>
                           Asset Type
                         </label>
-                        <select class="form-control" id="asset-type" name="asset-type">
+                        <select class="form-control" id="asset_type_id" name="asset_type_id">
                           @foreach($asset_types as $id => $asset_type)
                             <option value="{{ $id }}">
                               {{ $asset_type }}
@@ -267,10 +267,15 @@
                     <div class="col-12 col-md-3 col">
                       {{-- Asset Company Name --}}
                       <div class="form-group">
-                        <label>
+                      	<label>
                           Company
                         </label>
-                        <input class="form-control {{ $errors->has('$asset->company->name') ? 'has-error' : '' }}" name="company-name" value="" placeholder="" >
+                        <select class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" name="company_id" value="{{ old('company_id') }}">
+                          <option value="" selected>Choose One</option>
+                          @foreach ($companies as $company)
+                            <option value="{{$company->id}}">{{ $company->name }}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div> <!-- col -->
                     <div class="col-12 col-md-3 col">
@@ -279,7 +284,7 @@
                         <label>
                           Acquired Date
                         </label>
-                        <input class="form-control {{ $errors->has('$asset->acquired_date') ? 'has-error' : '' }}" name="acquired-date" value="" placeholder="" >
+                        <input class="form-control {{ $errors->has('$asset->acquired_date') ? 'has-error' : '' }}" name="acquired_date" value="" placeholder="" >
                       </div>
                     </div> <!-- col -->
                     <div class="col-12 col-md-3 col">
