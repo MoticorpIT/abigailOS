@@ -50,10 +50,10 @@
 							<h2 class="heading">
 								<div class="row">
 									<div class="col-12 col-md-6">
-										<input type="text" class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="name" value="" placeholder="First Name">
+										<input type="text" class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="first_name" value="" placeholder="First Name">
 									</div> <!-- col -->
 									<div class="col-12 col-md-6">
-										<input type="text" class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="name" value="" placeholder="Last Name">
+										<input type="text" class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="" placeholder="Last Name">
 									</div> <!-- col -->
 								</div> <!-- row -->
 							</h2>
@@ -164,19 +164,19 @@
 							<div class="row">
 								<div class="col-12 col-md-3 col">
 									<div class="form-group">
-										<label for="created-at">
+										<label for="created_at">
 											Created On
 										</label>
-										<input type="text" class="form-control" name="created-at" value="Now" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="created_at" value="Now" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
                 <div class="col-12 col-md-3 col">
 									<div class="form-group">
-										<label for="updated-at">
+										<label for="updated_at">
 											Updated On
 										</label>
-										<input type="text" class="form-control" name="updated-at" value="Now" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="updated_at" value="Now" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -188,7 +188,7 @@
 											<span class="required">*</span>
 										</label>
 										<select class="form-control" id="account_standing_id" name="account_standing_id" disabled readonly>
-											<option value="">Current</option>
+											<option value="1">Current</option>
 										</select>
 									</div>
 								</div> <!-- col -->
@@ -198,7 +198,7 @@
 											Tenant Status
 										</label>
                     <select class="form-control" id="status_id" name="status_id" readonly disabled>
-											<option selected>Active</option>
+											<option value="1" selected>Active</option>
 										</select>
 									</div>
 								</div> <!-- col -->
