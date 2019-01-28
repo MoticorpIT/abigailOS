@@ -160,7 +160,7 @@
                         <label>
                           Created On
                         </label>
-                        <input type="text" class="form-control" name="created-at" value="{{ $account->created_at->format('m/d/y') }}" disabled readonly readonly disabled placeholder="n/a">
+                        <input type="text" class="form-control" name="created_at" value="{{ $account->created_at->format('m/d/y') }}" disabled readonly readonly disabled placeholder="n/a">
                       </div>
                     </div> <!-- col -->
                     <div class="col-12 col-md-3 col">
@@ -168,7 +168,7 @@
                         <label>
                           Updated On
                         </label>
-                        <input type="text" class="form-control" name="updated-at" value="{{ $account->updated_at->format('m/d/y') }}" disabled readonly readonly disabled placeholder="n/a">
+                        <input type="text" class="form-control" name="updated_at" value="{{ $account->updated_at->format('m/d/y') }}" disabled readonly readonly disabled placeholder="n/a">
                       </div>
                     </div> <!-- col -->
                     <div class="col-12 col-md-3 col">
@@ -304,17 +304,17 @@
                       </div>
                     </div> <!-- col -->
                     <div class="col-12 col-md-2 col">
-                      {{-- Account Company ID --}}
+                      {{-- Account Company --}}
                       <div class="form-group">
-                        <label>Company ID</label>
-                        <input type="text" class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" name="company_id" readonly disabled placeholder="n/a" value="{{ $account->company_id }}">
+                        <label>Company</label>
+                        <input type="text" class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" name="company_id" readonly disabled placeholder="n/a" value="{{ $account->company->name }}">
                       </div>
                     </div> <!-- col -->
                     <div class="col-12 col-md-2 col">
-                      {{-- Account Asset ID --}}
+                      {{-- Account Asset --}}
                       <div class="form-group">
-                        <label>Asset ID</label>
-                        <input type="text" class="form-control {{ $errors->has('asset_id') ? 'has-error' : '' }}" name="asset_id" readonly disabled placeholder="n/a" value="{{ $account->asset_id }}">
+                        <label>Asset</label>
+                        <input type="text" class="form-control {{ $errors->has('asset_id') ? 'has-error' : '' }}" name="asset_id" readonly disabled placeholder="n/a" value="{{ $account->asset->name }}">
                       </div>
                     </div> <!-- col -->
                   </div> <!-- row -->
