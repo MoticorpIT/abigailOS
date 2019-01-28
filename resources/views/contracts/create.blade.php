@@ -29,10 +29,15 @@
 	</div>
 
 	<div class="form-group">
-		<label>Term Length</label>
-		<div class="input-group">
-			<input type="text" class="form-control" name="term_length" placeholder="How long is the contract?" value="{{ old('term_length') }}">
-		</div>
+		<label>
+			Term Length
+		</label>
+		<select class="form-control" name="term_length">
+	        <option value="" selected>Choose One</option>
+	        @foreach ($term_lengths as $abbr => $name)
+	            <option value="{{$abbr}}">{{ $name }}</option>
+	        @endforeach
+	    </select>
 	</div>
 
 	<div class="form-group">
