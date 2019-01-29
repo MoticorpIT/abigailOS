@@ -96,5 +96,15 @@ return [
         '1' => 'Low',
 		'2' => 'Medium',
 		'3' => 'High'
+    ],
+
+    'term_lengths' => [
+        '1' => 'Monthly',
+        '3' => '3 Months',
+		'6' => '6 Months',
+		'12' => '12 Months',
+		'18' => '18 Months',
+		'24' => '24 Months',
+		'36' => '36 Months'
     ]
 ];

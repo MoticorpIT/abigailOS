@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Contract;
+use App\Asset;
+use App\Tenant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class ContractController extends Controller
 {
@@ -31,7 +34,15 @@ class ContractController extends Controller
      */
     public function create()
     {
-        return view('contracts.create');
+    	// DATABASE QUERIES
+    	$assets = Asset::active()->get();
+    	$tenants = Tenant::active()->notevicted()->get();
+
+    	// CONFIG/CONSTANTS.PHP 'QUERIES'
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $term_lengths = Config::get('constants.term_lengths');
+
+        return view('contracts.create', compact('assets', 'tenants', 'term_lengths'));
     }
 
     /**
@@ -42,7 +53,43 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* VALIDATE DATA COMING IN FROM FORM */
+        $this->validate(request(), [
+            'deposit_amount' => 'nullable',
+            'rent_amount' => 'required',
+            'rent_due_date' => 'required',
+            'term_length' => 'nullable',
+            'term_start' => 'required',
+            'term_ended' => 'nullable',
+            'tenant_id' => 'required',
+            'asset_id' => 'required',
+        ]);
+
+        /* CREATE THE NEW COMPANY */
+        $contract = new Contract(
+            [
+                'deposit_amount' => $request->deposit_amount,
+				'rent_amount' => $request->rent_amount,
+				'rent_due_date' => $request->rent_due_date,
+				'term_length' => $request->term_lenth,
+				'term_start' => $request->term_start,
+				'term_ended' => $request->term_ended,
+				'tenant_id' => $request->tenant_id,
+				'asset_id' => $request->asset_id,
+            ]
+        );
+        /* SAVE THE NEW COMPANY TO DATABASE */
+        $contract->save();
+
+        /* SET TOASTR FLASH MESSAGES */
+        if (!$contract->save()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The contract was saved successfully!', 'Abigail Says...');
+		}
+
+		/* Redirect User After Save */
+        return redirect('contracts');
     }
 
     /**
@@ -51,9 +98,12 @@ class ContractController extends Controller
      * @param  \App\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function show(Contract $contract)
+    public function show($id)
     {
-        return view('contracts.show');
+    	// DATABASE QUERIES
+    	$contract = Contract::findOrFail($id);
+
+        return view('contracts.show', compact('contract'));
     }
 
     /**
@@ -62,9 +112,18 @@ class ContractController extends Controller
      * @param  \App\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contract $contract)
+    public function edit($id)
     {
-        return view('contracts.edit');
+    	// DATABASE QUERIES
+    	$contract = Contract::findOrFail($id);
+   		$tenants = Tenant::active()->notevicted()->get();
+    	$assets = Asset::active()->get();
+
+    	// CONFIG/CONSTANTS.PHP 'QUERIES'
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        $term_lengths = Config::get('constants.term_lengths');
+
+        return view('contracts.edit', compact('contract', 'tenants', 'assets', 'term_lengths'));
     }
 
     /**
@@ -76,17 +135,29 @@ class ContractController extends Controller
      */
     public function update(Request $request, Contract $contract)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Contract  $contract
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Contract $contract)
-    {
-        //
+        /* VALIDATE DATA COMING IN FROM FORM */
+        $data = $request->validate([
+            'deposit_amount' => 'nullable',
+			'rent_amount' => 'required',
+			'rent_due_date' => 'required',
+			'term_lenth' => 'nullable',
+			'term_start' => 'required',
+			'term_ended' => 'nullable',
+			'tenant_id' => 'required',
+			'asset_id' => 'required',
+        ]);
+        /* SAVE VALIDATED DATA TO DATABASE */
+        $contract->fill($data);
+        $contract->save();
+        /* SET TOASTR FLASH MESSAGES */
+        if (!$contract->save()) {
+        	// if not saved
+            toastr()->error('An error has occurred. If it persists, contact the manager.');
+        } else {
+        	// if edited
+        	toastr()->success('The contract was edited successfully!', 'Abigail Says...');
+        }
+		/* REDIRECT USER AFTER SAVE */
+        return redirect('contracts');
     }
 }
