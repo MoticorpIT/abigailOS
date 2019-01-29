@@ -23,7 +23,9 @@ class CompanyController extends Controller
     /** VIEW ALL COMPANIES */
     public function index()
     {
-        $companies = Company::orderBy('name')->get();
+    	// DATABASE QUERIES
+        $companies = Company::all();
+
         return view('companies.index', compact('companies'));
     }
 
@@ -101,16 +103,17 @@ class CompanyController extends Controller
 		}
 
 		/* Redirect User After Save */
-        return redirect('/companies');
+        return redirect('companies');
     }
 
     /** VIEW SINGLE COMPANY */
     public function show($id)
     {
-        $company = Company::find($id);
+    	// DATABASE QUERIES
+        $company = Company::findOrFail($id);
         $assets = Asset::where('company_id', $id)->get();
         $accounts = Account::where('company_id', $id)->get();
-        $notes = Note::where('company_id', $id)->where('status_id',1)->orderBy('updated_at', 'desc')->get();
+        $notes = Note::where('company_id', $id)->active()->ordered()->get();
         $logo = Storage::url($company->logo);
         
         return view('companies.show', compact('company', 'assets', 'notes', 'accounts', 'logo'));
@@ -120,10 +123,10 @@ class CompanyController extends Controller
     public function edit($id)
     {
         // DATABASE QUERIES
-        $company = Company::find($id);
+        $company = Company::findOrFail($id);
 
         // CONFIG/CONSTANTS.PHP 'QUERIES'
-        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        // If either need to be changed, they need to be changed in the constants.php file AND on the DB (if it exists)
         $company_types = Config::get('constants.company_types');
         $statuses = Config::get('constants.statuses');
         $states = Config::get('constants.states');
@@ -155,13 +158,15 @@ class CompanyController extends Controller
             'company_type_id' => 'required', 
             'status_id' => 'required', 
         ]);
+
         /* SAVE VALIDATED DATA TO DATABASE */
         $company->fill($data);
         $company->save();
+        
         /* SET TOASTR FLASH MESSAGES */
         if (!$company->save()) {
         	// if not saved
-            toastr()->error('An error has occurred. If it persists, contact the manager.');
+            toastr()->error('An error has occured please try again.', 'Abigail Says...');
         } elseif($request->status_id == 2) { 
         	// if deleted
         	toastr()->success('The company was deleted successfully', 'Abigail Says...');
@@ -169,7 +174,8 @@ class CompanyController extends Controller
         	// if edited
         	toastr()->success('The company was edited successfully!', 'Abigail Says...');
         }
+		
 		/* REDIRECT USER AFTER SAVE */
-        return redirect('/companies');
+        return redirect('companies');
     }
 }
