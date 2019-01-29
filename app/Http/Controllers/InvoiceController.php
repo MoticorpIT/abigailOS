@@ -22,6 +22,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
+    	// DATABASE QUERIES
         $invoices = Invoice::all();
 
         return view('invoices.index', compact('invoices'));
@@ -78,6 +79,7 @@ class InvoiceController extends Controller
 				'status_id' => $request->status_id,
             ]
         );
+        
         /* SAVE THE NEW INVOICE TO DATABASE */
         $invoice->save();
 
@@ -89,7 +91,7 @@ class InvoiceController extends Controller
 		}
 
 		/* Redirect User After Save */
-        return redirect('/invoices');
+        return redirect('invoices');
     }
 
     /**
@@ -140,6 +142,7 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, Invoice $invoice)
     {
+    	/* VALIDATE DATA FROM FORM */
     	$data = $request->validate([
             'invoice_num' => 'required',
             'due_date' => 'required',
@@ -150,9 +153,11 @@ class InvoiceController extends Controller
             'priority_id' => 'nullable',
             'status_id' => 'required',
         ]);
+        
         /* SAVE VALIDATED DATA TO DATABASE */
         $invoice->fill($data);
         $invoice->save();
+        
         /* SET TOASTR FLASH MESSAGES */
         if (!$invoice->save()) {
         	// if not saved
@@ -161,7 +166,8 @@ class InvoiceController extends Controller
         	// if edited
         	toastr()->success('The invoice was edited successfully!', 'Abigail Says...');
         }
+		
 		/* REDIRECT USER AFTER SAVE */
-        return redirect('/invoices');
+        return redirect('invoices');
     }
 }

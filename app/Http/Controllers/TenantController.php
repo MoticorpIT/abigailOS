@@ -72,6 +72,7 @@ class TenantController extends Controller
             'state' => 'required',
             'zip' => 'required',
         ]);
+        
         /* CREATE THE NEW TENANT */
         $tenant = new Tenant(
             [
@@ -93,6 +94,7 @@ class TenantController extends Controller
                 'zip' => $request->zip,
             ]
         );
+        
         /* SAVE THE NEW COMPANY TO DATABASE */
         $tenant->save();
         if (!$tenant->save()) {
@@ -100,6 +102,8 @@ class TenantController extends Controller
 		} else {
 			toastr()->success('The tenant was saved successfully!', 'Abigail Says...');
 		}
+
+        /* REDIRECT USER AFTER SAVE */
         return redirect('/tenants');
     }
 
@@ -121,6 +125,7 @@ class TenantController extends Controller
         $tenant = Tenant::find($id);
         $notes = Note::where('tenant_id',$id)->where('status_id',1)->orderBy('updated_at','desc')->get();
         $contracts = Contract::where('tenant_id', $id)->get();
+        
         return view('tenants.show', compact('tenant','notes','contracts', 'states', 'statuses', 'account_standings'));
     }
 
@@ -176,10 +181,12 @@ class TenantController extends Controller
             'account_standing_id' => 'required',
             'status_id' => 'required',
         ]);
-         /* SAVE VALIDATED DATA TO DATABASE */
+        
+        /* SAVE VALIDATED DATA TO DATABASE */
         $tenant->fill($data);
         $tenant->save();
-        /* REDIRECT USER AND CONFIRM CREATION */
+        
+        /* SET TOASTR NOTIFICATIONS */
         if (!$tenant->save()) {
         	// if not saved
             toastr()->error('An error has occurred. If it persists, contact the manager.');
@@ -190,17 +197,8 @@ class TenantController extends Controller
         	// if edited
         	toastr()->success('The tenant was edited successfully!', 'Abigail Says...');
         }
+        
+        /* REDIRECT USER AFTER SAVE */
         return redirect('/tenants');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Tenant  $tenant
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Tenant $tenant)
-    {
-        //
     }
 }

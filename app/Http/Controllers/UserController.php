@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('name')->get();
+        $users = User::all();
         return view('users.index', compact('users'));
     }
 
@@ -50,18 +50,21 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:5'
         ]);
+        
         /* CREATE AND SAVE NEW USER TO DATABASE */
         User::create([
             'name' => request('name'),
             'email' => request('email'),
             'password' => Hash::make(request('password'))
         ]);
+        
         /* SET TOASTR FLASH MESSAGES */
         if (!$user->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The user was saved successfully!', 'Abigail Says...');
 		}
+		
 		/* REDIRECT USER AFTER SAVE */
         return redirect('users');
     }
@@ -74,7 +77,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         return view('users.show', compact('user'));
     }
 
@@ -86,7 +89,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
     }
 
@@ -105,16 +108,18 @@ class UserController extends Controller
             'email' => 'required|email',
             'is_active' => 'required|boolean'
         ]);
+        
         /* SAVE VALIDATED DATA TO DATABASE */
         $user->fill([
             'name' => request('name'),
             'email' => request('email'),
             'is_active' => request('is_active')
         ])->save();
+        
         /* CONFIRM UPDATE AND REDIRECT USER */
         if (!$user->save()) {
         	// if not saved
-            toastr()->error('An error has occurred. If it persists, contact the manager.');
+            toastr()->error('An error has occured please try again.', 'Abigail Says...');
         } elseif($request->status_id == 2) { 
         	// if deleted
         	toastr()->success('The user was deleted successfully', 'Abigail Says...');
@@ -122,6 +127,7 @@ class UserController extends Controller
         	// if edited
         	toastr()->success('The user was edited successfully!', 'Abigail Says...');
         }
+        
         /* REDIRECT USER */
         return redirect('users');
     }
@@ -139,12 +145,14 @@ class UserController extends Controller
     {
         /* SAVE VALIDATED DATA TO DATABASE */
         $user->password = Hash::make(request('password'));
+
         /* SET TOASTER SESSION MESSAGES */
         if (!$user->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('Your password was updated successfully!', 'Abigail Says...');
 		}
+		
 		/* REDIRECT USER AFTER SAVE */
         return redirect('users');
     }

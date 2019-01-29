@@ -78,6 +78,7 @@ class ContractController extends Controller
 				'asset_id' => $request->asset_id,
             ]
         );
+        
         /* SAVE THE NEW COMPANY TO DATABASE */
         $contract->save();
 
@@ -152,7 +153,7 @@ class ContractController extends Controller
         /* SET TOASTR FLASH MESSAGES */
         if (!$contract->save()) {
         	// if not saved
-            toastr()->error('An error has occurred. If it persists, contact the manager.');
+            toastr()->error('An error has occurred please try again.', 'Abigail Says...');
         } else {
         	// if edited
         	toastr()->success('The contract was edited successfully!', 'Abigail Says...');
