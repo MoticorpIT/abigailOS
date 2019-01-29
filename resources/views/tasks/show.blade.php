@@ -6,11 +6,24 @@
 
 @include('layouts.errors')
 
+{{-- {{ var_dump($task->toArray()) }} --}}
+
 <div class="form-group">
 	<label>Task</label>
 	<div class="input-group">
 		<input type="text" class="form-control" name="task" placeholder="Task to be completed" value="{{ $task->task }}" disabled read-only>
 	</div>
+</div>
+
+<div class="form-group">
+	<label>
+		Sub-Tasks
+	</label>
+	<ul>
+		@foreach($sub_tasks as $sub_task)
+			<li><a href="/tasks/{{ $sub_task->id }}">{{ $sub_task->task }}</a></li>
+		@endforeach
+	</ul>
 </div>
 
 <div class="form-group">
@@ -69,22 +82,9 @@
 		Parent Task
 	</label>
 	<select class="form-control" name="task_id" disabled read-only>
-		<option value="{{$task->task_id}}">{{ $task->parent_task->task ?? 'NA' }}</option>
+		<option value="{{$task->task_id}}">{{ $task->main_task->task ?? 'NA' }}</option>
 	</select>
 </div>
-
-{{-- @if ($task->task_id)
-	<div class="form-group">
-	<label>
-		Sub Tasks
-	</label>
-	<select class="form-control" name="task_id" disabled read-only>
-		@foreach($sub_tasks as $sub_task)
-			<option value="{{$sub_task->id}}">{{ $sub_task->task ?? 'NA' }}</option>
-		@endforeach
-	</select>
-</div>
-@endif --}}
 
 <div class="form-group">
 	<label>

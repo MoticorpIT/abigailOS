@@ -109,8 +109,9 @@ class TaskController extends Controller
     {
     	// DATABASE QUERIES
     	$task = Task::findOrFail($id);
+    	$sub_tasks = Task::with('sub_tasks')->where('task_id',$id)->get();
 
-        return view('tasks.show', compact('task'));
+        return view('tasks.show', compact('task', 'sub_tasks'));
     }
 
     /**
