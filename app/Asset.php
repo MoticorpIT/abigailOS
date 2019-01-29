@@ -25,6 +25,9 @@ class Asset extends Model
 	public function notes() {
 		return $this->hasMany(Note::class);
 	}
+	public function tasks() {
+		return $this->hasMany(Task::class);
+	}
 	public function images() {
 		return $this->hasMany(Image::class);
 	}
