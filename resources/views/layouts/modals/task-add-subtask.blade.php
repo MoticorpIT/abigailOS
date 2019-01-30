@@ -17,15 +17,15 @@
 						<div class="media-body">
 							{{-- Hidden User Field - Pulls Current Authenticated User (account logged in) --}}
 							
-							<input type="hidden" name="task_id" value="{{ $task->id }}">
-							<input type="hidden" name="account_id" value="{{ $task->account_id }}">
-							<input type="hidden" name="company_id" value="{{ $task->company_id }}">
-							<input type="hidden" name="asset_id" value="{{ $task->asset_id }}">
+							<input type="hidden" name="task_id" id="task_id" value="{{ $task->id }}">
+							<input type="hidden" name="account_id" id="account_id" value="{{ $task->account_id }}">
+							<input type="hidden" name="company_id" id="company_id" value="{{ $task->company_id }}">
+							<input type="hidden" name="asset_id" id="asset_id" value="{{ $task->asset_id }}">
 							
 							<div class="form-group">
 								<label>Subtask</label>
 								<div class="input-group">
-									<input style="width:100%" type="text" name="task" value="{{ old('task') }}" focus>
+									<input style="width:100%" type="text" name="task" id="task" value="{{ old('task') }}" focus>
 								</div>
 							</div>
 							<div class="form-group">
@@ -38,7 +38,7 @@
 								<label>
 									Task Type
 								</label>
-								<select class="form-control" name="task_type_id" value="{{ old('task_type_id') }}">
+								<select class="form-control" name="task_type_id" id="task_type_id" value="{{ old('task_type_id') }}">
 									<option value="" selected>Choose One</option>
 									@foreach ($task_types as $key => $value)
 										<option value="{{$key}}">{{ $value }}</option>
@@ -48,14 +48,14 @@
 							<div class="form-group">
 								<label>Due Date</label>
 								<div class="input-group">
-									<input style="width:100%" type="text" name="due_date" value="">
+									<input style="width:100%" type="text" name="due_date" id="due_date" value="">
 								</div>
 							</div>
 							<div class="form-group">
 								<label>
 									Prioritiy
 								</label>
-								<select class="form-control" name="priority_id" value="{{ old('priority_id') }}">
+								<select class="form-control" name="priority_id" id="priority_id" value="{{ old('priority_id') }}">
 									<option value="" selected>Choose One</option>
 									@foreach ($priorities as $key => $value)
 										<option value="{{$key}}">{{ $value }}</option>
@@ -64,7 +64,7 @@
 							</div>
 							<div class="form-group">
 								<label>Repeats</label>
-								<select class="form-control" name="repeats">
+								<select class="form-control" name="repeats" id="repeats">
 									<option value="0" selected>No</option>
 									<option value="1">Yes</option>
 								</select>
@@ -73,7 +73,7 @@
 								<label>
 									Assigned User
 								</label>
-								<select class="form-control" name="assigned_user_id" value="{{ old('assigned_user_id') }}">
+								<select class="form-control" name="assigned_user_id" id="assigned_user_id" value="{{ old('assigned_user_id') }}">
 									<option value="" selected>Choose One</option>
 									@foreach ($users as $user)
 									<option value="{{$user->id}}">{{ $user->name }}</option>

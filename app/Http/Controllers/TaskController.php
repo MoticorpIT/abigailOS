@@ -96,7 +96,12 @@ class TaskController extends Controller
 			toastr()->success('The task was saved successfully!', 'Abigail Says...');
 		}
 		/* REDIRECT */
-		return redirect('tasks');
+		if ($request->ajax()){
+			return response()->json($task);
+		} else {
+			return redirect('tasks');
+		}
+		
     }
 
     /**
