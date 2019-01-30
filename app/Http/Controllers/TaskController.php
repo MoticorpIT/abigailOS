@@ -110,8 +110,14 @@ class TaskController extends Controller
     	// DATABASE QUERIES
     	$task = Task::findOrFail($id);
     	$sub_tasks = Task::with('sub_tasks')->where('task_id',$id)->get();
+    	$users = User::active()->get();
 
-        return view('tasks.show', compact('task', 'sub_tasks'));
+    	// CONFIG/CONSTANTS.PHP 'QUERIES'
+		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
+		$task_types = Config::get('constants.task_types');
+		$priorities = Config::get('constants.priorities');
+
+        return view('tasks.show', compact('task', 'sub_tasks', 'users', 'task_types', 'priorities'));
     }
 
     /**
