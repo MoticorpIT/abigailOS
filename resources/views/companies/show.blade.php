@@ -94,7 +94,7 @@
 											Phone 1
 										</label>
 										<div class="input-group">
-											<input type="tel" class="form-control" name="phone_1" value="{{ $company->phone_1 }}" disabled readonly placeholder="n/a">
+											<input type="tel" class="form-control" name="phone_1" value="{{ cleanPhone($company->phone_1) }}" disabled readonly placeholder="n/a">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -109,7 +109,7 @@
 											Phone 2
 										</label>
 										<div class="input-group">
-											<input type="tel" class="form-control" name="phone_2" value="{{ $company->phone_2 }}" disabled readonly placeholder="n/a">
+											<input type="tel" class="form-control" name="phone_2" value="{{ cleanPhone($company->phone_2) }}" disabled readonly placeholder="n/a">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -126,7 +126,7 @@
 											Fax
 										</label>
 										<div class="input-group">
-											<input type="tel" class="form-control" name="fax" value="{{ $company->fax }}" disabled readonly placeholder="n/a">
+											<input type="tel" class="form-control" name="fax" value="{{ cleanPhone($company->fax) }}" disabled readonly placeholder="n/a">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-fax"></i>
