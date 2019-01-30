@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('ajax-scripts')
+  <script src="{{ asset('/js/ajax.js') }}"></script>
+@endsection
+
 @section('content')
 
 <h1>Task Profile</h1>
@@ -15,15 +19,38 @@
 	</div>
 </div>
 
+<div class="form-group row">
+	<div class="col-6">
+		<label>
+			Sub-Tasks
+		</label>
+		<ul>
+			@foreach($sub_tasks as $sub_task)
+				<li><a href="/tasks/{{ $sub_task->id }}">{{ $sub_task->task }}</a></li>
+			@endforeach
+		</ul>
+	</div>
+	<div class="col-6">
+		<a href="#0" class="badge badge-primary float-right add-task-link" data-toggle="modal" data-target="#add-task-modal">Add Sub Task</a>
+	</div>
+</div>
+
 <div class="form-group">
 	<label>
-		Sub-Tasks
+		Parent Task
 	</label>
-	<ul>
-		@foreach($sub_tasks as $sub_task)
-			<li><a href="/tasks/{{ $sub_task->id }}">{{ $sub_task->task }}</a></li>
-		@endforeach
-	</ul>
+	<select class="form-control" name="task_id" disabled read-only>
+		<option value="{{$task->task_id}}">{{ $task->main_task->task ?? 'NA' }}</option>
+	</select>
+</div>
+
+<div class="form-group">
+	<label>
+		Task Type
+	</label>
+	<select class="form-control" name="task_type_id" disabled read-only>
+		<option value="{{$task->task_type_id}}">{{ $task->task_type->name }}</option>
+	</select>
 </div>
 
 <div class="form-group">
@@ -31,6 +58,15 @@
 	<div class="input-group">
 		<input type="text" class="form-control" name="due_date" placeholder="Date task should be completed" value="{{ $task->due_date }}" disabled read-only>
 	</div>
+</div>
+
+<div class="form-group">
+	<label>
+		Prioritiy
+	</label>
+	<select class="form-control" name="priority_id" disabled read-only>
+		<option value="{{$task->priority_id}}">{{ $task->priority->name }}</option>
+	</select>
 </div>
 
 <div class="form-group">
@@ -77,36 +113,10 @@
 	</select>
 </div>
 
-<div class="form-group">
-	<label>
-		Parent Task
-	</label>
-	<select class="form-control" name="task_id" disabled read-only>
-		<option value="{{$task->task_id}}">{{ $task->main_task->task ?? 'NA' }}</option>
-	</select>
-</div>
-
-<div class="form-group">
-	<label>
-		Task Type
-	</label>
-	<select class="form-control" name="task_type_id" disabled read-only>
-		<option value="{{$task->task_type_id}}">{{ $task->task_type->name }}</option>
-	</select>
-</div>
-
-<div class="form-group">
-	<label>
-		Prioritiy
-	</label>
-	<select class="form-control" name="priority_id" disabled read-only>
-		<option value="{{$task->priority_id}}">{{ $task->priority->name }}</option>
-	</select>
-</div>
-
 <a href="/tasks/{{$task->id}}/edit" id="submit-btn" type="submit" class="btn">
 	Edit Task
 </a>
 
+@include('layouts/modals/task-add-subtask')
 @endsection
 

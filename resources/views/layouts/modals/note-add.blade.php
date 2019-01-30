@@ -19,21 +19,21 @@
 
 						<div class="media-body">
 							{{-- Hidden User Field - Pulls Current Authenticated User (account logged in) --}}
-							<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-							<input type="hidden" name="status_id" value="1">
+							<input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">
+							<input type="hidden" id="status_id" name="status_id" value="1">
 
 							{{-- Hidden Id fields - Wrapped in conditials - This allows the modal to be used globally --}}
 							@if (Request::segment(1) == 'accounts')
-								<input type="hidden" name="account_id" value="{{ $account->id }}">
+								<input type="hidden" id="account_id" name="account_id" value="{{ $account->id }}">
 							@endif
 							@if (Request::segment(1) == 'assets')
-								<input type="hidden" name="asset_id" value="{{ $asset->id }}">
+								<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
 							@endif
 							@if (Request::segment(1) == 'companies')
-								<input type="hidden" name="company_id" value="{{ $company->id }}">
+								<input type="hidden" id="company_id" name="company_id" value="{{ $company->id }}">
 							@endif
 							@if (Request::segment(1) == 'tenants')
-								<input type="hidden" name="tenant_id" value="{{ $tenant->id }}">
+								<input type="hidden" id="tenant_id" name="tenant_id" value="{{ $tenant->id }}">
 							@endif
 
 							{{-- Note field --}}

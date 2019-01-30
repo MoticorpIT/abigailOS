@@ -15,10 +15,46 @@
 	</div>
 
 	<div class="form-group">
+		<label>
+			Parent Task
+		</label>
+		<select class="form-control" name="task_id" value="{{ old('task_id') }}">
+			<option value="" selected>Choose One</option>
+			@foreach ($tasks as $task)
+				<option value="{{$task->id}}">{{ $task->task }}</option>
+			@endforeach
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label>
+			Task Type
+		</label>
+		<select class="form-control" name="task_type_id" value="{{ old('task_type_id') }}">
+			<option value="" selected>Choose One</option>
+			@foreach ($task_types as $key => $value)
+				<option value="{{$key}}">{{ $value }}</option>
+			@endforeach
+		</select>
+	</div>
+
+	<div class="form-group">
 		<label>Due Date</label>
 		<div class="input-group">
 			<input type="text" class="form-control" name="due_date" placeholder="Date task should be completed" value="{{ old('due_date') }}">
 		</div>
+	</div>
+
+	<div class="form-group">
+		<label>
+			Prioritiy
+		</label>
+		<select class="form-control" name="priority_id" value="{{ old('priority_id') }}">
+			<option value="" selected>Choose One</option>
+			@foreach ($priorities as $key => $value)
+				<option value="{{$key}}">{{ $value }}</option>
+			@endforeach
+		</select>
 	</div>
 
 	<div class="form-group">
@@ -73,42 +109,6 @@
 			<option value="" selected>Choose One</option>
 			@foreach ($assets as $asset)
 				<option value="{{$asset->id}}">{{ $asset->name }}</option>
-			@endforeach
-		</select>
-	</div>
-
-	<div class="form-group">
-		<label>
-			Tasks
-		</label>
-		<select class="form-control" name="task_id" value="{{ old('task_id') }}">
-			<option value="" selected>Choose One</option>
-			@foreach ($tasks as $task)
-				<option value="{{$task->id}}">{{ $task->task }}</option>
-			@endforeach
-		</select>
-	</div>
-
-	<div class="form-group">
-		<label>
-			Task Type
-		</label>
-		<select class="form-control" name="task_type_id" value="{{ old('task_type_id') }}">
-			<option value="" selected>Choose One</option>
-			@foreach ($task_types as $key => $value)
-				<option value="{{$key}}">{{ $value }}</option>
-			@endforeach
-		</select>
-	</div>
-
-	<div class="form-group">
-		<label>
-			Prioritiy
-		</label>
-		<select class="form-control" name="priority_id" value="{{ old('priority_id') }}">
-			<option value="" selected>Choose One</option>
-			@foreach ($priorities as $key => $value)
-				<option value="{{$key}}">{{ $value }}</option>
 			@endforeach
 		</select>
 	</div>
