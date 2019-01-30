@@ -12,28 +12,39 @@
 			</div>
 			<form method="POST" action="/tasks">
 				{{ csrf_field() }}
+
 				<div class="modal-body">
 					<div class="media task-item">
 						<div class="media-body">
-							{{-- Hidden User Field - Pulls Current Authenticated User (account logged in) --}}
-							
+
+							{{-- Hidden Fields - All Data Pulled from Parent Task --}}
 							<input type="hidden" name="task_id" id="task_id" value="{{ $task->id }}">
 							<input type="hidden" name="account_id" id="account_id" value="{{ $task->account_id }}">
 							<input type="hidden" name="company_id" id="company_id" value="{{ $task->company_id }}">
 							<input type="hidden" name="asset_id" id="asset_id" value="{{ $task->asset_id }}">
 							
+							{{-- SUBTASK FIELD --}}
 							<div class="form-group">
 								<label>Subtask</label>
 								<div class="input-group">
 									<input style="width:100%" type="text" name="task" id="task" value="{{ old('task') }}" focus>
 								</div>
 							</div>
+
+							{{-- PARENT TASK
+								- FOR VIEWING ONLY
+								- Used only to show the parent task for the subtask being added
+								- The Parent's task_id is passed above in a hidden input (#task_id)
+								- No data is passed from this input
+							--}}
 							<div class="form-group">
 								<label>Parent Task</label>
 								<div class="input-group">
 									<input style="width:100%" type="text" value="{{ $task->task }}" disabled read-only>
 								</div>
 							</div>
+
+							{{-- TASK TYPE DROPDOWN --}}
 							<div class="form-group">
 								<label>
 									Task Type
@@ -45,12 +56,16 @@
 									@endforeach
 								</select>
 							</div>
+
+							{{-- DUE DATE FIELD --}}
 							<div class="form-group">
 								<label>Due Date</label>
 								<div class="input-group">
 									<input style="width:100%" type="text" name="due_date" id="due_date" value="">
 								</div>
 							</div>
+
+							{{-- PRIORITY DROPDOWN --}}
 							<div class="form-group">
 								<label>
 									Prioritiy
@@ -62,6 +77,8 @@
 									@endforeach
 								</select>
 							</div>
+
+							{{-- REPEATS DROPDOWN --}}
 							<div class="form-group">
 								<label>Repeats</label>
 								<select class="form-control" name="repeats" id="repeats">
@@ -69,6 +86,8 @@
 									<option value="1">Yes</option>
 								</select>
 							</div>
+
+							{{-- ASSIGNED USER DROPDOWN --}}
 							<div class="form-group">
 								<label>
 									Assigned User
@@ -83,7 +102,8 @@
 						</div>
 					</div>
 				</div>
-				{{-- Form Buttons --}}
+
+				{{-- FORM BUTTONS --}}
 				<div class="modal-footer">
 					<a href="" data-dismiss="modal" class="cancel-link">Cancel</a>
 					<button id="submit-btn" type="button" class="add-task-ajax btn btn-primary">
@@ -91,6 +111,7 @@
 						Add Note
 					</button>
 				</div>
+
 			</form>
 		</div>
 	</div>
