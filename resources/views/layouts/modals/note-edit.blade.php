@@ -21,29 +21,29 @@
 						<div class="media-body">
 							{{-- HIDEEN FIELDS --}}
 								{{-- Hidden User Field - Pulls user_id from DB --}}
-								<input type="hidden" name="user_id" value="{{ $note->user_id }}">
+								<input type="hidden" id="user_id-{{$note->id}}" name="user_id" value="{{ $note->user_id }}">
 
 								{{-- Hidden Note Id Field - Used for ajax edit --}}
-								<input type="hidden" name="id" value="{{ $note->id }}">
+								<input type="hidden" id="id-{{$note->id}}" name="id" value="{{ $note->id }}">
 
 								{{-- Hidden Status Id Field --}}
-								<input type="hidden" name="status_id" value="1">
+								<input type="hidden" id="status_id-{{$note->id}}" name="status_id" value="1">
 
 								{{-- Hidden Edited_By User Field - Will need to add edited_by_user_id field to notes table --}}
-								<input type="hidden" name="edited_by_user_id" value="{{ Auth::user()->id }}">
+								<input type="hidden" id="edited_by_user_id-{{$note->id}}" name="edited_by_user_id" value="{{ Auth::user()->id }}">
 
 								{{-- Hidden Id fields - Wrapped in conditials - This allows the modal to be used globally --}}
 								@if (Request::segment(1) == 'accounts')
-									<input type="hidden" name="account_id" value="{{ $account->id }}">
+									<input type="hidden" id="account_id-{{$note->id}}" name="account_id" value="{{ $account->id }}">
 								@endif
 								@if (Request::segment(1) == 'assets')
-									<input type="hidden" name="asset_id" value="{{ $asset->id }}">
+									<input type="hidden" id="asset_id-{{$note->id}}" name="asset_id" value="{{ $asset->id }}">
 								@endif
 								@if (Request::segment(1) == 'companies')
-									<input type="hidden" name="company_id" value="{{ $company->id }}">
+									<input type="hidden" id="company_id-{{$note->id}}" name="company_id" value="{{ $company->id }}">
 								@endif
 								@if (Request::segment(1) == 'tenants')
-									<input type="hidden" name="tenant_id" value="{{ $tenant->id }}">
+									<input type="hidden" id="tenant_id-{{$note->id}}" name="tenant_id" value="{{ $tenant->id }}">
 								@endif
 							{{-- HIDDEN FIELDS END --}}
 
