@@ -64,7 +64,7 @@
 													<img src="https://via.placeholder.com/800x500.jpg?text=Image+1" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
+											<div class="col-12 btn-group">
 												<a href="#0" class="btn btn-secondary disabled btn-sm">
 													<i class="fas fa-star"></i>
 												</a>
@@ -83,7 +83,7 @@
 													<img src="https://via.placeholder.com/800x500.jpg?text=Image+2" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
+											<div class="col-12 btn-group">
 												<a href="#0" class="btn btn-secondary btn-sm">
 													<i class="far fa-star"></i>
 												</a>
@@ -102,7 +102,7 @@
 													<img src="https://via.placeholder.com/800x500.jpg?text=Image+3" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
+											<div class="col-12 btn-group">
 												<a href="#0" class="btn btn-secondary btn-sm">
 													<i class="far fa-star"></i>
 												</a>
@@ -121,7 +121,7 @@
 													<img src="https://via.placeholder.com/800x500.jpg?text=Image+4" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
+											<div class="col-12 btn-group">
 												<a href="#0" class="btn btn-secondary btn-sm">
 													<i class="far fa-star"></i>
 												</a>
@@ -141,7 +141,7 @@
 													<img src="https://via.placeholder.com/800x500.jpg?text=Image+5" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
+											<div class="col-12 btn-group">
 												<a href="#0" class="btn btn-secondary btn-sm">
 													<i class="far fa-star"></i>
 												</a>
@@ -160,7 +160,7 @@
 													<img src="https://via.placeholder.com/800x500.jpg?text=Image+6" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
+											<div class="col-12 btn-group">
 												<a href="#0" class="btn btn-secondary btn-sm">
 													<i class="far fa-star"></i>
 												</a>
@@ -179,7 +179,7 @@
 													<img src="https://via.placeholder.com/800x500.jpg?text=Image+7" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
+											<div class="col-12 btn-group">
 												<a href="#0" class="btn btn-secondary btn-sm">
 													<i class="far fa-star"></i>
 												</a>
@@ -198,7 +198,7 @@
 													<img src="https://via.placeholder.com/800x500.jpg?text=Image+8" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
+											<div class="col-12 btn-group">
 												<a href="#0" class="btn btn-secondary btn-sm">
 													<i class="far fa-star"></i>
 												</a>
@@ -217,7 +217,7 @@
 													<img src="https://via.placeholder.com/800x500.jpg?text=Image+9" class="d-block w-100" alt="...">
 												</div>
 											</div> <!-- col -->
-											<div class="col-12 button-group">
+											<div class="col-12 btn-group">
 												<a href="#0" class="btn btn-secondary btn-sm">
 													<i class="far fa-star"></i>
 												</a>

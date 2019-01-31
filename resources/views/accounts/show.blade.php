@@ -151,6 +151,226 @@
 									</div>
 								</div>
 							</div>
+
+              <nav class="profile-tabs associated">
+								<div class="nav nav-pills nav-justified" id="assoc-nav-tab" role="tablist">
+									<a class="nav-item nav-link active" id="assoc-acc-tab-button" data-toggle="tab" href="#assoc-acc-tab-content" role="tab" aria-controls="assoc-nav-tab" aria-selected="true">
+										<i class="fas fa-file-alt"></i>
+										Accounts
+									</a>
+									<a class="nav-item nav-link" id="assoc-ass-tab-button" data-toggle="tab" href="#assoc-ass-tab-content" role="tab" aria-controls="assoc-nav-tab" aria-selected="false">
+										<i class="fas fa-file-alt"></i>
+										Contracts
+									</a>
+									<a class="nav-item nav-link d-sm-none" id="assoc-hide-tab-button" data-toggle="tab" href="#assoc-hide-tab-content" role="tab" aria-selected="false">
+										<i class="fas fa-minus-square"></i>
+									</a>
+								</div>
+							</nav>
+							<div class="tab-content profile-tabs-content" id="">
+								<div class="tab-pane fade show active" id="assoc-acc-tab-content" role="tabpanel" aria-labelledby="assoc-acc-tab-button">
+									<ul class="reset assoc-list acc">
+										<li class="assoc-list-item">
+											<a href="#0" class="assoc-list-link">
+												<span class="name">
+                          Account Name
+												</span>
+											</a>
+                      <div class="assoc-link-dropdown dropdown">
+                        <a class="assoc-link-arrow dropdown-toggle" href="#" id="assoc-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="far fa-circle" data-template="<i class=&quot;fas fa-chevron-circle-down&quot;></i>"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="assoc-link-dd1">
+                          <div class="btn-group" role="group">
+                            <a href="#0" class="btn btn-sm btn-primary view">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-secondary download">
+                              <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-danger delete">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </div> <!-- btn group -->
+                        </div>
+                      </div> <!-- task link dropdown -->
+										</li>
+                    <li class="assoc-list-item">
+											<a href="#0" class="assoc-list-link">
+												<span class="name">
+                          Account Name
+												</span>
+											</a>
+                      <div class="assoc-link-dropdown dropdown">
+                        <a class="assoc-link-arrow dropdown-toggle" href="#" id="assoc-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="far fa-circle" data-template="<i class=&quot;fas fa-chevron-circle-down&quot;></i>"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="assoc-link-dd1">
+                          <div class="btn-group" role="group">
+                            <a href="#0" class="btn btn-sm btn-primary view">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-secondary download">
+                              <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-danger delete">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </div> <!-- btn group -->
+                        </div>
+                      </div> <!-- task link dropdown -->
+										</li>
+                    <li class="assoc-list-item">
+											<a href="#0" class="assoc-list-link">
+												<span class="name">
+                          Account Name
+												</span>
+											</a>
+                      <div class="assoc-link-dropdown dropdown">
+                        <a class="assoc-link-arrow dropdown-toggle" href="#" id="assoc-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="far fa-circle" data-template="<i class=&quot;fas fa-chevron-circle-down&quot;></i>"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="assoc-link-dd1">
+                          <div class="btn-group" role="group">
+                            <a href="#0" class="btn btn-sm btn-primary view">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-secondary download">
+                              <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-danger delete">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </div> <!-- btn group -->
+                        </div>
+                      </div> <!-- task link dropdown -->
+										</li>
+                    <li class="assoc-list-item">
+											<a href="#0" class="assoc-list-link">
+												<span class="name">
+                          Account Name
+												</span>
+											</a>
+                      <div class="assoc-link-dropdown dropdown">
+                        <a class="assoc-link-arrow dropdown-toggle" href="#" id="assoc-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="far fa-circle" data-template="<i class=&quot;fas fa-chevron-circle-down&quot;></i>"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="assoc-link-dd1">
+                          <div class="btn-group" role="group">
+                            <a href="#0" class="btn btn-sm btn-primary view">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-secondary download">
+                              <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-danger delete">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </div> <!-- btn group -->
+                        </div>
+                      </div> <!-- task link dropdown -->
+										</li>
+									</ul>
+								</div>
+								<div class="tab-pane fade" id="assoc-ass-tab-content" role="tabpanel" aria-labelledby="assoc-ass-tab-button">
+									<ul class="reset assoc-list acc">
+                    <li class="assoc-list-item">
+                      <a href="#0" class="assoc-list-link">
+                        Contract Name
+                      </a>
+                      <div class="assoc-link-dropdown dropdown">
+                        <a class="assoc-link-arrow dropdown-toggle" href="#" id="assoc-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="far fa-circle" data-template="<i class=&quot;fas fa-chevron-circle-down&quot;></i>"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="assoc-link-dd1">
+                          <div class="btn-group" role="group">
+                            <a href="#0" class="btn btn-sm btn-primary view">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-secondary download">
+                              <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-danger delete">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </div> <!-- btn group -->
+                        </div>
+                      </div> <!-- task link dropdown -->
+                    </li>
+                    <li class="assoc-list-item">
+                      <a href="#0" class="assoc-list-link">
+                        Contract Name
+                      </a>
+                      <div class="assoc-link-dropdown dropdown">
+                        <a class="assoc-link-arrow dropdown-toggle" href="#" id="assoc-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="far fa-circle" data-template="<i class=&quot;fas fa-chevron-circle-down&quot;></i>"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="assoc-link-dd1">
+                          <div class="btn-group" role="group">
+                            <a href="#0" class="btn btn-sm btn-primary view">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-secondary download">
+                              <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-danger delete">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </div> <!-- btn group -->
+                        </div>
+                      </div> <!-- task link dropdown -->
+                    </li>
+                    <li class="assoc-list-item">
+                      <a href="#0" class="assoc-list-link">
+                        Contract Name
+                      </a>
+                      <div class="assoc-link-dropdown dropdown">
+                        <a class="assoc-link-arrow dropdown-toggle" href="#" id="assoc-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="far fa-circle" data-template="<i class=&quot;fas fa-chevron-circle-down&quot;></i>"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="assoc-link-dd1">
+                          <div class="btn-group" role="group">
+                            <a href="#0" class="btn btn-sm btn-primary view">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-secondary download">
+                              <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-danger delete">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </div> <!-- btn group -->
+                        </div>
+                      </div> <!-- task link dropdown -->
+                    </li>
+                    <li class="assoc-list-item">
+                      <a href="#0" class="assoc-list-link">
+                        Contract Name
+                      </a>
+                      <div class="assoc-link-dropdown dropdown">
+                        <a class="assoc-link-arrow dropdown-toggle" href="#" id="assoc-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="far fa-circle" data-template="<i class=&quot;fas fa-chevron-circle-down&quot;></i>"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="assoc-link-dd1">
+                          <div class="btn-group" role="group">
+                            <a href="#0" class="btn btn-sm btn-primary view">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-secondary download">
+                              <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#0" class="btn btn-sm btn-danger delete">
+                              <i class="fas fa-trash-alt"></i>
+                            </a>
+                          </div> <!-- btn group -->
+                        </div>
+                      </div> <!-- task link dropdown -->
+                    </li>
+									</ul>
+								</div>
+								<div class="tab-pane fade" id="assoc-hide-tab-content" role="tabpanel" aria-labelledby="assoc-hide-tab-button">
+								</div>
+							</div>
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
@@ -324,16 +544,19 @@
 									<h4 class="heading divider">
 										<i class="fas fa-copy"></i>
 										Documents
+                    <a href="#0" class="badge badge-primary float-right add-doc-link" >
+                			<i class="fas fa-plus-square"></i> Add Doc<span>ument</span>
+                		</a>
 									</h4>
 								</div> <!-- col -->
 								<div class="col-12 col">
 									<div class="documents-container">
                     <div class="document-item">
-                      <a href="#0" class="d-block link">
+                      <a href="#0" class="link">
                         <h4 class="title">Word Document</h4>
                         <i class="fas fa-file-word icon"></i>
                       </a>
-                      <div class="button-group">
+                      <div class="btn-group">
                         <a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-eye"></i>
 												</a>
@@ -346,11 +569,11 @@
                       </div> <!-- button group -->
                     </div> <!-- document item -->
                     <div class="document-item">
-                      <a href="#0" class="d-block link">
-                        <h4 class="title">Word Document</h4>
-                        <i class="fas fa-file-word icon"></i>
+                      <a href="#0" class="link">
+                        <h4 class="title">Invoice Document</h4>
+                        <i class="fas fa-file-invoice icon"></i>
                       </a>
-                      <div class="button-group">
+                      <div class="btn-group">
                         <a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-eye"></i>
 												</a>
@@ -363,11 +586,11 @@
                       </div> <!-- button group -->
                     </div> <!-- document item -->
                     <div class="document-item">
-                      <a href="#0" class="d-block link">
-                        <h4 class="title">Word Document</h4>
-                        <i class="fas fa-file-word icon"></i>
+                      <a href="#0" class="link">
+                        <h4 class="title">PDF Document</h4>
+                        <i class="fas fa-file-pdf icon"></i>
                       </a>
-                      <div class="button-group">
+                      <div class="btn-group">
                         <a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-eye"></i>
 												</a>
@@ -380,11 +603,11 @@
                       </div> <!-- button group -->
                     </div> <!-- document item -->
                     <div class="document-item">
-                      <a href="#0" class="d-block link">
-                        <h4 class="title">Word Document</h4>
-                        <i class="fas fa-file-word icon"></i>
+                      <a href="#0" class="link">
+                        <h4 class="title">Contract Document</h4>
+                        <i class="fas fa-file-contract icon"></i>
                       </a>
-                      <div class="button-group">
+                      <div class="btn-group">
                         <a href="#0" class="btn btn-primary btn-sm">
 													<i class="fas fa-eye"></i>
 												</a>
