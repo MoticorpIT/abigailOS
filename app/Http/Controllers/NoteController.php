@@ -85,7 +85,7 @@ class NoteController extends Controller
         /* SET THE NOTIFICATIONS */
         if (!$note->save()) {
         	// if not saved
-            toastr()->error('An error has occurred. If it persists, contact the manager.');
+            toastr()->error('An error has occurred please try again.', 'Abigail Says...');
         } elseif($request->status_id == 2) { 
         	// if deleted
         	toastr()->success('Your note was deleted successfully', 'Abigail Says...');
