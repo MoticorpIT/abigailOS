@@ -618,6 +618,13 @@
 		"oAP": "/config/session.php",
 		"oF": 0
 		},
+	"/config/toastr.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/config/toastr.php",
+		"oF": 0
+		},
 	"/config/view.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1699,6 +1706,13 @@
 		"oAP": "/resources/views/layouts/modals/note-edit.blade.php",
 		"oF": 0
 		},
+	"/resources/views/layouts/modals/task-add-subtask.blade.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/resources/views/layouts/modals/task-add-subtask.blade.php",
+		"oF": 0
+		},
 	"/resources/views/layouts/modals/task-complete.blade.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -2150,6 +2164,20 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "/storage/framework/views/9a1928a18fdae24acaf2f6e3175e38b7c203a973.php",
+		"oF": 0
+		},
+	"/storage/framework/views/9b3b3b1a69fa24e343ccef6ee8aa29fb69823f22.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/9b3b3b1a69fa24e343ccef6ee8aa29fb69823f22.php",
+		"oF": 0
+		},
+	"/storage/framework/views/9ff49f6c327f198c5b3ea9651328d9a2dc0ac287.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/storage/framework/views/9ff49f6c327f198c5b3ea9651328d9a2dc0ac287.php",
 		"oF": 0
 		},
 	"/storage/framework/views/aa1c631c604163d0c11730806caf395e1dff61fd.php": {
