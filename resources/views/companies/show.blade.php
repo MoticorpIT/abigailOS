@@ -50,7 +50,11 @@
 					<div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
-							<h2 class="heading">{{ $company->name }}</h2>
+							<h2 class="heading d-block d-sm-none">{{ $company->name }}</h2>
+              <h2 class="heading d-none d-sm-block">
+                <i class="fas fa-building "></i>
+                Company Profile
+              </h2>
 						</div>
 					</div> <!-- row -->
 					<div class="row profile-row">
@@ -205,7 +209,14 @@
 						{{-- RIGHT COLUMN CONTENT --}}
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
-
+                <div class="col-12 col">
+                  <div class="form-group">
+                    <label for="name">
+											Name
+										</label>
+                    <input type="text" class="form-control" name="name" disabled readonly placeholder="n/a" value="{{ $company->name }}">
+                  </div>
+                </div> <!-- col -->
                 <div class="col-12 col-md-3 col">
 									<div class="form-group">
 										<label for="created-at">
