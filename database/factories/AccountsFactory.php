@@ -10,7 +10,7 @@ $factory->define(App\Account::class, function (Faker $faker) {
 		'street_1' => $faker->streetAddress,
 		'street_2' => $faker->optional()->secondaryAddress,
 		'city' => $faker->city,
-		'state' => $faker->state,
+		'state' => $faker->stateAbbr,
 		'zip' => $faker->postcode,
 		'phone_1' => $faker->phoneNumber,
 		'phone_2' => $faker->optional()->phoneNumber,
@@ -21,8 +21,8 @@ $factory->define(App\Account::class, function (Faker $faker) {
 		'contact_phone_2' => $faker->optional()->phoneNumber,
 		'contact_email' => $faker->optional()->safeEmail,
 		'account_type_id' => $faker->randomElement($array = array ('1','2','3','4')),
-		'company_id' => $faker->randomElement($array = array ('1','2','3','4','5','6')),
-		'asset_id' => $faker->randomElement($array = array ('1','2','3','4','5','6')),
+		'company_id' => $faker->numberBetween($min = 1, $max = 20),
+		'asset_id' => $faker->numberBetween($min = 1, $max = 20),
 		'status_id' => $faker->randomElement($array = array ('1','2')),
     ];
 });
