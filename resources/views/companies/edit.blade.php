@@ -55,12 +55,12 @@
 					<div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
-							<h2 class="heading">
-								<div class="row">
-									<div class="col-12">
-										<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="{{ $company->name }}" placeholder="n/a">
-									</div> <!-- col -->
-								</div> <!-- row -->
+							<h2 class="heading d-block d-sm-none">
+								{{ $company->name }}
+							</h2>
+							<h2 class="heading d-none d-sm-block">
+								<i class="fas fa-building"></i>
+								Company Profile
 							</h2>
 						</div>
 					</div> <!-- row -->
@@ -167,6 +167,16 @@
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
+
+								<div class="col-12 col">
+									<div class="form-group">
+										<label for="name">
+											Name
+										</label>
+										<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="{{ $company->name }}" placeholder="n/a">
+									</div>
+								</div> <!-- col -->
+
 								<div class="col-12 col-md-3 col">
 									<div class="form-group">
 										<label for="created-at">

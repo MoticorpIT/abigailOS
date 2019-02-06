@@ -49,7 +49,8 @@
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
 							<h2 class="profile-heading heading">
-								<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}" autofocus>
+								<i class="fas fa-building"></i>
+								Company Profile
 							</h2>
 						</div>
 					</div> <!-- row -->
@@ -155,6 +156,14 @@
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
+								<div class="col-12 col">
+									<div class="form-group">
+										<label for="name">
+											Name
+										</label>
+										<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}" autofocus>
+									</div>
+								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
 									<div class="form-group">
 										<label>
