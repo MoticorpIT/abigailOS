@@ -6,9 +6,9 @@ $factory->define(App\Company::class, function (Faker $faker) {
     return [
         'name' => $faker->company,
         'street_1' => $faker->streetAddress,
-        'street_2' => $faker->optional()->streetAddress,
+        'street_2' => $faker->optional()->secondaryAddress,
         'city' => $faker->city,
-        'state' => $faker->state,
+        'state' => $faker->stateAbbr,
         'zip' => $faker->postcode,
         'phone_1' => $faker->phoneNumber,
         'phone_2' => $faker->optional()->phoneNumber,
