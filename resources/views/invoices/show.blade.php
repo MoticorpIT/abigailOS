@@ -54,12 +54,16 @@
 									</div>
 									<div class="company-details">
 										<div class="company-details-content">
-											<h2 class="company-name" itemprop="name">MB Tobacco</h2>
-											<span class="street" itemprop="streetAddress">1234 Fake Street</span>
+											<h2 class="company-name" itemprop="name">{{ $invoice->contract->asset->company->name }}</h2>
+											<span class="street" itemprop="streetAddress">
+												{{ $invoice->contract->asset->company->street_1 }}
+												@if($invoice->contract->asset->company->street_2)
+													<br>{{ $invoice->contract->asset->company->street_2 }}</span>
+												@endif
 											<br />
-											<span class="city" itemprop="addressLocality">Mountain View</span>,
-											<span class="state" itemprop="addressRegion">CA</span>
-											<span class="zip" itemprop="postalCode">94043</span>
+											<span class="city" itemprop="addressLocality">{{ $invoice->contract->asset->company->city }}</span>,
+											<span class="state" itemprop="addressRegion">{{ $invoice->contract->asset->company->state }}</span>
+											<span class="zip" itemprop="postalCode">{{ $invoice->contract->asset->company->zip }}</span>
 										</div> <!-- company details conent -->
 									</div> <!-- company details -->
 								</address>
@@ -90,7 +94,11 @@
 								<h3 class="title">Bill To:</h3>
 								<address itemscope itemprop="address" itemtype="http://schema.org/PostalAddress">
 									<h4 class="name" itemprop="name">{{ $invoice->contract->tenant->first_name }} {{ $invoice->contract->tenant->last_name }}</h4>
-									<span class="street" itemprop="streetAddress">{{ $invoice->contract->tenant->street_1 }}</span>
+									<span class="street" itemprop="streetAddress">
+										{{ $invoice->contract->tenant->street_1 }}
+										@if($invoice->contract->tenant->street_2)
+											<br>{{ $invoice->contract->tenant->street_2 }}</span>
+										@endif
 									<br />
 									<span class="city" itemprop="addressLocality">{{ $invoice->contract->tenant->city }}</span>,
 									<span class="state" itemprop="addressRegion">{{ $invoice->contract->tenant->state }}</span>
@@ -102,7 +110,11 @@
 							<div class="property-info">
 								<h3 class="title">Property Address:</h3>
 								<address itemscope itemprop="address" itemtype="http://schema.org/PostalAddress">
-									<span class="street" itemprop="streetAddress">{{ $invoice->contract->asset->street_1 }} {{ $invoice->contract->asset->street_2 }}</span>
+									<span class="street" itemprop="streetAddress">
+										{{ $invoice->contract->asset->street_1 }}
+										@if($invoice->contract->asset->street_2)
+											<br>{{ $invoice->contract->asset->street_2 }}</span>
+										@endif
 									<br />
 									<span class="city" itemprop="addressLocality">{{ $invoice->contract->asset->city}}</span>,
 									<span class="state" itemprop="addressRegion">{{ $invoice->contract->asset->state }}</span>
