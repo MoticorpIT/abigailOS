@@ -44,12 +44,14 @@
 				@include('layouts.errors')
 
 				<section class="profile-head">
-					<div class="row subhead no-gutters">
+          <div class="row subhead no-gutters">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
-							<h2 class="profile-heading heading">
-								{{ $account->name }}
-							</h2>
+							<h2 class="heading d-block d-sm-none">{{ $account->name }}</h2>
+              <h2 class="heading d-none d-sm-block">
+                <i class="fas fa-file-alt"></i>
+                Account Profile
+              </h2>
 						</div>
 					</div> <!-- row -->
 					<div class="row profile-row">
@@ -91,7 +93,7 @@
 											<span class="required">*</span>
 										</label>
 										<div class="input-group">
-											<input type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" readonly disabled placeholder="n/a" value="{{ $account->phone_1 }}">
+                      <div class="input">{{ $account->phone_1 }}</div>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -107,7 +109,7 @@
 											<span class="optional">(optional)</span>
 										</label>
 										<div class="input-group">
-											<input type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" readonly disabled placeholder="n/a" value="{{ $account->phone_2 }}">
+                      <div class="input">{{ $account->phone_2 }}</div>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -124,7 +126,7 @@
 											Fax
 										</label>
 										<div class="input-group">
-											<input type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" readonly disabled placeholder="n/a" value="{{ $account->fax }}">
+                      <div class="input">{{ $account->fax }}</div>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-fax"></i>
@@ -141,7 +143,7 @@
 											Email
 										</label>
 										<div class="input-group">
-											<input type="email" class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" readonly disabled placeholder="n/a" value="{{ $account->email }}">
+                      <div class="input">{{ $account->email }}</div>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-at"></i>
@@ -374,38 +376,46 @@
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
-								<div class="col-12 col-md-3 col">
+                <div class="col-12 col">
+                  <div class="form-group">
+                    <label for="name">
+											Name
+										</label>
+                    <div class="input">{{ $account->name }}</div>
+                  </div>
+                </div> <!-- col -->
+								<div class="col-12 col-md-3 col col-created">
 									<div class="form-group">
 										<label>
 											Created On
 										</label>
-										<input type="text" class="form-control" name="created_at" value="{{ $account->created_at->format('m/d/y') }}" disabled readonly readonly disabled placeholder="n/a">
+                    <div class="input">{{ $account->created_at->format('m/d/y') }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-3 col col-updated">
 									<div class="form-group">
 										<label>
 											Updated On
 										</label>
-										<input type="text" class="form-control" name="updated_at" value="{{ $account->updated_at->format('m/d/y') }}" disabled readonly readonly disabled placeholder="n/a">
+                    <div class="input">{{ $account->updated_at->format('m/d/y') }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-3 col col-type col-account-type">
 									{{-- Account Type --}}
 									<div class="form-group">
 										<label for="account_type_id">
 											Account Type
 											<span class="required">*</span>
 										</label>
-										<input type="text" class="form-control" name="type" value="{{ $account->accountType->name }}" disabled readonly placeholder="n/a">
+                    <div class="input">{{ $account->accountType->name }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-3 col col-status">
 									<div class="form-group">
 										<label>
 											Account Status
 										</label>
-										<input type="text" class="form-control" name="status" value="{{ $account->status->name}}" disabled readonly placeholder="n/a">
+                    <div class="input">{{ $account->status->name}}</div>
 									</div>
 								</div> <!-- col -->
 
@@ -415,56 +425,54 @@
 										Address
 									</h4>
 								</div> <!-- col -->
-								<div class="col-12 col-md-6 col">
+								<div class="col-12 col-md-8 col col-street1">
 									{{-- Account STREET_1 --}}
 									<div class="form-group">
 										<label>
 											Street Address
 											<span class="required">*</span>
 										</label>
-										<input type="text" class="form-control {{ $errors->has('street_1') ? 'has-error' : '' }}" name="street_1" readonly disabled placeholder="n/a" value="{{ $account->street_1 }}">
+                    <div class="input">{{ $account->street_1 }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-6 col">
+								<div class="col-12 col-md-4 col col-street2">
 									{{-- Account STREET_2 --}}
 									<div class="form-group">
 										<label>
 											Street Address 2
 											<span class="optional">(optional)</span>
 										</label>
-										<input type="text" class="form-control {{ $errors->has('street_2') ? 'has-error' : '' }}" name="street_2" readonly disabled placeholder="n/a" value="{{ $account->street_2 }}">
+                    <div class="input">{{ $account->street_2 }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-4 col">
+								<div class="col-12 col-md-4 col col-city">
 									{{-- Account CITY --}}
 									<div class="form-group">
 										<label>
 											City
 											<span class="required">*</span>
 										</label>
-										<input type="text" class="form-control {{ $errors->has('city') ? 'has-error' : '' }}" name="city" readonly disabled placeholder="n/a" value="{{ $account->city }}">
+                    <div class="input">{{ $account->city }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-4 col">
+								<div class="col-12 col-md-4 col col-state">
 									{{-- Account STATE --}}
 									<div class="form-group">
 										<label>
 											State
 											<span class="required">*</span>
 										</label>
-										<select class="form-control" name="state" value="{{ $account->state }}" readonly disabled>
-											<option value="" selected>{{ $account->state }}</option>
-										</select>
+                    <div class="input">{{ $account->state }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-4 col">
+								<div class="col-12 col-md-4 col col-zip">
 									{{-- Account ZIP --}}
 									<div class="form-group">
 										<label>
 											ZIP
 											<span class="required">*</span>
 										</label>
-										<input type="text" class="form-control {{ $errors->has('zip') ? 'has-error' : '' }}" name="zip" readonly disabled placeholder="n/a" value="{{ $account->zip }}">
+                    <div class="input">{{ $account->zip }}</div>
 									</div>
 								</div> <!-- col -->
 
@@ -474,32 +482,32 @@
 										Contact
 									</h4>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-3 col col-name">
 									{{-- Contact Last Name --}}
 									<div class="form-group">
 										<label>Contact Name:</label>
-										<input class="form-control {{ $errors->has('contact_name') ? 'has-error' : '' }}" name="contact_name" readonly disabled placeholder="n/a" value="{{ $account->contact_name }}" >
+                    <div class="input">{{ $account->contact_name }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-3 col col-phone col-phone1">
 									{{-- Contact Phone 1 --}}
 									<div class="form-group">
 										<label>Contact Phone 1:</label>
-										<input class="form-control {{ $errors->has('contact_phone_1') ? 'has-error' : '' }}" name="contact_phone_1" readonly disabled placeholder="n/a" value="{{ $account->contact_phone_1 }}" >
+                    <div class="input">{{ $account->contact_phone_1 }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-3 col col-phone col-phone2">
 									{{-- Contact Phone 2 --}}
 									<div class="form-group">
 										<label>Contact Phone 2:</label>
-										<input class="form-control {{ $errors->has('contact_phone_2') ? 'has-error' : '' }}" name="contact_phone_2" readonly disabled placeholder="n/a" value="{{ $account->contact_phone_2 }}" >
+                    <div class="input">{{ $account->contact_phone_2 }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-3 col col-email">
 									{{-- Contact Email --}}
 									<div class="form-group">
 										<label>Contact Email:</label>
-										<input class="form-control {{ $errors->has('contact_email') ? 'has-error' : '' }}" name="contact_email" readonly disabled placeholder="n/a" value="{{ $account->contact_email }}" >
+                    <div class="input">{{ $account->contact_email }}</div>
 									</div>
 								</div> <!-- col -->
 
@@ -509,34 +517,32 @@
 										Information
 									</h4>
 								</div> <!-- col -->
-								<div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-3 col col-account-num">
 									{{-- Account Number --}}
 									<div class="form-group">
 										<label>Account Number</label>
-										<div class="input-group">
-											<input type="text" class="form-control {{ $errors->has('acct_num') ? 'has-error' : '' }}" name="acct_num" readonly disabled placeholder="n/a" value="{{ $account->acct_num }}">
-										</div> <!-- input group -->
+                    <div class="input">{{ $account->acct_num }}</div>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-5 col">
+								<div class="col-12 col-md-2 col col-account-url">
 									{{-- Account URL --}}
 									<div class="form-group">
 										<label>Account URL</label>
-										<input type="text" class="form-control {{ $errors->has('url') ? 'has-error' : '' }}" name="url" readonly disabled placeholder="n/a" value="{{ $account->url }}">
+                    <a class="btn btn-secondary visit-link" href="{{ $account->url }}" target="_blank">Visit <i class="fas fa-external-link-square-alt icon"></i></a>
 									</div>
 								</div> <!-- col -->
-								<div class="col-12 col-md-2 col">
-									{{-- Account Company --}}
-									<div class="form-group">
-										<label>Company</label>
-										<input type="text" class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" name="company_id" readonly disabled placeholder="n/a" value="{{ $account->company->name }}">
-									</div>
-								</div> <!-- col -->
-								<div class="col-12 col-md-2 col">
+								<div class="col-12 col-md-3 col col-name">
 									{{-- Account Asset --}}
 									<div class="form-group">
 										<label>Asset</label>
-										<input type="text" class="form-control {{ $errors->has('asset_id') ? 'has-error' : '' }}" name="asset_id" readonly disabled placeholder="n/a" value="{{ $account->asset->name }}">
+                    <div class="input">{{ $account->asset->name }}</div>
+									</div>
+								</div> <!-- col -->
+                <div class="col-12 col-md-2 col col-name">
+									{{-- Account Company --}}
+									<div class="form-group">
+										<label>Company</label>
+                    <div class="input">{{ $account->company->name }}</div>
 									</div>
 								</div> <!-- col -->
 
