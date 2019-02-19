@@ -83,6 +83,26 @@
       list-style: none;
       line-height: 1em;
     }
+    .input{
+      display: block;
+      width: 100%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #e9ecef;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      word-wrap: break-word;
+
+      &:empty::before{
+        content: 'n/a';
+        opacity: .6;
+      }
+    }
 
 
 /* ==========================================================================
@@ -279,6 +299,8 @@
         padding: 0;
         list-style: none;
         line-height: 1em;
+        position: sticky;
+        top: 10px;
       }
 
       a{
@@ -1279,9 +1301,15 @@
       padding-bottom: 0;
     }
     label{
-      margin-bottom: 0;
+      margin-bottom: 5px;
       line-height: 1em;
       font-weight: bold;
+      display: block;
+    }
+    .visit-link{
+      .icon{
+        margin-left: 5px;
+      }
     }
     .form-group.flexed{
       display: flex;
@@ -1788,6 +1816,31 @@
       background: #f5f5f5;
       border-radius: 0 0 20px 20px;
       padding-bottom: 1.1rem;
+    }
+    .profile-detail-col{
+      .col{
+        max-width: none;
+        flex-grow: 1;
+      }
+      .col-created,
+      .col-updated,
+      .col-type,
+      .col-status{
+        min-width: 150px;
+      }
+      .col-phone{
+        min-width: 235px;
+      }
+      .col-street2{
+        min-width: 245px;
+      }
+      .col-name{
+        min-width: 300px;
+      }
+      .col-account-url{
+        min-width: 140px;
+        max-width: 140px;
+      }
     }
     .profile-wrapper .heading.divider{
       margin: 40px 0 0;
