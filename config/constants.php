@@ -83,7 +83,8 @@ return [
     
     'company_types' => [
         '1' => 'Real Estate',
-		'2' => 'Retail'
+		'2' => 'Retail',
+		'3' => 'Service'
     ],
 
     'task_types' => [

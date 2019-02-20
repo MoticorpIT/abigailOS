@@ -191,7 +191,7 @@
 										<label for="updated-at">
 											Updated On
 										</label>
-										<input type="text" class="form-control" name="updated-at" value="{{ $company->updated_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="updated-at" value="{{ $company->update_at != null ? $company->updated_at->format('m/d/y') : '' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 

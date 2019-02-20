@@ -19,6 +19,9 @@ class CompanyTypesTableSeeder extends Seeder
         		],[
         			'name' => 'Retail',
         			'created_at' => date("Y-m-d H:i:s")
+        		],[
+        			'name' => 'Services',
+        			'created_at' => date("Y-m-d H:i:s")
         		]
         	]
         );
