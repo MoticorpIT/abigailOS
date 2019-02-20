@@ -26,7 +26,7 @@ class CreateCompaniesTable extends Migration
             $table->string('fax')->nullable();
             $table->string('email')->nullable();
             $table->string('logo')->nullable();
-            $table->date('incorp_date')->nullable();
+            $table->string('incorp_date')->nullable();
             $table->string('corp_id')->nullable();
             $table->string('city_lic')->nullable();
             $table->string('county_lic')->nullable();
