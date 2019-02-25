@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Exports\UsersExport;
+use App\Http\Requests\UpdatePassword;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdatePassword;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -13,6 +16,12 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /* Export to Excel File */
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'abigailos-users.xlsx');
     }
 
     /**

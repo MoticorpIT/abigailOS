@@ -12,6 +12,10 @@
 						<i class="fas fa-plus-square"></i>
 						Create User
 					</a>
+					<a href="/users/export" class="btn d-block-small float-right">
+						<i class="fas fa-file-download"></i>
+						Download
+					</a>
 				</h1>
 
 				<div class="tenant-table-wrapper table-wrapper table-responsive">
@@ -39,7 +43,7 @@
 										{{ $user->id }}
 									</td>
 									<td class="view-button not-mobile-p">
-										<a href="/users/{{ $user->id }}" class="btn btn-secondary btn-sm user-edit-link"><i class="fas fa-edit"></i> Edit User</i></a>
+										<a href="/users/{{ $user->id }}/edit" class="btn btn-secondary btn-sm user-edit-link"><i class="fas fa-edit"></i> Edit User</i></a>
 										<a href="/users/{{ $user->id }}" class="btn btn-secondary btn-sm user-view-link"><i class="fas fa-eye"></i> View Profile</a>
 									</td>
 								</tr>
