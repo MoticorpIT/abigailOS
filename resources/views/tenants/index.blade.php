@@ -11,6 +11,10 @@
 					<i class="fas fa-plus-square"></i>
 					Create Tenant
 				</a>
+				<a href="/tenants/export" class="btn d-block-small float-right">
+					<i class="fas fa-file-download"></i>
+					Download
+				</a>
 			</h1>
 
 			<div class="tenant-table-wrapper table-wrapper table-responsive">

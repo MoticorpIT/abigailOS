@@ -8,9 +8,12 @@ use App\Company;
 use App\Note;
 use App\Contract;
 use App\AccountType;
+use App\Exports\AccountExport;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AccountController extends Controller
 {
@@ -18,6 +21,12 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /* Export to Excel File */
+    public function export() 
+    {
+        return Excel::download(new AccountExport, 'abigailos-accounts.xlsx');
     }
 
     /**

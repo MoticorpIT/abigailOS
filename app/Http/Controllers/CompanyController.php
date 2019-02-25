@@ -8,9 +8,12 @@ use App\Account;
 use App\Asset;
 use App\Note;
 use App\Status;
+use App\Exports\CompanyExport;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CompanyController extends Controller
 {
@@ -18,6 +21,12 @@ class CompanyController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /* Export to Excel File */
+    public function export() 
+    {
+        return Excel::download(new CompanyExport, 'abigailos-companies.xlsx');
     }
 
     /** VIEW ALL COMPANIES */

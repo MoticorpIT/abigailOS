@@ -7,9 +7,12 @@ use App\Company;
 use App\Note;
 use App\Contract;
 use App\Account;
+use App\Exports\AssetExport;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AssetController extends Controller
 {
@@ -18,6 +21,12 @@ class AssetController extends Controller
 	{
 		$this->middleware('auth');
 	}
+
+    /* Export to Excel File */
+    public function export() 
+    {
+        return Excel::download(new AssetExport, 'abigailos-assets.xlsx');
+    }
 
 	/**
 	 * Display a listing of the resource.

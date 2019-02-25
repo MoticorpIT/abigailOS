@@ -12,6 +12,10 @@
 					<i class="fas fa-plus-square"></i>
 					Create Company
 				</a>
+				<a href="/companies/export" class="btn d-block-small float-right">
+					<i class="fas fa-file-download"></i>
+					Download
+				</a>
 			</h1>
 
 			<div class="company-table-wrapper table-wrapper table-responsive">

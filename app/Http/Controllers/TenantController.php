@@ -7,8 +7,11 @@ use App\Contract;
 use App\Note;
 use App\AccountStanding;
 use App\Status;
+use App\Exports\TenantExport;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TenantController extends Controller
 {
@@ -16,6 +19,12 @@ class TenantController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /* Export to Excel File */
+    public function export() 
+    {
+        return Excel::download(new TenantExport, 'abigailos-tenants.xlsx');
     }
 
     /**
