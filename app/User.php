@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use Notifiable;
+    use Notifiable, HasMediaTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -38,9 +40,6 @@ class User extends Authenticatable
     }
 	public function tasks() {
 		return $this->hasMany(Task::class);
-	}
-	public function images() {
-		return $this->hasMany(Image::class);
 	}
 	public function files() {
 		return $this->hasMany(File::class);

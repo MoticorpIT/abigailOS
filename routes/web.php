@@ -21,6 +21,9 @@ $this->get('/', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
+// AVATAR / IMAGE ROUTING
+Route::resource('avatar', 'AvatarController');
+
 // DASHBOARD ROUTE
 Route::group( ['middleware' => 'auth' ], function() {
 	Route::get('/dashboard', function () {

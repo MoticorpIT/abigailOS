@@ -92,17 +92,29 @@
 										</div>
 									</div> <!-- col -->
 
-
-
 								</div> <!-- row -->
 							</div> <!-- col -->
 						</div> <!-- row -->
 
 					</section>
-
 				</div> <!-- profile wrapper -->
-
 			</form>
+
+
+			<form method="POST" action="{{ route('avatar.store') }}" enctype="multipart/form-data">
+				@csrf
+				<div class="input-group">
+					<div class="custom-file">
+						<input type="file" name="avatar" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+						<label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+					</div>
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Upload</button>
+					</div>
+				</div>
+			</form>
+		
+
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div>

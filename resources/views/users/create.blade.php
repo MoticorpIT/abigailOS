@@ -5,8 +5,9 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/users" enctype="multipart/form-data">
-				{{ csrf_field() }}
+			<form method="POST" action="/users">
+				@csrf
+
 				<h1 class="page-heading">
 					Add New User
 
