@@ -15,7 +15,11 @@
 			<div class="profile-link-wrapper ">
 				<a class="nav-link dropdown-toggle btn btn-info btn-sm profile-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown">
 					<span class="profile-link-image">
-						<img src="http://placehold.it/40x40/" />
+						@if (auth()->user()->avatar == null)
+							<img src="http://placehold.it/40x40/" alt="Avatar Placeholder" />
+						@else
+						<img src="{{ auth()->user()->avatarUrl }}" alt="{{ Auth::user()->name }}s-avatar" />
+						@endif
 					</span>
 					<span class="profile-link-username text-capitalize">
 						{{ Auth::user()->name }}

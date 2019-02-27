@@ -36,11 +36,19 @@
 							</div>
 						</div> <!-- row -->
 						<div class="row profile-row">
+
+							{{-- AVATAR SECTION --}}
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
+								{{-- DISPLAY AVATAR OR DEFAULT IMAGE --}}
 								<div class="profile-image">
-									<img src="{{ $avatarURL }}" />
+									@if ($avatar == null)
+										<img src="https://via.placeholder.com/400x400" alt="Avatar Placeholder" />
+									@else
+										<img src="{{ $avatar->getURL('profile') ?? '' }}" alt="{{ $avatar->file_name }}s-avatar" />
+									@endif
 								</div> <!-- profile image -->
 
+								{{-- AVATAR UPLOAD FORM --}}
 								<div class="col-12 col profile-image-updater">
 									{{-- USER AVATAR --}}
 									<div class="form-group">
@@ -51,8 +59,9 @@
 										<input type="file" class="form-control {{ $errors->has('avatar') ? 'has-error' : '' }}" name="avatar" {{-- value="{{ $user->avatar }}" --}}>
 									</div>
 								</div> <!-- col -->
-
 							</div>
+
+							{{-- USER DETAILS SECTION --}}
 							<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 								<div class="row">
 									
