@@ -15,7 +15,10 @@ class AvatarController extends Controller
     // STORE AVATAR
     public function store(Request $request)
     {
-        return $request->all();
+    	$user = auth()->user();
+        $avatarURL = $user->addMedia($request->avatar)->toMediaCollection('avatars');
+
+        return redirect()->back();
     }
 
     // UPDATE AVATAR

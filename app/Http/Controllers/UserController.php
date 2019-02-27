@@ -87,7 +87,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('users.show', compact('user'));
+        $avatarURL = auth()->user()->getFirstMediaUrl('avatars');
+
+        return view('users.show', compact('user', 'avatarURL'));
     }
 
     /**
@@ -99,7 +101,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        $avatarURL = auth()->user()->getFirstMediaUrl('avatars');
+
+        return view('users.edit', compact('user', 'avatarURL'));
     }
 
     /**
