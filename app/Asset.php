@@ -2,11 +2,48 @@
 
 namespace App;
 
-class Asset extends Model
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
+class Asset extends Model implements HasMedia
 {
+	use HasMediaTrait;
+	
+	// SCOPES
 	public function scopeActive($query) {
     	return $query->where('status_id',1);
 	}
+	// SCOPES - END
+
+	// MEDIA/IMAGES - START
+	public function registerMediaCollections()
+	{
+		$this->addMediaCollection('assets')
+			->registerMediaConversions(function (Media $media = null) {
+				$this->addMediaConversion('main')
+					->width(985)
+					->height(616)
+					->withResponsiveImages();
+				$this->addMediaConversion('profile')
+					->width(350)
+					->height(350)
+					->withResponsiveImages();
+				$this->addMediaConversion('thumb')
+					->width(194)
+					->height(121)
+					->withResponsiveImages();
+			});
+	}
+	// public function media() {
+	// 	return $this->hasMany(Media::class);
+	// }
+	// public function getMediaUrlAttribute() {
+	// 	return $this->media->getUrl('thumb');
+	// }
+	// MEDIA/IMAGES - END
+
+
     public function company() {
 		return $this->belongsTo(Company::class);
 	}
