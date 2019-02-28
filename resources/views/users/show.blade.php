@@ -19,7 +19,7 @@
 				<div class="profile-wrapper">
 
 					<section class="profile-head">
-						<div class="row subhead">
+						<div class="row subhead" style="margin: 0; padding: 5px 0">
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 							<div class="col-12 col-sm-7 col-md-8 col-lg-9">
 								<h2 class="heading">User Details</h2>
@@ -28,7 +28,11 @@
 						<div class="row profile-row">
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 								<div class="profile-image">
-									<img src="https://via.placeholder.com/400x400" />
+									@if ($user->avatar_id == null)
+										<img src="/media/images/default-avatar-profile.png" alt="Default Avatar" />
+									@else
+										<img src="{{ $user->avatar->getURL('profile') ?? '' }}" alt="{{ $user->avatar->file_name }}s-avatar" />
+									@endif
 								</div> <!-- profile image -->
 							</div>
 							<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">

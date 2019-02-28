@@ -16,7 +16,7 @@
 				<a class="nav-link dropdown-toggle btn btn-info btn-sm profile-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown">
 					<span class="profile-link-image">
 						@if (auth()->user()->avatar == null)
-							<img src="http://placehold.it/40x40/" alt="Avatar Placeholder" />
+							<img src="/media/images/default-avatar-thumb.png" alt="Default Avatar" />
 						@else
 						<img src="{{ auth()->user()->avatarUrl }}" alt="{{ Auth::user()->name }}s-avatar" />
 						@endif

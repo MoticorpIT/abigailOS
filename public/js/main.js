@@ -38,6 +38,25 @@ $(function(){
     $('#uploadFileField').click();
   });
 
+  // Submit Form with Button Outside of Form
+  $('#edit-btn').click(function(e) {
+  	e.preventDefault();
+	$('#data-form').submit();
+  });
+
+  // Enable Upload Button Once File is Selected
+  // And Show File Name After Selecting but Before Uploading
+  $('input:file').change(function(){
+	if ($(this).val()) {
+	  $('#avatar-upload').removeAttr('disabled');
+	  //get the file name
+      var fileName = $(this).val();
+      var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+      //replace the "Choose a file" label
+      $(this).next('.custom-file-label').html(cleanFileName);
+	} 
+  });
+
   
 
 });

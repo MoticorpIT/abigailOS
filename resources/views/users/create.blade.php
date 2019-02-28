@@ -32,20 +32,8 @@
 						<div class="row profile-row">
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 								<div class="profile-image">
-									<img src="https://via.placeholder.com/400x400" />
-								</div> <!-- profile image -->
-
-								<div class="col-12 col profile-image-updater">
-									{{-- USER AVATAR --}}
-									<div class="form-group">
-										<label>
-											Avatar
-											<span class="optional">(400 x 400)</span>
-										</label>
-										<input type="file" class="form-control {{ $errors->has('avatar') ? 'has-error' : '' }}" name="avatar" placeholder="Path to the User Avatar" value="{{ old('avatar') }}">
-									</div>
-								</div> <!-- col -->
-
+									<img src="/media/images/default-avatar-profile.png" />
+								</div> 
 							</div>
 							<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 								<div class="row">

@@ -15,34 +15,37 @@ class User extends Authenticatable implements HasMedia
 {
 	use Notifiable, HasMediaTrait;
 
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
 	protected $fillable = [
 		'name', 'email', 'password', 'is_active',
 	];
 
-	/**
-	 * The attributes that should be hidden for arrays.
-	 *
-	 * @var array
-	 */
 	protected $hidden = [
 		'password', 'remember_token',
 	];
 
+
+	// SCOPES - START
+	// Allows for use of ->active()
+	public function scopeActive($query) {
+		return $query->where('is_active',1);
+	}
+	// SCOPES - END
+
+
+	// AVATAR - START
 	public function registerMediaCollections()
 	{
 		$this->addMediaCollection('avatars')
+			->singleFile()
 			->registerMediaConversions(function (Media $media = null) {
 				$this->addMediaConversion('thumb')
 					->width(35)
-					->height(35);
+					->height(35)
+					->withResponsiveImages();
 				$this->addMediaConversion('profile')
 					->width(350)
-					->height(350);
+					->height(350)
+					->withResponsiveImages();
 			});
 	}
 	public function avatar() {
@@ -51,10 +54,10 @@ class User extends Authenticatable implements HasMedia
 	public function getAvatarUrlAttribute() {
 		return $this->avatar->getUrl('thumb');
 	}
+	// AVATAR - END
 
-	public function scopeActive($query) {
-		return $query->where('is_active',1);
-	}
+	
+	// GENERAL RELATIONSHIPS - START
 	public function notes() {
 		return $this->hasMany(Note::class);
 	}
@@ -64,4 +67,6 @@ class User extends Authenticatable implements HasMedia
 	public function files() {
 		return $this->hasMany(File::class);
 	}
+	// GENERAL RELATIONSHIPS - END
+
 }
