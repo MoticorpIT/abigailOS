@@ -55,7 +55,7 @@
 											@csrf
 											<div class="input-group">
 												<div class="custom-file">
-													<input type="file" name="avatar" class="custom-file-input" id="inputGroupFile04" aria-describedby="avatar-upload">
+													<input type="file" name="avatar" class="custom-file-input {{ $errors->has('avatar') ? 'has-error' : '' }}" id="inputGroupFile04" aria-describedby="avatar-upload">
 													<label class="custom-file-label" for="inputGroupFile04">Choose file</label>
 												</div>
 												<div class="input-group-append">
@@ -64,21 +64,10 @@
 											</div>
 										</form>
 									</div>
-									{{-- 
-										<div class="form-group">
-											<label>
-												Avatar
-												<span class="optional">(400 x 400)</span>
-											</label>
-											<input type="file" class="form-control {{ $errors->has('avatar') ? 'has-error' : '' }}" name="avatar">
-										</div>
-									</div> --}}
-
 								@endif
 							</div>
 
 							{{-- USER DETAILS SECTION --}}
-							
 							<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 								<form id="data-form" method="POST" action="/users/{{ $user->id }}" enctype="multipart/form-data">
 									{{ csrf_field() }}

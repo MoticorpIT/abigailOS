@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Asset;
 use Illuminate\Http\Request;
 
 class AssetImageController extends Controller
@@ -37,23 +38,9 @@ class AssetImageController extends Controller
 			->usingFileName($asset->name)
 			->toMediaCollection('assets');
 
-		/*
-		  1. Get Assets Associated Media (images)
-		  2. Set the user->avatar_id to the Aavatars Id
-		  3. Update the user with the avatar_id
-		*/
-		// $avatar = $user->getFirstMedia('avatars');
-		// $user->avatar_id = $avatar->id;
-		// $user->save();
+		$images = $user->getMedia('images');
 
-		/* SET TOASTR FLASH MESSAGES */
-		if (!$asset->save()) {
-			toastr()->error('An error has occured please try again.', 'Abigail Says...');
-		} else {
-			toastr()->success('The image was uploaded successfully!', 'Abigail Says...');
-		}
+		return redirect()->back()->with(compact('images'));
 
-		// REDIRECT USER BACK
-		return redirect()->back();
 	  }
   }

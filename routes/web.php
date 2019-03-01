@@ -1,17 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// LOGIN ROUTE - IF LOGGED IN, GOING TO / WILL REDIRECT TO /dashboard
+// LOGIN.SHOW ROUTE
 Route::get('/', function () {
     return view('auth/login');
 });
@@ -23,6 +12,8 @@ $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // AVATAR / IMAGE ROUTING
 Route::resource('avatar', 'AvatarController');
+Route::resource('images', 'AssetImageController');
+// Route::resource('logo', 'LogoController');
 
 // DASHBOARD ROUTE
 Route::group( ['middleware' => 'auth' ], function() {
@@ -50,7 +41,7 @@ Route::resource('companyTypes', 'CompanyTypeController');
 Route::resource('contracts', 'ContractController');
 Route::resource('invoices', 'InvoiceController');
 Route::resource('notes', 'NoteController');
-Route::resource('images', 'ImageController');
+// Route::resource('images', 'ImageController');
 Route::resource('payments', 'PaymentController');
 Route::resource('priorities', 'PriorityController');
 Route::resource('repeats', 'RepeatController');
