@@ -35,14 +35,7 @@ class Asset extends Model implements HasMedia
 					->withResponsiveImages();
 			});
 	}
-	// public function media() {
-	// 	return $this->hasMany(Media::class);
-	// }
-	// public function getMediaUrlAttribute() {
-	// 	return $this->media->getUrl('thumb');
-	// }
 	// MEDIA/IMAGES - END
-
 
     public function company() {
 		return $this->belongsTo(Company::class);

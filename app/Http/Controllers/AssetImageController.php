@@ -54,17 +54,25 @@ class AssetImageController extends Controller
 	}
 
 	// DESTROY IMAGES
-	public function destroy(Request $request)
+	public function destroy(Request $request, $id)
 	{
-		$id = $request->media_id;
-		$asset->mediaItems[$id]->delete();
+		// SET VARIABLES FROM REQUEST
+		// $media_id = $request->media_id;
+
+		// // GRAB IMAGES + FILTER TO SELECTED
+		$asset = Asset::findOrFail($request->asset_id);
+		$images = $asset->getMedia('assets');
+		$imageToDelete = $images[$id]->delete();
+
+		// DELETE SELECTED IMAGE
+		// $imageToDelete->delete();
 
 		/* SET NOTIFICATIONS */
-		if(!$asset->delete()) {
-			toastr()->error('An error has occured please try again.', 'Abigail Says...');
-		} else {
-			toastr()->success('The image was deleted successfully!', 'Abigail Says...');
-		}
+		// if(!$asset->delete()) {
+		// 	toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		// } else {
+		// 	toastr()->success('The image was deleted successfully!', 'Abigail Says...');
+		// }
 
 		return redirect()->back();
 	}

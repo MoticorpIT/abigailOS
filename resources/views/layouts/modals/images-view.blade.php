@@ -29,55 +29,66 @@
 									Click the 'Add Image' button to begin adding images now.</p>
 								</div>
 							@else
-							{{-- LARGE IMAGE CAROUSEL --}}
-							<div class="col-12 col-md-8">
-								{{-- IMAGES --}}
-								<div class="carousel-inner">
-									@foreach($images as $image)
-										<div class="carousel-item active">
-											<img src="{{ $image->getUrl('main') }}" class="d-block w-100" alt="...">
-										</div>
-									@endforeach
-								</div> {{-- inner --}}
-								{{-- SCROLL BUTTONS --}}
-								<a class="carousel-control-prev" href="#images-carousel" role="button" data-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									<span class="sr-only">Previous</span>
-								</a>
-								<a class="carousel-control-next" href="#images-carousel" role="button" data-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"></span>
-									<span class="sr-only">Next</span>
-								</a>
-							</div> {{-- col --}}
+								{{-- LARGE IMAGE CAROUSEL --}}
+								<div class="col-12 col-md-8">
+									{{-- IMAGES --}}
+									<div class="carousel-inner">
+										@foreach($images as $image)
+											<div class="carousel-item active">
+												<img src="{{ $image->getUrl('main') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image">
+											</div>
+										@endforeach
+									</div> {{-- inner --}}
+									{{-- SCROLL BUTTONS --}}
+									<a class="carousel-control-prev" href="#images-carousel" role="button" data-slide="prev">
+										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+										<span class="sr-only">Previous</span>
+									</a>
+									<a class="carousel-control-next" href="#images-carousel" role="button" data-slide="next">
+										<span class="carousel-control-next-icon" aria-hidden="true"></span>
+										<span class="sr-only">Next</span>
+									</a>
+								</div> {{-- col --}}
 
-							{{-- SMALL IMAGE THUMBAILS --}}
-							<div class="col-12 col-md-4">
-								<ol class="image-thumbnails carousel-indicators">
+								{{-- SMALL IMAGE THUMBAILS --}}
+								<div class="col-12 col-md-4">
+									<ol class="image-thumbnails carousel-indicators">
 
-									@foreach($images as $image)
-										<li class="thumbnail-item active">
-											<div class="row no-gutters">
-												<div class="col-12 img-group">
-													<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="0" class="active">
-														<img src="{{ $image->getUrl('thumb') }}" class="d-block w-100" alt="...">
-													</div>
-												</div> {{-- col --}}
-												<div class="col-12 btn-group">
-													<a href="#0" class="btn btn-secondary disabled btn-sm">
-														<i class="fas fa-star"></i>
-													</a>
-													<a href="#0" class="btn btn-primary btn-sm">
-														<i class="fas fa-download"></i>
-													<a href="#0" class="btn btn-danger btn-sm">
-														<i class="fas fa-trash-alt"></i>
-													</a>
-												</div> {{-- col --}}
-											</div> {{-- row --}}
-										</li> {{-- thumbnail item --}}
-									@endforeach
+										@foreach($images as $image)
+											<li class="thumbnail-item active">
+												<div class="row no-gutters">
+													<div class="col-12 img-group">
+														<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="0" class="active">
+															<img src="{{ $image->getUrl('thumb') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image Thumb">
+														</div>
+													</div> {{-- col --}}
+													<div class="col-12 btn-group">
+														<form id="star-image-form" method="POST" action="images/{{ $image->id }}">
+															<a href="#0" class="btn btn-secondary disabled btn-sm">
+																<i class="fas fa-star"></i>
+															</a>
+														</form>
+														<form id="download-image-form" method="POST" action="images/{{ $image->id }}">
+															<a href="#0" class="btn btn-primary btn-sm">
+																<i class="fas fa-download"></i>
+															</a>
+														</form>
+														<form id="delete-image-form" method="POST" action="/images/{{ $image->id }}">
+															@csrf
+															@method('DELETE')
+															{{-- <input type="hidden" id="media_id" name="media_id" value="{{ $image->id }}"> --}}
+															<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
+															<button name="submit" class="btn btn-danger btn-sm">
+																<i class="fas fa-trash-alt"></i>
+															</button>
+														</form>
+													</div> {{-- col --}}
+												</div> {{-- row --}}
+											</li> {{-- thumbnail item --}}
+										@endforeach
 
-								</ol> {{-- carousel indicators --}}
-							</div> {{-- col --}}
+									</ol> {{-- carousel indicators --}}
+								</div> {{-- col --}}
 							@endif
 
 						</div> {{-- row --}}
