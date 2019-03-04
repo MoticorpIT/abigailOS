@@ -9,20 +9,18 @@ class AssetImageController extends Controller
 {
 	/*
 		FOR IMAGES WE NEED TO BE ABLE TO DO THE FOLLOWING:
-		1. Add images associated to an asset (by id)
-		2. Display images in modal
-		3. Mark an image in modal as Main
-		4. Display 'main' image on asset profile show and edit
+		1. √ Add images associated to an asset (by id)
+		2. √ Display 'main' image on asset profile show and edit
+		3. √ Display images in modal
+		4. Mark an image in modal as the Main image (profile image)
 		5. Delete an image in modal
 		6. Download a single image in the modal
 		7. Download all images in the modal (associated to the asset)
+		8. Scroll between images in modal
+		9. Add default profile image when no images are present for the asset
+		10. √ Add default modal content when no images are present for the asset
+		11. Make it all work with the devil... i mean, AJAX
 	*/
-
-	// USER AUTH CHECK - Login Required
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
 
 	// STORE IMAGES
 	public function store(Request $request)
@@ -38,9 +36,36 @@ class AssetImageController extends Controller
 			->usingFileName($asset->name)
 			->toMediaCollection('assets');
 
-		$images = $user->getMedia('images');
+		/* SET NOTIFICATIONS */
+		if(!$asset->save()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The image was saved successfully!', 'Abigail Says...');
+		}
 
-		return redirect()->back()->with(compact('images'));
+		return redirect()->back();
 
-	  }
-  }
+	}
+
+	// UPDATE IMAGES
+	public function update(Request $request)
+	{
+
+	}
+
+	// DESTROY IMAGES
+	public function destroy(Request $request)
+	{
+		$id = $request->media_id;
+		$asset->mediaItems[$id]->delete();
+
+		/* SET NOTIFICATIONS */
+		if(!$asset->delete()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The image was deleted successfully!', 'Abigail Says...');
+		}
+
+		return redirect()->back();
+	}
+}

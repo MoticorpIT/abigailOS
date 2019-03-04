@@ -21,7 +21,9 @@ $( document ).ready(function() {
 			contentType: false,
 			processData:false,
 		    success: function (data) {
-				console.log('ajax complete');
+				console.log('ajax success');
+				// location.reload();
+				// $("#update-images").modal('show');
 			},
 			error: function (data) {
 				console.log(formData);

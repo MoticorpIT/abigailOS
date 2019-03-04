@@ -332,6 +332,15 @@
 				</div> <!-- profile wrapper -->
 
 			</form>
+
+
+<form id="asset-img-form" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
+	@csrf
+	<input type="text" id="asset_id" name="asset_id" class="{{ $errors->has('asset_id') ? 'has-error' : '' }}" value="{{ $asset->id }}">
+	<input type="file" id="uploadFileField" name="image" class="{{ $errors->has('image') ? 'has-error' : '' }}">
+	<input type="submit" id="add-image-btn" name="submit">
+</form>
+
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div> <!-- db boxes -->

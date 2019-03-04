@@ -6,13 +6,7 @@ use Illuminate\Http\Request;
 
 class AvatarController extends Controller
 {
-	// USER AUTH CHECK - Login Required
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    // STORE AVATAR
+	// STORE AVATAR
     public function store(Request $request)
     {
     	/*
