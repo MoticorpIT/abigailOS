@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('ajax-scripts')
-    <script src="{{ asset('/js/ajax.js') }}"></script>
+<script src="{{ asset('/js/ajax.js') }}"></script>
 @endsection
 
 @section('content')
@@ -9,31 +9,31 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-      {{ csrf_field() }}
+			{{ csrf_field() }}
 
-      <nav aria-label="breadcrumb" class="d-none d-sm-block">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="/dashboard/">
-              Dashboard
-            </a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="/companies/">
-              Company Table
-            </a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Company Profile<span class="d-none d-sm-inline">: {{ $company->name }}</span>
-          </li>
-        </ol>
-      </nav>
+			<nav aria-label="breadcrumb" class="d-none d-sm-block">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="/dashboard/">
+							Dashboard
+						</a>
+					</li>
+					<li class="breadcrumb-item">
+						<a href="/companies/">
+							Company Table
+						</a>
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">
+						Company Profile<span class="d-none d-sm-inline">: {{ $company->name }}</span>
+					</li>
+				</ol>
+			</nav>
 
 			<h1 class="page-heading">
-        <i class="fas fa-building"></i>
+				<i class="fas fa-building"></i>
 				Company Profile
 
-        {{-- BUTTON SET --}}
+				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
 					<a href="/companies/" class="btn btn-round">Go Back</a>
 					<a href="/companies/{{ $company->id }}/edit" class="btn btn-primary">
@@ -51,28 +51,28 @@
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9">
 							<h2 class="heading d-block d-sm-none">{{ $company->name }}</h2>
-              <h2 class="heading d-none d-sm-block">
-                <i class="fas fa-building "></i>
-                Company Profile
-              </h2>
+							<h2 class="heading d-none d-sm-block">
+								<i class="fas fa-building "></i>
+								Company Profile
+							</h2>
 						</div>
 					</div> <!-- row -->
 					<div class="row profile-row">
 
 						{{-- LEFT COLUMN CONTENT --}}
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
-              <div class="profile-image">
+							<div class="profile-image">
 								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-										<img src="https://via.placeholder.com/400x400" />
-                </a>
+									<img src="https://via.placeholder.com/400x400" />
+								</a>
 							</div> <!-- profile image -->
 							<div class="col-12 col profile-image-updater">
-							  {{-- Asset image --}}
-							  <div class="form-group">
-                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
-                    <i class="fas fa-images"></i> Update Images
-                  </a>
-							  </div>
+								{{-- Asset image --}}
+								<div class="form-group">
+									<a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
+										<i class="fas fa-images"></i> Update Images
+									</a>
+								</div>
 							</div> <!-- col -->
 
 							{{-- Contact Tabs --}}
@@ -177,7 +177,7 @@
 							<div class="tab-content profile-tabs-content" id="">
 								<div class="tab-pane fade show active" id="assoc-acc-tab-content" role="tabpanel" aria-labelledby="assoc-acc-tab-button">
 									<ul class="reset assoc-list acc">
-									@foreach($accounts as $account)
+										@foreach($accounts as $account)
 										<li class="assoc-list-item">
 											<a href="#0" class="assoc-list-link">
 												<span class="name">
@@ -185,12 +185,12 @@
 												</span>
 											</a>
 										</li>
-									@endforeach
+										@endforeach
 									</ul>
 								</div>
 								<div class="tab-pane fade" id="assoc-ass-tab-content" role="tabpanel" aria-labelledby="assoc-ass-tab-button">
 									<ul class="reset assoc-list acc">
-									@foreach($assets as $asset)
+										@foreach($assets as $asset)
 										<li class="assoc-list-item">
 											<a href="#0" class="assoc-list-link">
 												<span class="name">
@@ -198,7 +198,7 @@
 												</span>
 											</a>
 										</li>
-									@endforeach
+										@endforeach
 									</ul>
 								</div>
 								<div class="tab-pane fade" id="assoc-hide-tab-content" role="tabpanel" aria-labelledby="assoc-hide-tab-button">
@@ -209,15 +209,15 @@
 						{{-- RIGHT COLUMN CONTENT --}}
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 							<div class="row">
-                <div class="col-12 col">
-                  <div class="form-group">
-                    <label for="name">
+								<div class="col-12 col">
+									<div class="form-group">
+										<label for="name">
 											Name
 										</label>
-                    <input type="text" class="form-control" name="name" disabled readonly placeholder="n/a" value="{{ $company->name }}">
-                  </div>
-                </div> <!-- col -->
-                <div class="col-12 col-md-3 col">
+										<input type="text" class="form-control" name="name" disabled readonly placeholder="n/a" value="{{ $company->name }}">
+									</div>
+								</div> <!-- col -->
+								<div class="col-12 col-md-3 col">
 									<div class="form-group">
 										<label for="created-at">
 											Created On
@@ -226,12 +226,12 @@
 									</div>
 								</div> <!-- col -->
 
-                <div class="col-12 col-md-3 col">
+								<div class="col-12 col-md-3 col">
 									<div class="form-group">
 										<label for="updated-at">
 											Updated On
 										</label>
-										<input type="text" class="form-control" name="updated-at" value="{{ $company->updated_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="updated-at" value="{{ $company->undated_at != null ? $company->updated_at->format('m/d/y') : '' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -299,9 +299,9 @@
 										<label>
 											State
 										</label>
-                    <select class="form-control" name="state" value="{{ $company->state }}" readonly disabled>
-								        <option value="" selected>{{ $company->state }}</option>
-								    </select>
+										<select class="form-control" name="state" value="{{ $company->state }}" readonly disabled>
+											<option value="" selected>{{ $company->state }}</option>
+										</select>
 									</div>
 								</div> <!-- col -->
 
@@ -374,9 +374,9 @@
 
 			</div> <!-- profile wrapper -->
 
-			</form>
-		</div> <!-- db-box -->
-	</div> <!-- col -->
+		</form>
+	</div> <!-- db-box -->
+</div> <!-- col -->
 </div> <!-- db boxes -->
 
 

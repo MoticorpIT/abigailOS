@@ -11,6 +11,10 @@
 					<i class="fas fa-plus-square"></i>
 					Create Asset
 				</a>
+				<a href="/assets/export" class="btn d-block-small float-right">
+					<i class="fas fa-file-download"></i>
+					Download
+				</a>
 			</h1>
 
 			<div class="asset-table-wrapper table-wrapper table-responsive">

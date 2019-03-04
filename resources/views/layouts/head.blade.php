@@ -26,3 +26,9 @@
 
 {{-- REQUIRED FOR AJAX USE --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
+<style>
+	.toast-success { background: #1ab394; /* $primary */}
+	/*.toast-error { background: $danger; }
+	.toast-warning { background: $warning; }*/
+</style>
