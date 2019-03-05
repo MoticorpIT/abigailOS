@@ -125,17 +125,13 @@ class AssetController extends Controller
 	{
 		$asset = Asset::findOrFail($id);
 		$images = $asset->getMedia('assets');
-		
-		$profile_image = $asset->getFirstMedia('assets');
-		if ($profile_image != null) {
-			$profile_image_url = $profile_image->getURL('profile');
-		}
+		$profile_image_url = $asset->getFirstMediaUrl('assets', 'profile');
 		
 		$notes = Note::where('asset_id', $id)->active()->ordered()->get();
 		$accounts = Account::where('asset_id', $id)->get();
 		$contracts = Contract::where('asset_id', $id)->get();
 
-		return view('assets.show', compact('asset', 'profile_image', 'profile_image_url', 'images', 'notes', 'accounts', 'contracts'));
+		return view('assets.show', compact('asset', 'profile_image_url', 'images', 'notes', 'accounts', 'contracts'));
 	}
 
 	/**
@@ -150,11 +146,7 @@ class AssetController extends Controller
 		$asset = Asset::findOrFail($id);
 		$companies = Company::active()->get();
 		$images = $asset->getMedia('assets');
-
-		$profile_image = $asset->getFirstMedia('assets');
-		if ($profile_image != null) {
-			$profile_image_url = $profile_image->getURL('profile');
-		}
+		$profile_image_url = $asset->getFirstMediaUrl('assets', 'profile');
 
 		// CONFIG/CONSTANTS.PHP 'QUERIES'
 		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
@@ -162,7 +154,7 @@ class AssetController extends Controller
 		$statuses = Config::get('constants.statuses');
 		$states = Config::get('constants.states');
 		
-		return view('assets.edit', compact('asset', 'asset_types', 'statuses', 'states', 'companies', 'images', 'profile_image', 'profile_image_url'));
+		return view('assets.edit', compact('asset', 'asset_types', 'statuses', 'states', 'companies', 'images', 'profile_image_url'));
 	}
 
 	/**

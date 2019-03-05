@@ -9,18 +9,18 @@ use Spatie\MediaLibrary\Models\Media;
 class AssetImageController extends Controller
 {
 	/*
-		FOR IMAGES WE NEED TO BE ABLE TO DO THE FOLLOWING:
-		√ 1. Add images associated to an asset (by id)
-		√ 2. Display 'main' image on asset profile show and edit
-		√ 3. Display images in modal
-		4. Mark an image in modal as the Main image (profile image)
-		√ 5. Delete an image in modal
-		6. Download a single image in the modal
-		7. Download all images in the modal (associated to the asset)
-		8. Scroll between images in modal
-		9. Add default profile image when no images are present for the asset
-		10. √ Add default modal content when no images are present for the asset
-		11. Make it all work with the devil... i mean, AJAX
+	  FOR IMAGES WE NEED TO BE ABLE TO DO THE FOLLOWING:
+	  √ 1. Add images associated to an asset (by id)
+	  √ 2. Display 'main' image on asset profile show and edit
+	  √ 3. Display images in modal
+	  4. Mark an image in modal as the Main image (profile image)
+	  √ 5. Delete an image in modal
+	  6. Download a single image in the modal
+	  7. Download all images in the modal (associated to the asset)
+	  8. Scroll between images in modal
+	  9. Add default profile image when no images are present for the asset
+	  √ 10. Add default modal content when no images are present for the asset
+	  11. Make it all work with the devil... i mean, AJAX
 	*/
 
 	// STORE IMAGES
@@ -34,10 +34,10 @@ class AssetImageController extends Controller
 		*/
 		$asset = Asset::findOrFail($request->asset_id);
 		$asset->addMedia($request->image)
-			->usingFileName($asset->name)
-			->toMediaCollection('assets');
+		->usingFileName($asset->name)
+		->toMediaCollection('assets');
 
-		/* SET NOTIFICATIONS */
+		// SET NOTIFICATIONS
 		if(!$asset->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
@@ -48,30 +48,50 @@ class AssetImageController extends Controller
 
 	}
 
-	// UPDATE IMAGES
-	public function update(Request $request)
+	// DOWNLOAD SINGLE FILE
+	public function downloadSingleFile(Media $mediaItem)
 	{
+		return $mediaItem;
+	}
 
+	// DOWNLOAD ALL FILES FOR ASSET
+	public function downloadAllFiles(Asset $assets)
+	{
+		// Let's get some media.
+		$images = $assets->getMedia('assets');
+
+		/*
+		  Download the files associated with the media in a streamed way.
+		  No prob if your files are very large.\
+		*/
+		return MediaStream::create('asset-images.zip')->addMedia($images);
 	}
 
 	// DESTROY IMAGES
-	public function destroy(Request $request, $id)
+	public function destroy(Request $request)
 	{
-		// GET IMAGE ITEM BY ID
-		$image = Media::find($request->input('id'));
+		// 1. Find the imageToDelete by the ID from the form
+		$imageToDelete = Media::find($request->input('id'));
 
-		$model_type = $image->model_type;
+		/*
+		  2. Find the asset by the model_id from the imageToDelete (above)
+		  3. Delete the related image with id of image
+		*/
+		$asset = Asset::find($imageToDelete->model_id);
+		$asset->deleteMedia($imageToDelete->id);
 
-		$model = $model_type::find($image->model_id);
-		$model->deleteMedia($image->id);
-
-		/* SET NOTIFICATIONS */
-		if(!$image->delete()) {
+		/*
+		  4. Check if the image did NOT delete
+		    - If TRUE (did not delete), show Toastr error message
+		    - If FALSE (did delete), show Toastr success message
+		*/
+		if(!$imageToDelete->delete()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The image was deleted successfully!', 'Abigail Says...');
 		}
 
+		// 5. Redirect the user back to the previous page
 		return redirect()->back();
 	}
 }

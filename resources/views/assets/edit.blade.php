@@ -66,7 +66,7 @@
 								{{-- PROFILE IMAGES --}}
 								<div class="profile-image">
 									<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-										@if ($profile_image == null)
+										@if ($profile_image_url == null)
 											<img src="https://via.placeholder.com/400x400" alt="Default Image" />
 										@else
 											<img src="{{ $profile_image_url ?? '' }}" alt="{{ $asset->name }} Profile Image" />
