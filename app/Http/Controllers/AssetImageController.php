@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Asset;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\Models\Media;
 
 class AssetImageController extends Controller
 {
 	/*
 		FOR IMAGES WE NEED TO BE ABLE TO DO THE FOLLOWING:
-		1. √ Add images associated to an asset (by id)
-		2. √ Display 'main' image on asset profile show and edit
-		3. √ Display images in modal
+		√ 1. Add images associated to an asset (by id)
+		√ 2. Display 'main' image on asset profile show and edit
+		√ 3. Display images in modal
 		4. Mark an image in modal as the Main image (profile image)
-		5. Delete an image in modal
+		√ 5. Delete an image in modal
 		6. Download a single image in the modal
 		7. Download all images in the modal (associated to the asset)
 		8. Scroll between images in modal
@@ -56,23 +57,20 @@ class AssetImageController extends Controller
 	// DESTROY IMAGES
 	public function destroy(Request $request, $id)
 	{
-		// SET VARIABLES FROM REQUEST
-		// $media_id = $request->media_id;
+		// GET IMAGE ITEM BY ID
+		$image = Media::find($request->input('id'));
 
-		// // GRAB IMAGES + FILTER TO SELECTED
-		$asset = Asset::findOrFail($request->asset_id);
-		$images = $asset->getMedia('assets');
-		$imageToDelete = $images[$id]->delete();
+		$model_type = $image->model_type;
 
-		// DELETE SELECTED IMAGE
-		// $imageToDelete->delete();
+		$model = $model_type::find($image->model_id);
+		$model->deleteMedia($image->id);
 
 		/* SET NOTIFICATIONS */
-		// if(!$asset->delete()) {
-		// 	toastr()->error('An error has occured please try again.', 'Abigail Says...');
-		// } else {
-		// 	toastr()->success('The image was deleted successfully!', 'Abigail Says...');
-		// }
+		if(!$image->delete()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The image was deleted successfully!', 'Abigail Says...');
+		}
 
 		return redirect()->back();
 	}

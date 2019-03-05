@@ -34,7 +34,7 @@
 									{{-- IMAGES --}}
 									<div class="carousel-inner">
 										@foreach($images as $image)
-											<div class="carousel-item active">
+											<div class="carousel-item active"> {{-- active --}}
 												<img src="{{ $image->getUrl('main') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image">
 											</div>
 										@endforeach
@@ -55,7 +55,7 @@
 									<ol class="image-thumbnails carousel-indicators">
 
 										@foreach($images as $image)
-											<li class="thumbnail-item active">
+											<li class="thumbnail-item "> {{-- active --}}
 												<div class="row no-gutters">
 													<div class="col-12 img-group">
 														<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="0" class="active">
@@ -76,7 +76,7 @@
 														<form id="delete-image-form" method="POST" action="/images/{{ $image->id }}">
 															@csrf
 															@method('DELETE')
-															{{-- <input type="hidden" id="media_id" name="media_id" value="{{ $image->id }}"> --}}
+															<input type="hidden" id="id" name="id" value="{{ $image->id }}">
 															<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
 															<button name="submit" class="btn btn-danger btn-sm">
 																<i class="fas fa-trash-alt"></i>
