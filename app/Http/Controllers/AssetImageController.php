@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Asset;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\MediaStream;
 
 class AssetImageController extends Controller
 {
@@ -16,9 +17,9 @@ class AssetImageController extends Controller
 	? 4. Mark an image in modal as the Main image (profile image)
 	√ 5. Delete an image in modal
 	√ 6. Download a single image in the modal
-	* 7. Download all images in the modal (associated to the asset)
+	√ 7. Download all images in the modal (associated to the asset)
 	  8. Scroll between images in modal
-	  9. Add default profile image when no images are present for the asset
+	√ 9. Add default profile image when no images are present for the asset
 	√ 10. Add default modal content when no images are present for the asset
 	  11. Make it all work with the devil... i mean, AJAX
 	*/
@@ -76,8 +77,7 @@ class AssetImageController extends Controller
 	{
 		$imagesToDownload = $asset->getMedia('assets');
 
-		return view('assets.index', compact('imagesToDownload'));
-		// return MediaStream::create('asset-images.zip')->addMedia($imagesToDownload);
+		return MediaStream::create('asset-images.zip')->addMedia($imagesToDownload);
 	}
 
 	// DESTROY IMAGES

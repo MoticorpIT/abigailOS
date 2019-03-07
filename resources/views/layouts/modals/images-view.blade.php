@@ -34,7 +34,7 @@
 									{{-- IMAGES --}}
 									<div class="carousel-inner">
 										@foreach($images as $image)
-											<div class="carousel-item active"> {{-- active --}}
+											<div class="carousel-item "> {{-- active --}}
 												<img src="{{ $image->getUrl('main') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image">
 											</div>
 										@endforeach
@@ -58,7 +58,7 @@
 											<li class="thumbnail-item "> {{-- active --}}
 												<div class="row no-gutters">
 													<div class="col-12 img-group">
-														<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="0" class="active">
+														<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="{{ $image->id }}" class="active">
 															<img src="{{ $image->getUrl('thumb') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image Thumb">
 														</div>
 													</div> {{-- col --}}

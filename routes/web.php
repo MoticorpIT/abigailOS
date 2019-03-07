@@ -39,7 +39,7 @@ Route::get('companies/export', 'CompanyController@export'); // Export To CSV
 Route::resource('companies', 'CompanyController');
 Route::resource('companyTypes', 'CompanyTypeController');
 
-// HODGEPODGE ROUTES
+// STAND ALONE (resourceful) ROUTES
 Route::resource('contracts', 'ContractController');
 Route::resource('invoices', 'InvoiceController');
 Route::resource('notes', 'NoteController');
