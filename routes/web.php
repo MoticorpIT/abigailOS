@@ -12,9 +12,6 @@ $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // AVATAR / IMAGE ROUTING
 Route::resource('avatar', 'AvatarController');
-Route::get('images/{image}/download-one-image', 'AssetImageController@downloadOneImage'); // Download Single Image
-Route::get('images/{image}/download-all-images', 'AssetImageController@downloadAllImages'); // Download All Images
-Route::resource('images', 'AssetImageController');
 // Route::resource('logo', 'LogoController');
 
 // DASHBOARD ROUTE
@@ -30,6 +27,9 @@ Route::resource('accounts', 'AccountController');
 Route::resource('accountTypes', 'AccountTypeController');
 
 // ASSET RELATED ROUTES
+Route::resource('images', 'AssetImageController');
+Route::get('assets/{asset}/download-one-image', 'AssetImageController@downloadOneImage')->name('assetImages.downloadOne'); // Download Single Image
+Route::get('assets/{asset}/download-all-images', 'AssetImageController@downloadAllImages')->name('assetImages.downloadAll'); // Download All Images
 Route::get('assets/export', 'AssetController@export'); // Export To CSV
 Route::resource('assets', 'AssetController');
 Route::resource('assetTypes', 'AssetTypeController');
@@ -43,7 +43,6 @@ Route::resource('companyTypes', 'CompanyTypeController');
 Route::resource('contracts', 'ContractController');
 Route::resource('invoices', 'InvoiceController');
 Route::resource('notes', 'NoteController');
-// Route::resource('images', 'ImageController');
 Route::resource('payments', 'PaymentController');
 Route::resource('priorities', 'PriorityController');
 Route::resource('repeats', 'RepeatController');
