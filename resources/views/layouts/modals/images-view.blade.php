@@ -68,17 +68,15 @@
 																<i class="fas fa-star"></i>
 															</a>
 														</form>
-														<form id="download-image-form" method="GET" action="/images/{{ $image->id }}/download-one-image">
+														<form id="download-image-form" method="GET" action="{{ route('assetImages.downloadOne', $image->id) }}">
 															@csrf
-															<input type="hidden" id="id" name="id" value="{{ $image->id }}">
 															<button name="submit" class="btn btn-primary btn-sm">
 																<i class="fas fa-download"></i>
 															</button>
 														</form>
-														<form id="delete-image-form" method="POST" action="/images/{{ $image->id }}">
+														<form id="delete-image-form" method="POST" action="{{ route('images.destroy', $image->id) }}">
 															@csrf
 															@method('DELETE')
-															<input type="hidden" id="id" name="id" value="{{ $image->id }}">
 															<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
 															<button name="submit" class="btn btn-danger btn-sm">
 																<i class="fas fa-trash-alt"></i>
@@ -100,7 +98,7 @@
 
 			{{-- MODAL FOOTER --}}
 			<div class="modal-footer">
-				<form id="download-all-images-form" method="GET" action="/images/{{ $image->id }}/download-all-images" enctype="multipart/form-data">
+				<form id="download-all-images-form" method="GET" action="/assets/{{$asset->id}}/download-all-images" enctype="multipart/form-data">
 					@csrf
 					<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
 					<button type="submit" name="submit" class="download-all-link btn btn-secondary mr-auto">

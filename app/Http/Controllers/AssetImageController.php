@@ -15,7 +15,7 @@ class AssetImageController extends Controller
 	√ 3. Display images in modal
 	? 4. Mark an image in modal as the Main image (profile image)
 	√ 5. Delete an image in modal
-	* 6. Download a single image in the modal
+	√ 6. Download a single image in the modal
 	* 7. Download all images in the modal (associated to the asset)
 	  8. Scroll between images in modal
 	  9. Add default profile image when no images are present for the asset
@@ -51,7 +51,7 @@ class AssetImageController extends Controller
 	// DOWNLOAD SINGLE FILE
 	public function downloadOneImage($id)
 	{
-		$imageToDownload = Media::find($id);
+		$imageToDownload = Media::findOrFail($id);
 
 		switch ($imageToDownload->mime_type) {
 			case 'image/jpeg':
@@ -72,23 +72,19 @@ class AssetImageController extends Controller
 	}
 
 	// DOWNLOAD ALL FILES FOR ASSET
-	public function downloadAllImages(Request $request)
+	public function downloadAllImages(Asset $asset)
 	{
-		$imagesToDownload = Asset::findOrFail($request->asset_id)->getMedia('assets');
+		$imagesToDownload = $asset->getMedia('assets');
 
-		// $asset = Asset::findOrFail($request->asset_id);
-		// $imagesToDownload = $asset->getMedia('assets');
-
-		// return view('assets.index', compact('imagesToDownload'));
-
-		return MediaStream::create('asset-images.zip')->addMedia($imagesToDownload);
+		return view('assets.index', compact('imagesToDownload'));
+		// return MediaStream::create('asset-images.zip')->addMedia($imagesToDownload);
 	}
 
 	// DESTROY IMAGES
-	public function destroy(Request $request)
+	public function destroy(Request $request, $id)
 	{
 		// 1. Find the imageToDelete by the ID from the form
-		$imageToDelete = Media::find($request->input('id'));
+		$imageToDelete = Media::find($id);
 
 		/*
 		  2. Find the asset by the model_id from the imageToDelete (above)
