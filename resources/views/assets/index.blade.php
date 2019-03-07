@@ -2,6 +2,10 @@
 
 @section('content')
 
+
+	@dd($imageToDownload)
+
+
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">

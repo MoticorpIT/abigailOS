@@ -10,16 +10,16 @@ class AssetImageController extends Controller
 {
 	/*
 	  FOR IMAGES WE NEED TO BE ABLE TO DO THE FOLLOWING:
-	  √ 1. Add images associated to an asset (by id)
-	  √ 2. Display 'main' image on asset profile show and edit
-	  √ 3. Display images in modal
-	  4. Mark an image in modal as the Main image (profile image)
-	  √ 5. Delete an image in modal
-	  6. Download a single image in the modal
-	  7. Download all images in the modal (associated to the asset)
+	√ 1. Add images associated to an asset (by id)
+	√ 2. Display 'main' image on asset profile show and edit
+	√ 3. Display images in modal
+	? 4. Mark an image in modal as the Main image (profile image)
+	√ 5. Delete an image in modal
+	* 6. Download a single image in the modal
+	* 7. Download all images in the modal (associated to the asset)
 	  8. Scroll between images in modal
 	  9. Add default profile image when no images are present for the asset
-	  √ 10. Add default modal content when no images are present for the asset
+	√ 10. Add default modal content when no images are present for the asset
 	  11. Make it all work with the devil... i mean, AJAX
 	*/
 
@@ -49,22 +49,39 @@ class AssetImageController extends Controller
 	}
 
 	// DOWNLOAD SINGLE FILE
-	public function downloadSingleFile(Media $mediaItem)
+	public function downloadOneImage($id)
 	{
-		return $mediaItem;
+		$imageToDownload = Media::find($id);
+
+		switch ($imageToDownload->mime_type) {
+			case 'image/jpeg':
+				$extension = 'jpg';
+				break;
+			case 'image/png':
+				$extension = 'png';
+				break;
+			case 'image/svg':
+				$extension = 'svg';
+				break;
+			case 'image/pdf':
+				$extension = 'pdf';
+				break;
+		}
+
+		return response()->download($imageToDownload->getPath(), $imageToDownload->name . '.' . $extension);
 	}
 
 	// DOWNLOAD ALL FILES FOR ASSET
-	public function downloadAllFiles(Asset $assets)
+	public function downloadAllImages(Request $request)
 	{
-		// Let's get some media.
-		$images = $assets->getMedia('assets');
+		$imagesToDownload = Asset::findOrFail($request->asset_id)->getMedia('assets');
 
-		/*
-		  Download the files associated with the media in a streamed way.
-		  No prob if your files are very large.\
-		*/
-		return MediaStream::create('asset-images.zip')->addMedia($images);
+		// $asset = Asset::findOrFail($request->asset_id);
+		// $imagesToDownload = $asset->getMedia('assets');
+
+		// return view('assets.index', compact('imagesToDownload'));
+
+		return MediaStream::create('asset-images.zip')->addMedia($imagesToDownload);
 	}
 
 	// DESTROY IMAGES

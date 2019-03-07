@@ -12,6 +12,8 @@ $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // AVATAR / IMAGE ROUTING
 Route::resource('avatar', 'AvatarController');
+Route::get('images/{image}/download-one-image', 'AssetImageController@downloadOneImage'); // Download Single Image
+Route::get('images/{image}/download-all-images', 'AssetImageController@downloadAllImages'); // Download All Images
 Route::resource('images', 'AssetImageController');
 // Route::resource('logo', 'LogoController');
 

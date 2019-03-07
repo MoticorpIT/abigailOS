@@ -63,15 +63,17 @@
 														</div>
 													</div> {{-- col --}}
 													<div class="col-12 btn-group">
-														<form id="star-image-form" method="POST" action="images/{{ $image->id }}">
+														<form id="star-image-form" method="POST" action="/images/{{ $image->id }}">
 															<a href="#0" class="btn btn-secondary disabled btn-sm">
 																<i class="fas fa-star"></i>
 															</a>
 														</form>
-														<form id="download-image-form" method="POST" action="images/{{ $image->id }}">
-															<a href="#0" class="btn btn-primary btn-sm">
+														<form id="download-image-form" method="GET" action="/images/{{ $image->id }}/download-one-image">
+															@csrf
+															<input type="hidden" id="id" name="id" value="{{ $image->id }}">
+															<button name="submit" class="btn btn-primary btn-sm">
 																<i class="fas fa-download"></i>
-															</a>
+															</button>
 														</form>
 														<form id="delete-image-form" method="POST" action="/images/{{ $image->id }}">
 															@csrf
@@ -98,14 +100,18 @@
 
 			{{-- MODAL FOOTER --}}
 			<div class="modal-footer">
-				<button type="button" class="download-all-link btn btn-secondary mr-auto">
-					<i class="fas fa-download"></i>
-					Download All Images
-				</button>
+				<form id="download-all-images-form" method="GET" action="/images/{{ $image->id }}/download-all-images" enctype="multipart/form-data">
+					@csrf
+					<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
+					<button type="submit" name="submit" class="download-all-link btn btn-secondary mr-auto">
+						<i class="fas fa-download"></i>
+						Download All Images
+					</button>
+				</form>
 
 				{{-- DONE / CLOSE / CANCEL BUTTON --}}
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
-
+				
 				{{-- IMAGE UPLOAD FORM  --}}
 				<form id="asset-img-form" class="d-none" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
 					@csrf
