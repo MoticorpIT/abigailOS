@@ -64,6 +64,12 @@ $(function(){
 	} 
   });
 
+  $('.carousel-item').on('click', function() {
+  	$('.carousel-item').removeClass('active');
+  	$('.thumbnail-item').removeClass('active');
+  	// $('#thumb-image')
+  })
+
   
 
 });

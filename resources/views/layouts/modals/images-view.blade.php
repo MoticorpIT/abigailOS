@@ -33,10 +33,12 @@
 								<div class="col-12 col-md-8">
 									{{-- IMAGES --}}
 									<div class="carousel-inner">
+										@php $i = 1; @endphp
 										@foreach($images as $image)
-											<div class="carousel-item "> {{-- active --}}
+											<div id="main-img-{{ $image->id }}" class="carousel-item {{ $i == 1 ? 'active' : '' }}">
 												<img src="{{ $image->getUrl('main') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image">
 											</div>
+											@php $i++ @endphp
 										@endforeach
 									</div> {{-- inner --}}
 									{{-- SCROLL BUTTONS --}}
@@ -53,9 +55,9 @@
 								{{-- SMALL IMAGE THUMBAILS --}}
 								<div class="col-12 col-md-4">
 									<ol class="image-thumbnails carousel-indicators">
-
+										@php $i = 1; @endphp
 										@foreach($images as $image)
-											<li class="thumbnail-item "> {{-- active --}}
+											<li id="thumb-img-{{ $image->id }}" class="thumbnail-item {{ $i == 1 ? 'active' : '' }}">
 												<div class="row no-gutters">
 													<div class="col-12 img-group">
 														<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="{{ $image->id }}" class="active">
@@ -88,6 +90,7 @@
 													</div> {{-- col --}}
 												</div> {{-- row --}}
 											</li> {{-- thumbnail item --}}
+											@php $i++ @endphp
 										@endforeach
 
 									</ol> {{-- carousel indicators --}}

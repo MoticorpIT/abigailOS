@@ -66,7 +66,7 @@
 								{{-- PROFILE IMAGES --}}
 								<div class="profile-image">
 									<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-										@if ($asset->profile_img_id == null)
+										@if ($asset->profile_img_id == null)  {{-- || $asset->profile_img_id !=  --}}
 											<img src="/media/images/asset-default-image-profile.png" alt="Default Asset Image" />
 										@else
 											<img src="{{ $asset->profileImage->getURL('profile') ?? '' }}" alt="{{ $asset->name }} Profile Image" />
