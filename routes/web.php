@@ -1,5 +1,10 @@
 <?php
 
+// TEST LANDING PAGE
+Route::get('/bentley', function () {
+	return view('bentley');
+});
+
 // LOGIN.SHOW ROUTE
 Route::get('/', function () {
     return view('auth/login');
@@ -28,8 +33,8 @@ Route::resource('accountTypes', 'AccountTypeController');
 
 // ASSET RELATED ROUTES
 Route::resource('images', 'AssetImageController');
-Route::get('assets/{asset}/download-one-image', 'AssetImageController@downloadOneImage')->name('assetImages.downloadOne'); // Download Single Image
-Route::get('assets/{asset}/download-all-images', 'AssetImageController@downloadAllImages')->name('assetImages.downloadAll'); // Download All Images
+Route::get('assets/{asset}/download-one-image', 'AssetImageController@downloadOneImage')->name('images.downloadOne'); // Download Single Image
+Route::get('assets/{asset}/download-all-images', 'AssetImageController@downloadAllImages')->name('images.downloadAll'); // Download All Images
 Route::get('assets/export', 'AssetController@export'); // Export To CSV
 Route::resource('assets', 'AssetController');
 Route::resource('assetTypes', 'AssetTypeController');

@@ -16,56 +16,48 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AssetController extends Controller
 {
-	/** CHECK IF USER IS LOGGED IN */
+	// Check if User is Logged In
 	public function __construct()
 	{
 		$this->middleware('auth');
 	}
 
-    /* Export to Excel File */
+    // Export to Excel File
     public function export() 
     {
         return Excel::download(new AssetExport, 'abigailos-assets.xlsx');
     }
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+	// Assets.Index (table view)
 	public function index()
 	{
 		$assets = Asset::orderBy('name')->get();
 		return view('assets.index', compact('assets'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+	// Assets.Create (form)
 	public function create()
 	{
 		// DATABASE QUERIES
 		$companies = Company::active()->get();
 
-		// CONFIG/CONSTANTS.PHP 'QUERIES'
-		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
+		/*
+		|----------------------------------------------------------------
+		| CONFIG/CONSTANTS.PHP 'QUERIES'
+		|----------------------------------------------------------------
+		| If asset_types or states need to be changed, they will need
+		| to be changed in the constants.php file AND on the DB
+		*/
 		$states = Config::get('constants.states');
 		$asset_types = Config::get('constants.asset_types');
 
 		return view('assets.create', compact('states', 'asset_types', 'companies'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
+	// Assets.Store (save asset to db)
 	public function store(Request $request)
 	{
-		/* VALIDATE THE REQUEST */
+		// VALIDATE THE REQUEST
 		$this->validate(request(), [
 			'name' => 'unique:assets|required',
 			'street_1' => 'required',
@@ -83,7 +75,7 @@ class AssetController extends Controller
 			'asset_type_id' => 'required',
 			'company_id' => 'required'
 		]);
-		/* CREATE THE ASSET */
+		// CREATE THE ASSET
 		$asset = new Asset(
 			[
 				'name' => $request->name,
@@ -103,70 +95,58 @@ class AssetController extends Controller
 				'company_id' => $request->company_id
 			]
 		);
-		/* SAVE THE ACCOUNT */
+		// SAVE THE ACCOUNT
 		$asset->save();
-		/* SET NOTIFICATIONS */
+		// SET NOTIFICATIONS
 		if (!$asset->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The asset was saved successfully!', 'Abigail Says...');
 		}
-		/* REDIRECT */
+		// REDIRECT
 		return redirect('/assets');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Asset  $asset
-	 * @return \Illuminate\Http\Response
-	 */
+	// Assets.Show (profile)
 	public function show($id)
 	{
 		$asset = Asset::findOrFail($id);
-		$images = $asset->getMedia('assets');
-		$profile_image_url = $asset->getFirstMediaUrl('assets', 'profile');
+		$images = $asset->getMedia('assets'); // For Modal
+		$profile_img_url = $asset->profileImage->getUrl('profile'); // For Profile Img
 		
 		$notes = Note::where('asset_id', $id)->active()->ordered()->get();
 		$accounts = Account::where('asset_id', $id)->get();
 		$contracts = Contract::where('asset_id', $id)->get();
 
-		return view('assets.show', compact('asset', 'profile_image_url', 'images', 'notes', 'accounts', 'contracts'));
+		return view('assets.show', compact('asset', 'profile_img_url', 'images', 'notes', 'accounts', 'contracts'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Asset  $asset
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
+	// Assets.Edit (form)
+	public function edit(Asset $asset)
 	{
 		// DATABASE QUERIES
-		$asset = Asset::findOrFail($id);
 		$companies = Company::active()->get();
-		$images = $asset->getMedia('assets');
-		$profile_image_url = $asset->getFirstMediaUrl('assets', 'profile');
+		$images = $asset->getMedia('assets'); // For Modal
+		$profile_img_url = $asset->profileImage->getUrl('profile'); // For Profile Img
 
-		// CONFIG/CONSTANTS.PHP 'QUERIES'
-		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
+		/*
+		|----------------------------------------------------------------
+		| CONFIG/CONSTANTS.PHP 'QUERIES'
+		|----------------------------------------------------------------
+		| If asset_types or statuses need to be changed, they need
+		| to be changed in the constants.php file AND on the DB
+		*/
 		$asset_types = Config::get('constants.asset_types');
 		$statuses = Config::get('constants.statuses');
 		$states = Config::get('constants.states');
 		
-		return view('assets.edit', compact('asset', 'asset_types', 'statuses', 'states', 'companies', 'images', 'profile_image_url'));
+		return view('assets.edit', compact('asset', 'asset_types', 'statuses', 'states', 'companies', 'images', 'profile_img_url'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Asset  $asset
-	 * @return \Illuminate\Http\Response
-	 */
+	// Assets.Update (save modified asset to db)
 	public function update(Request $request, Asset $asset)
 	{
-		/* VALIDATE DATA FROM FORM */
+		// VALIDATE DATA FROM FORM
 		$data = $request->validate([
 			'name' => 'required',
 			'street_1' => 'required',
@@ -185,10 +165,10 @@ class AssetController extends Controller
 			'company_id' => 'required',
 			'status_id' => 'required'
 		]);
-		/* FILL DATA AND SAVE */
+		// FILL DATA AND SAVE
 		$asset->fill($data);
 		$asset->save();
-		/* CREATE FLASH MESSAGES */
+		// CREATE FLASH MESSAGES
 		if (!$asset->save()) {
         	// if not saved
             toastr()->error('An error has occurred. If it persists, contact the manager.');
@@ -199,7 +179,7 @@ class AssetController extends Controller
         	// if edited
         	toastr()->success('The asset was edited successfully!', 'Abigail Says...');
         }
-		/* REDIRECT USER */
+		// REDIRECT USER
 		return redirect('/assets');
 	}
 }

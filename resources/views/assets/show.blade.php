@@ -55,10 +55,10 @@
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
 								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-									@if ($profile_image_url == null)
+									@if ($asset->profile_img_id == null)
 										<img src="/media/images/asset-default-image-profile.png" alt="Default Asset Image" />
-									@else  
-										<img src="{{ $profile_image_url ?? '' }}" alt="{{ $asset->name }} Profile Image" />
+									@else
+										<img src="{{ $profile_img_url ?? '' }}" alt="{{ $asset->name }} Profile Image" />
 									@endif
 								</a>
 							</div> <!-- profile image -->

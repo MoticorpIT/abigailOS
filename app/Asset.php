@@ -35,6 +35,12 @@ class Asset extends Model implements HasMedia
 					->withResponsiveImages();
 			});
 	}
+	public function profileImage() {
+		return $this->hasOne(Media::class, 'id', 'profile_img_id');
+	}
+	// public function getAvatarUrlAttribute() {
+	// 	return $this->profileImage->getUrl('thumb');
+	// }
 	// MEDIA/IMAGES - END
 
     public function company() {

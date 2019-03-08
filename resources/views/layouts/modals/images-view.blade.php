@@ -63,12 +63,15 @@
 														</div>
 													</div> {{-- col --}}
 													<div class="col-12 btn-group">
-														<form id="star-image-form" method="POST" action="/images/{{ $image->id }}">
-															<a href="#0" class="btn btn-secondary disabled btn-sm">
+														<form id="profile-image-form" method="POST" action="{{ route('images.update', $image->id) }}">
+															@csrf
+															@method('PATCH')
+															<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
+															<button name="submit" class="btn btn-secondary btn-sm">
 																<i class="fas fa-star"></i>
-															</a>
+															</button>
 														</form>
-														<form id="download-image-form" method="GET" action="{{ route('assetImages.downloadOne', $image->id) }}">
+														<form id="download-image-form" method="GET" action="{{ route('images.downloadOne', $image->id) }}">
 															@csrf
 															<button name="submit" class="btn btn-primary btn-sm">
 																<i class="fas fa-download"></i>
@@ -98,19 +101,18 @@
 
 			{{-- MODAL FOOTER --}}
 			<div class="modal-footer">
-				<form id="download-all-images-form" method="GET" action="/assets/{{$asset->id}}/download-all-images" enctype="multipart/form-data">
+				<form id="download-all-images-form" method="GET" action="{{ route('images.downloadAll', $asset->id) }}" enctype="multipart/form-data">
 					@csrf
-					<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
 					<button type="submit" name="submit" class="download-all-link btn btn-secondary mr-auto">
 						<i class="fas fa-download"></i>
 						Download All Images
 					</button>
 				</form>
 
-				{{-- DONE / CLOSE / CANCEL BUTTON --}}
+				{{-- CLOSE / CANCEL BUTTON --}}
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
 				
-				{{-- IMAGE UPLOAD FORM  --}}
+				{{-- IMAGE UPLOAD FORM - HIDDEN --}}
 				<form id="asset-img-form" class="d-none" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
 					@csrf
 					<input type="text" id="asset_id" name="asset_id" class="{{ $errors->has('asset_id') ? 'has-error' : '' }}" value="{{ $asset->id }}">

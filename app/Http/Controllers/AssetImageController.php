@@ -14,7 +14,7 @@ class AssetImageController extends Controller
 	√ 1. Add images associated to an asset (by id)
 	√ 2. Display 'main' image on asset profile show and edit
 	√ 3. Display images in modal
-	? 4. Mark an image in modal as the Main image (profile image)
+	  4. Mark an image in modal as the Main image (profile image)
 	√ 5. Delete an image in modal
 	√ 6. Download a single image in the modal
 	√ 7. Download all images in the modal (associated to the asset)
@@ -42,6 +42,26 @@ class AssetImageController extends Controller
 		} else {
 			toastr()->success('The image was saved successfully!', 'Abigail Says...');
 		}
+
+		return redirect()->back();
+
+	}
+
+	// ASSOCIATE ONE IMAGE TO AN ASSET AS PROFILE_IMG_ID
+	public function update(Request $request, $id)
+	{
+		$asset = Asset::findOrFail($request->asset_id);
+        $asset->profile_img_id = $id;
+        $asset->save();
+
+		// return view('bentley', compact('request', 'id'));
+
+		// SET NOTIFICATIONS
+		// if(!$asset->save()) {
+		// 	toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		// } else {
+		// 	toastr()->success('The image was saved successfully!', 'Abigail Says...');
+		// }
 
 		return redirect()->back();
 
