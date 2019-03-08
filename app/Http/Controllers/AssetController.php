@@ -12,6 +12,7 @@ use App\Exports\AssetExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
+
 use Maatwebsite\Excel\Facades\Excel;
 
 class AssetController extends Controller
@@ -76,26 +77,24 @@ class AssetController extends Controller
 			'company_id' => 'required'
 		]);
 		// CREATE THE ASSET
-		$asset = new Asset(
-			[
-				'name' => $request->name,
-				'street_1' => $request->street_1,
-				'street_2' => $request->street_2,
-				'city' => $request->city,
-				'state' => $request->state,
-				'zip' => $request->zip,
-				'phone_1' => $request->phone_1,
-				'phone_2' => $request->phone_2,
-				'fax' => $request->fax,
-				'email' => $request->email,
-				'rent' => $request->rent,
-				'deposit' => $request->deposit,
-				'acquired_date' => $request->aquired_date,
-				'asset_type_id' => $request->asset_type_id,
-				'company_id' => $request->company_id
-			]
-		);
-		// SAVE THE ACCOUNT
+		$asset = new Asset([
+			'name' => $request->name,
+			'street_1' => $request->street_1,
+			'street_2' => $request->street_2,
+			'city' => $request->city,
+			'state' => $request->state,
+			'zip' => $request->zip,
+			'phone_1' => $request->phone_1,
+			'phone_2' => $request->phone_2,
+			'fax' => $request->fax,
+			'email' => $request->email,
+			'rent' => $request->rent,
+			'deposit' => $request->deposit,
+			'acquired_date' => $request->aquired_date,
+			'asset_type_id' => $request->asset_type_id,
+			'company_id' => $request->company_id
+		]);
+		// SAVE THE ASSET
 		$asset->save();
 		// SET NOTIFICATIONS
 		if (!$asset->save()) {
@@ -111,14 +110,12 @@ class AssetController extends Controller
 	public function show($id)
 	{
 		$asset = Asset::findOrFail($id);
-		$images = $asset->getMedia('assets'); // For Modal
-		$profile_img_url = $asset->profileImage->getUrl('profile'); // For Profile Img
-		
+		$images = $asset->getMedia('assets'); // for modal
 		$notes = Note::where('asset_id', $id)->active()->ordered()->get();
 		$accounts = Account::where('asset_id', $id)->get();
 		$contracts = Contract::where('asset_id', $id)->get();
 
-		return view('assets.show', compact('asset', 'profile_img_url', 'images', 'notes', 'accounts', 'contracts'));
+		return view('assets.show', compact('asset', 'images', 'notes', 'accounts', 'contracts'));
 	}
 
 	// Assets.Edit (form)
@@ -127,7 +124,6 @@ class AssetController extends Controller
 		// DATABASE QUERIES
 		$companies = Company::active()->get();
 		$images = $asset->getMedia('assets'); // For Modal
-		$profile_img_url = $asset->profileImage->getUrl('profile'); // For Profile Img
 
 		/*
 		|----------------------------------------------------------------
@@ -140,7 +136,7 @@ class AssetController extends Controller
 		$statuses = Config::get('constants.statuses');
 		$states = Config::get('constants.states');
 		
-		return view('assets.edit', compact('asset', 'asset_types', 'statuses', 'states', 'companies', 'images', 'profile_img_url'));
+		return view('assets.edit', compact('asset', 'asset_types', 'statuses', 'states', 'companies', 'images'));
 	}
 
 	// Assets.Update (save modified asset to db)

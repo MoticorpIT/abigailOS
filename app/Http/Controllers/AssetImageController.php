@@ -20,9 +20,9 @@ class AssetImageController extends Controller
 	√ 7. Download all images in the modal (associated to the asset)
 	√ 8. Add default profile image when no images are present for the asset
 	√ 9. Add default modal content when no images are present for the asset
-	  10. Display thumb image as main image when clicked (in modal)
-	  11. Scroll between images in modal by clicking arrows
-	  12. Make it all work with the devil... i mean, AJAX
+	  10. Display thumb image as main image when clicked (in modal) - js
+	  11. Scroll between images in modal by clicking arrows - js
+	  12. Make it all work with the devil... i mean, AJAX - js
 	*/
 
 	// STORE IMAGES
@@ -36,6 +36,12 @@ class AssetImageController extends Controller
 		$asset = Asset::findOrFail($request->asset_id);
 		$asset->addMedia($request->image)
 			->toMediaCollection('assets');
+
+		if ($asset->profile_img_id == null) {
+			$imageToBeProfile = $asset->getFirstMedia('assets');
+			$asset->profile_img_id = $imageToBeProfile->id;
+			$asset->save();
+		}
 
 		// SET NOTIFICATIONS
 		if(!$asset->save()) {

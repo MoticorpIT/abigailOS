@@ -58,7 +58,7 @@
 									@if ($asset->profile_img_id == null)
 										<img src="/media/images/asset-default-image-profile.png" alt="Default Asset Image" />
 									@else
-										<img src="{{ $profile_img_url ?? '' }}" alt="{{ $asset->name }} Profile Image" />
+										<img src="{{ $asset->profileImage->getURL('profile') ?? '' }}" alt="{{ $asset->name }} Profile Image" />
 									@endif
 								</a>
 							</div> <!-- profile image -->
