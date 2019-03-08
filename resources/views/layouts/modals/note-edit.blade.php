@@ -15,10 +15,10 @@
 				{{ method_field('PATCH') }}
 				<div class="modal-body">
 					<div class="media note-item">
-						@if (auth()->user()->avatar == null)
+						@if ($note->user->avatar_id == null)
 							<img src="/media/images/user-default-avatar-thumb.png" class="mr-3 user-image" alt="Default User Avatar" />
 						@else
-							<img src="{{ auth()->user()->avatarUrl }}" class="mr-3 user-image" alt="{{ Auth::user()->name }}s-avatar" />
+							<img src="{{ $note->user->avatar->getURL('thumb') ?? '' }}" class="mr-3 user-image" alt="{{ $note->user->avatar->file_name }}s-avatar" />
 						@endif
 
 						<div class="media-body">

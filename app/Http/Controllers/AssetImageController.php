@@ -30,13 +30,11 @@ class AssetImageController extends Controller
 		/*
 		  1. Get Current Asset (by id)
 		  2. Get Current Assets Associated Media (images)
-		  3. Change the name of the file to the asset's name
-		  4. Add it to the Assets collection
+		  3. Add it to the Assets collection
 		*/
 		$asset = Asset::findOrFail($request->asset_id);
 		$asset->addMedia($request->image)
-		->usingFileName($asset->name)
-		->toMediaCollection('assets');
+			->toMediaCollection('assets');
 
 		// SET NOTIFICATIONS
 		if(!$asset->save()) {

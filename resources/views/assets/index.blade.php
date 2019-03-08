@@ -3,7 +3,7 @@
 @section('content')
 
 
-	{{-- @dd($imagesToDownload) --}}
+{{-- @dd($image) --}}
 
 
 <div class="db-boxes-row row no-gutters">
