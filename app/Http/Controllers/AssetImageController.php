@@ -14,14 +14,15 @@ class AssetImageController extends Controller
 	√ 1. Add images associated to an asset (by id)
 	√ 2. Display 'main' image on asset profile show and edit
 	√ 3. Display images in modal
-	  4. Mark an image in modal as the Main image (profile image)
+	√ 4. Mark an image in modal as the Main image (profile image)
 	√ 5. Delete an image in modal
 	√ 6. Download a single image in the modal
 	√ 7. Download all images in the modal (associated to the asset)
-	  8. Scroll between images in modal
-	√ 9. Add default profile image when no images are present for the asset
-	√ 10. Add default modal content when no images are present for the asset
-	  11. Make it all work with the devil... i mean, AJAX
+	√ 8. Add default profile image when no images are present for the asset
+	√ 9. Add default modal content when no images are present for the asset
+	  10. Display thumb image as main image when clicked (in modal)
+	  11. Scroll between images in modal by clicking arrows
+	  12. Make it all work with the devil... i mean, AJAX
 	*/
 
 	// STORE IMAGES
@@ -54,14 +55,12 @@ class AssetImageController extends Controller
         $asset->profile_img_id = $id;
         $asset->save();
 
-		// return view('bentley', compact('request', 'id'));
-
 		// SET NOTIFICATIONS
-		// if(!$asset->save()) {
-		// 	toastr()->error('An error has occured please try again.', 'Abigail Says...');
-		// } else {
-		// 	toastr()->success('The image was saved successfully!', 'Abigail Says...');
-		// }
+		if(!$asset->save()) {
+			toastr()->error('An error has occured please try again.', 'Abigail Says...');
+		} else {
+			toastr()->success('The image was assigned successfully!', 'Abigail Says...');
+		}
 
 		return redirect()->back();
 
