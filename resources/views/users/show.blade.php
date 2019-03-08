@@ -29,7 +29,7 @@
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 								<div class="profile-image">
 									@if ($user->avatar_id == null)
-										<img src="/media/images/default-avatar-profile.png" alt="Default Avatar" />
+										<img src="/media/images/user-default-avatar-profile.png" alt="Default User Avatar" />
 									@else
 										<img src="{{ $user->avatar->getURL('profile') ?? '' }}" alt="{{ $user->avatar->file_name }}s-avatar" />
 									@endif

@@ -39,8 +39,8 @@ class User extends Authenticatable implements HasMedia
 			->singleFile()
 			->registerMediaConversions(function (Media $media = null) {
 				$this->addMediaConversion('thumb')
-					->width(35)
-					->height(35)
+					->width(50)
+					->height(50)
 					->withResponsiveImages();
 				$this->addMediaConversion('profile')
 					->width(350)
