@@ -40,10 +40,11 @@ $(function(){
 
   // Submit Form on Image Selection on Image Modal
  //  $('#uploadFileField').on('change', function() {
-	// $("#asset-img-form").click();
+	// $("#asset-img-form").submit();
  //  });
 
   // Submit Form with Button Outside of Form
+  // for users, assets, companies, tenants, accounts
   $('#edit-btn').click(function(e) {
   	e.preventDefault();
 	$('#data-form').submit();
@@ -56,20 +57,12 @@ $(function(){
 	  // Enable Upload Button
 	  $('#avatar-upload').removeAttr('disabled');
 	  // Get the file name
-      var fileName = $(this).val();
+      let fileName = $(this).val();
       // Strip the crap off the filename
-      var cleanFileName = fileName.replace('C:\\fakepath\\', '');
+      let cleanFileName = fileName.replace('C:\\fakepath\\', '');
       // Replace the "Choose a file" label
       $(this).next('.custom-file-label').html(cleanFileName);
 	} 
   });
-
-  $('.carousel-item').on('click', function() {
-  	$('.carousel-item').removeClass('active');
-  	$('.thumbnail-item').removeClass('active');
-  	// $('#thumb-image')
-  })
-
-  
 
 });

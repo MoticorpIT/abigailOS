@@ -21,9 +21,9 @@ class AssetImageController extends Controller
 	√ 8. Add default profile image when no images are present for the asset
 	√ 9. Add default modal content when no images are present for the asset
 	√ 10. Assign first uploaded image to asset as profile_img_id
-	  11. Prevent page error when the image that is selected as the profile image is deleted
-	  12. Display thumb image as main image when clicked (in modal) - js
-	  13. Scroll between images in modal by clicking arrows - js
+	√ 11. Prevent page error when the image that is selected as the profile image is deleted
+	√ 12. Display thumb image as main image when clicked (in modal) - js
+	√ 13. Scroll between images in modal by clicking arrows - js
 	  14. Make it all work with the devil... i mean, AJAX - js
 	*/
 
@@ -58,7 +58,8 @@ class AssetImageController extends Controller
 			toastr()->success('The image was saved successfully!', 'Abigail Says...');
 		}
 
-		return redirect()->back();
+		// return redirect()->back();
+		return response()->json($asset);
 
 	}
 

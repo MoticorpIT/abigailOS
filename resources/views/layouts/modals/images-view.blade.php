@@ -33,9 +33,9 @@
 								<div class="col-12 col-md-8">
 									{{-- IMAGES --}}
 									<div class="carousel-inner">
-										@php $i = 1; @endphp
+										@php $i = 0; @endphp
 										@foreach($images as $image)
-											<div id="main-img-{{ $image->id }}" class="carousel-item {{ $i == 1 ? 'active' : '' }}">
+											<div id="main-img-{{ $image->id }}" class="carousel-item {{ $i == 0 ? 'active' : '' }}">
 												<img src="{{ $image->getUrl('main') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image">
 											</div>
 											@php $i++ @endphp
@@ -55,12 +55,12 @@
 								{{-- SMALL IMAGE THUMBAILS --}}
 								<div class="col-12 col-md-4">
 									<ol class="image-thumbnails carousel-indicators">
-										@php $i = 1; @endphp
+										@php $i = 0; @endphp
 										@foreach($images as $image)
-											<li id="thumb-img-{{ $image->id }}" class="thumbnail-item {{ $i == 1 ? 'active' : '' }}">
+											<li id="thumb-img-{{ $image->id }}" class="thumbnail-item {{ $i == 0 ? 'active' : '' }}">
 												<div class="row no-gutters">
 													<div class="col-12 img-group">
-														<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="{{ $image->id }}" class="active">
+														<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="{{ $i }}" class="active">
 															<img src="{{ $image->getUrl('thumb') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image Thumb">
 														</div>
 													</div> {{-- col --}}
@@ -69,7 +69,7 @@
 															@csrf
 															@method('PATCH')
 															<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
-															<button name="submit" class="btn btn-secondary btn-sm">
+															<button name="submit" class="btn btn-secondary btn-sm {{ $image->id === $asset->profile_img_id ? 'disabled btn-success' : ''}}">
 																<i class="fas fa-star"></i>
 															</button>
 														</form>
@@ -83,7 +83,7 @@
 															@csrf
 															@method('DELETE')
 															<input type="hidden" id="asset_id" name="asset_id" value="{{ $asset->id }}">
-															<button name="submit" class="btn btn-danger btn-sm">
+															<button name="submit" class="btn btn-danger btn-sm" {{ $image->id === $asset->profile_img_id ? 'disabled' : ''}}>
 																<i class="fas fa-trash-alt"></i>
 															</button>
 														</form>
@@ -116,9 +116,9 @@
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
 				
 				{{-- IMAGE UPLOAD FORM - HIDDEN --}}
-				<form id="asset-img-form" class="d-none" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
+				<form id="asset-img-form" class="" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
 					@csrf
-					<input type="text" id="asset_id" name="asset_id" class="{{ $errors->has('asset_id') ? 'has-error' : '' }}" value="{{ $asset->id }}">
+					<input type="hidden" id="asset_id" name="asset_id" class="{{ $errors->has('asset_id') ? 'has-error' : '' }}" value="{{ $asset->id }}">
 					<input type="file" id="uploadFileField" name="image" class="{{ $errors->has('image') ? 'has-error' : '' }}">
 					<input type="submit" id="add-image-btn" name="submit">
 				</form>
