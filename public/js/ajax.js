@@ -1,9 +1,9 @@
 $( document ).ready(function() {
 
 	// IMAGE SELECT->SUBMIT
-	$('#uploadFileField').on('change', function(){
+	$('#uploadFileField').change(function(){
 
-		var url = $(this).parent('#uploadFileForm').attr("action");
+		var url = $(this).parent('#asset-img-form').attr("action");
 
 		// var formData = new FormData();
 		// formData.append('status_id', $("#statusIdField").val());
@@ -14,11 +14,11 @@ $( document ).ready(function() {
 		// formData.append('image', $('#uploadFileField')[0].files[0]);
 
 		var formData = {
-			asset_id: $("#user_id").val(),
+			asset_id: $("#asset_id").val(),
 			image: $("#uploadFileField")[0].files[0],
 		};
-		
-		console.log(formdata);
+
+		console.table(formData);
 
 		$.ajaxSetup({
 			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }

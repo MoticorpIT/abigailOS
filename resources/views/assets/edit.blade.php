@@ -66,7 +66,7 @@
 								{{-- PROFILE IMAGES --}}
 								<div class="profile-image">
 									<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-										@if ($asset->profile_img_id == null)  {{-- || $asset->profile_img_id !=  --}}
+										@if ($asset->profile_img_id == null)
 											<img src="/media/images/asset-default-image-profile.png" alt="Default Asset Image" />
 										@else
 											<img src="{{ $asset->profileImage->getURL('profile') ?? '' }}" alt="{{ $asset->name }} Profile Image" />
@@ -338,12 +338,12 @@
 			</form>
 
 
-			{{-- <form id="asset-img-form" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
+			<form id="asset-img-form" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
 				@csrf
 				<input type="hidden" id="asset_id" name="asset_id" class="{{ $errors->has('asset_id') ? 'has-error' : '' }}" value="{{ $asset->id }}">
 				<input type="file" id="uploadFileField" name="image" class="{{ $errors->has('image') ? 'has-error' : '' }}">
 				<input type="submit" id="add-image-btn" name="submit">
-			</form> --}}
+			</form>
 
 		</div> <!-- db-box -->
 	</div> <!-- col -->

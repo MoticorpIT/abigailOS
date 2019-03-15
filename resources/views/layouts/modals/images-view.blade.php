@@ -35,12 +35,12 @@
 									<div class="carousel-inner">
 										@php $i = 0; @endphp
 										@foreach($images as $image)
-											<div id="main-img-{{ $image->id }}" class="carousel-item {{ $i == 0 ? 'active' : '' }}">
+											<div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
 												<img src="{{ $image->getUrl('main') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image">
 											</div>
 											@php $i++ @endphp
 										@endforeach
-									</div> {{-- inner --}}
+									</div>
 									{{-- SCROLL BUTTONS --}}
 									<a class="carousel-control-prev" href="#images-carousel" role="button" data-slide="prev">
 										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -50,21 +50,27 @@
 										<span class="carousel-control-next-icon" aria-hidden="true"></span>
 										<span class="sr-only">Next</span>
 									</a>
-								</div> {{-- col --}}
+								</div>
 
-								{{-- SMALL IMAGE THUMBAILS --}}
+								{{-- IMAGE THUMBNAILS --}}
 								<div class="col-12 col-md-4">
 									<ol class="image-thumbnails carousel-indicators">
+										
 										@php $i = 0; @endphp
 										@foreach($images as $image)
-											<li id="thumb-img-{{ $image->id }}" class="thumbnail-item {{ $i == 0 ? 'active' : '' }}">
+											<li class="thumbnail-item {{ $i == 0 ? 'active' : '' }}">
 												<div class="row no-gutters">
+
+													{{-- THUMBNAILS --}}
 													<div class="col-12 img-group">
 														<div class="carousel-indicator" data-target="#images-carousel" data-slide-to="{{ $i }}" class="active">
 															<img src="{{ $image->getUrl('thumb') }}" class="d-block w-100" alt="{{ $asset->name }} Gallery Image Thumb">
 														</div>
-													</div> {{-- col --}}
+													</div>
+
+													{{-- THUMBNAIL BUTTONS --}}
 													<div class="col-12 btn-group">
+														{{-- MAKE PROFILE IMAGE --}}
 														<form id="profile-image-form" method="POST" action="{{ route('images.update', $image->id) }}">
 															@csrf
 															@method('PATCH')
@@ -73,12 +79,14 @@
 																<i class="fas fa-star"></i>
 															</button>
 														</form>
+														{{-- DOWNLOAD IMAGE --}}
 														<form id="download-image-form" method="GET" action="{{ route('images.downloadOne', $image->id) }}">
 															@csrf
 															<button name="submit" class="btn btn-primary btn-sm">
 																<i class="fas fa-download"></i>
 															</button>
 														</form>
+														{{-- DELETE IMAGE --}}
 														<form id="delete-image-form" method="POST" action="{{ route('images.destroy', $image->id) }}">
 															@csrf
 															@method('DELETE')
@@ -87,9 +95,10 @@
 																<i class="fas fa-trash-alt"></i>
 															</button>
 														</form>
-													</div> {{-- col --}}
-												</div> {{-- row --}}
-											</li> {{-- thumbnail item --}}
+													</div> 
+
+												</div> 
+											</li>
 											@php $i++ @endphp
 										@endforeach
 
@@ -104,6 +113,8 @@
 
 			{{-- MODAL FOOTER --}}
 			<div class="modal-footer">
+
+				{{-- DOWNLOAD ALL IMAGES --}}
 				<form id="download-all-images-form" method="GET" action="{{ route('images.downloadAll', $asset->id) }}" enctype="multipart/form-data">
 					@csrf
 					<button type="submit" name="submit" class="download-all-link btn btn-secondary mr-auto">
@@ -132,4 +143,4 @@
 			</div>
 		</div>
 	</div>
-</div> {{-- update images --}}
+</div>

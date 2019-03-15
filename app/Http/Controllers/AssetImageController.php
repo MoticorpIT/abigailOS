@@ -58,8 +58,8 @@ class AssetImageController extends Controller
 			toastr()->success('The image was saved successfully!', 'Abigail Says...');
 		}
 
-		// return redirect()->back();
-		return response()->json($asset);
+		return redirect()->back();
+		// return response()->json($asset);
 
 	}
 
