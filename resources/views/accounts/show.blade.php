@@ -59,7 +59,7 @@
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
 								@if ($account->logo_id == null)
-									<img src="/media/images/user-default-avatar-profile.png" alt="Default Account Avatar" />
+									<img src="/media/images/user-default-avatar-profile.png" alt="Default Account Logo" />
 								@else
 									<img src="{{ $account->logo->getURL('profile') ?? '' }}" alt="{{ $account->name }}s Logo" />
 								@endif

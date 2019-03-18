@@ -2,8 +2,35 @@
 
 namespace App;
 
-class Tenant extends Model
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
+class Tenant extends Model implements HasMedia
 {
+	use HasMediaTrait;
+
+	// IMAGE - START
+	public function registerMediaCollections()
+	{
+		$this->addMediaCollection('tenants')
+			->singleFile()
+			->registerMediaConversions(function (Media $media = null) {
+				$this->addMediaConversion('thumb')
+					->width(50)
+					->height(50)
+					->withResponsiveImages();
+				$this->addMediaConversion('profile')
+					->width(350)
+					->height(350)
+					->withResponsiveImages();
+			});
+	}
+	public function image() {
+		return $this->hasOne(Media::class, 'id', 'image_id');
+	}
+	// IMAGE - END
+
 	public function scopeActive($query) {
     	return $query->where('status_id',1);
 	}
