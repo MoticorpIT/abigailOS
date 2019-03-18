@@ -55,11 +55,11 @@
 											@csrf
 											<div class="input-group">
 												<div class="custom-file">
-													<input type="file" name="avatar" class="custom-file-input {{ $errors->has('avatar') ? 'has-error' : '' }}" id="inputGroupFile04" aria-describedby="avatar-upload">
+													<input type="file" id="avatar-upload" name="avatar" class="custom-file-input {{ $errors->has('avatar') ? 'has-error' : '' }}" id="inputGroupFile04" aria-describedby="avatar-upload">
 													<label class="custom-file-label" for="inputGroupFile04">Choose file</label>
 												</div>
 												<div class="input-group-append">
-													<button class="btn btn-primary" type="submit" id="avatar-upload" disabled>Upload</button>
+													<button class="btn btn-primary" type="submit" id="avatar-upload-btn" disabled>Upload</button>
 												</div>
 											</div>
 										</form>

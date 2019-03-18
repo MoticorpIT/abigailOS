@@ -127,9 +127,9 @@
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
 				
 				{{-- IMAGE UPLOAD FORM - HIDDEN --}}
-				<form id="asset-img-form" class="" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
+				<form id="asset-img-form" class="d-none" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
 					@csrf
-					<input type="hidden" id="asset_id" name="asset_id" class="{{ $errors->has('asset_id') ? 'has-error' : '' }}" value="{{ $asset->id }}">
+					<input type="text" id="asset_id" name="asset_id" class="{{ $errors->has('asset_id') ? 'has-error' : '' }}" value="{{ $asset->id }}">
 					<input type="file" id="uploadFileField" name="image" class="{{ $errors->has('image') ? 'has-error' : '' }}">
 					<input type="submit" id="add-image-btn" name="submit">
 				</form>

@@ -381,7 +381,7 @@
 
 
 <!-- Images Modal -->
-@include('layouts/modals/view-images')
+@include('layouts/modals/images-view')
 <!-- ADD NOTES MODEL -->
 @include('layouts/modals/note-add')
 

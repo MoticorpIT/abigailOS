@@ -34,7 +34,7 @@ $( document ).ready(function() {
 				console.log('ajax complete');
 				// Reload Page
 				location.reload();
-				// Open Modal
+				// Open modal
 				$("#update-images").modal('show');
 			},
 			error: function (data) {
@@ -42,7 +42,7 @@ $( document ).ready(function() {
 			}
 		});
 
-	    // return false;
+	    return false;
 	})
 
 	// STORE NOTE

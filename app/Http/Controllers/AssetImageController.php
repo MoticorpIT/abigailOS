@@ -30,6 +30,32 @@ class AssetImageController extends Controller
 	// STORE IMAGES
 	public function store(Request $request)
 	{
+		// ERROR 1
+		/*
+			1. When data comes from form WITH ajax, it fails validation
+			2. If validation is removed, it fails at $asset = Asset::findOrFail($request->asset_id) with no results for model app/asset
+			3. formData var from js has the appropriate data but controller doesnt see it
+		*/
+
+		// SANS AJAX
+		/*
+			1. When data comes from form WITHOUT ajax, it passes validation
+			2. Image is uploaded and associated to the asset (as it should be)
+		*/
+
+		// ERROR 2
+		/*
+			1. Can't get the reload with modal open functionality to work
+			   - tested without form data, modal doesnt open on reload
+		*/
+
+
+		// Validate the Request Data
+		$this->validate(request(), [
+            'asset_id' => 'required',
+            'image' => 'required'
+        ]);
+
 		/*
 		  1. Get Current Asset (by id)
 		  2. Get Current Assets Associated Media (images)
@@ -76,7 +102,7 @@ class AssetImageController extends Controller
 		} else {
 			toastr()->success('The image was assigned successfully!', 'Abigail Says...');
 		}
-
+		// Redirect the user back to the previous page
 		return redirect()->back();
 
 	}

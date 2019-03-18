@@ -39,9 +39,9 @@ $(function(){
   });
 
   // Submit Form on Image Selection on Image Modal
- //  $('#uploadFileField').on('change', function() {
-	// $("#asset-img-form").submit();
- //  });
+  // $('#uploadFileField').change(function() {
+	// $("#add-image-btn").click();
+  // });
 
   // Submit Form with Button Outside of Form
   // for users, assets, companies, tenants, accounts
@@ -52,10 +52,10 @@ $(function(){
 
   // Enable Upload Button Once File is Selected
   // And Show File Name After Selecting but Before Uploading
-  $('input:file').change(function(){
+  $('#avatar-upload').change(function(){
 	if ($(this).val()) {
 	  // Enable Upload Button
-	  $('#avatar-upload').removeAttr('disabled');
+	  $('#avatar-upload-btn').removeAttr('disabled');
 	  // Get the file name
       let fileName = $(this).val();
       // Strip the crap off the filename

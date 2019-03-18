@@ -348,6 +348,6 @@
 <!-- ADD NOTE MODAL -->
 @include('layouts/modals/note-add')
 <!-- Images Modal -->
-@include('layouts/modals/view-images')
+@include('layouts/modals/images-view')
 
 @endsection
