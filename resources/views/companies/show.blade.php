@@ -9,7 +9,6 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			@csrf
 
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
@@ -373,9 +372,6 @@
 </div> <!-- col -->
 </div> <!-- db boxes -->
 
-
-<!-- Images Modal -->
-{{-- @include('layouts/modals/images-view') --}}
 <!-- ADD NOTES MODEL -->
 @include('layouts/modals/note-add')
 

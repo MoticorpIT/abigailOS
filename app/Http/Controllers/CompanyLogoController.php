@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CompanyLogoController extends Controller
 {
-    // STORE AVATAR
+    // STORE LOGO
     public function store(Request $request)
     {
     	/*
