@@ -45,10 +45,10 @@ $(function(){
 
   // Submit Form with Button Outside of Form
   // for users, assets, companies, tenants, accounts
-  $('#edit-btn').click(function(e) {
-  	e.preventDefault();
-	$('#data-form').submit();
-  });
+ //  $('#edit-btn').click(function(e) {
+ //  	e.preventDefault();
+	// $('#data-form').submit();
+ //  });
 
   // Enable Upload Button Once File is Selected
   // And Show File Name After Selecting but Before Uploading

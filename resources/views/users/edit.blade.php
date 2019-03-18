@@ -19,7 +19,7 @@
 					@if(Auth::user()->id == $user->id)
 						<a href="/users/{{Auth::user()->id}}/edit-pw" class="btn btn-round">Change Password</a>
 					@endif
-					<button id="edit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Save User</button>
+					<button form="data-form" id="edit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Save User</button>
 				</div>
 				<div class="clear"></div>
 			</h1>
