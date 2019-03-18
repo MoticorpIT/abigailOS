@@ -15,10 +15,6 @@ $this->get('/', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
-// AVATAR / IMAGE ROUTING
-Route::resource('avatar', 'AvatarController');
-// Route::resource('logo', 'LogoController');
-
 // DASHBOARD ROUTE
 Route::group( ['middleware' => 'auth' ], function() {
 	Route::get('/dashboard', function () {
@@ -27,9 +23,10 @@ Route::group( ['middleware' => 'auth' ], function() {
 });
 
 // ACCOUNT RELATED ROUTES
+Route::resource('account-logo', 'AccountLogoController');
 Route::get('accounts/export', 'AccountController@export'); // Export To CSV
 Route::resource('accounts', 'AccountController');
-Route::resource('accountTypes', 'AccountTypeController');
+Route::resource('account-types', 'AccountTypeController');
 
 // ASSET RELATED ROUTES
 Route::resource('images', 'AssetImageController');
@@ -37,12 +34,13 @@ Route::get('assets/{asset}/download-one-image', 'AssetImageController@downloadOn
 Route::get('assets/{asset}/download-all-images', 'AssetImageController@downloadAllImages')->name('images.downloadAll'); // Download All Images
 Route::get('assets/export', 'AssetController@export'); // Export To CSV
 Route::resource('assets', 'AssetController');
-Route::resource('assetTypes', 'AssetTypeController');
+Route::resource('asset-types', 'AssetTypeController');
 
 // COMPANY RELATED ROUTES
+Route::resource('company-logo', 'CompanyLogoController');
 Route::get('companies/export', 'CompanyController@export'); // Export To CSV
 Route::resource('companies', 'CompanyController');
-Route::resource('companyTypes', 'CompanyTypeController');
+Route::resource('company-types', 'CompanyTypeController');
 
 // STAND ALONE (resourceful) ROUTES
 Route::resource('contracts', 'ContractController');
@@ -55,13 +53,15 @@ Route::resource('statuses', 'StatusController');
 
 // TASK RELATED ROUTES
 Route::resource('tasks', 'TaskController');
-Route::resource('taskTypes', 'TaskTypeController');
+Route::resource('task-types', 'TaskTypeController');
 
 // TENANT RELATED ROUTES
+Route::resource('tenant-image', 'TenantImageController');
 Route::get('tenants/export', 'TenantController@export'); // Export To CSV
 Route::resource('tenants', 'TenantController');
 
 // USER RELATED ROUTES
+Route::resource('avatar', 'AvatarController');
 Route::get('users/{user}/edit-pw', 'UserController@editPassword'); // Change Password view
 Route::put('users/{user}/update-pw', 'UserController@updatePassword'); // Change Password save
 Route::get('users/export', 'UserController@export'); // Export To CSV

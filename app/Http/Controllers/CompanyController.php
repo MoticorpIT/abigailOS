@@ -123,9 +123,9 @@ class CompanyController extends Controller
         $assets = Asset::where('company_id', $id)->get();
         $accounts = Account::where('company_id', $id)->get();
         $notes = Note::where('company_id', $id)->active()->ordered()->get();
-        $logo = Storage::url($company->logo);
+        //$logo = Storage::url($company->logo);
         
-        return view('companies.show', compact('company', 'assets', 'notes', 'accounts', 'logo'));
+        return view('companies.show', compact('company', 'assets', 'notes', 'accounts'));
     }
 
     /** VIEW COMPANY EDIT PAGE */
@@ -185,6 +185,6 @@ class CompanyController extends Controller
         }
 		
 		/* REDIRECT USER AFTER SAVE */
-        return redirect('companies');
+        return redirect()->back();
     }
 }

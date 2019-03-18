@@ -52,10 +52,10 @@ $(function(){
 
   // Enable Upload Button Once File is Selected
   // And Show File Name After Selecting but Before Uploading
-  $('#avatar-upload').change(function(){
+  $('.single-file-upload').change(function(){
 	if ($(this).val()) {
 	  // Enable Upload Button
-	  $('#avatar-upload-btn').removeAttr('disabled');
+	  $('.single-file-upload-btn').removeAttr('disabled');
 	  // Get the file name
       let fileName = $(this).val();
       // Strip the crap off the filename

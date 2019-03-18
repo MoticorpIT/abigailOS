@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('ajax-scripts')
+<script src="{{ asset('/js/ajax.js') }}"></script>
+@endsection
+
 @section('content')
 
 <div class="db-boxes-row row no-gutters">
@@ -338,12 +342,12 @@
 			</form>
 
 
-			<form id="asset-img-form" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
+			{{-- <form id="asset-img-form" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
 				@csrf
 				<input type="hidden" id="asset_id" name="asset_id" class="{{ $errors->has('asset_id') ? 'has-error' : '' }}" value="{{ $asset->id }}">
 				<input type="file" id="uploadFileField" name="image" class="{{ $errors->has('image') ? 'has-error' : '' }}">
 				<input type="submit" id="add-image-btn" name="submit">
-			</form>
+			</form> --}}
 
 		</div> <!-- db-box -->
 	</div> <!-- col -->

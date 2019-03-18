@@ -2,7 +2,8 @@
 
 @section('content')
 
-@dump($asset_id)
-{{-- @dump($id) --}}
+@dump($request)
+@dump($id)
+@dump($company)
 
 @endsection
