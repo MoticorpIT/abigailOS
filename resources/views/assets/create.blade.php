@@ -63,15 +63,6 @@
                     </a>
                   </div> <!-- profile image -->
 
-                  <div class="col-12 col profile-image-updater">
-                    {{-- Asset image --}}
-                    <div class="form-group">
-                      <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
-                        <i class="fas fa-images"></i> Update Images
-                      </a>
-                    </div>
-                  </div> <!-- col -->
-
                   <nav class="profile-tabs">
                     <div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
                       <a class="nav-item nav-link active" id="phone-tab-button" data-toggle="tab" href="#phone-tab-content" role="tab" aria-controls="phone-tab" aria-selected="true">

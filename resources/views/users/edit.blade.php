@@ -105,7 +105,7 @@
 											</label>
 											<select class="form-control" id="is_active" name="is_active">
 												<option value="1" {{ $user->is_active == 1 ? 'selected' : '' }}> Active </option>
-												<option value="2" {{ $user->is_active == 2 ? 'selected' : '' }}> Inactive </option>
+												<option value="0" {{ $user->is_active == 0 ? 'selected' : '' }}> Inactive </option>
 											</select>
 										</div>
 									</div> <!-- col -->

@@ -32,7 +32,7 @@
 						<div class="row profile-row">
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 								<div class="profile-image">
-									<img src="/media/images/default-avatar-profile.png" />
+									<img src="/media/images/user-default-avatar-profile.png" alt="Default User Avatar" />
 								</div> 
 							</div>
 							<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
