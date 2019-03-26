@@ -1,17 +1,24 @@
 $( document ).ready(function() {
 
 	// IMAGE SELECT->SUBMIT
-	$('#uploadFileField').on('change', function(){
+	$('#uploadFileField').change(function(){
 
-		var url = $(this).parent('#uploadFileForm').attr("action");
+		var url = $(this).parent('#asset-img-form').attr("action");
 
-		var formData = new FormData();
-		formData.append('status_id', $("#statusIdField").val());
-		formData.append('account_id', $("#accoutnIdField").val());
-		formData.append('asset_id', $("#assetIdField").val());
-		formData.append('company_id', $("#companyIdField").val());
-		formData.append('tenant_id', $("#tenantIdField").val());
-		formData.append('image', $('#uploadFileField')[0].files[0]); 
+		// var formData = new FormData();
+		// formData.append('status_id', $("#statusIdField").val());
+		// formData.append('account_id', $("#accoutnIdField").val());
+		// formData.append('asset_id', $("#assetIdField").val());
+		// formData.append('company_id', $("#companyIdField").val());
+		// formData.append('tenant_id', $("#tenantIdField").val());
+		// formData.append('image', $('#uploadFileField')[0].files[0]);
+
+		var formData = {
+			asset_id: $("#asset_id").val(),
+			image: $("#uploadFileField")[0].files[0],
+		};
+
+		console.table(formData);
 
 		$.ajaxSetup({
 			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -25,6 +32,10 @@ $( document ).ready(function() {
 		    processData: false, 
 		    success: function (data) {
 				console.log('ajax complete');
+				// Reload Page
+				location.reload();
+				// Open modal
+				$("#update-images").modal('show');
 			},
 			error: function (data) {
 				console.log('Error:', data);

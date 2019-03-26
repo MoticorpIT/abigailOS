@@ -61,7 +61,7 @@ class UserController extends Controller
         ]);
         
         /* CREATE AND SAVE NEW USER TO DATABASE */
-        User::create([
+        $user = User::create([
             'name' => request('name'),
             'email' => request('email'),
             'password' => Hash::make(request('password'))
@@ -87,6 +87,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+        // $avatar = auth()->user()->getFirstMedia('avatars');
+
         return view('users.show', compact('user'));
     }
 
@@ -99,6 +101,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
+
         return view('users.edit', compact('user'));
     }
 

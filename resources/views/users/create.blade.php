@@ -5,8 +5,9 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/users" enctype="multipart/form-data">
-				{{ csrf_field() }}
+			<form method="POST" action="/users">
+				@csrf
+
 				<h1 class="page-heading">
 					Add New User
 
@@ -31,20 +32,8 @@
 						<div class="row profile-row">
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 								<div class="profile-image">
-									<img src="https://via.placeholder.com/400x400" />
-								</div> <!-- profile image -->
-
-								<div class="col-12 col profile-image-updater">
-									{{-- USER AVATAR --}}
-									<div class="form-group">
-										<label>
-											Avatar
-											<span class="optional">(400 x 400)</span>
-										</label>
-										<input type="file" class="form-control {{ $errors->has('avatar') ? 'has-error' : '' }}" name="avatar" placeholder="Path to the User Avatar" value="{{ old('avatar') }}">
-									</div>
-								</div> <!-- col -->
-
+									<img src="/media/images/user-default-avatar-profile.png" alt="Default User Avatar" />
+								</div> 
 							</div>
 							<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
 								<div class="row">

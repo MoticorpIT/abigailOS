@@ -9,7 +9,6 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			{{ csrf_field() }}
 
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
@@ -62,18 +61,12 @@
 						{{-- LEFT COLUMN CONTENT --}}
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-									<img src="https://via.placeholder.com/400x400" />
-								</a>
+								@if ($company->logo_id == null)
+									<img src="/media/images/user-default-avatar-profile.png" alt="Default Company Logo" />
+								@else
+									<img src="{{ $company->logo->getURL('profile') ?? '' }}" alt="{{ $company->name }}s Logo" />
+								@endif
 							</div> <!-- profile image -->
-							<div class="col-12 col profile-image-updater">
-								{{-- Asset image --}}
-								<div class="form-group">
-									<a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
-										<i class="fas fa-images"></i> Update Images
-									</a>
-								</div>
-							</div> <!-- col -->
 
 							{{-- Contact Tabs --}}
 							<nav class="profile-tabs">
@@ -379,9 +372,6 @@
 </div> <!-- col -->
 </div> <!-- db boxes -->
 
-
-<!-- Images Modal -->
-@include('layouts/modals/view-images')
 <!-- ADD NOTES MODEL -->
 @include('layouts/modals/note-add')
 

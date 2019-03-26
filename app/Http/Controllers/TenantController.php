@@ -208,6 +208,6 @@ class TenantController extends Controller
         }
         
         /* REDIRECT USER AFTER SAVE */
-        return redirect('/tenants');
+        return redirect()->back();
     }
 }

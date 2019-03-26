@@ -33,11 +33,36 @@ $(function(){
     $('html').removeClass("sidebar-open");
   });
 
-  // File upload button
+  // Trigger File Selection Window on Image Modal
   $('.uploadFileButton').on('click', function(){
     $('#uploadFileField').click();
   });
 
-  
+  // Submit Form on Image Selection on Image Modal
+  // $('#uploadFileField').change(function() {
+	// $("#add-image-btn").click();
+  // });
+
+  // Submit Form with Button Outside of Form
+  // for users, assets, companies, tenants, accounts
+ //  $('#edit-btn').click(function(e) {
+ //  	e.preventDefault();
+	// $('#data-form').submit();
+ //  });
+
+  // Enable Upload Button Once File is Selected
+  // And Show File Name After Selecting but Before Uploading
+  $('.single-file-upload').change(function(){
+	if ($(this).val()) {
+	  // Enable Upload Button
+	  $('.single-file-upload-btn').removeAttr('disabled');
+	  // Get the file name
+      let fileName = $(this).val();
+      // Strip the crap off the filename
+      let cleanFileName = fileName.replace('C:\\fakepath\\', '');
+      // Replace the "Choose a file" label
+      $(this).next('.custom-file-label').html(cleanFileName);
+	} 
+  });
 
 });

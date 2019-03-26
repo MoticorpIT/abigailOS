@@ -14,8 +14,11 @@
 				{{ csrf_field() }}
 				<div class="modal-body">
 					<div class="media note-item">
-						{{-- Avatar Field -|- Will need to add avatar field to users table --}}
-						<img src="http://placehold.it/50x50" class="mr-3 user-image" />
+						@if (auth()->user()->avatar == null)
+							<img src="/media/images/user-default-avatar-thumb.png" class="mr-3 user-image" alt="Default User Avatar" />
+						@else
+							<img src="{{ auth()->user()->avatarUrl }}" class="mr-3 user-image" alt="{{ Auth::user()->name }}s-avatar" />
+						@endif
 
 						<div class="media-body">
 							{{-- Hidden User Field - Pulls Current Authenticated User (account logged in) --}}

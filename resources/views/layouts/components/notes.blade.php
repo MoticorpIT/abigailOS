@@ -24,7 +24,11 @@
 					<div class="media note-item">
 						<div class="media-side">
 							{{-- USER IMAGE --}}
-							<img src="http://placehold.it/50x50" class="mr-3 user-image" />
+							@if ($note->user->avatar_id == null)
+								<img src="/media/images/user-default-avatar-thumb.png" class="mr-3 user-image" alt="Default User Avatar" />
+							@else
+								<img src="{{ $note->user->avatar->getURL('thumb') ?? '' }}" class="mr-3 user-image" alt="{{ $note->user->avatar->file_name }}s-avatar" />
+							@endif
 						</div> <!-- media side -->
 						{{-- NOTE HEADER --}}
 						<div class="media-body">

@@ -64,7 +64,6 @@ class CompanyController extends Controller
             'phone_2' => 'nullable',
             'fax' => 'nullable',
             'email' => 'nullable',
-            'logo' => 'nullable',
             'incorp_date' => 'nullable',
             'corp_id' => 'nullable',
             'city_lic' => 'nullable',
@@ -72,12 +71,6 @@ class CompanyController extends Controller
             'fed_tax_id' => 'nullable',
             'company_type_id' => 'required'
         ]);
-
-        /* SET THE UPLOAD - Used below for logo */
-        $upload = '';
-        if($request->logo) {
-            $upload = $request->logo->store('companies');
-        };
 
         /* CREATE THE NEW COMPANY */
         $company = new Company(
@@ -92,7 +85,6 @@ class CompanyController extends Controller
                 'phone_2' => $request->phone_2,
                 'fax' => $request->fax,
                 'email' => $request->email,
-                'logo' => $upload,
                 'incorp_date' => $request->incorp_date,
                 'corp_id' => $request->corp_id,
                 'city_lic' => $request->city_lic,
@@ -123,9 +115,9 @@ class CompanyController extends Controller
         $assets = Asset::where('company_id', $id)->get();
         $accounts = Account::where('company_id', $id)->get();
         $notes = Note::where('company_id', $id)->active()->ordered()->get();
-        $logo = Storage::url($company->logo);
+        //$logo = Storage::url($company->logo);
         
-        return view('companies.show', compact('company', 'assets', 'notes', 'accounts', 'logo'));
+        return view('companies.show', compact('company', 'assets', 'notes', 'accounts'));
     }
 
     /** VIEW COMPANY EDIT PAGE */
@@ -158,7 +150,6 @@ class CompanyController extends Controller
             'phone_2' => 'nullable',
             'fax' => 'nullable',
             'email' => 'nullable',
-            'logo' => 'nullable',
             'incorp_date' => 'nullable',
             'corp_id' => 'nullable',
             'city_lic' => 'nullable',
@@ -185,6 +176,6 @@ class CompanyController extends Controller
         }
 		
 		/* REDIRECT USER AFTER SAVE */
-        return redirect('companies');
+        return redirect()->back();
     }
 }

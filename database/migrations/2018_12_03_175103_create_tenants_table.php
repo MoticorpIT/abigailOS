@@ -17,6 +17,7 @@ class CreateTenantsTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->integer('image_id')->nullable();
             $table->string('phone_1');
             $table->string('phone_2')->nullable();
             $table->string('fax')->nullable();

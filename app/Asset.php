@@ -2,11 +2,47 @@
 
 namespace App;
 
-class Asset extends Model
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
+class Asset extends Model implements HasMedia
 {
+	use HasMediaTrait;
+	
+	// SCOPES
 	public function scopeActive($query) {
     	return $query->where('status_id',1);
 	}
+	// SCOPES - END
+
+	// MEDIA/IMAGES - START
+	public function registerMediaCollections()
+	{
+		$this->addMediaCollection('assets')
+			->registerMediaConversions(function (Media $media = null) {
+				$this->addMediaConversion('main')
+					->width(985)
+					->height(616)
+					->withResponsiveImages();
+				$this->addMediaConversion('profile')
+					->width(350)
+					->height(350)
+					->withResponsiveImages();
+				$this->addMediaConversion('thumb')
+					->width(194)
+					->height(121)
+					->withResponsiveImages();
+			});
+	}
+	public function profileImage() {
+		return $this->hasOne(Media::class, 'id', 'profile_img_id');
+	}
+	// public function getAvatarUrlAttribute() {
+	// 	return $this->profileImage->getUrl('thumb');
+	// }
+	// MEDIA/IMAGES - END
+
     public function company() {
 		return $this->belongsTo(Company::class);
 	}
@@ -27,9 +63,6 @@ class Asset extends Model
 	}
 	public function tasks() {
 		return $this->hasMany(Task::class);
-	}
-	public function images() {
-		return $this->hasMany(Image::class);
 	}
 	public function files() {
 		return $this->hasMany(File::class);
