@@ -8,6 +8,7 @@ use App\Note;
 use App\Contract;
 use App\Account;
 use App\Exports\AssetExport;
+use App\Http\Requests\AssetRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -23,92 +24,65 @@ class AssetController extends Controller
 		$this->middleware('auth');
 	}
 
+    
     // Export to Excel File
     public function export() 
     {
         return Excel::download(new AssetExport, 'abigailos-assets.xlsx');
     }
 
-	// Assets.Index (table view)
+	
+	// Show all Assets (table)
 	public function index()
 	{
 		$assets = Asset::orderBy('name')->get();
 		return view('assets.index', compact('assets'));
 	}
 
-	// Assets.Create (form)
+	
+	// Asset Create Form (view)
 	public function create()
 	{
 		// DATABASE QUERIES
 		$companies = Company::active()->get();
 
-		/*
-		|----------------------------------------------------------------
-		| CONFIG/CONSTANTS.PHP 'QUERIES'
-		|----------------------------------------------------------------
-		| If asset_types or states need to be changed, they will need
-		| to be changed in the constants.php file AND on the DB
-		*/
+		// CONFIG/CONSTANTS.PHP 'QUERIES'
+		// Asset_types will need to be changed in the constants.php file AND on the DB
 		$states = Config::get('constants.states');
 		$asset_types = Config::get('constants.asset_types');
 
 		return view('assets.create', compact('states', 'asset_types', 'companies'));
 	}
 
-	// Assets.Store (save asset to db)
-	public function store(Request $request)
-	{
-		// VALIDATE THE REQUEST
-		$this->validate(request(), [
-			'name' => 'unique:assets|required',
-			'street_1' => 'required',
-			'street_2' => 'nullable',
-			'city' => 'required',
-			'state' => 'required',
-			'zip' => 'required',
-			'phone_1' => 'required',
-			'phone_2' => 'nullable',
-			'fax' => 'nullable',
-			'email' => 'nullable',
-			'rent' => 'nullable',
-			'deposit' => 'nullable',
-			'acquired_date' => 'nullable',
-			'asset_type_id' => 'required',
-			'company_id' => 'required'
-		]);
-		// CREATE THE ASSET
-		$asset = new Asset([
-			'name' => $request->name,
-			'street_1' => $request->street_1,
-			'street_2' => $request->street_2,
-			'city' => $request->city,
-			'state' => $request->state,
-			'zip' => $request->zip,
-			'phone_1' => $request->phone_1,
-			'phone_2' => $request->phone_2,
-			'fax' => $request->fax,
-			'email' => $request->email,
-			'rent' => $request->rent,
-			'deposit' => $request->deposit,
-			'acquired_date' => $request->aquired_date,
-			'asset_type_id' => $request->asset_type_id,
-			'company_id' => $request->company_id
-		]);
+	
+	// Store a New Asset
+	public function store(AssetRequest $request)
+	{	
+		// VALIDATE FORM DATA
+		$validData = $request->validated();
+
+		// CREATE ASSET
+		$asset = Asset::create($validData);
+
 		// SAVE THE ASSET
 		$asset->save();
+		
 		// SET NOTIFICATIONS
 		if (!$asset->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The asset was saved successfully!', 'Abigail Says...');
 		}
+		
 		// REDIRECT
-		return redirect('/assets');
+		return redirect()->route('assets.show', $asset);
 	}
 
-	// Assets.Show (profile)
+
+	// Show One Asset (profile)
 	public function show($id)
 	{
+		// DATABASE QUERIES
 		$asset = Asset::findOrFail($id);
 		$images = $asset->getMedia('assets'); // for modal
 		$notes = Note::where('asset_id', $id)->active()->ordered()->get();
@@ -118,20 +92,16 @@ class AssetController extends Controller
 		return view('assets.show', compact('asset', 'images', 'notes', 'accounts', 'contracts'));
 	}
 
-	// Assets.Edit (form)
+
+	// Asset Edit Form (view)
 	public function edit(Asset $asset)
 	{
 		// DATABASE QUERIES
 		$companies = Company::active()->get();
 		$images = $asset->getMedia('assets'); // For Modal
 
-		/*
-		|----------------------------------------------------------------
-		| CONFIG/CONSTANTS.PHP 'QUERIES'
-		|----------------------------------------------------------------
-		| If asset_types or statuses need to be changed, they need
-		| to be changed in the constants.php file AND on the DB
-		*/
+		// CONFIG/CONSTANTS.PHP 'QUERIES'
+		// If asset_types or statuses need to be changed in the constants.php file AND on the DB
 		$asset_types = Config::get('constants.asset_types');
 		$statuses = Config::get('constants.statuses');
 		$states = Config::get('constants.states');
@@ -139,31 +109,17 @@ class AssetController extends Controller
 		return view('assets.edit', compact('asset', 'asset_types', 'statuses', 'states', 'companies', 'images'));
 	}
 
-	// Assets.Update (save modified asset to db)
-	public function update(Request $request, Asset $asset)
+	
+	// Update an Existing Asset
+	public function update(AssetRequest $request, Asset $asset)
 	{
 		// VALIDATE DATA FROM FORM
-		$data = $request->validate([
-			'name' => 'required',
-			'street_1' => 'required',
-			'street_2' => 'nullable',
-			'city' => 'required',
-			'state' => 'required',
-			'zip' => 'required',
-			'phone_1' => 'required',
-			'phone_2' => 'nullable',
-			'fax' => 'nullable',
-			'email' => 'nullable',
-			'rent' => 'nullable',
-			'deposit' => 'nullable',
-			'acquired_date' => 'nullable',
-			'asset_type_id' => 'required',
-			'company_id' => 'required',
-			'status_id' => 'required'
-		]);
+		$validData = $request->validated();
+		
 		// FILL DATA AND SAVE
-		$asset->fill($data);
+		$asset->fill($validData);
 		$asset->save();
+		
 		// CREATE FLASH MESSAGES
 		if (!$asset->save()) {
         	// if not saved
@@ -175,7 +131,8 @@ class AssetController extends Controller
         	// if edited
         	toastr()->success('The asset was edited successfully!', 'Abigail Says...');
         }
+		
 		// REDIRECT USER
-		return redirect('/assets');
+		return redirect()->route('assets.show', $asset);
 	}
 }

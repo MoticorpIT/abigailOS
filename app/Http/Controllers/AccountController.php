@@ -9,6 +9,7 @@ use App\Note;
 use App\Contract;
 use App\AccountType;
 use App\Exports\AccountExport;
+use App\Http\Requests\AccountRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -17,34 +18,30 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AccountController extends Controller
 {
-    /** CHECK IF USER IS LOGGED IN */
+
+    // Check if User is Logged In
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /* Export to Excel File */
+
+    // Export to Excel File
     public function export() 
     {
         return Excel::download(new AccountExport, 'abigailos-accounts.xlsx');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // Show All Accounts (table)
     public function index()
     {
         $accounts = Account::all();
         return view('accounts.index', compact('accounts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // Account Create Form (view)
     public function create()
     {
     	// DATABASE QUERIES
@@ -52,85 +49,39 @@ class AccountController extends Controller
     	$assets = Asset::active()->get();
 
     	// CONFIG/CONSTANTS.PHP 'QUERIES'
-		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
+		// Account types need to be changed in the constants.php file AND on the DB
 		$states = Config::get('constants.states');
 		$account_types = Config::get('constants.account_types');
 
         return view('accounts.create', compact('states', 'account_types', 'assets', 'companies'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    // Store a New Account
+    public function store(AccountRequest $request)
     {
-        /* VALIDATE THE REQUEST */
-		$this->validate(request(), [
-			'name' => 'unique:accounts|required',
-			'acct_num' => 'nullable',
-			'url' => 'nullable',
-			'street_1' => 'required',
-			'street_2' => 'nullable',
-			'city' => 'required',
-			'state' => 'required',
-			'zip' => 'required',
-			'phone_1' => 'required',
-			'phone_2' => 'nullable',
-			'fax' => 'nullable',
-			'email' => 'nullable',
-			'contact_name' => 'nullable',
-			'contact_phone_1' => 'nullable',
-			'contact_phone_2' => 'nullable',
-			'contact_email' => 'nullable',
-			'account_type_id' => 'required',
-			'company_id' => 'nullable',
-			'asset_id' => 'nullable'
-		]);
-		/* CREATE THE ACCOUNT */
-		$account = new Account(
-			[
-				'name' => $request->name,
-				'street_1' => $request->street_1,
-				'street_2' => $request->street_2,
-				'city' => $request->city,
-				'state' => $request->state,
-				'zip' => $request->zip,
-				'phone_1' => $request->phone_1,
-				'phone_2' => $request->phone_2,
-				'fax' => $request->fax,
-				'email' => $request->email,
-				'acct_num' => $request->acct_num,
-				'url' => $request->url,
-				'contact_name' => $request->contact_name,
-				'contact_phone_1' => $request->contact_phone_1,
-				'contact_phone_2' => $request->contact_phone_2,
-				'contact_email' => $request->contact_email,
-				'account_type_id' => $request->account_type_id,
-				'company_id' => $request->company_id,
-				'asset_id' => $request->asset_id,
-			]
-		);
-		/* SAVE THE ACCOUNT */
+    	// VALIDATE FORM DATA
+    	$validData = $request->validated();
+
+    	// CREATE ACCOUNT
+        $account = Account::create($validData);
+		
+		// SAVE THE ACCOUNT
 		$account->save();
-		/* SET NOTIFICATIONS */
+		
+		// SET NOTIFICATIONS
 		if(!$account->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The account was saved successfully!', 'Abigail Says...');
 		}
-		/* REDIRECT */
+		
+		// REDIRECT
 		return redirect('accounts');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Account  $account
-     * @return \Illuminate\Http\Response
-     */
+
+    // Show One Account (profile)
     public function show($id)
     {
         $account = Account::findOrFail($id);
@@ -138,12 +89,8 @@ class AccountController extends Controller
         return view('accounts.show', compact('account', 'notes'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Account  $account
-     * @return \Illuminate\Http\Response
-     */
+
+    // Account Edit Form (view)
     public function edit($id)
     {
     	// DATABASE QUERIES
@@ -152,7 +99,7 @@ class AccountController extends Controller
         $companies = Company::active()->get();
 
         // CONFIG/CONSTANTS.PHP 'QUERIES'
-        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
+        // Account_types + Statuses need to be changed in the constants.php file AND on the DB
         $account_types = Config::get('constants.account_types');
         $statuses = Config::get('constants.statuses');
         $states = Config::get('constants.states');
@@ -160,42 +107,18 @@ class AccountController extends Controller
         return view('accounts.edit', compact('account', 'account_types', 'statuses', 'states', 'assets', 'companies'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Account $account)
+
+    // Update an Existing Account
+    public function update(AccountRequest $request, Account $account)
     {
-        /* VALIDATE DATA FROM FORM */
-		$data = $request->validate([
-			'name' => 'required',
-			'acct_num' => 'nullable',
-			'url' => 'nullable',
-			'street_1' => 'required',
-			'street_2' => 'nullable',
-			'city' => 'required',
-			'state' => 'required',
-			'zip' => 'required',
-			'phone_1' => 'required',
-			'phone_2' => 'nullable',
-			'fax' => 'nullable',
-			'email' => 'nullable',
-			'contact_name' => 'nullable',
-			'contact_phone_1' => 'nullable',
-			'contact_phone_2' => 'nullable',
-			'contact_email' => 'nullable',
-			'account_type_id' => 'required',
-			'company_id' => 'nullable',
-			'asset_id' => 'nullable',
-			'status_id' => 'required'
-		]);
-		/* FILL DATA AND SAVE */
-		$account->fill($data);
+        // VALIDATE DATA FROM FORM
+		$validData = $request->validated();
+
+		// FILL DATA AND SAVE
+		$account->fill($validData);
 		$account->save();
-		/* CREATE FLASH MESSAGES */
+		
+		// CREATE FLASH MESSAGES
 		if (!$account->save()) {
         	// if not saved
             toastr()->error('An error has occurred. If it persists, contact the manager.');
@@ -206,7 +129,8 @@ class AccountController extends Controller
         	// if edited
         	toastr()->success('Your account was edited successfully!', 'Abigail Says...');
         }
-		/* REDIRECT USER */
+		
+		// REDIRECT USER
 		return redirect('accounts');
     }
     

@@ -36,10 +36,10 @@
 					<i class="fas fa-briefcase"></i> Edit Asset
 					{{-- BUTTON SET --}}
 					<div class="float-right button-set">
-						<a href="/assets/" class="btn btn-round">
+						<a href="{{ url()->previous() }}" class="btn btn-round">
 							Go Back
 						</a>
-						<a href="/assets/{{ $asset->id }}" class="btn btn-secondary">
+						<a href="{{ route('assets.show', $asset) }}" class="btn btn-secondary">
 							<i class="fas fa-eye"></i>
 							View Asset
 						</a>
@@ -296,9 +296,9 @@
 											</label>
 											<select class="form-control {{ $errors->has('$asset->company_id') ? 'has-error' : '' }}" id="company_id" name="company_id">
 												@foreach($companies as $company)
-												<option value="{{ $company->id }}" {{ $asset->company_id == $company->id ? 'selected' : '' }}>
-													{{ $company->name }}
-												</option>
+													<option value="{{ $company->id }}" {{ $asset->company_id == $company->id ? 'selected' : '' }}>
+														{{ $company->name }}
+													</option>
 												@endforeach
 											</select>
 										</div>
@@ -340,14 +340,6 @@
 				</div> <!-- profile wrapper -->
 
 			</form>
-
-
-			{{-- <form id="asset-img-form" method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
-				@csrf
-				<input type="hidden" id="asset_id" name="asset_id" class="{{ $errors->has('asset_id') ? 'has-error' : '' }}" value="{{ $asset->id }}">
-				<input type="file" id="uploadFileField" name="image" class="{{ $errors->has('image') ? 'has-error' : '' }}">
-				<input type="submit" id="add-image-btn" name="submit">
-			</form> --}}
 
 		</div> <!-- db-box -->
 	</div> <!-- col -->
