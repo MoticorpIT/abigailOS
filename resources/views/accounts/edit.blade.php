@@ -346,11 +346,21 @@
 													Company
 												</label>
 												<select class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" id="company_id" name="company_id">
-													@foreach($companies as $company)
-													<option value="{{ $company->id }}" {{ $account->company_id == $company->id ? 'selected' : '' }}>
-														{{ $company->name }}
-													</option>
-													@endforeach
+													@if($account->company_id == null)
+														<option value="" selected>Choose One</option>
+														@foreach($companies as $company)
+															<option value="{{ $company->id }}">
+																{{ $company->name }}
+															</option>
+														@endforeach
+													@else
+														@foreach($companies as $company)
+															<option value="{{ $company->id }}" {{ $account->company_id == $company->id ? 'selected' : '' }}>
+																{{ $company->name }}
+															</option>
+														@endforeach
+														<option value="">None</option>
+													@endif
 												</select>
 											</div>
 										</div> <!-- col -->
@@ -361,11 +371,21 @@
 													Asset
 												</label>
 												<select class="form-control {{ $errors->has('asset_id') ? 'has-error' : '' }}" id="asset_id" name="asset_id">
-													@foreach($assets as $asset)
-													<option value="{{ $asset->id }}" {{ $account->asset_id == $asset->id ? 'selected' : '' }}>
-														{{ $asset->name }}
-													</option>
-													@endforeach
+													@if($account->asset_id == null)
+														<option value="" selected>Choose One</option>
+														@foreach($assets as $asset)
+															<option value="{{ $asset->id }}">
+																{{ $asset->name }}
+															</option>
+														@endforeach
+													@else
+														@foreach($assets as $asset)
+															<option value="{{ $asset->id }}" {{ $account->asset_id == $asset->id ? 'selected' : '' }}>
+																{{ $asset->name }}
+															</option>
+														@endforeach
+														<option value="">None</option>
+													@endif
 												</select>
 											</div>
 										</div> <!-- col -->

@@ -183,9 +183,10 @@
 											<label>
 												Account Status
 											</label>
-											<select class="form-control" id="status_id" name="status_id" readonly disabled>
+											<select class="form-control" readonly disabled>
 												<option value="1" selected>Active</option>
 											</select>
+											<input type="hidden" id="status_id" name="status_id" value="1">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col">

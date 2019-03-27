@@ -530,14 +530,14 @@
 									{{-- Account Asset --}}
 									<div class="form-group">
 										<label>Asset</label>
-										<div class="input">{{ $account->asset->name }}</div>
+										<div class="input">{{ $account->asset_id != null ? $account->asset->name : '' }}</div>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-2 col col-name">
 									{{-- Account Company --}}
 									<div class="form-group">
 										<label>Company</label>
-										<div class="input">{{ $account->company->name }}</div>
+										<div class="input">{{ $account->company_id != null ? $account->company->name : '' }}</div>
 									</div>
 								</div> <!-- col -->
 
