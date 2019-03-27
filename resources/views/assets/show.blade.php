@@ -8,7 +8,6 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			{{ csrf_field() }}
 
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
@@ -33,8 +32,8 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/assets/" class="btn btn-round">Go Back</a>
-					<a href="/assets/{{ $asset->id }}/edit" class="btn btn-primary">
+					<a href="{{ url()->previous() }}" class="btn btn-round">Go Back</a>
+					<a href="{{ route('assets.edit', $asset) }}" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Asset
 					</a>
