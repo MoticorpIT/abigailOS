@@ -14,12 +14,12 @@
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/tenants/">
-							Tenant Table
+						<a href="/invoices">
+							Invoice Table
 						</a>
 					</li>
 					<li class="breadcrumb-item active" aria-current="page">
-						Tenant Profile<span class="d-none d-sm-inline">: asdf</span>
+						Invoice <span class="d-none d-sm-inline">#{{$invoice->invoice_num}}</span>
 					</li>
 				</ol>
 			</nav>
@@ -29,12 +29,12 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/tenants/" class="btn btn-round">Go Back</a>
+					<a href="/invoices" class="btn btn-round">Go Back</a>
 					<a href="javascript:window.print()" class="btn btn-secondary">
 						<i class="fas fa-print"></i>
 						Print Invoice
 					</a>
-					<a href="/tenants//edit" class="btn btn-primary">
+					<a href="/invoices/{{ $invoice->id }}/edit" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Invoice
 					</a>
