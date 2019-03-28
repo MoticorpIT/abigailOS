@@ -7,176 +7,116 @@ use App\Account;
 use App\Asset;
 use App\Company;
 use App\User;
+use App\Http\Requests\TaskRequest;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 class TaskController extends Controller
 {
-    /** CHECK IF USER IS LOGGED IN */
+    // Check if User is Logged In
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Show all Tasks (table)
     public function index()
     {
         $tasks = Task::latest()->get();
         return view('tasks.index', compact('tasks'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Task Create Form (view)
     public function create()
     {
     	// DATABASE QUERIES
-    	$tasks = Task::all();
+    	$tasks = Task::all(); // for parent/child association 
     	$users = User::active()->get();
     	$accounts = Account::active()->get();
     	$companies = Company::active()->get();
     	$assets = Asset::active()->get();
 
     	// CONFIG/CONSTANTS.PHP 'QUERIES'
-		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
+		// Changes need to be changed in the constants.php file AND on the DB
 		$task_types = Config::get('constants.task_types');
 		$priorities = Config::get('constants.priorities');
 
         return view('tasks.create', compact('tasks', 'accounts', 'companies', 'assets', 'task_types', 'priorities', 'users'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    // Store a New Task
+    public function store(TaskRequest $request)
     {
-        /* VALIDATE THE REQUEST */
-		$this->validate(request(), [
-			'task' => 'required',
-			'due_date' => 'required',
-			'repeats' => 'required',
-			'assigned_user_id' => 'required',
-			'account_id' => 'nullable',
-			'company_id' => 'nullable',
-			'asset_id' => 'nullable',
-			'task_id' => 'nullable',
-			'task_type_id' => 'nullable',
-			'priority_id' => 'nullable',
-		]);
-		/* CREATE THE TASK */
-		$task = new Task(
-			[
-				'task' => $request->task,
-				'due_date' => $request->due_date,
-				'repeats' => $request->repeats,
-				'assigned_user_id' => $request->assigned_user_id,
-				'account_id' => $request->account_id,
-				'company_id' => $request->company_id,
-				'asset_id' => $request->asset_id,
-				'task_id' => $request->task_id,
-				'task_type_id' => $request->task_type_id,
-				'priority_id' => $request->priority_id,
-			]
-		);
-		/* SAVE THE TASK */
+    	// Validate Data from Form
+        $validData = $request->validated();
+
+		// Create Task
+		$task = Task::create($validData);
+
+		// Save the Task
 		$task->save();
-		/* SET NOTIFICATIONS */
+
+		// Set Notifications
 		if(!$task->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The task was saved successfully!', 'Abigail Says...');
 		}
-		/* REDIRECT */
+
+		// Redirect or Send Response
 		if ($request->ajax()){
 			return response()->json($task);
 		} else {
-			return redirect('tasks');
+			return redirect()->route('tasks.show', $task);
 		}
 		
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    // Show One Task
+    public function show(Task $task)
     {
     	// DATABASE QUERIES
-    	$task = Task::findOrFail($id);
-    	$sub_tasks = Task::with('sub_tasks')->where('task_id',$id)->get();
+    	$sub_tasks = Task::with('sub_tasks')->where('task_id',$task->id)->get();
     	$users = User::active()->get();
 
     	// CONFIG/CONSTANTS.PHP 'QUERIES'
-		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
+		// Changes need to be changed in the constants.php file AND on the DB
 		$task_types = Config::get('constants.task_types');
 		$priorities = Config::get('constants.priorities');
 
         return view('tasks.show', compact('task', 'sub_tasks', 'users', 'task_types', 'priorities'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    // Task Edit Form (view)
+    public function edit(Task $task)
     {
     	// DATABASE QUERIES
-    	$task = Task::findOrFail($id);
-    	$tasks = Task::all();
+    	$tasks = Task::all(); // for parent/child association
     	$accounts = Account::active()->get();
     	$companies = Company::active()->get();
     	$assets = Asset::active()->get();
     	$users = User::active()->get();
 
     	// CONFIG/CONSTANTS.PHP 'QUERIES'
-		// If either need to be changed, they need to be changed in the constants.php file AND on the DB
+		// Changes need to be changed in the constants.php file AND on the DB
 		$task_types = Config::get('constants.task_types');
 		$priorities = Config::get('constants.priorities');
 
         return view('tasks.edit', compact('task', 'tasks', 'accounts', 'companies', 'assets', 'task_types', 'priorities', 'users'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Task $task)
+    // Update an Existing Task
+    public function update(TaskRequest $request, Task $task)
     {
-        /* VALIDATE DATA FROM FORM */
-		$data = $request->validate([
-			'task' => 'required',
-			'due_date' => 'required',
-			'repeats' => 'required',
-			'assigned_user_id' => 'required',
-			'account_id' => 'nullable',
-			'company_id' => 'nullable',
-			'asset_id' => 'nullable',
-			'task_id' => 'nullable',
-			'task_type_id' => 'nullable',
-			'priority_id' => 'nullable',
-		]);
+        // Validate Data from Form
+        $validData = $request->validated();
 		
-		/* FILL DATA AND SAVE */
-		$task->fill($data);
+		// Fill and Save new Task
+		$task->fill($validData);
 		$task->save();
 		
-		/* CREATE FLASH MESSAGES */
+		// Set Notifications
 		if (!$task->save()) {
         	// if not saved
             toastr()->error('An error has occured please try again.', 'Abigail Says...');
@@ -185,7 +125,7 @@ class TaskController extends Controller
         	toastr()->success('Your task was edited successfully!', 'Abigail Says...');
         }
 		
-		/* REDIRECT USER */
-		return redirect('tasks');
+		// Redirect
+		return redirect()->route('tasks.show', $task);
     }
 }
