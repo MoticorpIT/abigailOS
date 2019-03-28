@@ -37,6 +37,6 @@ class AvatarController extends Controller
 		}
 
 		// REDIRECT USER BACK
-        return redirect()->back();
+        return redirect()->route('users.show', $user);
     }
 }

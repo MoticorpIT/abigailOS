@@ -38,6 +38,6 @@ class AccountLogoController extends Controller
 		}
 
 		// REDIRECT USER BACK
-        return redirect()->back();
+        return redirect()->route('accounts.show', $account);
     }
 }

@@ -38,6 +38,6 @@ class CompanyLogoController extends Controller
 		}
 
 		// REDIRECT USER BACK
-        return redirect()->back();
+        return redirect()->route('companies.show', $company);
     }
 }
