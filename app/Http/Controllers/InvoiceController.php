@@ -11,102 +11,108 @@ use Illuminate\Support\Facades\Config;
 
 class InvoiceController extends Controller
 {
-    // Check if User is Logged In
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	// Check if User is Logged In
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
-    // Show All Invoices (table)
-    public function index()
-    {
-    	// DATABASE QUERIES
-        $invoices = Invoice::all();
-        return view('invoices.index', compact('invoices'));
-    }
 
-    // Invoice Create Form (view)
-    public function create()
-    {
-    	// DATABASE QUERIES
-    	$contracts = Contract::notEnded()->get();
+	// Show All Invoices (table)
+	public function index()
+	{
+		// Database Queries
+		$invoices = Invoice::all();
+		return view('invoices.index', compact('invoices'));
+	}
 
-    	// CONFIG/CONSTANTS.PHP 'QUERIES'
-        // Changes need to be made in the constants.php file AND on the DB
-        $statuses = Config::get('constants.statuses');
-        $priorities = Config::get('constants.priorities');
 
-        return view('invoices.create', compact('contracts', 'priorities', 'statuses'));
-    }
+	// Invoice Create Form (view)
+	public function create()
+	{
+		// Database Queries
+		$contracts = Contract::notEnded()->get();
 
-    // Store a New Invoice
-    public function store(InvoiceRequest $request)
-    {
-    	// Validate Form Data
-    	$validData = $request->validated();
+		// Config/Constants.php 'Queries'
+		// Changes need to be made in the constants.php file AND on the DB
+		$statuses = Config::get('constants.statuses');
+		$priorities = Config::get('constants.priorities');
 
-    	// Create Invoice
-    	$invoice = Invoice::create($validData);
+		return view('invoices.create', compact('contracts', 'priorities', 'statuses'));
+	}
 
-    	// Save the Invoice
-        $invoice->save();
 
-        // Set Notifications
-        if (!$invoice->save()) {
+	// Store a New Invoice
+	public function store(InvoiceRequest $request)
+	{
+		// Validate Form Data
+		$validData = $request->validated();
+
+		// Create Invoice
+		$invoice = Invoice::create($validData);
+
+		// Save the Invoice
+		$invoice->save();
+
+		// Set Notifications
+		if (!$invoice->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The invoice was saved successfully!', 'Abigail Says...');
 		}
 
 		// Redirect
-        return redirect()->route('invoices.show', $invoice);
-    }
+		return redirect()->route('invoices.show', $invoice);
+	}
 
-    // Show One Invoice
-    public function show(Invoice $invoice)
-    {
-    	// CONFIG/CONSTANTS.PHP 'QUERIES'
-        // Changes need to be made in the constants.php file AND on the DB
-        $statuses = Config::get('constants.statuses');
-        $priorities = Config::get('constants.priorities');
 
-        return view('invoices.show', compact('invoice', 'statuses', 'priorities'));
-    }
+	// Show One Invoice
+	public function show(Invoice $invoice)
+	{
+		// Config/Constants.php 'Queries'
+		// Changes need to be made in the constants.php file AND on the DB
+		$statuses = Config::get('constants.statuses');
+		$priorities = Config::get('constants.priorities');
 
-    // Invoice Edit Form (view)
-    public function edit(Invoice $invoice)
-    {
-    	// DATABASE QUERIES
-    	$contracts = Contract::notEnded()->get();
+		return view('invoices.show', compact('invoice', 'statuses', 'priorities'));
+	}
 
-    	// CONFIG/CONSTANTS.PHP 'QUERIES'
-        // Changes need to be made in the constants.php file AND on the DB
-        $statuses = Config::get('constants.statuses');
-        $priorities = Config::get('constants.priorities');
 
-        return view('invoices.edit', compact('invoice', 'contracts', 'statuses', 'priorities'));
-    }
+	// Invoice Edit Form (view)
+	public function edit(Invoice $invoice)
+	{
+		// Database Queries
+		$contracts = Contract::notEnded()->get();
 
-    // Update an Existing Invoice
-    public function update(InvoiceRequest $request, Invoice $invoice)
-    {
-    	// Validate Data from Form
-    	$validData = $request->validated();
+		// Config/Constants.php 'Queries'
+		// Changes need to be made in the constants.php file AND on the DB
+		$statuses = Config::get('constants.statuses');
+		$priorities = Config::get('constants.priorities');
 
-        // Fill Data and Save Invoice
-        $invoice->fill($validData);
-        $invoice->save();
-        
-        // Set Notifications
-        if (!$invoice->save()) {
-        	// if not saved
-            toastr()->error('An error has occurred. If it persists, contact the manager.');
-        } else {
-        	// if edited
-        	toastr()->success('The invoice was edited successfully!', 'Abigail Says...');
-        }
+		return view('invoices.edit', compact('invoice', 'contracts', 'statuses', 'priorities'));
+	}
+
+
+	// Update an Existing Invoice
+	public function update(InvoiceRequest $request, Invoice $invoice)
+	{
+		// Validate Data from Form
+		$validData = $request->validated();
+
+		// Fill Data and Save Invoice
+		$invoice->fill($validData);
+		$invoice->save();
+		
+		// Set Notifications
+		if (!$invoice->save()) {
+			// if not saved
+			toastr()->error('An error has occurred. If it persists, contact the manager.');
+		} else {
+			// if edited
+			toastr()->success('The invoice was edited successfully!', 'Abigail Says...');
+		}
 		
 		// Redirect
-        return redirect()->route('invoices.show', $invoice);
-    }
+		return redirect()->route('invoices.show', $invoice);
+	}
 }

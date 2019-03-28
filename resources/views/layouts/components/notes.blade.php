@@ -27,7 +27,7 @@
 							@if ($note->user->avatar_id == null)
 								<img src="/media/images/user-default-avatar-thumb.png" class="mr-3 user-image" alt="Default User Avatar" />
 							@else
-								<img src="{{ $note->user->avatar->getURL('thumb') ?? '' }}" class="mr-3 user-image" alt="{{ $note->user->avatar->file_name }}s-avatar" />
+								<img src="{{ $note->user->avatar->getURL('thumb') ?? '' }}" class="mr-3 user-image" alt="{{ $user->name }}s-avatar" />
 							@endif
 						</div> <!-- media side -->
 						{{-- NOTE HEADER --}}
