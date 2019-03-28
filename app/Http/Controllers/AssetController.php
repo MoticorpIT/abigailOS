@@ -12,7 +12,6 @@ use App\Http\Requests\AssetRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Storage;
 
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -24,12 +23,12 @@ class AssetController extends Controller
 		$this->middleware('auth');
 	}
 
-    
-    // Export to Excel File
-    public function export() 
-    {
-        return Excel::download(new AssetExport, 'abigailos-assets.xlsx');
-    }
+	
+	// Export to Excel File
+	public function export() 
+	{
+		return Excel::download(new AssetExport, 'abigailos-assets.xlsx');
+	}
 
 	
 	// Show all Assets (table)
@@ -43,10 +42,10 @@ class AssetController extends Controller
 	// Asset Create Form (view)
 	public function create()
 	{
-		// DATABASE QUERIES
+		// Database Queries
 		$companies = Company::active()->get();
 
-		// CONFIG/CONSTANTS.PHP 'QUERIES'
+		// Config/Constants.php 'Queries'
 		// Asset_types will need to be changed in the constants.php file AND on the DB
 		$states = Config::get('constants.states');
 		$asset_types = Config::get('constants.asset_types');
@@ -58,36 +57,35 @@ class AssetController extends Controller
 	// Store a New Asset
 	public function store(AssetRequest $request)
 	{	
-		// VALIDATE FORM DATA
+		// Validate Data from Form
 		$validData = $request->validated();
 
-		// CREATE ASSET
+		// Create Asset
 		$asset = Asset::create($validData);
 
-		// SAVE THE ASSET
+		// Save the Asset
 		$asset->save();
 		
-		// SET NOTIFICATIONS
+		// Set Notifications
 		if (!$asset->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The asset was saved successfully!', 'Abigail Says...');
 		}
 		
-		// REDIRECT
+		// Redirect
 		return redirect()->route('assets.show', $asset);
 	}
 
 
 	// Show One Asset (profile)
-	public function show($id)
+	public function show(Asset $asset)
 	{
-		// DATABASE QUERIES
-		$asset = Asset::findOrFail($id);
-		$images = $asset->getMedia('assets'); // for modal
-		$notes = Note::where('asset_id', $id)->active()->ordered()->get();
-		$accounts = Account::where('asset_id', $id)->get();
-		$contracts = Contract::where('asset_id', $id)->get();
+		// Database Queries
+		$images = $asset->getMedia('assets');
+		$notes = Note::where('asset_id', $asset->id)->active()->ordered()->get();
+		$accounts = Account::where('asset_id', $asset->id)->get();
+		$contracts = Contract::where('asset_id', $asset->id)->get();
 
 		return view('assets.show', compact('asset', 'images', 'notes', 'accounts', 'contracts'));
 	}
@@ -96,11 +94,11 @@ class AssetController extends Controller
 	// Asset Edit Form (view)
 	public function edit(Asset $asset)
 	{
-		// DATABASE QUERIES
+		// Database Queries
 		$companies = Company::active()->get();
-		$images = $asset->getMedia('assets'); // For Modal
+		$images = $asset->getMedia('assets');
 
-		// CONFIG/CONSTANTS.PHP 'QUERIES'
+		// Config/Constants.php 'Queries'
 		// If asset_types or statuses need to be changed in the constants.php file AND on the DB
 		$asset_types = Config::get('constants.asset_types');
 		$statuses = Config::get('constants.statuses');
@@ -113,26 +111,26 @@ class AssetController extends Controller
 	// Update an Existing Asset
 	public function update(AssetRequest $request, Asset $asset)
 	{
-		// VALIDATE DATA FROM FORM
+		// Validate Data from Form
 		$validData = $request->validated();
 		
-		// FILL DATA AND SAVE
+		// Fill and Save Asset
 		$asset->fill($validData);
 		$asset->save();
 		
-		// CREATE FLASH MESSAGES
+		// Set Messages
 		if (!$asset->save()) {
-        	// if not saved
-            toastr()->error('An error has occurred. If it persists, contact the manager.');
-        } elseif($request->status_id == 2) { 
-        	// if deleted
-        	toastr()->success('The asset was deleted successfully', 'Abigail Says...');
-        } else {
-        	// if edited
-        	toastr()->success('The asset was edited successfully!', 'Abigail Says...');
-        }
+			// if not saved
+			toastr()->error('An error has occurred. If it persists, contact the manager.');
+		} elseif($request->status_id == 2) { 
+			// if deleted
+			toastr()->success('The asset was deleted successfully', 'Abigail Says...');
+		} else {
+			// if edited
+			toastr()->success('The asset was edited successfully!', 'Abigail Says...');
+		}
 		
-		// REDIRECT USER
+		// Redirect
 		return redirect()->route('assets.show', $asset);
 	}
 }

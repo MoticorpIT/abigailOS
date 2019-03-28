@@ -192,7 +192,8 @@
 											<label>
 												Company Status
 											</label>
-											<select class="form-control" id="status_id" name="status_id" readonly disabled>
+											<input type="hidden" id="status_id" name="status_id" value="1">
+											<select class="form-control" readonly disabled>
 												<option selected>Active</option>
 											</select>
 										</div>

@@ -178,7 +178,8 @@
 												Account Standing
 												<span class="required">*</span>
 											</label>
-											<select class="form-control" id="account_standing_id" name="account_standing_id" disabled readonly>
+											<input type="hidden" id="account_standing_id" name="account_standing_id" value="1">
+											<select class="form-control" disabled readonly>
 												<option value="1">Current</option>
 											</select>
 										</div>
@@ -188,7 +189,8 @@
 											<label>
 												Tenant Status
 											</label>
-											<select class="form-control" id="status_id" name="status_id" readonly disabled>
+											<input type="hidden" id="status_id" name="status_id" value="1">
+											<select class="form-control" readonly disabled>
 												<option value="1" selected>Active</option>
 											</select>
 										</div>
