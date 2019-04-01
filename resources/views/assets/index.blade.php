@@ -108,10 +108,10 @@
 								{{ $asset->company->name }}
 							</td>
 							<td class="rent">
-								${{ $asset->rent }}
+								{{ $asset->rent != null ? '$' : 'n/a' }}{{ $asset->rent }}
 							</td>
 							<td class="deposit">
-								${{ $asset->deposit }}
+								{{ $asset->deposit != null ? '$' : 'n/a' }}{{ $asset->deposit }}
 							</td>
 							<td class="created-on none">
 								<span class="date">

@@ -51,10 +51,12 @@ class AssetImageController extends Controller
 
 
 		// Validate the Request Data
-		$this->validate(request(), [
-            'asset_id' => 'required',
-            'image' => 'required'
-        ]);
+        // Once ajax works, this will be uncommented
+		// $this->validate(request(), [
+		// 	'asset_id' => 'required',
+		// 	'image' => 'required'
+		// ]);
+			   
 
 		/*
 		  1. Get Current Asset (by id)

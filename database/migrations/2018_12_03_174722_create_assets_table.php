@@ -28,7 +28,7 @@ class CreateAssetsTable extends Migration
             $table->string('email')->nullable();
             $table->string('rent')->nullable();
             $table->string('deposit')->nullable();
-            $table->date('acquired_date')->nullable();
+            $table->string('acquired_date')->nullable();
             $table->integer('asset_type_id');
             $table->integer('company_id');
             $table->integer('status_id')->default(1);
