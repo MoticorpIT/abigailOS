@@ -153,7 +153,7 @@
 											<label>
 												Created On
 											</label>
-											<input class="form-control" name="created_at" value="Now" placeholder="" readonly disabled>
+											<input class="form-control" name="created_at" placeholder="Now" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -162,7 +162,7 @@
 											<label>
 												Updated On
 											</label>
-											<input class="form-control" name="updated_at" value="Now" placeholder="" readonly disabled>
+											<input class="form-control" name="updated_at" placeholder="n/a" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -310,8 +310,5 @@
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div> <!-- db boxes -->
-
-<!-- Images Modal -->
-{{-- @include('layouts/modals/view-images') --}}
 
 @endsection

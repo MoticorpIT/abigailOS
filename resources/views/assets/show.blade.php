@@ -215,7 +215,7 @@
 									<ul class="reset assoc-list acc">
 										@foreach($accounts as $account)
 										<li class="assoc-list-item">
-											<a href="#0" class="assoc-list-link">
+											<a href="{{ route('accounts.show', $account) }}" class="assoc-list-link">
 												<span class="name">
 													{{ $account->name }}
 												</span>
@@ -228,7 +228,7 @@
 									<ul class="reset assoc-list acc">
 										@foreach($contracts as $contract)
 										<li class="assoc-list-item">
-											<a href="#0" class="assoc-list-link">
+											<a href="{{ route('contracts.show', $contract) }}" class="assoc-list-link">
 												<span class="name">
 													{{ $contract->tenant->last_name }}, {{ $contract->tenant->first_name }}
 												</span>
@@ -362,7 +362,7 @@
 										<label>
 											Asset Rent
 										</label>
-										<input class="form-control" name="rent" value="${{ $asset->rent }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="rent" value="{{ $asset->rent != null ? '$' : 'n/a' }} {{ $asset->rent }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -371,7 +371,7 @@
 										<label>
 											Asset Deposit
 										</label>
-										<input class="form-control" name="deposit" value="${{ $asset->deposit }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="deposit" value="{{ $asset->deposit != null ? '$' : 'n/a' }} {{$asset->deposit}}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 

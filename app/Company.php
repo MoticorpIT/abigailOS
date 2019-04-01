@@ -31,9 +31,14 @@ class Company extends Model implements HasMedia
 	}
 	// LOGO - END
 
-	public function scopeActive($query) {
+	// SCOPES - Start
+    public function scopeActive($query) {
     	return $query->where('status_id',1);
 	}
+	public function scopeAbcOrder($query) {
+    	return $query->orderBy('name');
+	}
+	//  SCOPES - End
     public function status() {
 		return $this->belongsTo(Status::class);
 	}

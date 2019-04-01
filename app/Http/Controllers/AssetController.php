@@ -43,7 +43,7 @@ class AssetController extends Controller
 	public function create()
 	{
 		// Database Queries
-		$companies = Company::active()->get();
+		$companies = Company::active()->abcOrder()->get();
 
 		// Config/Constants.php 'Queries'
 		// Asset_types will need to be changed in the constants.php file AND on the DB
