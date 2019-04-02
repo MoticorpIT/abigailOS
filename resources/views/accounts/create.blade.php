@@ -57,7 +57,7 @@
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 								<div class="profile-image">
 									<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-										<img src="https://via.placeholder.com/400x400" />
+                                        <img src="/media/images/account-default-logo-profile.png" alt="Default Account Logo" />
 									</a>
 								</div> <!-- profile image -->
 
