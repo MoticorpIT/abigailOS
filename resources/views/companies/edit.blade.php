@@ -70,7 +70,7 @@
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
 								@if ($company->logo_id == null)
-									<img src="/media/images/user-default-avatar-profile.png" alt="Default Company Logo" />
+									<img src="/media/images/company-default-logo-profile.png" alt="Default Company Logo" />
 								@else
 									<img src="{{ $company->logo->getURL('profile') ?? '' }}" alt="{{ $company->name }}s Logo" />
 								@endif
