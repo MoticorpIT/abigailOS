@@ -56,7 +56,7 @@
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
 								@if ($tenant->image_id == null)
-									<img src="/media/images/user-default-avatar-profile.png" alt="Default Company Avatar" />
+									<img src="/media/images/tenant-default-image-profile.png" alt="Default Tenants Image" />
 								@else
 									<img src="{{ $tenant->image->getURL('profile') ?? '' }}" alt="{{ $tenant->name }}s Image" />
 								@endif
