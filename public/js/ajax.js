@@ -2,28 +2,20 @@ $( document ).ready(function() {
 
 	// IMAGE SELECT->SUBMIT
 	$('#uploadFileField').change(function(){
-
+		// Set URL Variable
 		var url = $(this).parent('#asset-img-form').attr("action");
 
-		// var formData = new FormData();
-		// formData.append('status_id', $("#statusIdField").val());
-		// formData.append('account_id', $("#accoutnIdField").val());
-		// formData.append('asset_id', $("#assetIdField").val());
-		// formData.append('company_id', $("#companyIdField").val());
-		// formData.append('tenant_id', $("#tenantIdField").val());
-		// formData.append('image', $('#uploadFileField')[0].files[0]);
+		// Create FormData object
+		var formData = new FormData();
+			formData.append('asset_id', $("#asset_id").val());
+			formData.append('image', $('#uploadFileField')[0].files[0]);
 
-		var formData = {
-			asset_id: $("#asset_id").val(),
-			image: $("#uploadFileField")[0].files[0],
-		};
-
-		console.table(formData);
-
+		// Grab CSRF Token from <head>
 		$.ajaxSetup({
 			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
 		})
 
+		// Do the damn thing
 		$.ajax({
 		    url: url,
 		    data: formData,
@@ -32,16 +24,15 @@ $( document ).ready(function() {
 		    processData: false, 
 		    success: function (data) {
 				console.log('ajax complete');
-				// Reload Page
-				location.reload();
-				// Open modal
-				$("#update-images").modal('show');
+				// Reload page + add ?openmodal=1 to url
+				window.location = window.location.href + "?openmodal=1";
 			},
 			error: function (data) {
 				console.log('Error:', data);
 			}
 		});
 
+		// Prevent default form action
 	    return false;
 	})
 

@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('ajax-scripts')
-<script src="{{ asset('/js/ajax.js') }}"></script>
+	<script src="{{ asset('/js/ajax.js') }}"></script>
+	<?php
+		if(isset($_GET['openmodal']) && $_GET['openmodal'] == 1){ ?>
+		<script>
+			$(function(){
+				$('#update-images').modal('show');
+			});
+		</script>
+	<?php
+		}
+	?>
 @endsection
 
 @section('content')
