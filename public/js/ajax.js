@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-	// IMAGE SELECT->SUBMIT
+	// ASSET IMAGE SELECT->SUBMIT
 	$('#uploadFileField').change(function(){
 		// Set URL Variable
 		var url = $(this).parent('#asset-img-form').attr("action");
@@ -38,6 +38,11 @@ $( document ).ready(function() {
 
 	// STORE NOTE
 	$(".add-note-ajax").click(function(e){
+		/* TO DO:
+			1. Allow edit + delete functionality without a reload
+			2. Trigger 'success' alert without a reload
+		*/
+
 		// PREVENT BUTTON'S DEFAULT BEHAVIOR
 		e.preventDefault();
 
@@ -69,10 +74,46 @@ $( document ).ready(function() {
 			success: function (data) {
 				// Close Modal
 				$(".modal").modal('hide');
-				// Reload Page
-				location.reload();
+
+				// If 'No Note' div exists, remove it
+				if ($('#no-note-note').length) {
+					$('#no-note-note').remove();
+				};
+
+				// Trigger toastr.js success message
+			    toastr.success('Your note was saved successfully!', 'Abigail Says...');
+
+				// Append Newly Created Note <li>
+				$(".notes-list").append(`
+					<li class="notes-list-item">
+						<div class="media note-item">
+							<div class="media-side">
+								<img src="`+ data[3] +`" class="mr-3 user-image" alt="Default User Avatar">
+							</div>
+							<div class="media-body">
+								<h5 class="mt-0 author text-capitalize">`+ data[1] +`</h5>
+
+								<div class="notes-button-set float-sm-right">
+									<button type="button" class="btn btn-secondary btn-sm edit-note-link notes-button" data-toggle="modal" data-target="#edit-note-modal-`+ data[0].asset_id +`">
+										<i class="fas fa-edit"></i>
+									</button>
+									
+									<button type="button" class="notes-button btn btn-danger btn-sm delete-note-link" data-toggle="modal" data-target="#delete-note-modal-`+ data[0].asset_id +`">
+										<i class="fas fa-trash-alt"></i>
+									</button>
+								</div>
+
+								<span class="timeago float-right">`+ data[2] +`</span>
+
+								<span class="text">`+ data[0].note +`</span>
+							</div>
+						</div>
+					</li>
+				`);
 			},
 			error: function (data) {
+				// Trigger toastr.js error message
+				toastr.error('An error has occurred please try again.', 'Abigail Says...');
 				console.log('Error:', data);
 			}
 		});
