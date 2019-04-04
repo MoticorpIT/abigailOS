@@ -13,7 +13,7 @@
 <div class="col-12 col">
 	<ul class="reset notes-list">
 		@if ($notes->count() == 0)
-			<li class="notes-list-item">
+			<li id="no-note-note" class="notes-list-item">
 				<div class="note-item text-center">
 					No notes. Click 'Add Note' to change that!
 				</div>
@@ -27,7 +27,7 @@
 							@if ($note->user->avatar_id == null)
 								<img src="/media/images/user-default-avatar-thumb.png" class="mr-3 user-image" alt="Default User Avatar" />
 							@else
-								<img src="{{ $note->user->avatar->getURL('thumb') ?? '' }}" class="mr-3 user-image" alt="{{ $user->name }}s-avatar" />
+								<img src="{{ $note->user->avatar->getURL('thumb') ?? '' }}" class="mr-3 user-image" alt="{{ $note->user->name }}s-avatar" />
 							@endif
 						</div> <!-- media side -->
 						{{-- NOTE HEADER --}}

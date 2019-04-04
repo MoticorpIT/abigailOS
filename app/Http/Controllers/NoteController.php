@@ -26,16 +26,18 @@ class NoteController extends Controller
 
 		// Save the Note
 		$note->save();
-		
-		// Set Notifications
-		if (!$note->save()) {
-			toastr()->error('An error has occurred please try again.', 'Abigail Says...');
+
+		// Set variables that get returned to ajax success
+		$user = $note->user->name;
+		$time = $note->created_at->diffForHumans();
+		if (isset($note->user->avatar_id)) {
+			$img = $note->user->avatar->getURL('thumb');
 		} else {
-			toastr()->success('Your note was saved successfully!', 'Abigail Says...');
+			$img = '/media/images/user-default-avatar-thumb.png';
 		}
 
 		// Send Response
-		return response()->json($note);
+		return response()->json([$note, $user, $time, $img]);
 	}
 
 
