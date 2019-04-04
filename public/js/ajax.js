@@ -74,6 +74,9 @@ $( document ).ready(function() {
 				// Close Modal
 				$(".modal").modal('hide');
 
+				// Clear textfield after save
+				$("#note-add").val('');
+
 				// If 'No Note' div exists, remove it
 				if ($('#no-note-note').length) {
 					$('#no-note-note').remove();
@@ -83,7 +86,7 @@ $( document ).ready(function() {
 			    toastr.success('Your note was saved successfully!', 'Abigail Says...');
 
 				// Append Newly Created Note <li>
-				$(".notes-list").append(`
+				$(".notes-list").prepend(`
 					<li class="notes-list-item">
 						<div class="media note-item">
 							<div class="media-side">
