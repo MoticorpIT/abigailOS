@@ -82,7 +82,7 @@ class InvoiceController extends Controller
 	public function edit(Invoice $invoice)
 	{
 		// Database Queries
-		$contracts = Contract::notEnded()->get();
+		$contracts = Contract::with(['tenant', 'asset'])->notEnded()->get();
 
 		// Config/Constants.php 'Queries'
 		// Changes need to be made in the constants.php file AND on the DB
