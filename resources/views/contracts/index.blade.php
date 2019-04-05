@@ -33,7 +33,7 @@
 					<tbody>
 						@foreach($contracts as $contract)
 						{{-- @if($company->status_id == 1) --}}
-						@if($contract->asset_id == 1)
+						@if($contract->term_ended != null)
 							<tr>
 								<td class="id">
 									{{ $contract->id }}
@@ -84,7 +84,7 @@
 					<tbody>
 						@foreach($contracts as $contract)
 						{{-- @if($company->status_id != 1) --}}
-						@if($contract->asset_id != 1)
+						@if($contract->term_ended != null)
 							<tr>
 								<td class="id">
 									{{ $contract->id }}

@@ -22,7 +22,7 @@ class ContractController extends Controller
 	// Show all Contracts (table)
 	public function index()
 	{
-		$contracts = Contract::all();
+		$contracts = Contract::with(['tenant', 'asset'])->get();
 		return view('contracts.index', compact('contracts'));
 	}
 
@@ -32,7 +32,7 @@ class ContractController extends Controller
 	{
 		// Database Queries
 		$assets = Asset::active()->get();
-		$tenants = Tenant::active()->notevicted()->get();
+		$tenants = Tenant::active()->notEvicted()->get();
 
 		// Config/Constants.php 'Queries'
 		$term_lengths = Config::get('constants.term_lengths');
@@ -77,7 +77,7 @@ class ContractController extends Controller
 	public function edit(Contract $contract)
 	{
 		// Database Queries
-		$tenants = Tenant::active()->notevicted()->get();
+		$tenants = Tenant::active()->notEvicted()->get();
 		$assets = Asset::active()->get();
 
 		// Config/Constants.php 'Queries'

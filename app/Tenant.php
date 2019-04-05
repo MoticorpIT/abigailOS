@@ -34,7 +34,7 @@ class Tenant extends Model implements HasMedia
 	public function scopeActive($query) {
     	return $query->where('status_id',1);
 	}
-	public function scopeNotevicted($query) {
+	public function scopeNotEvicted($query) {
     	return $query->whereIn('account_standing_id', [1, 2]);
 	}
     public function status() {
