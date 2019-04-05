@@ -24,7 +24,7 @@
 		<label>
 			Sub-Tasks
 		</label>
-		<ul>
+		<ul id="sub-task-block">
 			@foreach($sub_tasks as $sub_task)
 				<li><a href="/tasks/{{ $sub_task->id }}">{{ $sub_task->task }}</a></li>
 			@endforeach

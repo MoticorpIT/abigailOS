@@ -60,20 +60,25 @@ class TaskController extends Controller
 		// Save the Task
 		$task->save();
 
-		// Set Notifications
-		if(!$task->save()) {
-			toastr()->error('An error has occured please try again.', 'Abigail Says...');
-		} else {
-			toastr()->success('The task was saved successfully!', 'Abigail Says...');
-		}
+		// If Subtask (ajax)
+		if ($request->ajax()) {
 
-		// Redirect or Send Response
-		if ($request->ajax()){
-			return response()->json($task);
+			$subid = $task->id;
+			$subtask = $task->task;
+
+			return response()->json([$task, $subid, $subtask]);
+
 		} else {
+			
+			if(!$task->save()) {
+				toastr()->error('An error has occured please try again.', 'Abigail Says...');
+			} else {
+				toastr()->success('The task was saved successfully!', 'Abigail Says...');
+			}
+
 			return redirect()->route('tasks.show', $task);
+
 		}
-		
 	}
 
 

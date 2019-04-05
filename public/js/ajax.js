@@ -243,11 +243,26 @@ $( document ).ready(function() {
 			success: function (data) {
 				// Close Modal
 				$(".modal").modal('hide');
-				// Reload Page
-				location.reload();
+
+				// Clear textinput after save
+				$("#subtask-add-form").trigger('reset');
+
+				// Add Sub-task li
+				$("#sub-task-block").append(`
+					<li>
+						<a href="/tasks/${data[1]}">
+							${data[2]}
+						</a>
+					</li>
+				`);
+
+				// Trigger toastr success message
+				toastr.success('Your sub-task was saved successfully!', 'Abigail Says...');
 			},
 			error: function (data) {
 				console.log('Error:', data);
+				// Trigger toastr.js error message
+				toastr.error('An error has occurred please try again.', 'Abigail Says...');
 			}
 		});
 	});
