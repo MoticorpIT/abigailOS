@@ -46,10 +46,10 @@ $( document ).ready(function() {
 		e.preventDefault();
 
 		// Set .ajax variables
-		var url = $("#add-note-modal").find("form").attr("action");
+		const url = $("#add-note-modal").find("form").attr("action");
 
 		// Set FormData array
-		var formData = {
+		let formData = {
 			user_id: $("#user_id").val(),
 			account_id: $("#account_id").val(),
 			asset_id: $("#asset_id").val(),
@@ -90,24 +90,24 @@ $( document ).ready(function() {
 					<li class="notes-list-item">
 						<div class="media note-item">
 							<div class="media-side">
-								<img src="`+ data[3] +`" class="mr-3 user-image" alt="Default User Avatar">
+								<img src="${data[3]}" class="mr-3 user-image" alt="Default User Avatar">
 							</div>
 							<div class="media-body">
-								<h5 class="mt-0 author text-capitalize">`+ data[1] +`</h5>
+								<h5 class="mt-0 author text-capitalize">${data[1]}</h5>
 
 								<div class="notes-button-set float-sm-right">
-									<button type="button" class="btn btn-secondary btn-sm edit-note-link notes-button" data-toggle="modal" data-target="#edit-note-modal-`+ data[0].asset_id +`">
+									<button type="button" class="btn btn-secondary btn-sm edit-note-link notes-button" data-toggle="modal" data-target="#edit-note-modal-${data[0].asset_id}">
 										<i class="fas fa-edit"></i>
 									</button>
 									
-									<button type="button" class="notes-button btn btn-danger btn-sm delete-note-link" data-toggle="modal" data-target="#delete-note-modal-`+ data[0].asset_id +`">
+									<button type="button" class="notes-button btn btn-danger btn-sm delete-note-link" data-toggle="modal" data-target="#delete-note-modal-${data[0].asset_id}">
 										<i class="fas fa-trash-alt"></i>
 									</button>
 								</div>
 
-								<span class="timeago float-right">`+ data[2] +`</span>
+								<span class="timeago float-right">${data[2]}</span>
 
-								<span class="text">`+ data[0].note +`</span>
+								<span class="text">${data[0].note}</span>
 							</div>
 						</div>
 					</li>
@@ -243,11 +243,26 @@ $( document ).ready(function() {
 			success: function (data) {
 				// Close Modal
 				$(".modal").modal('hide');
-				// Reload Page
-				location.reload();
+
+				// Clear textinput after save
+				$("#subtask-add-form").trigger('reset');
+
+				// Add Sub-task li
+				$("#sub-task-block").append(`
+					<li>
+						<a href="/tasks/${data[1]}">
+							${data[2]}
+						</a>
+					</li>
+				`);
+
+				// Trigger toastr success message
+				toastr.success('Your sub-task was saved successfully!', 'Abigail Says...');
 			},
 			error: function (data) {
 				console.log('Error:', data);
+				// Trigger toastr.js error message
+				toastr.error('An error has occurred please try again.', 'Abigail Says...');
 			}
 		});
 	});

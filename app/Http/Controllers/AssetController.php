@@ -34,7 +34,7 @@ class AssetController extends Controller
 	// Show all Assets (table)
 	public function index()
 	{
-		$assets = Asset::orderBy('name')->get();
+		$assets = Asset::with(['company', 'assetType'])->get();
 		return view('assets.index', compact('assets'));
 	}
 

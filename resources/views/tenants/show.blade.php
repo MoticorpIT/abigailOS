@@ -162,7 +162,7 @@
 							<div class="tab-content profile-tabs-content" id="">
 								<div class="tab-pane fade show active" id="assoc-acc-tab-content" role="tabpanel" aria-labelledby="assoc-acc-tab-button">
 									<ul class="reset assoc-list acc">
-										@foreach($contracts as $contract)
+										@foreach($tenant->contracts as $contract)
 										<li class="assoc-list-item">
 											<a href="#0" class="assoc-list-link">
 												<span class="name">

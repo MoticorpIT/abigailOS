@@ -4,7 +4,7 @@ namespace App;
 
 class Task extends Model
 {
-    public function task_type() {
+    public function taskType() {
 		return $this->belongsTo(TaskType::class);
 	}
 	public function priority() {

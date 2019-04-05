@@ -24,7 +24,7 @@
 		<label>
 			Sub-Tasks
 		</label>
-		<ul>
+		<ul id="sub-task-block">
 			@foreach($sub_tasks as $sub_task)
 				<li><a href="/tasks/{{ $sub_task->id }}">{{ $sub_task->task }}</a></li>
 			@endforeach
@@ -49,7 +49,7 @@
 		Task Type
 	</label>
 	<select class="form-control" name="task_type_id" disabled read-only>
-		<option value="{{$task->task_type_id}}">{{ $task->task_type->name }}</option>
+		<option value="{{$task->task_type_id}}">{{ $task->taskType->name }}</option>
 	</select>
 </div>
 
