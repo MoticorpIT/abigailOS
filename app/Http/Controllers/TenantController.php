@@ -75,11 +75,11 @@ class TenantController extends Controller
 
 
 	// Show One Tenant (profile)
-	public function show(Tenant $tenant)
+	public function show($id)
 	{
 		// Database Queries
-		$notes = Note::where('tenant_id', $tenant->id)->where('status_id',1)->orderBy('updated_at','desc')->get();
-		$contracts = Contract::where('tenant_id', $tenant->id)->get();
+		$tenant = Tenant::with(['accountStanding', 'status', 'contracts', 'contracts.asset', 'image'])->findOrFail($id);
+		$notes = Note::where('tenant_id', $tenant->id)->active()->ordered()->get();
 
 		// Config/Constants.php 'Queries'
 		// Statuses + account_standing need to be changed in the constants.php file AND on the DB
@@ -87,16 +87,15 @@ class TenantController extends Controller
 		$statuses = Config::get('constants.statuses');
 		$account_standings = Config::get('constants.account_standings');
 		
-		return view('tenants.show', compact('tenant', 'notes', 'contracts', 'states', 'statuses', 'account_standings'));
+		return view('tenants.show', compact('tenant', 'notes', 'states', 'statuses', 'account_standings'));
 	}
 
 
 	// Tenant Edit Form (view)
-	public function edit(Tenant $tenant)
+	public function edit($id)
 	{
 		// Database Queries
-		$notes = Note::where('tenant_id', $tenant->id)->get();
-		$contracts = Contract::where('tenant_id', $tenant->id)->get();
+		$tenant = Tenant::with(['contracts', 'contracts.asset', 'notes', 'image'])->findOrFail($id);
 
 		// Config/Constants.php 'Queries'
 		// Statuses + account_standing need to be changed in the constants.php file AND on the DB
@@ -104,7 +103,7 @@ class TenantController extends Controller
 		$account_standings = Config::get('constants.account_standings');
 		$statuses = Config::get('constants.statuses');
 
-		return view('tenants.edit', compact('tenant','notes','statuses','account_standings','contracts','states'));
+		return view('tenants.edit', compact('tenant','statuses','account_standings','states'));
 	}
 
 
