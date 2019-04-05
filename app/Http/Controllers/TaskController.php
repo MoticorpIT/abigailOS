@@ -24,7 +24,7 @@ class TaskController extends Controller
 	// Show all Tasks (table)
 	public function index()
 	{
-		$tasks = Task::latest()->get();
+		$tasks = Task::with(['priority', 'taskType'])->latest()->get();
 		return view('tasks.index', compact('tasks'));
 	}
 
@@ -78,10 +78,11 @@ class TaskController extends Controller
 
 
 	// Show One Task
-	public function show(Task $task)
+	public function show($id)
 	{
 		// Database Queries
-		$sub_tasks = Task::with('sub_tasks')->where('task_id',$task->id)->get();
+		$task = Task::with(['priority', 'taskType'])->findOrFail($id);
+		$sub_tasks = Task::where('task_id',$task->id)->get();
 		$users = User::active()->get();
 
 		// Config/Constants.php 'Queries'

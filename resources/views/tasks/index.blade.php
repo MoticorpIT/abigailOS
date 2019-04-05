@@ -30,7 +30,7 @@
 							<tr>
 								<td class="text-left">{{ $task->id }}</td>
 								<td class="text-left">{{ $task->task }}</td>
-								<td class="text-left">{{ $task->task_type->name }}</td>
+								<td class="text-left">{{ $task->taskType->name }}</td>
 								<td class="text-left">{{ $task->priority->name }}</td>
 								<td class="view-button">
 									<a href="/tasks/{{ $task->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
