@@ -22,7 +22,7 @@ class InvoiceController extends Controller
 	public function index()
 	{
 		// Database Queries
-		$invoices = Invoice::all();
+		$invoices = Invoice::with(['contract', 'contract.tenant', 'contract.asset'])->get();
 		return view('invoices.index', compact('invoices'));
 	}
 
