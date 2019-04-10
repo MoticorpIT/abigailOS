@@ -126,5 +126,6 @@ class CompanyController extends Controller
 		
 		// Redirect
 		return redirect()->route('companies.show', $company);
+		//note
 	}
 }
