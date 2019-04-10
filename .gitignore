@@ -1,39 +1,19 @@
-.DS_Store
-<<<<<<< HEAD
+# LARAVEL DEFAULTS
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
-/.idea
-/.vscode
-/nbproject
-/.vagrant
+.env
+.phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.env
-.phpunit.result.cache
-=======
-vendor/
-node_modules/
-npm-debug.log
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-storage/*.key
-.env.*.php
-.env.php
-.env
-Homestead.yaml
-Homestead.json
-
-# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
-.rocketeer/
->>>>>>> d456ff4bdc41728757c5f897cdc87b06f7866add
+# IDENTITY-MG ADDED
+*/.DS_Store
+.DS_Store
+/storage/debugbar/
+/.idea
+/.vscode
