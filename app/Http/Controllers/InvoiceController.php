@@ -22,7 +22,7 @@ class InvoiceController extends Controller
 	public function index()
 	{
 		// Database Queries
-		$invoices = Invoice::all();
+		$invoices = Invoice::with(['contract', 'contract.tenant', 'contract.asset'])->get();
 		return view('invoices.index', compact('invoices'));
 	}
 
@@ -31,7 +31,7 @@ class InvoiceController extends Controller
 	public function create()
 	{
 		// Database Queries
-		$contracts = Contract::notEnded()->get();
+		$contracts = Contract::with(['asset', 'tenant'])->notEnded()->get();
 
 		// Config/Constants.php 'Queries'
 		// Changes need to be made in the constants.php file AND on the DB
@@ -67,8 +67,9 @@ class InvoiceController extends Controller
 
 
 	// Show One Invoice
-	public function show(Invoice $invoice)
+	public function show($id)
 	{
+		$invoice = Invoice::with(['contract', 'contract.asset', 'contract.asset.company', 'contract.tenant'])->findOrFail($id);
 		// Config/Constants.php 'Queries'
 		// Changes need to be made in the constants.php file AND on the DB
 		$statuses = Config::get('constants.statuses');
@@ -82,7 +83,7 @@ class InvoiceController extends Controller
 	public function edit(Invoice $invoice)
 	{
 		// Database Queries
-		$contracts = Contract::notEnded()->get();
+		$contracts = Contract::with(['tenant', 'asset'])->notEnded()->get();
 
 		// Config/Constants.php 'Queries'
 		// Changes need to be made in the constants.php file AND on the DB

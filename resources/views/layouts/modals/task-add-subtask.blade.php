@@ -10,8 +10,8 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form method="POST" action="/tasks">
-				{{ csrf_field() }}
+			<form method="POST" action="/tasks" id="subtask-add-form">
+				@csrf
 
 				<div class="modal-body">
 					<div class="media task-item">
