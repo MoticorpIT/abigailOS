@@ -78,12 +78,13 @@ class CompanyController extends Controller
 
 
 	// Show One Company (profile)
-	public function show(Company $company)
+	public function show($id)
 	{
 		// DATABASE QUERIES
-		$assets = Asset::where('company_id', $company->id)->get();
-		$accounts = Account::where('company_id', $company->id)->get();
-		$notes = Note::where('company_id', $company->id)->active()->ordered()->get();
+		$company = Company::with(['companyType', 'status'])->findOrFail($id);
+		$assets = Asset::where('company_id', $id)->get();
+		$accounts = Account::where('company_id', $id)->get();
+		$notes = Note::where('company_id', $id)->active()->ordered()->get();
 		
 		return view('companies.show', compact('company', 'assets', 'notes', 'accounts'));
 	}
@@ -126,6 +127,5 @@ class CompanyController extends Controller
 		
 		// Redirect
 		return redirect()->route('companies.show', $company);
-		//note
 	}
 }
