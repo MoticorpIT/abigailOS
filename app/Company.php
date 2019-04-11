@@ -42,7 +42,7 @@ class Company extends Model implements HasMedia
     public function status() {
 		return $this->belongsTo(Status::class);
 	}
-	public function CompanyType() {
+	public function companyType() {
 		return $this->belongsTo(CompanyType::class, 'company_type_id');
 	}
 	public function assets() {
