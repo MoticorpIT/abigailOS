@@ -65,4 +65,16 @@ $(function(){
 	} 
   });
 
+  // Pass task collection to task modal on dashboard
+  $('.task-modal-trigger').on('click', function() {
+  	let date = $(this).data('due_date');
+  	let task = $(this).data('task');
+  	let id = $(this).data('id');
+  	let href = `/tasks/${id}/edit`;
+  	$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( date );
+  	$("#complete-task-modal #task-description, #reschedule-task-modal #task-description").val( task );
+  	$("#complete-task-modal a[href], #reschedule-task-modal a[href]").attr('href', href);
+  	console.log(href);
+  });
+
 });
