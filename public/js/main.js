@@ -38,43 +38,23 @@ $(function(){
     $('#uploadFileField').click();
   });
 
-  // Submit Form on Image Selection on Image Modal
-  // $('#uploadFileField').change(function() {
-	// $("#add-image-btn").click();
-  // });
-
-  // Submit Form with Button Outside of Form
-  // for users, assets, companies, tenants, accounts
- //  $('#edit-btn').click(function(e) {
- //  	e.preventDefault();
-	// $('#data-form').submit();
- //  });
-
-  // Enable Upload Button Once File is Selected
-  // And Show File Name After Selecting but Before Uploading
+  // Enable Upload Button And Show File Name Once File is Selected
   $('.single-file-upload').change(function(){
 	if ($(this).val()) {
 	  // Enable Upload Button
 	  $('.single-file-upload-btn').removeAttr('disabled');
-	  // Get the file name
-      let fileName = $(this).val();
-      // Strip the crap off the filename
-      let cleanFileName = fileName.replace('C:\\fakepath\\', '');
+      let fileName = $(this).val().replace('C:\\fakepath\\', '');
       // Replace the "Choose a file" label
-      $(this).next('.custom-file-label').html(cleanFileName);
+      $(this).next('.custom-file-label').html(fileName);
 	} 
   });
 
   // Pass task collection to task modal on dashboard
   $('.task-modal-trigger').on('click', function() {
-  	let date = $(this).data('due_date');
-  	let task = $(this).data('task');
-  	let id = $(this).data('id');
-  	let href = `/tasks/${id}/edit`;
-  	$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( date );
-  	$("#complete-task-modal #task-description, #reschedule-task-modal #task-description").val( task );
-  	$("#complete-task-modal a[href], #reschedule-task-modal a[href]").attr('href', href);
-  	console.log(href);
+  	let data = $(this).data();
+  	$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( data.due_date );
+  	$("#complete-task-modal #task-description, #reschedule-task-modal #task-description").val( data.task );
+  	$("#complete-task-modal a[href], #reschedule-task-modal a[href]").attr('href', `/tasks/${data.id}/edit`);
   });
 
 });
