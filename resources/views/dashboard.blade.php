@@ -355,9 +355,25 @@
 					Tasks
 					<span class="button-area">
 						<span class="task-sum">
-							<span class="overdue" data-toggle="tooltip" data-placement="left" title="Overdue">{{ $overdueCount }}</span>
+
+							<span class="overdue"
+								data-toggle="tooltip"
+								data-placement="left"
+								title="Overdue"
+							>
+								{{ $overdueCount }}
+							</span>
+
 							<span class="divider"> / </span>
-							<span class="total" data-toggle="tooltip" data-placement="right" title="Total">{{ $tasks->total() }}</span>
+							
+							<span class="total"
+								data-toggle="tooltip"
+								data-placement="right"
+								title="Total"
+							>
+								{{ $tasks->total() }}
+							</span>
+
 						</span> <!-- task sum -->
 
 						<a href="{{ route('tasks.index') }}" class="badge badge-secondary">View All</a>
@@ -372,11 +388,9 @@
 								case '3':
 									$priority = 'overdue';
 									break;
-
 								case '2':
 									$priority = 'warning';
 									break;
-								
 								default:
 									$priority = '';
 									break;
@@ -384,25 +398,72 @@
 						@endphp
 						<li class="{{ $priority }}">
 							<div class="task-link-wrapper">
-								<a href="{{ route('tasks.show', $task) }}" class="task-link" data-toggle="modal" data-target="#complete-task-modal">
+								{{-- TASK ROW --}}
+								<a href="#0"
+									class="task-link task-modal-trigger"
+									data-toggle="modal"
+									data-target="#complete-task-modal"
+									data-id="{{ $task->id }}"
+									data-due_date="{{ $task->due_date }}"
+									data-task="{{ $task->task }}"
+								>
 									{{ $task->task }}
 								</a>
 								<div class="task-link-dropdown dropdown">
-									<a class="task-link-arrow dropdown-toggle" href="#" id="task-link-dd1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									{{-- BUTTON --}}
+									<a class="task-link-arrow dropdown-toggle"
+										href="#"
+										id="task-link-dd1"
+										role="button"
+										data-toggle="dropdown"
+										aria-haspopup="true"
+										aria-expanded="false"
+									>
 										<i class="far fa-circle" data-template='<i class="fas fa-chevron-circle-down"></i>'></i>
 									</a>
+									{{-- BUTTON DROPDOWN --}}
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="task-link-dd1">
 										<div class="btn-group" role="group" aria-label="Complete Task">
-											<span data-toggle="modal" data-target="#reschedule-task-modal">
-												<button type="button" class="btn btn-secondary reschedule" data-toggle="tooltip" data-delay="500" data-placement="left" title="Reschedule">
+											
+											{{-- RESCHEDULE TASK BUTTON - Opens Modal --}}
+											<span class="task-modal-trigger" 
+												data-toggle="modal"
+												data-id="{{ $task->id }}"
+												data-due_date="{{ $task->due_date }}"
+												data-task="{{ $task->task }}"
+												data-target="#reschedule-task-modal"
+											>
+												<button 
+													type="button" 
+													class="btn btn-secondary reschedule" 
+													data-toggle="tooltip" 
+													data-delay="500" 
+													data-placement="left" 
+													title="Reschedule"
+												>
 													<i class="fas fa-history"></i>
 												</button>
 											</span>
-											<span data-toggle="modal" data-target="#complete-task-modal">
-												<button type="button" class="btn btn-secondary complete" data-toggle="tooltip" data-delay="500" data-placement="right" title="Complete">
+											{{-- COMPLETE TASK BUTTON - Opens Modal --}}
+											<span class="task-modal-trigger" 
+												data-toggle="modal"
+												data-id="{{ $task->id }}"
+												data-due_date="{{ $task->due_date }}"
+												data-task="{{ $task->task }}"
+												data-target="#complete-task-modal"
+											>
+												<button 
+													type="button" 
+													class="btn btn-secondary complete" 
+													data-toggle="tooltip" 
+													data-delay="500" 
+													data-placement="right" 
+													title="Complete"
+												>
 													<i class="far fa-check-circle"></i>
 												</button>
 											</span>
+
 										</div> <!-- btn group -->
 									</div>
 								</div> <!-- task link dropdown -->
@@ -411,42 +472,11 @@
 					@endforeach
 				</ul> <!-- db box list -->
 
+				{{-- PAGINATION LINKS --}}
 				<nav aria-label="Dashboard Box Navigation">
 					{{ $tasks->links() }}
-					
-					{{-- <ul class="pagination pagination-sm">
-						<li class="page-item first-item arrow-item">
-							<a class="page-link" href="#" aria-label="Previous">
-								<span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-							</a>
-						</li>
-						<li class="page-item prev-item arrow-item">
-							<a class="page-link" href="#" aria-label="Previous">
-								<span aria-hidden="true">&lsaquo;</span>
-								<span class="sr-only">Previous</span>
-							</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item next-item arrow-item">
-							<a class="page-link" href="#" aria-label="Next">
-								<span aria-hidden="true">&rsaquo;</span>
-								<span class="sr-only">Next</span>
-							</a>
-						</li>
-						<li class="page-item last-item arrow-item">
-							<a class="page-link" href="#" aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-								<span class="sr-only">Next</span>
-							</a>
-						</li>
-					</ul> --}}
+				</nav>
 
-				</nav> <!-- pagination -->
 			</div> <!-- db box -->
 		</div> <!-- col -->
 	</div> <!-- boxes wrapper -->

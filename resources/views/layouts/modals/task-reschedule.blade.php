@@ -18,7 +18,7 @@
 							<div class="form-group flexed">
 								<label for="task-due-date-orig">Task Due Date:</label>
 								<div class="input-group">
-									<input type="date" readonly disabled class="form-control" id="task-due-date-orig">
+									<input type="text" readonly disabled class="form-control" id="task-due-date-orig" value="">
 									<div class="input-group-append">
 										<div class="input-group-text">
 											<i class="fas fa-calendar-alt"></i>
@@ -28,8 +28,7 @@
 							</div> <!-- form group -->
 							<div class="form-group">
 								<label for="task-description">Task Description:</label>
-								<textarea readonly disabled class="form-control" id="task-description" rows="5">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nullam id dolor id nibh ultricies vehicula ut id elit.
-								</textarea>
+								<textarea readonly disabled class="form-control" id="task-description" rows="5" value=""></textarea>
 							</div> <!-- form group -->
 						</div> <!-- col -->
 						<div class="col-6">
@@ -68,7 +67,7 @@
 					<i class="fas fa-sync-alt"></i>
 					Complete this task instead?
 				</button>
-				<a href="#0" class="btn btn-secondary">
+				<a href="" class="btn btn-secondary">
 					<i class="fas fa-edit"></i>
 					Edit Task
 				</a>

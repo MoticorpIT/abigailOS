@@ -33,36 +33,29 @@ $(function(){
     $('html').removeClass("sidebar-open");
   });
 
-  // Trigger File Selection Window on Image Modal
+  // Trigger file selection window on Asset images modal
   $('.uploadFileButton').on('click', function(){
     $('#uploadFileField').click();
   });
 
-  // Submit Form on Image Selection on Image Modal
-  // $('#uploadFileField').change(function() {
-	// $("#add-image-btn").click();
-  // });
-
-  // Submit Form with Button Outside of Form
-  // for users, assets, companies, tenants, accounts
- //  $('#edit-btn').click(function(e) {
- //  	e.preventDefault();
-	// $('#data-form').submit();
- //  });
-
-  // Enable Upload Button Once File is Selected
-  // And Show File Name After Selecting but Before Uploading
+  // Enable upload btn + show file name on file selection
+  // for users, companies, accounts, tenants .edit pages
   $('.single-file-upload').change(function(){
 	if ($(this).val()) {
 	  // Enable Upload Button
 	  $('.single-file-upload-btn').removeAttr('disabled');
-	  // Get the file name
-      let fileName = $(this).val();
-      // Strip the crap off the filename
-      let cleanFileName = fileName.replace('C:\\fakepath\\', '');
+      let fileName = $(this).val().replace('C:\\fakepath\\', '');
       // Replace the "Choose a file" label
-      $(this).next('.custom-file-label').html(cleanFileName);
+      $(this).next('.custom-file-label').html(fileName);
 	} 
+  });
+
+  // Pass task data to task modal on dashboard
+  $('.task-modal-trigger').on('click', function() {
+  	let data = $(this).data();
+  	$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( data.due_date );
+  	$("#complete-task-modal #task-description, #reschedule-task-modal #task-description").val( data.task );
+  	$("#complete-task-modal a[href], #reschedule-task-modal a[href]").attr('href', `/tasks/${data.id}/edit`);
   });
 
 });
