@@ -33,12 +33,13 @@ $(function(){
     $('html').removeClass("sidebar-open");
   });
 
-  // Trigger File Selection Window on Image Modal
+  // Trigger file selection window on Asset images modal
   $('.uploadFileButton').on('click', function(){
     $('#uploadFileField').click();
   });
 
-  // Enable Upload Button And Show File Name Once File is Selected
+  // Enable upload btn + show file name on file selection
+  // for users, companies, accounts, tenants .edit pages
   $('.single-file-upload').change(function(){
 	if ($(this).val()) {
 	  // Enable Upload Button
@@ -49,7 +50,7 @@ $(function(){
 	} 
   });
 
-  // Pass task collection to task modal on dashboard
+  // Pass task data to task modal on dashboard
   $('.task-modal-trigger').on('click', function() {
   	let data = $(this).data();
   	$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( data.due_date );
