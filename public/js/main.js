@@ -1,61 +1,88 @@
 $(function(){
-  // Bootstrap Initializers
-  // https://getbootstrap.com/docs/4.2/components/
-  // Tooltip Initializer
-  $('[data-toggle="tooltip"]').tooltip({
-    container: 'body'
-  });
 
-  // DataTable Initializer
-  // https://datatables.net/
-  $('.data-table').DataTable({
-    responsive: true,
-    "columnDefs": [
-      { "targets": ["view-button"], "orderable": false}
-    ],
-    "pageLength": 25,
-    language: {
-      search: "_INPUT_",
-      searchPlaceholder: "Search...",
-      "paginate": {
-        "previous": "Prev"
-      }
-    }
-  });
+	/*------------------------------------------------------------\
+	\	Bootstrap Initializers
+	\	https://getbootstrap.com/docs/4.2/components/ 
+	\------------------------------------------------------------*/
+	// Tooltip Initializer 
+	$('[data-toggle="tooltip"]').tooltip({
+		container: 'body'
+	});
 
-  // Toggle for mobile sidebar menu
-  $('.toggle-nav').click(function() {
-    $('.sidebar').toggleClass("open");
-    $('html').toggleClass("sidebar-open");
-  });
-  $('.close-sidebar').click(function() {
-    $('.sidebar').removeClass("open");
-    $('html').removeClass("sidebar-open");
-  });
 
-  // Trigger file selection window on Asset images modal
-  $('.uploadFileButton').on('click', function(){
-    $('#uploadFileField').click();
-  });
+	/*------------------------------------------------------------\
+	\	DataTable Initializer
+	\	https://datatables.net/
+	\
+	\	View files: accounts.index, assets.index, companies.index
+	\		contracts.index, invoices.index, payments.index,
+	\		tasks.index, tenants.index and users.index
+	\------------------------------------------------------------*/
+	$('.data-table').DataTable({
+		responsive: true,
+		"columnDefs": [
+			{"targets": ["view-button"], "orderable": false}
+		],
+		"pageLength": 25,
+		language: {
+			search: "_INPUT_",
+			searchPlaceholder: "Search...",
+			"paginate": {
+				"previous": "Prev"
+			}
+		}
+	});
 
-  // Enable upload btn + show file name on file selection
-  // for users, companies, accounts, tenants .edit pages
-  $('.single-file-upload').change(function(){
-	if ($(this).val()) {
-	  // Enable Upload Button
-	  $('.single-file-upload-btn').removeAttr('disabled');
-      let fileName = $(this).val().replace('C:\\fakepath\\', '');
-      // Replace the "Choose a file" label
-      $(this).next('.custom-file-label').html(fileName);
-	} 
-  });
 
-  // Pass task data to task modal on dashboard
-  $('.task-modal-trigger').on('click', function() {
-  	let data = $(this).data();
-  	$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( data.due_date );
-  	$("#complete-task-modal #task-description, #reschedule-task-modal #task-description").val( data.task );
-  	$("#complete-task-modal a[href], #reschedule-task-modal a[href]").attr('href', `/tasks/${data.id}/edit`);
-  });
+	/*------------------------------------------------------------\
+	\	Toggle for mobile sidebar menu 
+	\	View files: layouts/sidebar
+	\------------------------------------------------------------*/
+	$('.toggle-nav').click(function() {
+		$('.sidebar').toggleClass("open");
+		$('html').toggleClass("sidebar-open");
+	});
+	$('.close-sidebar').click(function() {
+		$('.sidebar').removeClass("open");
+		$('html').removeClass("sidebar-open");
+	});
+
+
+	/*------------------------------------------------------------\
+	\	Trigger file selection window on Asset images modal
+	\	View files: layouts/images-view
+	\------------------------------------------------------------*/
+	$('.uploadFileButton').on('click', function(){
+		$('#uploadFileField').click();
+	});
+
+
+	/*------------------------------------------------------------\
+	\	Enable upload btn + show file name on file selection
+	\	
+	\	View files: accounts.edit, assets.edit,
+	\		companies.edit and tenants.edit
+	\------------------------------------------------------------*/
+	$('.single-file-upload').change(function(){
+		if ($(this).val()) {
+		// Enable Upload Button
+		$('.single-file-upload-btn').removeAttr('disabled');
+			let fileName = $(this).val().replace('C:\\fakepath\\', '');
+			// Replace the "Choose a file" label
+			$(this).next('.custom-file-label').html(fileName);
+		} 
+	});
+
+
+	/*------------------------------------------------------------\
+	\	Pass task data to task modal
+	\	View files: dashboard 
+	\------------------------------------------------------------*/
+	$('.task-modal-trigger').on('click', function() {
+		let data = $(this).data();
+		$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( data.due_date );
+		$("#complete-task-modal #task-description, #reschedule-task-modal #task-description").val( data.task );
+		$("#complete-task-modal a[href], #reschedule-task-modal a[href]").attr('href', `/tasks/${data.id}/edit`);
+	});
 
 });

@@ -215,7 +215,7 @@
 										<label for="created-at">
 											Created On
 										</label>
-										<input type="text" class="form-control" name="created-at" value="{{ $company->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="created-at" value="{{ cleanDate($company->created_at) }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -224,7 +224,7 @@
 										<label for="updated-at">
 											Updated On
 										</label>
-										<input type="text" class="form-control" name="updated-at" value="{{ $company->undated_at != null ? $company->updated_at->format('m/d/y') : '' }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="updated-at" value="{{ $company->updated_at != null ? cleanDate($company->updated_at) : '' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -320,7 +320,7 @@
 								<div class="col-12 col-md-4 col">
 									<div class="form-group">
 										<label>Incorporated Date</label>
-										<input type="text" class="form-control" name="incorp_date" value="{{ $company->incorp_date }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="incorp_date" value="{{ $company->incorp_date != null ? cleanDate($company->incorp_date) : '' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 

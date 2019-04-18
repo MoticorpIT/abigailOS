@@ -6,17 +6,17 @@
 	<div class="col-12">
 		<div class="lowerlevel db-box">
 			<form method="POST" action="/companies" enctype="multipart/form-data">
-				{{ csrf_field() }}
+				@csrf
 
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
-							<a href="/dashboard/">
+							<a href="/dashboard">
 								Dashboard
 							</a>
 						</li>
 						<li class="breadcrumb-item">
-							<a href="/companies/">
+							<a href="/companies">
 								Company Table
 							</a>
 						</li>
@@ -161,7 +161,7 @@
 											<label>
 												Created On
 											</label>
-											<input class="form-control" name="created-at" value="Now" placeholder="n/a" readonly disabled>
+											<input class="form-control" placeholder="n/a" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -169,7 +169,7 @@
 											<label>
 												Updated On
 											</label>
-											<input class="form-control" name="updated-at" value="Now" placeholder="n/a" readonly disabled>
+											<input class="form-control" placeholder="n/a" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">

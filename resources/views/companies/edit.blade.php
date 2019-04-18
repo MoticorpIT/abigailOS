@@ -115,7 +115,7 @@
 											<span class="required">*</span>
 										</label>
 										<div class="input-group">
-											<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="n/a" value="{{ $company->phone_1 }}">
+											<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="n/a" value="{{ cleanPhone($company->phone_1) }}">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -131,7 +131,7 @@
 											<span class="optional">(optional)</span>
 										</label>
 										<div class="input-group">
-											<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="n/a" value="{{ $company->phone_2 }}">
+											<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="n/a" value="{{ cleanPhone($company->phone_2) }}">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -148,7 +148,7 @@
 											Fax
 										</label>
 										<div class="input-group">
-											<input form="edit-form" type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="n/a" value="{{ $company->fax }}">
+											<input form="edit-form" type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="n/a" value="{{ cleanPhone($company->fax) }}">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-fax"></i>
@@ -198,7 +198,7 @@
 											<label for="created-at">
 												Created On
 											</label>
-											<input type="text" class="form-control" name="created-at" value="{{ $company->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+											<input type="text" class="form-control" name="created-at" value="{{ cleanDate($company->created_at) }}" disabled readonly placeholder="n/a">
 										</div>
 									</div> <!-- col -->
 
@@ -207,7 +207,7 @@
 											<label for="updated-at">
 												Updated On
 											</label>
-											<input type="text" class="form-control" name="updated-at" value="{{ $company->update_at != null ? $company->updated_at->format('m/d/y') : '' }}" disabled readonly placeholder="n/a">
+											<input type="text" class="form-control" name="updated-at" value="{{ $company->updated_at != null ? cleanDate($company->updated_at) : '' }}" disabled readonly placeholder="n/a">
 										</div>
 									</div> <!-- col -->
 
@@ -315,7 +315,7 @@
 										<div class="form-group">
 											<label>Incorporated Date</label>
 											<div class="input-group">
-												<input type="date" class="form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="n/a" value="{{ $company->incorp_date }}">
+												<input type="date" class="form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="n/a" value="{{ $company->incorp_date != null ? cleanDatePicker($company->incorp_date) : '' }}">
 											</div> <!-- input group -->
 										</div>
 									</div> <!-- col -->
