@@ -35,10 +35,10 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/companies/" class="btn btn-round">
+					<a href="{{ route('companies.index') }}" class="btn btn-round">
 						Go Back
 					</a>
-					<a href="/companies/{{ $company->id }}" class="btn btn-secondary">
+					<a href="{{ route('companies.show', $company) }}" class="btn btn-secondary">
 						<i class="fas fa-eye"></i>
 						View Company
 					</a>

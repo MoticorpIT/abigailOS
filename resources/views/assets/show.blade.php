@@ -42,7 +42,7 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="{{ url()->previous() }}" class="btn btn-round">Go Back</a>
+					<a href="{{ route('assets.index') }}" class="btn btn-round">Go Back</a>
 					<a href="{{ route('assets.edit', $asset) }}" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Asset
@@ -67,7 +67,7 @@
 									@if ($asset->profile_img_id == null)
 										<img src="/media/images/asset-default-image-profile.png" alt="Default Asset Image" />
 									@else
-										<img src="{{ $asset->profileImage->getURL('profile') ?? '' }}" alt="{{ $asset->name }} Profile Image" />
+										<img src="{{ $asset->profileImage->getURL('profile') ?? '' }}" alt="{{ $asset->name }}'s Profile Image" />
 									@endif
 								</a>
 							</div> <!-- profile image -->
@@ -105,7 +105,7 @@
 											Phone 1
 										</label>
 										<div class="input-group">
-											<input class="form-control" name="phone_1" value="{{ $asset->phone_1 }}" readonly disabled placeholder="n/a">
+											<input class="form-control" name="phone_1" value="{{ cleanPhone($asset->phone_1) }}" readonly disabled placeholder="n/a">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -120,7 +120,7 @@
 											Phone 2
 										</label>
 										<div class="input-group">
-											<input class="form-control" name="phone_2" value="{{ $asset->phone_2 }}" placeholder="n/a" readonly disabled >
+											<input class="form-control" name="phone_2" value="{{ cleanPhone($asset->phone_2) }}" placeholder="n/a" readonly disabled >
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -137,7 +137,7 @@
 											Fax
 										</label>
 										<div class="input-group">
-											<input class="form-control" name="fax" value="{{ $asset->fax }}" placeholder="n/a" readonly disabled>
+											<input class="form-control" name="fax" value="{{ cleanPhone($asset->fax) }}" placeholder="n/a" readonly disabled>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-fax"></i>
@@ -259,7 +259,7 @@
 										<label>
 											Created On
 										</label>
-										<input class="form-control" name="created-at" value="{{ $asset->created_at->format('m/d/y') }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="created-at" value="{{ cleanDate($asset->created_at) }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -268,7 +268,7 @@
 										<label>
 											Updated On
 										</label>
-										<input class="form-control" name="updated-at" value="{{ $asset->updated_at->format('m/d/y') }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="updated-at" value="{{ cleanDate($asset->updated_at) }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -363,7 +363,7 @@
 										<label>
 											Acquired Date
 										</label>
-										<input class="form-control" name="acquired-date" value="{{ $asset->acquired_date }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="acquired-date" value="{{ $asset->acquired_date != null ? cleanDate($asset->acquired_date) : '' }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">

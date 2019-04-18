@@ -46,7 +46,7 @@
 					<i class="fas fa-briefcase"></i> Edit Asset
 					{{-- BUTTON SET --}}
 					<div class="float-right button-set">
-						<a href="{{ url()->previous() }}" class="btn btn-round">
+						<a href="{{ route('assets.index') }}" class="btn btn-round">
 							Go Back
 						</a>
 						<a href="{{ route('assets.show', $asset) }}" class="btn btn-secondary">
@@ -83,7 +83,7 @@
 										@if ($asset->profile_img_id == null)
 											<img src="/media/images/asset-default-image-profile.png" alt="Default Asset Image" />
 										@else
-											<img src="{{ $asset->profileImage->getURL('profile') ?? '' }}" alt="{{ $asset->name }} Profile Image" />
+											<img src="{{ $asset->profileImage->getURL('profile') ?? '' }}" alt="{{ $asset->name }}'s Profile Image" />
 										@endif
 									</a>
 								</div> <!-- profile image -->
@@ -123,7 +123,7 @@
 												Phone 1
 											</label>
 											<div class="input-group">
-												<input type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="n/a" value="{{ $asset->phone_1 }}">
+												<input type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="n/a" value="{{ cleanPhone($asset->phone_1) }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-phone"></i>
@@ -138,7 +138,7 @@
 												Phone 2
 											</label>
 											<div class="input-group">
-												<input type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="n/a" value="{{ $asset->phone_2 }}">
+												<input type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="n/a" value="{{ cleanPhone($asset->phone_2) }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-phone"></i>
@@ -156,7 +156,7 @@
 												Fax
 											</label>
 											<div class="input-group">
-												<input type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="n/a" value="{{ $asset->fax }}">
+												<input type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="n/a" value="{{ cleanPhone($asset->fax) }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-fax"></i>
@@ -195,7 +195,7 @@
 											<label>
 												Created On
 											</label>
-											<input class="form-control" name="created-at" value="{{ $asset->created_at->format('m/d/y') }}" placeholder="n/a" readonly disabled>
+											<input class="form-control" name="created-at" value="{{ cleanDate($asset->created_at) }}" placeholder="n/a" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -204,7 +204,7 @@
 											<label>
 												Updated On
 											</label>
-											<input class="form-control" name="updated-at" value="{{ $asset->updated_at->format('m/d/y') }}" placeholder="n/a" readonly disabled>
+											<input class="form-control" name="updated-at" value="{{ $asset->updated_at != null ? cleanDate($asset->updated_at) : '' }}" placeholder="n/a" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -316,10 +316,8 @@
 									<div class="col-12 col-md-3 col">
 										{{-- Asset Company Name --}}
 										<div class="form-group">
-											<label>
-												Acquired Date
-											</label>
-											<input class="form-control {{ $errors->has('$asset->acquired_date') ? 'has-error' : '' }}" name="acquired-date" value="{{ $asset->acquired_date }}" placeholder="n/a" >
+											<label>Acquired Date</label>
+											<input type="date" class="form-control {{ $errors->has('acquired_date') ? 'has-error' : '' }}" name="acquired_date" value="{{ $asset->acquired_date != null ? cleanDatePicker($asset->acquired_date) : '' }}" placeholder="n/a" >
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">

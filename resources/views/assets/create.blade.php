@@ -85,7 +85,7 @@
 												Phone 1
 											</label>
 											<div class="input-group">
-												<input type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="" value="">
+												<input type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" value="{{ old('phone_1') }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-phone"></i>
@@ -100,7 +100,7 @@
 												Phone 2
 											</label>
 											<div class="input-group">
-												<input type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="" value="">
+												<input type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" value="{{ old('phone_2') }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-phone"></i>
@@ -117,7 +117,7 @@
 												Fax
 											</label>
 											<div class="input-group">
-												<input type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="" value="">
+												<input type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" value="{{ old('fax') }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-fax"></i>
@@ -134,7 +134,7 @@
 												Email
 											</label>
 											<div class="input-group">
-												<input type="email" class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" placeholder="" value="">
+												<input type="email" class="form-control {{ $errors->has('email') ? 'has-error' : '' }}" name="email" value="{{ old('email') }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-at"></i>
@@ -153,7 +153,7 @@
 											<label>
 												Created On
 											</label>
-											<input class="form-control" name="created_at" placeholder="Now" readonly disabled>
+											<input class="form-control" placeholder="Now" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -162,7 +162,7 @@
 											<label>
 												Updated On
 											</label>
-											<input class="form-control" name="updated_at" placeholder="n/a" readonly disabled>
+											<input class="form-control" placeholder="NA" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -172,10 +172,11 @@
 												Asset Type
 											</label>
 											<select class="form-control" id="asset_type_id" name="asset_type_id">
+												<option value="">Choose One</option>
 												@foreach($asset_types as $id => $asset_type)
-												<option value="{{ $id }}">
-													{{ $asset_type }}
-												</option>
+													<option value="{{ $id }}">
+														{{ $asset_type }}
+													</option>
 												@endforeach
 											</select>
 										</div>
@@ -276,7 +277,7 @@
 											<label>
 												Acquired Date
 											</label>
-											<input class="form-control {{ $errors->has('$asset->acquired_date') ? 'has-error' : '' }}" name="acquired_date" value="" placeholder="" >
+											<input type="date" class="form-control {{ $errors->has('$asset->acquired_date') ? 'has-error' : '' }}" name="acquired_date" value="" placeholder="" >
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">

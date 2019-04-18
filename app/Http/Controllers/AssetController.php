@@ -79,9 +79,10 @@ class AssetController extends Controller
 
 
 	// Show One Asset (profile)
-	public function show(Asset $asset)
+	public function show($id)
 	{
 		// Database Queries
+		$asset = Asset::with(['company', 'contracts', 'assetType', 'status'])->findOrFail($id);
 		$images = $asset->getMedia('assets');
 		$notes = Note::where('asset_id', $asset->id)->active()->ordered()->get();
 		$accounts = Account::where('asset_id', $asset->id)->get();

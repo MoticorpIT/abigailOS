@@ -20,7 +20,7 @@ class CompanyRequest extends FormRequest
             'street_1' => 'required', 
             'street_2' => 'nullable',
             'city' => 'required', 
-            'state' => 'required|max:2', 
+            'state' => 'required', 
             'zip' => 'required|min:5', 
             'phone_1' => 'required|min:7', 
             'phone_2' => 'nullable|min:7',
