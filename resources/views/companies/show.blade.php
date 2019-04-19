@@ -13,12 +13,12 @@
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="/dashboard/">
+						<a href="{{ route('dashboard') }}">
 							Dashboard
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/companies/">
+						<a href="{{ route('companies.index') }}">
 							Company Table
 						</a>
 					</li>
@@ -34,8 +34,8 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/companies/" class="btn btn-round">Go Back</a>
-					<a href="/companies/{{ $company->id }}/edit" class="btn btn-primary">
+					<a href="{{ route('companies.index') }}" class="btn btn-round">Go Back</a>
+					<a href="{{ route('companies.edit', $company) }}" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Company
 					</a>
@@ -64,7 +64,7 @@
 								@if ($company->logo_id == null)
 									<img src="/media/images/company-default-logo-profile.png" alt="Default Company Logo" />
 								@else
-									<img src="{{ $company->logo->getURL('profile') ?? '' }}" alt="{{ $company->name }}s Logo" />
+									<img src="{{ $company->logo->getURL('profile') ?? '' }}" alt="{{ $company->name }}'s Logo" />
 								@endif
 							</div> <!-- profile image -->
 

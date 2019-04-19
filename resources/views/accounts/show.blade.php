@@ -61,7 +61,7 @@
 								@if ($account->logo_id == null)
 									<img src="/media/images/account-default-logo-profile.png" alt="Default Account Logo" />
 								@else
-									<img src="{{ $account->logo->getURL('profile') ?? '' }}" alt="{{ $account->name }}s Logo" />
+									<img src="{{ $account->logo->getURL('profile') ?? '' }}" alt="{{ $account->name }}'s Logo" />
 								@endif
 							</div> <!-- profile image -->
 
@@ -488,14 +488,14 @@
 									{{-- Contact Phone 1 --}}
 									<div class="form-group">
 										<label>Contact Phone 1:</label>
-										<div class="input">{{ cleanPhone($account->contact_phone_1) }}</div>
+										<div class="input" value="{{ $account->contact_phone_1 != null ? cleanPhone($account->contact_phone_1) : 'NA' }}"></div>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col col-phone col-phone2">
 									{{-- Contact Phone 2 --}}
 									<div class="form-group">
 										<label>Contact Phone 2:</label>
-										<div class="input">{{ cleanPhone($account->contact_phone_2) }}</div>
+										<div class="input" value="{{ $account->contact_phone_2 != null ? cleanPhone($account->contact_phone_2) : 'NA' }}"></div>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col col-email">
