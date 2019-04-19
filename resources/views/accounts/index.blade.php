@@ -7,11 +7,11 @@
 			<div class="lowerlevel db-box">
 				<h1 class="page-heading">
 					<i class="fas fa-file-alt"></i> Accounts
-					<a href="/accounts/create" class="btn btn-primary d-block-small float-right">
+					<a href="{{ route('accounts.create') }}" class="btn btn-primary d-block-small float-right">
 						<i class="fas fa-plus-square"></i>
 						Create Account
 					</a>
-					<a href="/accounts/export" class="btn d-block-small float-right">
+					<a href="{{ route('accounts.export') }}" class="btn d-block-small float-right">
 						<i class="fas fa-file-download"></i>
 						Download
 					</a>
@@ -70,21 +70,21 @@
 									</td>
 									<td class="contact">
 										<div class="btn-group contact-button">
-											<a href="tel:{{ $account->phone_1 }}" class="btn btn-secondary">
-												<span><i class="fas fa-phone"></i> {{ $account->phone_1 }}</span>
+											<a href="tel:{{ cleanPhone($account->phone_1) }}" class="btn btn-secondary">
+												<span><i class="fas fa-phone"></i> {{ cleanPhone($account->phone_1) }}</span>
 											</a>
 											<button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												<span class="sr-only">Toggle Dropdown</span>
 											</button>
 											<div class="dropdown-menu dropdown-menu-right">
 												@if($account->phone_2)
-													<a class="dropdown-item" href="tel:{{ $account->phone_2 }}">
-														<span><i class="fas fa-phone"></i> {{ $account->phone_2 }}</span>
+													<a class="dropdown-item" href="tel:{{ cleanPhone($account->phone_2) }}">
+														<span><i class="fas fa-phone"></i> {{ cleanPhone($account->phone_2) }}</span>
 													</a>
 												@endif
 												@if($account->fax)
 													<a class="dropdown-item">
-														<span><i class="fas fa-fax"></i> {{ $account->fax }}</span>
+														<span><i class="fas fa-fax"></i> {{ cleanPhone($account->fax) }}</span>
 													</a>
 												@endif
 												@if($account->email)
@@ -110,19 +110,21 @@
 									</td>
 									<td class="created-on none">
 										<span class="date">
-											{{ $account->created_at->format('m/d/y') }}
+											{{ cleanDate($account->created_at) }}
 										</span>
 									</td>
 									<td class="updated-on none">
 										<span class="date">
-											{{ $account->updated_at->format('m/d/y h:i a') }}
+											{{ cleanDate($account->updated_at) }}
 										</span>
 										<span class="date-readable">
-											{{ $account->updated_at->diffForHumans($account->created_at) }}
+											{{ $account->updated_at->diffForHumans() }}
 										</span>
 									</td>
 									<td class="view-button not-mobile-p">
-										<a href="/accounts/{{ $account->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+										<a href="{{ route('accounts.show', $account) }}" class="btn btn-secondary btn-sm view-link">
+											<i class="fas fa-eye"></i>
+										</a>
 									</td>
 								</tr>
 							@endforeach
