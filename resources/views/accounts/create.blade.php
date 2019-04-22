@@ -260,28 +260,28 @@
 									<div class="col-12 col-md-3 col">
 										{{-- Contact Last Name --}}
 										<div class="form-group">
-											<label>Contact Name:</label>
+											<label>Contact Name</label>
 											<input class="form-control {{ $errors->has('contact_name') ? 'has-error' : '' }}" name="contact_name" value="{{ old('contact_name') }}" >
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
 										{{-- Contact Phone 1 --}}
 										<div class="form-group">
-											<label>Contact Phone 1:</label>
+											<label>Contact Phone 1</label>
 											<input class="form-control {{ $errors->has('contact_phone_1') ? 'has-error' : '' }}" name="contact_phone_1" value="{{ old('contact_phone_1') }}" >
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
 										{{-- Contact Phone 2 --}}
 										<div class="form-group">
-											<label>Contact Phone 2:</label>
+											<label>Contact Phone 2</label>
 											<input class="form-control {{ $errors->has('contact_phone_2') ? 'has-error' : '' }}" name="contact_phone_2" value="{{ old('contact_phone_2') }}" >
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
 										{{-- Contact Email --}}
 										<div class="form-group">
-											<label>Contact Email:</label>
+											<label>Contact Email</label>
 											<input class="form-control {{ $errors->has('contact_email') ? 'has-error' : '' }}" name="contact_email" value="{{ old('contact_email') }}" >
 										</div>
 									</div> <!-- col -->

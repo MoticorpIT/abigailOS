@@ -170,28 +170,36 @@
 							<div class="tab-content profile-tabs-content" id="">
 								<div class="tab-pane fade show active" id="assoc-acc-tab-content" role="tabpanel" aria-labelledby="assoc-acc-tab-button">
 									<ul class="reset assoc-list acc">
-										@foreach($accounts as $account)
-										<li class="assoc-list-item">
-											<a href="#0" class="assoc-list-link">
-												<span class="name">
-													{{ $account->name }}
-												</span>
-											</a>
-										</li>
-										@endforeach
+										@if(count($accounts) != 0)
+											@foreach($accounts as $account)
+											<li class="assoc-list-item">
+												<a href="{{ route('accounts.show', $account) }}" class="assoc-list-link">
+													<span class="name">
+														{{ $account->name }}
+													</span>
+												</a>
+											</li>
+											@endforeach
+										@else
+											<div>There are no associated accounts</div>
+										@endif
 									</ul>
 								</div>
 								<div class="tab-pane fade" id="assoc-ass-tab-content" role="tabpanel" aria-labelledby="assoc-ass-tab-button">
 									<ul class="reset assoc-list acc">
-										@foreach($assets as $asset)
-										<li class="assoc-list-item">
-											<a href="#0" class="assoc-list-link">
-												<span class="name">
-													{{ $asset->name }}
-												</span>
-											</a>
-										</li>
-										@endforeach
+										@if(count($assets) != 0)
+											@foreach($assets as $asset)
+											<li class="assoc-list-item">
+												<a href="{{ route('assets.show', $asset) }}" class="assoc-list-link">
+													<span class="name">
+														{{ $asset->name }}
+													</span>
+												</a>
+											</li>
+											@endforeach
+										@else
+											<div>There are no associated assets</div>
+										@endif
 									</ul>
 								</div>
 								<div class="tab-pane fade" id="assoc-hide-tab-content" role="tabpanel" aria-labelledby="assoc-hide-tab-button">
