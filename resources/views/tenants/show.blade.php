@@ -14,12 +14,12 @@
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="/dashboard/">
+						<a href="{{ route('dashboard') }}">
 							Dashboard
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/tenants/">
+						<a href="{{ route('tenants.index') }}">
 							Tenant Table
 						</a>
 					</li>
@@ -34,8 +34,8 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/tenants/" class="btn btn-round">Go Back</a>
-					<a href="/tenants/{{ $tenant->id }}/edit" class="btn btn-primary">
+					<a href="{{ route('tenants.index') }}" class="btn btn-round">Go Back</a>
+					<a href="{{ route('tenants.edit', $tenant) }}" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Tenant
 					</a>
@@ -84,7 +84,7 @@
 											Phone 1
 										</label>
 										<div class="input-group">
-											<input class="form-control" name="phone_1" value="{{ $tenant->phone_1 }}" readonly disabled placeholder="n/a">
+											<input class="form-control" name="phone_1" value="{{ cleanPhone($tenant->phone_1) }}" readonly disabled placeholder="n/a">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -99,7 +99,7 @@
 											Phone 2
 										</label>
 										<div class="input-group">
-											<input class="form-control" name="phone_2" value="{{ $tenant->phone_2 }}" placeholder="n/a" readonly disabled >
+											<input class="form-control" name="phone_2" value="{{ cleanPhone($tenant->phone_2) }}" placeholder="n/a" readonly disabled >
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -116,7 +116,7 @@
 											Fax
 										</label>
 										<div class="input-group">
-											<input class="form-control" name="fax" value="{{ $tenant->fax }}" placeholder="n/a" readonly disabled>
+											<input class="form-control" name="fax" value="{{ cleanPhone($tenant->fax) }}" placeholder="n/a" readonly disabled>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-fax"></i>
@@ -196,7 +196,7 @@
 										<label for="created-at">
 											Created On
 										</label>
-										<input type="text" class="form-control" name="created-at" value="{{ $tenant->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="created-at" value="{{ cleanDate($tenant->created_at) }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -205,7 +205,7 @@
 										<label for="updated-at">
 											Updated On
 										</label>
-										<input type="text" class="form-control" name="updated-at" value="{{ $tenant->updated_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="updated-at" value="{{ $tenant->updated_at != null ? cleanDate($tenant->updated_at) : 'n/a' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -251,14 +251,14 @@
 									{{-- Co-Tenant Phone 1 --}}
 									<div class="form-group">
 										<label>Co-Tenant Phone 1:</label>
-										<input class="form-control" name="co_phone_1" value="{{ $tenant->co_phone_1 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="co_phone_1" value="{{ $tenant->co_phone_1 != null ? cleanPhone($tenant->co_phone_1) : '' }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
 									{{-- Co-Tenant Phone 2 --}}
 									<div class="form-group">
 										<label>Co-Tenant Phone 2:</label>
-										<input class="form-control" name="co_phone_2" value="{{ $tenant->co_phone_2 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="co_phone_2" value="{{ $tenant->co_phone_2 != null ? cleanPhone($tenant->co_phone_2) : '' }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
