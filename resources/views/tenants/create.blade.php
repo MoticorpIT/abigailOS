@@ -5,7 +5,7 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/tenants">
+			<form method="POST" action="{{ route('tenants.store') }}">
 				@csrf
 
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
@@ -50,10 +50,10 @@
 								<h2 class="heading">
 									<div class="row">
 										<div class="col-12 col-md-6">
-											<input type="text" class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="first_name" value="" placeholder="First Name">
+											<input type="text" class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="first_name" value="{{ old('first_name') }}" placeholder="First Name">
 										</div> <!-- col -->
 										<div class="col-12 col-md-6">
-											<input type="text" class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="" placeholder="Last Name">
+											<input type="text" class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name">
 										</div> <!-- col -->
 									</div> <!-- row -->
 								</h2>

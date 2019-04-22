@@ -51,7 +51,7 @@
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3"></div>
 							<div class="col-12 col-sm-7 col-md-8 col-lg-9">
 								<h2 class="profile-heading heading">
-									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="" placeholder="Asset Name">
+									<input type="text" class="form-control {{ $errors->has('name') ? 'has-error' : '' }}" name="name" value="{{ old('name') }}" placeholder="Asset Name">
 								</h2>
 							</div>
 						</div> <!-- row -->
@@ -207,7 +207,7 @@
 											<label>
 												Street Address
 											</label>
-											<input type="text" class="form-control {{ $errors->has('street_1') ? 'has-error' : '' }}" name="street_1" value="" placeholder="">
+											<input type="text" class="form-control {{ $errors->has('street_1') ? 'has-error' : '' }}" name="street_1" value="{{ old('street_1') }}" placeholder="">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-6 col">
@@ -216,7 +216,7 @@
 											<label>
 												Street Address 2
 											</label>
-											<input type="text" class="form-control {{ $errors->has('street_2') ? 'has-error' : '' }}" name="street_2" value="" placeholder="">
+											<input type="text" class="form-control {{ $errors->has('street_2') ? 'has-error' : '' }}" name="street_2" value="{{ old('street_2') }}" placeholder="">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-4 col">
@@ -225,7 +225,7 @@
 											<label>
 												City
 											</label>
-											<input type="text" class="form-control {{ $errors->has('city') ? 'has-error' : '' }}" name="city" value="" placeholder="">
+											<input type="text" class="form-control {{ $errors->has('city') ? 'has-error' : '' }}" name="city" value="{{ old('city') }}" placeholder="">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-4 col">
@@ -248,7 +248,7 @@
 											<label>
 												ZIP
 											</label>
-											<input type="text" class="form-control {{ $errors->has('zip') ? 'has-error' : '' }}" name="zip" placeholder="" value="">
+											<input type="text" class="form-control {{ $errors->has('zip') ? 'has-error' : '' }}" name="zip" value="{{ old('zip') }}">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col">
@@ -277,7 +277,7 @@
 											<label>
 												Acquired Date
 											</label>
-											<input type="date" class="form-control {{ $errors->has('$asset->acquired_date') ? 'has-error' : '' }}" name="acquired_date" value="" placeholder="" >
+											<input type="date" class="form-control {{ $errors->has('$asset->acquired_date') ? 'has-error' : '' }}" name="acquired_date" value="{{ old('acquired_date') }}">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -286,7 +286,7 @@
 											<label>
 												Asset Rent
 											</label>
-											<input class="form-control {{ $errors->has('rent') ? 'has-error' : '' }}" name="rent" value="" placeholder="" >
+											<input class="form-control {{ $errors->has('rent') ? 'has-error' : '' }}" name="rent" value="{{ old('rent') }}">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -295,7 +295,7 @@
 											<label>
 												Asset Deposit
 											</label>
-											<input class="form-control {{ $errors->has('deposit') ? 'has-error' : '' }}" name="deposit" value="" placeholder="" >
+											<input class="form-control {{ $errors->has('deposit') ? 'has-error' : '' }}" name="deposit" value="{{ old('deposit') }}">
 										</div>
 									</div> <!-- col -->
 

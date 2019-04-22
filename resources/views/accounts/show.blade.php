@@ -104,7 +104,7 @@
 											<span class="optional">(optional)</span>
 										</label>
 										<div class="input-group">
-											<div class="input">{{ cleanPhone($account->phone_2) }}</div>
+											<div class="input">{{ $account->phone_2 != null ? cleanPhone($account->phone_2) : '' }}</div>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -488,14 +488,14 @@
 									{{-- Contact Phone 1 --}}
 									<div class="form-group">
 										<label>Contact Phone 1:</label>
-										<div class="input" value="{{ $account->contact_phone_1 != null ? cleanPhone($account->contact_phone_1) : 'NA' }}"></div>
+										<div class="input">{{ $account->contact_phone_1 != null ? cleanPhone($account->contact_phone_1) : '' }}</div>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col col-phone col-phone2">
 									{{-- Contact Phone 2 --}}
 									<div class="form-group">
 										<label>Contact Phone 2:</label>
-										<div class="input" value="{{ $account->contact_phone_2 != null ? cleanPhone($account->contact_phone_2) : 'NA' }}"></div>
+										<div class="input">{{ $account->contact_phone_2 != null ? cleanPhone($account->contact_phone_2) : '' }}</div>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col col-email">
