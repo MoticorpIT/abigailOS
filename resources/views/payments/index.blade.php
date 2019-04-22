@@ -7,7 +7,7 @@
 			<div class="lowerlevel db-box">
 				<h1 class="page-heading">
 					<i class="fas fa-dollar-sign"></i> Payments
-					<a href="/accounts/create" class="btn btn-primary d-block-small float-right">
+					<a href="{{ route('payments.create') }}" class="btn btn-primary d-block-small float-right">
 						<i class="fas fa-plus-square"></i>
 						Create Payment
 					</a>
@@ -50,7 +50,7 @@
 										{{ $payment->id }}
 									</td>
 									<td class="amount-paid">
-										${{ $payment->amount_paid }}
+										{{ cleanMoneyWithCents($payment->amount_paid) }}
 									</td>
 									<td class="payment-method">
 										{{ $payment->method }}
@@ -63,19 +63,21 @@
 									</td>
 									<td class="created-on">
 										<span class="date">
-											{{ $payment->created_at->format('m/d/y') }}
+											{{ cleanDate($payment->created_at) }}
 										</span>
 									</td>
 									<td class="updated-on none">
 										<span class="date">
-											{{ $payment->updated_at->format('m/d/y h:i a') }}
+											{{ cleanDate($payment->updated_at) }}
 										</span>
 										<span class="date-readable">
-											{{ $payment->updated_at->diffForHumans($payment->created_at) }}
+											{{ $payment->updated_at->diffForHumans() }}
 										</span>
 									</td>
 									<td class="view-button not-mobile-p">
-										<a href="/payments/{{ $payment->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+										<a href="{{ route('payments.show', $payment) }}" class="btn btn-secondary btn-sm view-link">
+											<i class="fas fa-eye"></i>
+										</a>
 									</td>
 								</tr>
 							@endforeach

@@ -6,7 +6,7 @@
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
 				<i class="fas fa-exclamation-circle"></i> Tasks
-				<a href="/tasks/create" class="btn btn-primary d-block-small float-right">
+				<a href="{{ route('tasks.create') }}" class="btn btn-primary d-block-small float-right">
 					<i class="fas fa-plus-square"></i>
 					Create Tasks
 				</a>
@@ -33,7 +33,7 @@
 								<td class="text-left">{{ $task->taskType->name }}</td>
 								<td class="text-left">{{ $task->priority->name }}</td>
 								<td class="view-button">
-									<a href="/tasks/{{ $task->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+									<a href="{{ route('tasks.show', $task) }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
 								</td>
 							</tr>
 						@endforeach

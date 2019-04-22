@@ -10,8 +10,6 @@
 
 @include('layouts.errors')
 
-{{-- {{ var_dump($task->toArray()) }} --}}
-
 <div class="form-group">
 	<label>Task</label>
 	<div class="input-group">
@@ -56,7 +54,7 @@
 <div class="form-group">
 	<label>Due Date</label>
 	<div class="input-group">
-		<input type="text" class="form-control" name="due_date" placeholder="Date task should be completed" value="{{ $task->due_date }}" disabled read-only>
+		<input type="text" class="form-control" name="due_date" placeholder="Date task should be completed" value="{{ cleanDate($task->due_date) }}" disabled read-only>
 	</div>
 </div>
 
@@ -113,7 +111,7 @@
 	</select>
 </div>
 
-<a href="/tasks/{{$task->id}}/edit" id="submit-btn" type="submit" class="btn">
+<a href="{{ route('tasks.edit', $task) }}" id="submit-btn" type="submit" class="btn">
 	Edit Task
 </a>
 

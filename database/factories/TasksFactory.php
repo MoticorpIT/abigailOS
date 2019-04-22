@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Task::class, function (Faker $faker) {
     return [
         'task' => $faker->text($maxNbChars = 160),
-        'due_date' => $faker->date($format = 'm-d-Y'),
+        'due_date' => $faker->date($format = 'Y-m-d'),
         'assigned_user_id' => $faker->randomElement($array = array ('1','2','3')),
         'account_id' => $faker->randomElement($array = array ('1','2','3','4','5','6')),
         'company_id' => $faker->randomElement($array = array ('1','2','3','4','5','6')),

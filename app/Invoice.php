@@ -4,7 +4,12 @@ namespace App;
 
 class Invoice extends Model
 {
-    public function payments() {
+	// Datefields to be Mutated to Carbon Instances
+	protected $dates = [
+		'due_date'
+	];
+	
+	public function payments() {
 		return $this->hasMany(Payment::class);
 	}
 	public function contract() {

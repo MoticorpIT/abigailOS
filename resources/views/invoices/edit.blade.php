@@ -3,9 +3,8 @@
 @section('content')
 <h1>Edit an Invoice</h1>
 
-<form method="POST" action="/invoices/{{ $invoice->id }}">
-	{{ csrf_field() }}
-	{{ method_field('PATCH') }}
+<form method="POST" action="{{ route('invoices.update', $invoice) }}">
+	@csrf @method('PATCH')
 	@include('layouts.errors')
 
 	<div class="form-group">
@@ -18,7 +17,7 @@
 	<div class="form-group">
 		<label>Due Date</label>
 		<div class="input-group">
-			<input type="text" class="form-control" name="due_date" placeholder="When is it due?" value="{{ $invoice->due_date }}">
+			<input type="date" class="form-control" name="due_date" placeholder="When is it due?" value="{{ cleanDatePicker($invoice->due_date) }}">
 		</div>
 	</div>
 
@@ -49,7 +48,6 @@
 			Contract
 		</label>
 		<select class="form-control" name="contract_id" value="{{ $invoice->contract_id }}">
-			<option value="" selected>Choose One</option>
 			@foreach ($contracts as $contract)
 				<option value="{{$contract->id}}" {{ $invoice->contract_id == $contract->id ? 'selected' : '' }}>{{ $contract->tenant->last_name }}/{{ $contract->asset->name }}</option>
 			@endforeach
@@ -82,7 +80,7 @@
 	<hr>
 	
 	<button id="submit-btn" type="submit" class="btn btn-primary">
-		Save Contract
+		Save Invoice
 	</button>
 
 </form>

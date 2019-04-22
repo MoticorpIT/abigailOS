@@ -10,7 +10,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form method="POST" action="/tasks" id="subtask-add-form">
+			<form method="POST" action="{{ route('tasks.store') }}" id="subtask-add-form">
 				@csrf
 
 				<div class="modal-body">
@@ -61,7 +61,7 @@
 							<div class="form-group">
 								<label>Due Date</label>
 								<div class="input-group">
-									<input style="width:100%" type="text" name="due_date" id="due_date" value="">
+									<input type="date" id="due_date" class="form-control" name="due_date" value="{{ old('due_date') }}">
 								</div>
 							</div>
 
@@ -81,7 +81,7 @@
 							{{-- REPEATS DROPDOWN --}}
 							<div class="form-group">
 								<label>Repeats</label>
-								<select class="form-control" name="repeats" id="repeats">
+								<select class="form-control" name="repeats" id="repeats" value="{{ old('repeats') }}">
 									<option value="0" selected>No</option>
 									<option value="1">Yes</option>
 								</select>
@@ -105,7 +105,7 @@
 
 				{{-- FORM BUTTONS --}}
 				<div class="modal-footer">
-					<a href="" data-dismiss="modal" class="cancel-link">Cancel</a>
+					<a data-dismiss="modal" class="cancel-link">Cancel</a>
 					<button id="submit-btn" type="button" class="add-task-ajax btn btn-primary">
 						<i class="far fa-check-circle"></i>
 						Add Note

@@ -4,8 +4,8 @@
 
 <h1>Create a New Invoice</h1>
 
-<form method="POST" action="/invoices">
-	{{ csrf_field() }}
+<form method="POST" action="{{ routes('invoices.store') }}">
+	@csrf
 	@include('layouts.errors')
 
 	<div class="form-group">

@@ -4,6 +4,11 @@ namespace App;
 
 class Task extends Model
 {
+	// Datefields to be Mutated to Carbon Instances
+	protected $dates = [
+		'due_date'
+	];
+	
     public function taskType() {
 		return $this->belongsTo(TaskType::class);
 	}

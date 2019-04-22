@@ -16,7 +16,7 @@ class CreateInvoicesTable extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
             $table->string('invoice_num')->unique();
-            $table->string('due_date');
+            $table->date('due_date');
             $table->boolean('repeats')->default(0);
             $table->decimal('amount_due', 8, 2);
             $table->decimal('balance', 8, 2)->nullable();

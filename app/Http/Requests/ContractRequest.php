@@ -20,7 +20,7 @@ class ContractRequest extends FormRequest
             'rent_amount' => 'required',
             'rent_due_date' => 'required',
             'term_length' => 'nullable',
-            'term_start' => 'required',
+            'term_start' => 'required|date',
             'term_ended' => 'nullable',
             'tenant_id' => 'required',
             'asset_id' => 'required',
