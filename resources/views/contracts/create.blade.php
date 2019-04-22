@@ -3,8 +3,8 @@
 @section('content')
 <h1>Create a New Contract</h1>
 
-<form method="POST" action="/contracts">
-	{{ csrf_field() }}
+<form method="POST" action="{{ route('contracts.store') }}">
+	@csrf
 	@include('layouts.errors')
 
 	<div class="form-group">
