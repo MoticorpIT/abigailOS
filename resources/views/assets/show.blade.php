@@ -22,12 +22,12 @@
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="/dashboard/">
+						<a href="{{ route('dashboard') }}">
 							Dashboard
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/assets/">
+						<a href="{{ route('assets.index') }}">
 							Asset Table
 						</a>
 					</li>
@@ -372,7 +372,7 @@
 										<label>
 											Asset Rent
 										</label>
-										<input class="form-control" name="rent" value="{{ $asset->rent != null ? '$' : 'n/a' }} {{ $asset->rent }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="rent" value="{{ cleanMoneyWithCents($asset->rent) }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col">
@@ -381,7 +381,7 @@
 										<label>
 											Asset Deposit
 										</label>
-										<input class="form-control" name="deposit" value="{{ $asset->deposit != null ? '$' : 'n/a' }} {{$asset->deposit}}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="deposit" value="{{ cleanMoneyWithCents($asset->deposit) }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 
