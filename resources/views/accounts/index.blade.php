@@ -114,12 +114,18 @@
 										</span>
 									</td>
 									<td class="updated-on none">
-										<span class="date">
-											{{ cleanDate($account->updated_at) }}
-										</span>
-										<span class="date-readable">
-											{{ $account->updated_at->diffForHumans() }}
-										</span>
+										@if($account->updated_at != null)
+											<span class="date">
+												{{ cleanDate($account->updated_at) }}
+											</span>
+											<span class="date-readable">
+												{{ $account->updated_at->diffForHumans() }}
+											</span>
+										@else
+											<span class="date">
+												NA
+											</span>
+										@endif
 									</td>
 									<td class="view-button not-mobile-p">
 										<a href="{{ route('accounts.show', $account) }}" class="btn btn-secondary btn-sm view-link">

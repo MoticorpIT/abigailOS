@@ -111,19 +111,27 @@
 							</td>
 							<td class="created-on none">
 								<span class="date">
-									{{ $company->created_at->format('m/d/y') ?? '' }}
+									{{ cleanDate($company->created_at) ?? '' }}
 								</span>
 							</td>
 							<td class="updated-on none">
-								<span class="date">
-									{{ $company->updated_at != null ? $company->updated_at->format('m/d/y h:i a') : '' }}
-								</span>
-								<span class="date-readable">
-									{{ $company->updated_at != null ? $company->updated_at->diffForHumans($company->created_at) : '' }}
-								</span>
+								@if($company->updated_at != null)
+									<span class="date">
+										{{ $company->updated_at != null ? cleanDate($company->updated_at) : '' }}
+									</span>
+									<span class="date-readable">
+										{{ $company->updated_at != null ? $company->updated_at->diffForHumans() : '' }}
+									</span>
+								@else
+									<span class="date">
+										NA
+									</span>
+								@endif
 							</td>
 							<td class="view-button not-mobile-p">
-								<a href="/companies/{{ $company->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+								<a href="{{ route('companies.show', $company) }}" class="btn btn-secondary btn-sm view-link">
+									<i class="fas fa-eye"></i>
+								</a>
 							</td>
 						</tr>
 						@endforeach

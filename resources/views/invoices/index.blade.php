@@ -7,7 +7,7 @@
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
 				<i class="fas fa-exclamation-circle"></i> Invoices
-				<a href="/invoices/create" class="btn btn-primary d-block-small float-right">
+				<a href="{{ route('invoices.create') }}" class="btn btn-primary d-block-small float-right">
 					<i class="fas fa-exclamation-circle"></i>
 					Create Invoice
 				</a>
@@ -40,7 +40,9 @@
 								<td class="text-left">{{ $invoice->contract->tenant->last_name }}/{{ $invoice->contract->asset->name }}</td>
 								<td class="text-left">{{ $invoice->status_id }}</td>
 								<td class="view-button">
-									<a href="/invoices/{{ $invoice->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+									<a href="{{ route('invoices.show', $invoice) }}" class="btn btn-secondary btn-sm view-link">
+										<i class="fas fa-eye"></i>
+									</a>
 								</td>
 							</tr>
 						@endforeach

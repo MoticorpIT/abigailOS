@@ -11,7 +11,7 @@
 					{{-- BUTTON SET --}}
 					<div class="float-right button-set">
 						<a href="{{ route('users.index') }}" class="btn btn-round">Go Back</a>
-						<a href="/users/{{ $user->id }}/edit" id="submit-btn" class="btn btn-primary d-block d-sm-inline">Edit User</a>
+						<a href="{{ route('users.edit', $user) }}" id="submit-btn" class="btn btn-primary d-block d-sm-inline">Edit User</a>
 					</div>
 					<div class="clear"></div>
 				</h1>

@@ -119,12 +119,18 @@
 								</span>
 							</td>
 							<td class="updated-on none">
-								<span class="date">
-									{{ cleanDate($asset->updated_at) }}
-								</span>
-								<span class="date-readable">
-									{{ $asset->updated_at->diffForHumans() }}
-								</span>
+								@if($asset->updated_at != null)
+									<span class="date">
+										{{ cleanDate($asset->updated_at) }}
+									</span>
+									<span class="date-readable">
+										{{ $asset->updated_at->diffForHumans() }}
+									</span>
+								@else
+									<span class="date">
+										NA
+									</span>
+								@endif
 							</td>
 							<td class="view-button not-mobile-p">
 								<a href="{{ route('assets.show', $asset) }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
