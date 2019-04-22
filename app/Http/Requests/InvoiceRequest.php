@@ -17,7 +17,7 @@ class InvoiceRequest extends FormRequest
     	// General Rules
     	$rules = [
     		'invoice_num' => 'required',
-            'due_date' => 'required',
+            'due_date' => 'required|date',
             'repeats' => 'required',
             'amount_due' => 'required',
             'balance' => 'nullable',

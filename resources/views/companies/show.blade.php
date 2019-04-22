@@ -13,12 +13,12 @@
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="/dashboard/">
+						<a href="{{ route('dashboard') }}">
 							Dashboard
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/companies/">
+						<a href="{{ route('companies.index') }}">
 							Company Table
 						</a>
 					</li>
@@ -34,8 +34,8 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/companies/" class="btn btn-round">Go Back</a>
-					<a href="/companies/{{ $company->id }}/edit" class="btn btn-primary">
+					<a href="{{ route('companies.index') }}" class="btn btn-round">Go Back</a>
+					<a href="{{ route('companies.edit', $company) }}" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Company
 					</a>
@@ -64,7 +64,7 @@
 								@if ($company->logo_id == null)
 									<img src="/media/images/company-default-logo-profile.png" alt="Default Company Logo" />
 								@else
-									<img src="{{ $company->logo->getURL('profile') ?? '' }}" alt="{{ $company->name }}s Logo" />
+									<img src="{{ $company->logo->getURL('profile') ?? '' }}" alt="{{ $company->name }}'s Logo" />
 								@endif
 							</div> <!-- profile image -->
 
@@ -215,7 +215,7 @@
 										<label for="created-at">
 											Created On
 										</label>
-										<input type="text" class="form-control" name="created-at" value="{{ $company->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="created-at" value="{{ cleanDate($company->created_at) }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -224,7 +224,7 @@
 										<label for="updated-at">
 											Updated On
 										</label>
-										<input type="text" class="form-control" name="updated-at" value="{{ $company->undated_at != null ? $company->updated_at->format('m/d/y') : '' }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="updated-at" value="{{ $company->updated_at != null ? cleanDate($company->updated_at) : '' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -320,7 +320,7 @@
 								<div class="col-12 col-md-4 col">
 									<div class="form-group">
 										<label>Incorporated Date</label>
-										<input type="text" class="form-control" name="incorp_date" value="{{ $company->incorp_date }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="incorp_date" value="{{ $company->incorp_date != null ? cleanDate($company->incorp_date) : '' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 

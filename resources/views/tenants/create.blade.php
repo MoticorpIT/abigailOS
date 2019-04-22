@@ -5,18 +5,18 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/tenants">
-				{{ csrf_field() }}
+			<form method="POST" action="{{ route('tenants.store') }}">
+				@csrf
 
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
-							<a href="/dashboard/">
+							<a href="{{ route('dashboard') }}">
 								Dashboard
 							</a>
 						</li>
 						<li class="breadcrumb-item">
-							<a href="/tenants/">
+							<a href="{{ route('tenants.index') }}">
 								Tenant Table
 							</a>
 						</li>
@@ -31,7 +31,7 @@
 
 					{{-- BUTTON SET --}}
 					<div class="float-right button-set">
-						<a href="/tenants" class="btn btn-round">Cancel</a>
+						<a href="{{ route('tenants.index') }}" class="btn btn-round">Cancel</a>
 						<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
 							<i class="fas fa-check-circle"></i>
 							Save Tenant
@@ -50,10 +50,10 @@
 								<h2 class="heading">
 									<div class="row">
 										<div class="col-12 col-md-6">
-											<input type="text" class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="first_name" value="" placeholder="First Name">
+											<input type="text" class="form-control {{ $errors->has('first_name') ? 'has-error' : '' }}" name="first_name" value="{{ old('first_name') }}" placeholder="First Name">
 										</div> <!-- col -->
 										<div class="col-12 col-md-6">
-											<input type="text" class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="" placeholder="Last Name">
+											<input type="text" class="form-control {{ $errors->has('last_name') ? 'has-error' : '' }}" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name">
 										</div> <!-- col -->
 									</div> <!-- row -->
 								</h2>
@@ -158,7 +158,7 @@
 											<label for="created_at">
 												Created On
 											</label>
-											<input type="text" class="form-control" name="created_at" value="Now" disabled readonly placeholder="n/a">
+											<input type="text" class="form-control" placeholder="Now" disabled readonly>
 										</div>
 									</div> <!-- col -->
 
@@ -167,7 +167,7 @@
 											<label for="updated_at">
 												Updated On
 											</label>
-											<input type="text" class="form-control" name="updated_at" value="Now" disabled readonly placeholder="n/a">
+											<input type="text" class="form-control" placeholder="NA" disabled readonly>
 										</div>
 									</div> <!-- col -->
 

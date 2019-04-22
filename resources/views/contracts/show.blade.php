@@ -6,14 +6,14 @@
 <div class="form-group">
 	<label>Deposit Amount</label>
 	<div class="input-group">
-		<input type="text" class="form-control" name="deposit_amount" placeholder="How much is the deposit?" value="{{ $contract->deposit_amount }}" disabled read-only>
+		<input type="text" class="form-control" name="deposit_amount" placeholder="How much is the deposit?" value="{{ cleanMoneyWithCents($contract->deposit_amount) }}" disabled read-only>
 	</div>
 </div>
 
 <div class="form-group">
 	<label>Rent Amount</label>
 	<div class="input-group">
-		<input type="text" class="form-control" name="rent_amount" placeholder="How much is rent?" value="{{ $contract->rent_amount }}" disabled read-only>
+		<input type="text" class="form-control" name="rent_amount" placeholder="How much is rent?" value="{{ cleanMoneyWithCents($contract->rent_amount) }}" disabled read-only>
 	</div>
 </div>
 
@@ -36,7 +36,7 @@
 <div class="form-group">
 	<label>Term Start Date</label>
 	<div class="input-group">
-		<input type="text" class="form-control" name="term_start" placeholder="When does the contract start?" value="{{ $contract->term_start }}" disabled read-only>
+		<input type="text" class="form-control" name="term_start" placeholder="When does the contract start?" value="{{ cleanDate($contract->term_start) }}" disabled read-only>
 	</div>
 </div>
 
@@ -65,7 +65,7 @@
 	</select>
 </div>
 
-<a href="/contracts/{{$contract->id}}/edit" id="submit-btn" type="submit" class="btn">
+<a href="{{ route('contracts.edit', $contract) }}" id="submit-btn" type="submit" class="btn">
 	Edit Contract
 </a>
 

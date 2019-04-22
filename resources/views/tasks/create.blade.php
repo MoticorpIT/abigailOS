@@ -3,8 +3,8 @@
 @section('content')
 <h1>Create a New Task</h1>
 
-<form method="POST" action="/tasks">
-	{{ csrf_field() }}
+<form method="POST" action="{{ route('tasks.store') }}">
+	@csrf
 	@include('layouts.errors')
 
 	<div class="form-group">
@@ -41,7 +41,7 @@
 	<div class="form-group">
 		<label>Due Date</label>
 		<div class="input-group">
-			<input type="text" class="form-control" name="due_date" placeholder="Date task should be completed" value="{{ old('due_date') }}">
+			<input type="date" class="form-control" name="due_date" value="{{ old('due_date') }}">
 		</div>
 	</div>
 

@@ -15,12 +15,12 @@
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="/dashboard/">
+						<a href="{{ route('dashboard') }}">
 							Dashboard
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/tenants/">
+						<a href="{{ route('tenants.index') }}">
 							Tenant Table
 						</a>
 					</li>
@@ -35,10 +35,10 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/tenants/" class="btn btn-round">
+					<a href="{{ route('tenants.index') }}" class="btn btn-round">
 						Go Back
 					</a>
-					<a href="/tenants/{{ $tenant->id }}" class="btn btn-secondary">
+					<a href="{{ route('tenants.show', $tenant) }}" class="btn btn-secondary">
 						<i class="fas fa-eye"></i>
 						View Tenant
 					</a>
@@ -118,7 +118,7 @@
 											<span class="required">*</span>
 										</label>
 										<div class="input-group">
-											<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="n/a" value="{{ $tenant->phone_1 }}">
+											<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="n/a" value="{{ cleanPhone($tenant->phone_1) }}">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -134,7 +134,7 @@
 											<span class="optional">(optional)</span>
 										</label>
 										<div class="input-group">
-											<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="n/a" value="{{ $tenant->phone_2 }}">
+											<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="n/a" value="{{ cleanPhone($tenant->phone_2) }}">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -151,7 +151,7 @@
 											Fax
 										</label>
 										<div class="input-group">
-											<input form="edit-form" type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="n/a" value="{{ $tenant->fax }}">
+											<input form="edit-form" type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="n/a" value="{{ cleanPhone($tenant->fax) }}">
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-fax"></i>
@@ -180,16 +180,16 @@
 							</div>
 						</div> <!-- col -->
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
-							<form id="edit-form" method="POST" action="/tenants/{{ $tenant->id }}">
-								@csrf
-								@method('PATCH')
+							<form id="edit-form" method="POST" action="{{ route('tenants.update', $tenant) }}">
+								@csrf @method('PATCH')
+								
 								<div class="row">
 									<div class="col-12 col-md-3 col">
 										<div class="form-group">
 											<label for="created-at">
 												Created On
 											</label>
-											<input type="text" class="form-control" name="created-at" value="{{ $tenant->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+											<input type="text" class="form-control" name="created_at" placeholder="{{ cleanDate($tenant->created_at) }}" disabled readonly>
 										</div>
 									</div> <!-- col -->
 
@@ -198,7 +198,7 @@
 											<label for="updated-at">
 												Updated On
 											</label>
-											<input type="text" class="form-control" name="updated-at" value="{{ $tenant->updated_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+											<input type="text" class="form-control" name="updated_at" placeholder="Now" disabled readonly>
 										</div>
 									</div> <!-- col -->
 
@@ -260,14 +260,14 @@
 										{{-- Co-Tenant Phone 1 --}}
 										<div class="form-group">
 											<label>Co-Tenant Phone 1:</label>
-											<input class="form-control {{ $errors->has('co_phone_1') ? 'has-error' : '' }}" name="co_phone_1" value="{{ $tenant->co_phone_1 }}" placeholder="n/a">
+											<input class="form-control {{ $errors->has('co_phone_1') ? 'has-error' : '' }}" name="co_phone_1" value="{{ cleanPhone($tenant->co_phone_1) }}" placeholder="n/a">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-4 col">
 										{{-- Co-Tenant Phone 2 --}}
 										<div class="form-group">
 											<label>Co-Tenant Phone 2:</label>
-											<input class="form-control {{ $errors->has('co_phone_2') ? 'has-error' : '' }}" name="co_phone_2" value="{{ $tenant->co_phone_2 }}" placeholder="n/a">
+											<input class="form-control {{ $errors->has('co_phone_2') ? 'has-error' : '' }}" name="co_phone_2" value="{{ cleanPhone($tenant->co_phone_2) }}" placeholder="n/a">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-4 col">

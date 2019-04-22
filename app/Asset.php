@@ -9,6 +9,11 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 class Asset extends Model implements HasMedia
 {
 	use HasMediaTrait;
+
+	// Datefields to be Mutated to Carbon Instances
+	protected $dates = [
+        'acquired_date'
+    ];
 	
 	// SCOPES
 	public function scopeActive($query) {
@@ -38,9 +43,6 @@ class Asset extends Model implements HasMedia
 	public function profileImage() {
 		return $this->hasOne(Media::class, 'id', 'profile_img_id');
 	}
-	// public function getAvatarUrlAttribute() {
-	// 	return $this->profileImage->getUrl('thumb');
-	// }
 	// MEDIA/IMAGES - END
 
     public function company() {
@@ -49,7 +51,7 @@ class Asset extends Model implements HasMedia
 	public function accounts() {
 		return $this->hasMany(Account::class);
 	}
-	public function AssetType() {
+	public function assetType() {
 		return $this->belongsTo(AssetType::class, 'asset_type_id');
 	}
 	public function status() {

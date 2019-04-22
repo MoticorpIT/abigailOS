@@ -5,7 +5,7 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/users">
+			<form method="POST" action="{{ route('users.store') }}">
 				@csrf
 
 				<h1 class="page-heading">

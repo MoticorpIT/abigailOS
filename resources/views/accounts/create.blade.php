@@ -6,18 +6,18 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/accounts" enctype="multipart/form-data">
-				{{ csrf_field() }}
+			<form method="POST" action="{{ route('accounts.store') }}" enctype="multipart/form-data">
+				@csrf
 
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
-							<a href="/dashboard/">
+							<a href="{{ route('dashboard') }}">
 								Dashboard
 							</a>
 						</li>
 						<li class="breadcrumb-item">
-							<a href="/accounts/">
+							<a href="{{ route('accounts.index') }}">
 								Accounts Table
 							</a>
 						</li>
@@ -152,7 +152,7 @@
 											<label>
 												Created On
 											</label>
-											<input class="form-control" name="created-at" value="Now" placeholder="n/a" readonly disabled>
+											<input class="form-control" placeholder="Now" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -160,7 +160,7 @@
 											<label>
 												Updated On
 											</label>
-											<input class="form-control" name="updated-at" value="Now" placeholder="n/a" readonly disabled>
+											<input class="form-control" placeholder="n/a" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -347,9 +347,5 @@
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div> <!-- db boxes -->
-
-<!-- Images Modal -->
-{{-- @include('layouts/modals/view-images') --}}
-
 
 @endsection

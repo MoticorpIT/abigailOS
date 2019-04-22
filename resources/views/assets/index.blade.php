@@ -68,7 +68,7 @@
 							<td class="contact">
 								<div class="btn-group contact-button">
 								  <a href="tel:{{ $asset->phone_1 }}" class="btn btn-secondary">
-										<span><i class="fas fa-phone"></i> {{ $asset->phone_1 }}</span>
+										<span><i class="fas fa-phone"></i> {{ cleanPhone($asset->phone_1) }}</span>
 									</a>
 								  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								    <span class="sr-only">Toggle Dropdown</span>
@@ -76,12 +76,12 @@
 								  <div class="dropdown-menu dropdown-menu-right">
 										@if($asset->phone_2)
 								    <a class="dropdown-item" href="tel:{{ $asset->phone_2 }}">
-											<span><i class="fas fa-phone"></i> {{ $asset->phone_2 }}</span>
+											<span><i class="fas fa-phone"></i> {{ cleanPhone($asset->phone_2) }}</span>
 										</a>
 										@endif
 										@if($asset->fax)
 										<a class="dropdown-item">
-											<span><i class="fas fa-fax"></i> {{ $asset->fax }}</span>
+											<span><i class="fas fa-fax"></i> {{ cleanPhone($asset->fax) }}</span>
 										</a>
 										@endif
 										@if($asset->email)
@@ -115,19 +115,25 @@
 							</td>
 							<td class="created-on none">
 								<span class="date">
-									{{ $asset->created_at->format('m/d/y') }}
+									{{ cleanDate($asset->created_at) }}
 								</span>
 							</td>
 							<td class="updated-on none">
-								<span class="date">
-									{{ $asset->updated_at->format('m/d/y h:i a') }}
-								</span>
-								<span class="date-readable">
-									{{ $asset->updated_at->diffForHumans($asset->created_at) }}
-								</span>
+								@if($asset->updated_at != null)
+									<span class="date">
+										{{ cleanDate($asset->updated_at) }}
+									</span>
+									<span class="date-readable">
+										{{ $asset->updated_at->diffForHumans() }}
+									</span>
+								@else
+									<span class="date">
+										NA
+									</span>
+								@endif
 							</td>
 							<td class="view-button not-mobile-p">
-								<a href="/assets/{{ $asset->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+								<a href="{{ route('assets.show', $asset) }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
 							</td>
 						</tr>
 						@endforeach

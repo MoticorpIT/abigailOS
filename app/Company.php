@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -9,6 +10,11 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 class Company extends Model implements HasMedia
 {
 	use HasMediaTrait;
+
+	// Datefields to be Mutated to Carbon Instances
+	protected $dates = [
+        'incorp_date'
+    ];
 
 	// LOGO - START
 	public function registerMediaCollections()

@@ -14,12 +14,12 @@
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
-							<a href="/dashboard/">
+							<a href="{{ route('dashboard') }}">
 								Dashboard
 							</a>
 						</li>
 						<li class="breadcrumb-item">
-							<a href="/accounts/">
+							<a href="{{ route('accounts.index') }}">
 								Accounts Table
 							</a>
 						</li>
@@ -34,10 +34,10 @@
 
 					{{-- BUTTON SET --}}
 					<div class="float-right button-set">
-						<a href="/accounts/" class="btn btn-round">
+						<a href="{{ route('accounts.index') }}" class="btn btn-round">
 							Go Back
 						</a>
-						<a href="/accounts/{{ $account->id }}" class="btn btn-secondary">
+						<a href="{{ route('accounts.show', $account) }}" class="btn btn-secondary">
 							<i class="fas fa-eye"></i>
 							View Account
 						</a>
@@ -110,7 +110,7 @@
 												<span class="required">*</span>
 											</label>
 											<div class="input-group">
-												<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="n/a" value="{{ $account->phone_1 }}">
+												<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_1') ? 'has-error' : '' }}" name="phone_1" placeholder="n/a" value="{{ cleanPhone($account->phone_1) }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-phone"></i>
@@ -126,7 +126,7 @@
 												<span class="optional">(optional)</span>
 											</label>
 											<div class="input-group">
-												<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="n/a" value="{{ $account->phone_2 }}">
+												<input form="edit-form" type="tel" class="form-control {{ $errors->has('phone_2') ? 'has-error' : '' }}" name="phone_2" placeholder="n/a" value="{{ cleanPhone($account->phone_2) }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-phone"></i>
@@ -143,7 +143,7 @@
 												Fax
 											</label>
 											<div class="input-group">
-												<input form="edit-form" type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="n/a" value="{{ $account->fax }}">
+												<input form="edit-form" type="tel" class="form-control {{ $errors->has('fax') ? 'has-error' : '' }}" name="fax" placeholder="n/a" value="{{ cleanPhone($account->fax) }}">
 												<div class="input-group-append d-none d-lg-block">
 													<div class="input-group-text">
 														<i class="fas fa-fax"></i>
@@ -172,16 +172,16 @@
 								</div>
 							</div> <!-- col -->
 							<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
-								<form id="edit-form" method="POST" action="/accounts/{{ $account->id }}">
-									@csrf
-									@method('PATCH')
+								<form id="edit-form" method="POST" action="{{ route('accounts.update', $account) }}">
+									@csrf @method('PATCH')
+
 									<div class="row">
 										<div class="col-12 col-md-3 col">
 											<div class="form-group">
 												<label>
 													Created On
 												</label>
-												<input type="text" class="form-control" name="created_at" value="{{ $account->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+												<input type="text" class="form-control" name="created_at" value="{{ cleanDate($account->created_at) }}" disabled readonly placeholder="n/a">
 											</div>
 										</div> <!-- col -->
 										<div class="col-12 col-md-3 col">
@@ -189,7 +189,7 @@
 												<label>
 													Updated On
 												</label>
-												<input type="text" class="form-control" name="updated_at" value="{{ $account->updated_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+												<input type="text" class="form-control" name="updated_at" value="{{ cleanDate($account->updated_at) }}" disabled readonly placeholder="n/a">
 											</div>
 										</div> <!-- col -->
 										<div class="col-12 col-md-3 col">
@@ -300,14 +300,14 @@
 											{{-- Contact Phone 1 --}}
 											<div class="form-group">
 												<label>Contact Phone 1:</label>
-												<input class="form-control {{ $errors->has('contact_phone_1') ? 'has-error' : '' }}" name="contact_phone_1" value="{{ $account->contact_phone_1 }}" >
+												<input class="form-control {{ $errors->has('contact_phone_1') ? 'has-error' : '' }}" name="contact_phone_1" value="{{ cleanPhone($account->contact_phone_1) }}" >
 											</div>
 										</div> <!-- col -->
 										<div class="col-12 col-md-3 col">
 											{{-- Contact Phone 2 --}}
 											<div class="form-group">
 												<label>Contact Phone 2:</label>
-												<input class="form-control {{ $errors->has('contact_phone_2') ? 'has-error' : '' }}" name="contact_phone_2" value="{{ $account->contact_phone_2 }}" >
+												<input class="form-control {{ $errors->has('contact_phone_2') ? 'has-error' : '' }}" name="contact_phone_2" value="{{ cleanPhone($account->contact_phone_2) }}" >
 											</div>
 										</div> <!-- col -->
 										<div class="col-12 col-md-3 col">

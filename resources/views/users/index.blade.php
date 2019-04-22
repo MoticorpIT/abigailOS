@@ -8,11 +8,11 @@
 				<h1 class="page-heading">
 					<i class="fas fa-user-cog"></i>
 					Users
-					<a href="/users/create" class="btn btn-primary d-block-small float-right">
+					<a href="{{ route('users.create') }}" class="btn btn-primary d-block-small float-right">
 						<i class="fas fa-plus-square"></i>
 						Create User
 					</a>
-					<a href="/users/export" class="btn d-block-small float-right">
+					<a href="{{ route('users.export') }}" class="btn d-block-small float-right">
 						<i class="fas fa-file-download"></i>
 						Download
 					</a>
@@ -43,8 +43,8 @@
 										{{ $user->id }}
 									</td>
 									<td class="view-button not-mobile-p">
-										<a href="/users/{{ $user->id }}/edit" class="btn btn-secondary btn-sm user-edit-link"><i class="fas fa-edit"></i> Edit User</i></a>
-										<a href="/users/{{ $user->id }}" class="btn btn-secondary btn-sm user-view-link"><i class="fas fa-eye"></i> View Profile</a>
+										<a href="{{ route('users.edit', $user) }}" class="btn btn-secondary btn-sm user-edit-link"><i class="fas fa-edit"></i> Edit User</i></a>
+										<a href="{{ route('users.show', $user) }}" class="btn btn-secondary btn-sm user-view-link"><i class="fas fa-eye"></i> View Profile</a>
 									</td>
 								</tr>
 							@endforeach

@@ -17,7 +17,7 @@ class TaskRequest extends FormRequest
     	// General Rules
     	$rules = [
     		'task' => 'required',
-			'due_date' => 'required',
+			'due_date' => 'required|date',
 			'repeats' => 'required',
 			'assigned_user_id' => 'required',
 			'account_id' => 'nullable',

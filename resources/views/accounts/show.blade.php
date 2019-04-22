@@ -12,12 +12,12 @@
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="/dashboard/">
+						<a href="{{ route('dashboard') }}">
 							Dashboard
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/accounts/">
+						<a href="{{ route('accounts.index') }}">
 							Accounts Table
 						</a>
 					</li>
@@ -32,8 +32,8 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/accounts/" class="btn btn-round">Go Back</a>
-					<a href="/accounts/{{ $account->id }}/edit" class="btn btn-primary">
+					<a href="{{ route('accounts.index')}}" class="btn btn-round">Go Back</a>
+					<a href="{{ route('accounts.edit', $account) }}" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Account
 					</a>
@@ -61,7 +61,7 @@
 								@if ($account->logo_id == null)
 									<img src="/media/images/account-default-logo-profile.png" alt="Default Account Logo" />
 								@else
-									<img src="{{ $account->logo->getURL('profile') ?? '' }}" alt="{{ $account->name }}s Logo" />
+									<img src="{{ $account->logo->getURL('profile') ?? '' }}" alt="{{ $account->name }}'s Logo" />
 								@endif
 							</div> <!-- profile image -->
 
@@ -88,7 +88,7 @@
 											<span class="required">*</span>
 										</label>
 										<div class="input-group">
-											<div class="input">{{ $account->phone_1 }}</div>
+											<div class="input">{{ cleanPhone($account->phone_1) }}</div>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -104,7 +104,7 @@
 											<span class="optional">(optional)</span>
 										</label>
 										<div class="input-group">
-											<div class="input">{{ $account->phone_2 }}</div>
+											<div class="input">{{ $account->phone_2 != null ? cleanPhone($account->phone_2) : '' }}</div>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-phone"></i>
@@ -121,7 +121,7 @@
 											Fax
 										</label>
 										<div class="input-group">
-											<div class="input">{{ $account->fax }}</div>
+											<div class="input">{{ cleanPhone($account->fax) }}</div>
 											<div class="input-group-append d-none d-lg-block">
 												<div class="input-group-text">
 													<i class="fas fa-fax"></i>
@@ -384,7 +384,7 @@
 										<label>
 											Created On
 										</label>
-										<div class="input">{{ $account->created_at->format('m/d/y') }}</div>
+										<div class="input">{{ cleanDate($account->created_at) }}</div>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col col-updated">
@@ -392,7 +392,7 @@
 										<label>
 											Updated On
 										</label>
-										<div class="input">{{ $account->updated_at->format('m/d/y') }}</div>
+										<div class="input">{{ cleanDate($account->updated_at) }}</div>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col col-type col-account-type">
@@ -488,14 +488,14 @@
 									{{-- Contact Phone 1 --}}
 									<div class="form-group">
 										<label>Contact Phone 1:</label>
-										<div class="input">{{ $account->contact_phone_1 }}</div>
+										<div class="input">{{ $account->contact_phone_1 != null ? cleanPhone($account->contact_phone_1) : '' }}</div>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col col-phone col-phone2">
 									{{-- Contact Phone 2 --}}
 									<div class="form-group">
 										<label>Contact Phone 2:</label>
-										<div class="input">{{ $account->contact_phone_2 }}</div>
+										<div class="input">{{ $account->contact_phone_2 != null ? cleanPhone($account->contact_phone_2) : '' }}</div>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-3 col col-email">
