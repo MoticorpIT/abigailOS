@@ -25,6 +25,7 @@ class CreateTasksTable extends Migration
             $table->integer('task_id')->nullable();
             $table->integer('task_type_id')->nullable();
             $table->integer('priority_id')->nullable();
+            $table->boolean('is_complete')->default(0);
             $table->timestamps();
         });
     }
