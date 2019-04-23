@@ -219,7 +219,6 @@
 												<span class="required">*</span>
 											</label>
 											<select class="form-control" id="company_type_id" name="company_type_id">
-												<option value="">None</option>
 												@foreach($company_types as $id => $company_type)
 												<option value="{{ $id }}" {{ $company->company_type_id == $id ? 'selected' : '' }}>
 													{{ $company_type }}

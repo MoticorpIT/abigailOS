@@ -80,7 +80,8 @@ $(function(){
 	\------------------------------------------------------------*/
 	$('.task-modal-trigger').on('click', function() {
 		let data = $(this).data();
-		$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( data.due_date );
+		let cleanerDate = data.due_date.replace(' 00:00:00', '');
+		$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( cleanerDate );
 		$("#complete-task-modal #task-description, #reschedule-task-modal #task-description").val( data.task );
 		$("#complete-task-modal a[href], #reschedule-task-modal a[href]").attr('href', `/tasks/${data.id}/edit`);
 	});

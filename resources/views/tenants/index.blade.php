@@ -49,7 +49,7 @@
 								Updated
 							</th>
 							<th class="view-button not-mobile-p">
-								View
+								Actions
 							</th>
 						</tr>
 					</thead>
@@ -118,6 +118,7 @@
 								</td>
 								<td class="view-button not-mobile-p">
 									<a href="{{ route('tenants.show', $tenant) }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+									<a href="{{ route('tenants.edit', $tenant) }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-pencil-alt"></i></a>
 								</td>
 							</tr>
 						@endforeach

@@ -21,7 +21,7 @@
 							<th class="text-left">Type</th>
 							<th class="text-left">Priority</th>
 							<th class="view-button text-left not-mobile-p">
-								View
+								Actions
 							</th>
 						</tr>
 					</thead>
@@ -34,6 +34,7 @@
 								<td class="text-left">{{ $task->priority->name }}</td>
 								<td class="view-button">
 									<a href="{{ route('tasks.show', $task) }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+									<a href="{{ route('tasks.edit', $task) }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-pencil-alt"></i></a>
 								</td>
 							</tr>
 						@endforeach

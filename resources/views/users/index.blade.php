@@ -25,11 +25,14 @@
 								<th class="name all">
 									Name
 								</th>
-								<th class="id">
-									ID
+								<th class="email">
+									Email
+								</th>
+								<th class="email">
+									Status
 								</th>
 								<th class="view-button not-mobile-p">
-									View
+									Actions
 								</th>
 							</tr>
 						</thead>
@@ -39,12 +42,19 @@
 									<td class="name all text-capitalize">
 										{{ $user->name }}
 									</td>
-									<td class="id">
-										{{ $user->id }}
+									<td class="text-capitalize">
+										{{ $user->email }}
+									</td>
+									<td class="text-capitalize">
+										{{ $user->is_active == 1 ? 'Active' : 'Inactive' }}
 									</td>
 									<td class="view-button not-mobile-p">
-										<a href="{{ route('users.edit', $user) }}" class="btn btn-secondary btn-sm user-edit-link"><i class="fas fa-edit"></i> Edit User</i></a>
-										<a href="{{ route('users.show', $user) }}" class="btn btn-secondary btn-sm user-view-link"><i class="fas fa-eye"></i> View Profile</a>
+										<a href="{{ route('users.show', $user) }}" class="btn btn-secondary btn-sm user-view-link">
+											<i class="fas fa-eye"></i>
+										</a>
+										<a href="{{ route('users.edit', $user) }}" class="btn btn-secondary btn-sm user-edit-link">
+											<i class="fas fa-pencil-alt"></i>
+										</a>
 									</td>
 								</tr>
 							@endforeach

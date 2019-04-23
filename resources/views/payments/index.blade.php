@@ -39,7 +39,7 @@
 									Updated
 								</th>
 								<th class="view-button not-mobile-p">
-									View
+									Actions
 								</th>
 							</tr>
 						</thead>
@@ -77,6 +77,9 @@
 									<td class="view-button not-mobile-p">
 										<a href="{{ route('payments.show', $payment) }}" class="btn btn-secondary btn-sm view-link">
 											<i class="fas fa-eye"></i>
+										</a>
+										<a href="{{ route('payments.edit', $payment) }}" class="btn btn-secondary btn-sm view-link">
+											<i class="fas fa-pencil-alt"></i>
 										</a>
 									</td>
 								</tr>

@@ -15,7 +15,10 @@ class DashboardController extends Controller
 
 	public function show()
 	{
-		$tasks = Task::orderBy('priority_id', 'desc')->paginate(10);
+		$tasks = Task::where('is_complete', 0)
+			->orderBy('priority_id', 'desc')
+			->orderBy('due_date')
+			->paginate(10);
 		$overdueCount = Task::where('priority_id',3)->count();
 
 		return view('dashboard', compact('tasks', 'overdueCount'));
