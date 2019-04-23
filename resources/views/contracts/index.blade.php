@@ -23,7 +23,7 @@
 							<th class="text-left">Tenant</th>
 							<th class="text-left">Asset</th>
 							<th class="text-left">Terms</th>
-							<th class="view-button text-left not-mobile-p">View</th>
+							<th class="view-button text-left not-mobile-p">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,6 +39,9 @@
 									<td class="view-button">
 										<a href="{{ route('contracts.show', $contract) }}" class="btn btn-secondary btn-sm view-link">
 											<i class="fas fa-eye"></i>
+										</a>
+										<a href="{{ route('contracts.edit', $contract) }}" class="btn btn-secondary btn-sm view-link">
+											<i class="fas fa-pencil-alt"></i>
 										</a>
 									</td>
 								</tr>
@@ -71,7 +74,7 @@
 							<th class="text-left">Tenant</th>
 							<th class="text-left">Asset</th>
 							<th class="text-left">Terms</th>
-							<th class="view-button text-left not-mobile-p">View</th>
+							<th class="view-button text-left not-mobile-p">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -87,6 +90,9 @@
 									<td class="view-button">
 										<a href="{{ route('contracts.show', $contract) }}" class="btn btn-secondary btn-sm view-link">
 											<i class="fas fa-eye"></i>
+										</a>
+										<a href="{{ route('contracts.edit', $contract) }}" class="btn btn-secondary btn-sm view-link">
+											<i class="fas fa-pencil-alt"></i>
 										</a>
 									</td>
 								</tr>

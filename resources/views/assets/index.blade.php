@@ -52,7 +52,7 @@
 								Updated
 							</th>
 							<th class="view-button not-mobile-p">
-								View
+								Actions
 							</th>
 						</tr>
 					</thead>
@@ -133,7 +133,12 @@
 								@endif
 							</td>
 							<td class="view-button not-mobile-p">
-								<a href="{{ route('assets.show', $asset) }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+								<a href="{{ route('assets.show', $asset) }}" class="btn btn-secondary btn-sm view-link">
+									<i class="fas fa-eye"></i>
+								</a>
+								<a href="{{ route('assets.edit', $asset) }}" class="btn btn-secondary btn-sm view-link">
+									<i class="fas fa-pencil-alt"></i>
+								</a>
 							</td>
 						</tr>
 						@endforeach

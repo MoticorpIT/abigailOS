@@ -407,7 +407,7 @@
 									data-due_date="{{ $task->due_date }}"
 									data-task="{{ $task->task }}"
 								>
-									{{ cleanDate($task->due_date) }} - {{ $task->task }}
+									{{ $task->task }}
 								</a>
 								<div class="task-link-dropdown dropdown">
 									{{-- BUTTON --}}

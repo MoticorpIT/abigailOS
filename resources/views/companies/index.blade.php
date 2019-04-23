@@ -50,19 +50,13 @@
 								Updated
 							</th>
 							<th class="view-button not-mobile-p">
-								View
+								Actions
 							</th>
 						</tr>
 					</thead>
 					<tbody>
 						@foreach($companies as $company)
-						@if($company->status_id =='3')
-							<tr class="status-{{ $company->status_id }}">
-						@elseif($company->status_id =='2')
-							<tr class="status-{{ $company->status_id }}">
-						@else
-							<tr class="status-{{ $company->status_id }}">
-						@endif
+						<tr class="status-{{ $company->status_id }}">
 							<td class="name all">
 								<span class="name-span">{{ $company->name }}</span>
 							</td>
@@ -131,6 +125,9 @@
 							<td class="view-button not-mobile-p">
 								<a href="{{ route('companies.show', $company) }}" class="btn btn-secondary btn-sm view-link">
 									<i class="fas fa-eye"></i>
+								</a>
+								<a href="{{ route('companies.edit', $company) }}" class="btn btn-secondary btn-sm view-link">
+									<i class="fas fa-pencil-alt"></i>
 								</a>
 							</td>
 						</tr>

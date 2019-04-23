@@ -25,7 +25,7 @@
 							<th class="text-left">Contract</th>
 							<th class="text-left">Status</th>
 							<th class="view-button text-left not-mobile-p">
-								View
+								Actions
 							</th>
 						</tr>
 					</thead>
@@ -42,6 +42,9 @@
 								<td class="view-button">
 									<a href="{{ route('invoices.show', $invoice) }}" class="btn btn-secondary btn-sm view-link">
 										<i class="fas fa-eye"></i>
+									</a>
+									<a href="{{ route('invoices.edit', $invoice) }}" class="btn btn-secondary btn-sm view-link">
+										<i class="fas fa-pencil-alt"></i>
 									</a>
 								</td>
 							</tr>
