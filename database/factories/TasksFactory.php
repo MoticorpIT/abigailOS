@@ -13,5 +13,6 @@ $factory->define(App\Task::class, function (Faker $faker) {
         'task_id' => $faker->randomElement($array = array ('1','2','3','4','5','6')),
         'task_type_id' => $faker->randomElement($array = array ('1','2')),
         'priority_id' => $faker->randomElement($array = array ('1','2','3')),
+        'is_complete' => $faker->randomElement($array = array ('0', '1'))
     ];
 });

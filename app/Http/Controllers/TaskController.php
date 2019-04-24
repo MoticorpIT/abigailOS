@@ -24,7 +24,10 @@ class TaskController extends Controller
 	// Show all Tasks (table)
 	public function index()
 	{
-		$tasks = Task::with(['priority', 'taskType'])->latest()->get();
+		$tasks = Task::with(['priority', 'taskType'])
+			->orderBy('is_complete')
+			->orderBy('priority_id', 'desc')
+			->get();
 		return view('tasks.index', compact('tasks'));
 	}
 

@@ -3,9 +3,13 @@
 @section('content')
 <h1>Edit a Task</h1>
 
-<form method="POST" action="/tasks/{{ $task->id }}">
+<form method="POST" action="{{ route('tasks.update', $task) }}">
 	@csrf @method('PATCH')
 	@include('layouts.errors')
+
+	<button id="submit-btn" type="submit" class="btn btn-primary mb-4">
+		Save Task
+	</button>
 
 	<div class="form-group">
 		<label>Task</label>
@@ -129,10 +133,6 @@
 			@endforeach
 		</select>
 	</div>
-
-	<button id="submit-btn" type="submit" class="btn btn-primary">
-		Save Task
-	</button>
 
 </form>
 @endsection
