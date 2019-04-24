@@ -12,12 +12,12 @@
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
-							<a href="/dashboard/">
+							<a href="{{ route('dashboard') }}">
 								Dashboard
 							</a>
 						</li>
 						<li class="breadcrumb-item">
-							<a href="/assets/">
+							<a href="{{ route('assets.index') }}">
 								Asset Table
 							</a>
 						</li>
@@ -32,7 +32,7 @@
 
 					{{-- BUTTON SET --}}
 					<div class="float-right button-set">
-						<a href="/assets/" class="btn btn-round">
+						<a href="{{ route('assets.index') }}" class="btn btn-round">
 							Cancel
 						</a>
 						<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">

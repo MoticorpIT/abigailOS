@@ -23,12 +23,12 @@
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="/dashboard/">
+						<a href="{{ route('dashboard') }}">
 							Dashboard
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/assets/">
+						<a href="{{ route('assets.index') }}">
 							Asset Table
 						</a>
 					</li>
@@ -38,9 +38,8 @@
 				</ol>
 			</nav>
 			
-			<form method="POST" action="/assets/{{ $asset->id }}">
-				@csrf
-				@method('PATCH')
+			<form method="POST" action="{{ route('assets.update', $asset) }}">
+				@csrf @method('PATCH')
 
 				<h1 class="page-heading">
 					<i class="fas fa-briefcase"></i> Edit Asset
