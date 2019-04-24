@@ -17,9 +17,15 @@
 				<div class="float-right button-set">
 					<a href="{{ route('users.index') }}" class="btn btn-round">Cancel</a>
 					@if(Auth::user()->id == $user->id)
-						<a href="{{ route('passwords.edit', $user) }}" class="btn btn-round">Change Password</a>
+						<a href="{{ route('passwords.edit', $user) }}" class="btn btn-secondary">
+							<i class="fas fa-edit"></i>
+							Change Password
+						</a>
 					@endif
-					<button form="data-form" id="edit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Save User</button>
+					<button form="data-form" id="edit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
+						<i class="far fa-check-circle"></i>
+						Save User
+					</button>
 				</div>
 				<div class="clear"></div>
 			</h1>

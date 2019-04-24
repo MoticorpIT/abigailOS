@@ -4,9 +4,8 @@
 
 <h1>Create a New Invoice</h1>
 
-<form method="POST" action="{{ routes('invoices.store') }}">
-	@csrf
-	@include('layouts.errors')
+<form method="POST" action="{{ route('invoices.store') }}">
+	@csrf @include('layouts.errors')
 
 	<div class="form-group">
 		<label>Invoice Number</label>
@@ -18,7 +17,12 @@
 	<div class="form-group">
 		<label>Due Date</label>
 		<div class="input-group">
-			<input type="text" class="form-control" name="due_date" placeholder="When is it due?" value="{{ old('due_date') }}">
+			<input type="date" class="form-control {{ $errors->has('due_date') ? 'has-error' : '' }}" name="due_date" value="{{ old('due_date') }}">
+			<div class="input-group-append">
+				<div class="input-group-text">
+					<i class="fas fa-calendar-alt"></i>
+				</div>
+			</div>
 		</div>
 	</div>
 
