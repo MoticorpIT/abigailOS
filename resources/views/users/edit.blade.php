@@ -75,7 +75,7 @@
 
 						{{-- USER DETAILS SECTION --}}
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
-							<form id="data-form" method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data">
+							<form id="data-form" method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data" autocomplete="off">
 								@csrf @method('PATCH')
 
 								<div class="row">

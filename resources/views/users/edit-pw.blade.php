@@ -8,7 +8,7 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="{{ route('passwords.update', $user) }}">
+			<form method="POST" action="{{ route('passwords.update', $user) }}" autocomplete="off">
 				@csrf @method('PUT')
 				
 				<h1 class="page-heading">

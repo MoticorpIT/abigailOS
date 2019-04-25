@@ -5,7 +5,7 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="{{ route('users.store') }}">
+			<form method="POST" action="{{ route('users.store') }}" autocomplete="off">
 				@csrf
 
 				<h1 class="page-heading">
