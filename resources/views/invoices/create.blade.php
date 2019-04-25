@@ -29,7 +29,7 @@
 	<div class="form-group">
 		<label>Repeats</label>
 		<select class="form-control" name="repeats">
-	        <option value="1">Yes</option>
+	        <option value="1" {{ old('repeates') == 1 ? 'selected' : '' }}>Yes</option>
 	        <option value="0" selected>No</option>
 	    </select>
 	</div>
@@ -52,10 +52,10 @@
 		<label>
 			Contract
 		</label>
-		<select class="form-control" name="contract_id" value="{{ old('contract_id') }}">
+		<select class="form-control" name="contract_id">
 			<option value="" selected>Choose One</option>
 			@foreach ($contracts as $contract)
-				<option value="{{$contract->id}}">{{ $contract->tenant->last_name }}/{{ $contract->asset->name }}</option>
+				<option value="{{$contract->id}}" {{ old('contract_id') == $contract->id ? 'selected' : '' }}>{{ $contract->tenant->last_name }}/{{ $contract->asset->name }}</option>
 			@endforeach
 		</select>
 	</div>
@@ -64,10 +64,10 @@
 		<label>
 			Prioritiy
 		</label>
-		<select class="form-control" name="priority_id" value="{{ old('priority_id') }}">
+		<select class="form-control" name="priority_id">
 			<option value="" selected>Choose One</option>
 			@foreach ($priorities as $key => $value)
-				<option value="{{$key}}">{{ $value }}</option>
+				<option value="{{$key}}" {{ old('priority_id') == $key ? 'selected' : '' }}>{{ $value }}</option>
 			@endforeach
 		</select>
 	</div>

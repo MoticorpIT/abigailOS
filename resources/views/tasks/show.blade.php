@@ -51,7 +51,7 @@
 		Task Type
 	</label>
 	<select class="form-control" name="task_type_id" disabled read-only>
-		<option value="{{$task->task_type_id}}">{{ $task->taskType->name }}</option>
+		<option value="{{$task->task_type_id ?? ''}}">{{ $task->taskType->name ?? 'NA' }}</option>
 	</select>
 </div>
 
@@ -67,7 +67,7 @@
 		Prioritiy
 	</label>
 	<select class="form-control" name="priority_id" disabled read-only>
-		<option value="{{$task->priority_id}}">{{ $task->priority->name }}</option>
+		<option value="{{$task->priority_id ?? ''}}">{{ $task->priority->name ?? 'NA' }}</option>
 	</select>
 </div>
 
