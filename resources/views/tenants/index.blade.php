@@ -65,7 +65,7 @@
 								</td>
 								<td class="contact">
 									<div class="btn-group contact-button">
-									  <a href="tel:{{ $tenant->phone_1 }}" class="btn btn-secondary">
+									  <a href="tel:{{ clickablePhone($tenant->phone_1) }}" class="btn btn-secondary">
 											<span><i class="fas fa-phone"></i>{{ cleanPhone($tenant->phone_1) }}</span>
 										</a>
 									  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,7 +73,7 @@
 									  </button>
 									  <div class="dropdown-menu dropdown-menu-right">
 											@if($tenant->phone_2)
-									    <a class="dropdown-item" href="tel:{{ $tenant->phone_2 }}">
+									    <a class="dropdown-item" href="tel:{{ clickablePhone($tenant->phone_2) }}">
 												<span><i class="fas fa-phone"></i> {{ cleanPhone($tenant->phone_2) }}</span>
 											</a>
 											@endif
