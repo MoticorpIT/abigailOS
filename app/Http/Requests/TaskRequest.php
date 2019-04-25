@@ -23,7 +23,7 @@ class TaskRequest extends FormRequest
 			'account_id' => 'nullable',
 			'company_id' => 'nullable',
 			'asset_id' => 'nullable',
-			'task_id' => 'nullable',
+			'parent_id' => 'nullable',
 			'task_type_id' => 'nullable',
 			'priority_id' => 'nullable',
     	];

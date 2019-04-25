@@ -25,8 +25,9 @@ class TaskController extends Controller
 	public function index()
 	{
 		$tasks = Task::with(['priority', 'taskType'])
-			->orderBy('is_complete')
+			->where('parent_id', null)
 			->orderBy('priority_id', 'desc')
+			->orderBy('due_date')
 			->get();
 		return view('tasks.index', compact('tasks'));
 	}
@@ -90,7 +91,7 @@ class TaskController extends Controller
 	{
 		// Database Queries
 		$task = Task::with(['priority', 'taskType'])->findOrFail($id);
-		$sub_tasks = Task::where('task_id',$task->id)->get();
+		$sub_tasks = Task::where('parent_id', $task->id)->get();
 		$users = User::active()->get();
 
 		// Config/Constants.php 'Queries'

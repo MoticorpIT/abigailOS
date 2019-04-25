@@ -18,7 +18,7 @@
 						<div class="media-body">
 
 							{{-- Hidden Fields - All Data Pulled from Parent Task --}}
-							<input type="hidden" name="task_id" id="task_id" value="{{ $task->id }}">
+							<input type="hidden" name="parent_id" id="parent_id" value="{{ $task->id }}">
 							<input type="hidden" name="account_id" id="account_id" value="{{ $task->account_id }}">
 							<input type="hidden" name="company_id" id="company_id" value="{{ $task->company_id }}">
 							<input type="hidden" name="asset_id" id="asset_id" value="{{ $task->asset_id }}">
@@ -34,7 +34,7 @@
 							{{-- PARENT TASK
 								- FOR VIEWING ONLY
 								- Used only to show the parent task for the subtask being added
-								- The Parent's task_id is passed above in a hidden input (#task_id)
+								- The Parent's parent_id is passed above in a hidden input (#parent_id)
 								- No data is passed from this input
 							--}}
 							<div class="form-group">

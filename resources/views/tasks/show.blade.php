@@ -41,8 +41,8 @@
 	<label>
 		Parent Task
 	</label>
-	<select class="form-control" name="task_id" disabled read-only>
-		<option value="{{$task->task_id}}">{{ $task->main_task->task ?? 'NA' }}</option>
+	<select class="form-control" name="parent_id" disabled read-only>
+		<option value="{{$task->parent_id}}">{{ $task->main_task->task ?? 'NA' }}</option>
 	</select>
 </div>
 

@@ -22,7 +22,7 @@ class CreateTasksTable extends Migration
             $table->integer('account_id')->nullable();
             $table->integer('company_id')->nullable();
             $table->integer('asset_id')->nullable();
-            $table->integer('task_id')->nullable();
+            $table->integer('parent_id')->nullable();
             $table->integer('task_type_id')->nullable();
             $table->integer('priority_id')->nullable();
             $table->boolean('is_complete')->default(0);

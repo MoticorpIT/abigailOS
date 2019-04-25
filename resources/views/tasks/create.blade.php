@@ -18,7 +18,7 @@
 		<label>
 			Parent Task
 		</label>
-		<select class="form-control" name="task_id" value="{{ old('task_id') }}">
+		<select class="form-control" name="parent_id" value="{{ old('parent_id') }}">
 			<option value="" selected>Choose One</option>
 			@foreach ($tasks as $task)
 				<option value="{{$task->id}}">{{ $task->task }}</option>

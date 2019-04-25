@@ -16,12 +16,7 @@ $this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // DASHBOARD ROUTE
-// Route::group( ['middleware' => 'auth' ], function() {
-// 	Route::get('/dashboard', function () {
-// 	    return view('dashboard');
-// 	});
-// });
-Route::get('dashboard', 'DashboardController@show')->name('dashboard');
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
 // ACCOUNT RELATED ROUTES
 Route::resource('account-logo', 'AccountLogoController');

@@ -13,13 +13,13 @@ class DashboardController extends Controller
 		$this->middleware('auth');
 	}
 
-	public function show()
+	public function index()
 	{
-		$tasks = Task::where('is_complete', 0)
+		$tasks = Task::where([ ['is_complete', 0], ['parent_id', null], ])
 			->orderBy('priority_id', 'desc')
 			->orderBy('due_date')
 			->paginate(10);
-		$overdueCount = Task::where('priority_id',3)->count();
+		$overdueCount = $tasks->where('priority_id',3)->count();
 
 		return view('dashboard', compact('tasks', 'overdueCount'));
 	}
