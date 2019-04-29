@@ -6,7 +6,7 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="{{ route('accounts.store') }}" enctype="multipart/form-data">
+			<form method="POST" action="{{ route('accounts.store') }}">
 				@csrf
 
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
@@ -173,7 +173,7 @@
 											<select class="form-control {{ $errors->has('account_type_id') ? 'has-error' : '' }}" id="account_type_id" name="account_type_id">
 												<option value="" selected>Choose One</option>
 												@foreach($account_types as $id => $account_type)
-												<option value="{{ $id }}">{{ $account_type }}</option>
+													<option value="{{ $id }}" {{ old('account_type_id') == $id ? 'selected' : '' }}>{{ $account_type }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -183,8 +183,8 @@
 											<label>
 												Account Status
 											</label>
-											<select class="form-control" readonly disabled>
-												<option value="1" selected>Active</option>
+											<select class="form-control" disabled readonly>
+												<option value="1">Active</option>
 											</select>
 											<input type="hidden" id="status_id" name="status_id" value="1">
 										</div>
@@ -232,11 +232,10 @@
 												State
 												<span class="required">*</span>
 											</label>
-											<input type="text" class="d-none form-control" name="state" placeholder="South Carolina" value="{{ old('state') }}">
-											<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ old('state') }}">
+											<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state">
 												<option value="" selected>Choose One</option>
 												@foreach ($states as $abbr => $name)
-												<option value="{{$abbr}}">{{ $name }}</option>
+													<option value="{{ $abbr }}" {{ old('state') == $abbr ? 'selected' : '' }}>{{ $name }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -313,10 +312,10 @@
 											<label>
 												Company
 											</label>
-											<select class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" name="company_id" value="{{ old('company_id') }}">
+											<select class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" name="company_id">
 												<option value="" selected>Choose One</option>
 												@foreach ($companies as $company)
-													<option value="{{$company->id}}">{{ $company->name }}</option>
+													<option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>{{ $company->name }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -327,10 +326,10 @@
 											<label>
 												Asset
 											</label>
-											<select class="form-control {{ $errors->has('asset_id') ? 'has-error' : '' }}" name="asset_id" value="{{ old('asset_id') }}">
+											<select class="form-control {{ $errors->has('asset_id') ? 'has-error' : '' }}" name="asset_id">
 												<option value="" selected>Choose One</option>
 												@foreach ($assets as $asset)
-													<option value="{{$asset->id}}">{{ $asset->name }}</option>
+													<option value="{{ $asset->id }}" {{ old('asset_id') == $asset->id ? 'selected' : '' }}>{{ $asset->name }}></option>
 												@endforeach
 											</select>
 										</div>

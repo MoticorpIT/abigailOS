@@ -17,9 +17,15 @@
 				<div class="float-right button-set">
 					<a href="{{ route('users.index') }}" class="btn btn-round">Cancel</a>
 					@if(Auth::user()->id == $user->id)
-						<a href="/users/{{Auth::user()->id}}/edit-pw" class="btn btn-round">Change Password</a>
+						<a href="{{ route('passwords.edit', $user) }}" class="btn btn-secondary">
+							<i class="fas fa-edit"></i>
+							Change Password
+						</a>
 					@endif
-					<button form="data-form" id="edit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">Save User</button>
+					<button form="data-form" id="edit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
+						<i class="far fa-check-circle"></i>
+						Save User
+					</button>
 				</div>
 				<div class="clear"></div>
 			</h1>
@@ -43,7 +49,7 @@
 								@if ($user->avatar_id == null)
 									<img src="/media/images/user-default-avatar-profile.png" alt="Default User Avatar" />
 								@else
-									<img src="{{ $user->avatar->getURL('profile') ?? '' }}" alt="{{ $user->avatar->file_name }}s-avatar" />
+									<img src="{{ $user->avatar->getURL('profile') ?? '' }}" alt="{{ $user->name }}s-avatar" />
 								@endif
 							</div> <!-- profile image -->
 
@@ -69,9 +75,8 @@
 
 						{{-- USER DETAILS SECTION --}}
 						<div class="col-12 col-sm-7 col-md-8 col-lg-9 profile-detail-col">
-							<form id="data-form" method="POST" action="/users/{{ $user->id }}" enctype="multipart/form-data">
-								{{ csrf_field() }}
-								{{ method_field('PATCH') }}
+							<form id="data-form" method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data" autocomplete="off">
+								@csrf @method('PATCH')
 
 								<div class="row">
 									<div class="col-12 col-md-12 col">

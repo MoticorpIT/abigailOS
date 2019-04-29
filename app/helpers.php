@@ -12,6 +12,20 @@ if (! function_exists('cleanPhone')) {
     }
 }
 
+// FORMAT PHONE FOR 'CLICK-TO-CALL'
+if (! function_exists('clickablePhone')) {
+	function clickablePhone($phoneNumber) {
+		// Maybe able to remove once using real data.
+		// Factory data has nums with and without country codes.
+		// This removes that if it is there.
+		$dirtyNumber = ltrim($phoneNumber, "+1 "); // remove +1
+
+		$cleanedNumber = preg_replace("/[^0-9]/", "", $dirtyNumber ); // strip all non digits
+		$cleanedNumber = '+1' . $cleanedNumber; // add +1
+		return substr($cleanedNumber, 0, 12); // remove extension
+	}
+}
+
 // FORMAT DOLLAR AMOUNTS
 if (! function_exists('cleanMoney')) {
     function cleanMoney($amount) {

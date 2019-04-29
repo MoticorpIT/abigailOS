@@ -3,9 +3,13 @@
 @section('content')
 <h1>Edit a Task</h1>
 
-<form method="POST" action="/tasks/{{ $task->id }}">
+<form method="POST" action="{{ route('tasks.update', $task) }}">
 	@csrf @method('PATCH')
 	@include('layouts.errors')
+
+	<button id="submit-btn" type="submit" class="btn btn-primary mb-4">
+		Save Task
+	</button>
 
 	<div class="form-group">
 		<label>Task</label>
@@ -101,9 +105,9 @@
 		<label>
 			Tasks
 		</label>
-		<select class="form-control" name="task_id" value="{{ $task->task_id }}">
+		<select class="form-control" name="parent_id" value="{{ $task->parent_id }}">
 			@foreach ($tasks as $task)
-				<option value="{{$task->id}}" {{ $task->task_id == $task->id ? 'selected' : '' }}>{{ $task->task }}</option>
+				<option value="{{$task->id}}" {{ $task->parent_id == $task->id ? 'selected' : '' }}>{{ $task->task }}</option>
 			@endforeach
 		</select>
 	</div>
@@ -129,10 +133,6 @@
 			@endforeach
 		</select>
 	</div>
-
-	<button id="submit-btn" type="submit" class="btn btn-primary">
-		Save Task
-	</button>
 
 </form>
 @endsection

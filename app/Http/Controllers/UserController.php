@@ -75,7 +75,7 @@ class UserController extends Controller
 		}
 		
 		/* REDIRECT USER AFTER SAVE */
-        return redirect('users');
+		return redirect()->route('users.show', $user);
     }
 
     /**
@@ -141,7 +141,7 @@ class UserController extends Controller
         }
         
         /* REDIRECT USER */
-        return redirect('users');
+        return redirect()->route('users.show', $user);
     }
 
 
@@ -166,7 +166,7 @@ class UserController extends Controller
 		}
 		
 		/* REDIRECT USER AFTER SAVE */
-        return redirect('users');
+        return redirect()->route('users.show', $user);
     }
 
 }

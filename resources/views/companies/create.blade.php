@@ -5,18 +5,18 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/companies" enctype="multipart/form-data">
+			<form method="POST" action="{{ route('companies.store') }}" enctype="multipart/form-data">
 				@csrf
 
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
-							<a href="/dashboard">
+							<a href="{{ route('dashboard') }}">
 								Dashboard
 							</a>
 						</li>
 						<li class="breadcrumb-item">
-							<a href="/companies">
+							<a href="{{ route('companies.index') }}">
 								Company Table
 							</a>
 						</li>
@@ -182,7 +182,7 @@
 											<select class="form-control {{ $errors->has('company_type_id') ? 'has-error' : '' }}" id="company_type_id" name="company_type_id">
 												<option value="" selected>Choose One</option>
 												@foreach($company_types as $id => $company_type)
-												<option value="{{ $id }}">{{ $company_type }}</option>
+													<option value="{{ $id }}" {{ old('company_type_id') == $id ? 'selected' : '' }}>{{ $company_type }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -192,15 +192,11 @@
 											<label>
 												Company Status
 											</label>
-											<input type="hidden" id="status_id" name="status_id" value="1">
-											<select class="form-control" readonly disabled>
-												<option selected>Active</option>
+											<select class="form-control" disabled readonly>
+												<option value="1">Active</option>
 											</select>
+											<input type="hidden" id="status_id" name="status_id" value="1">
 										</div>
-									</div> <!-- col -->
-									<div class="col-12 col-md-6 col">
-										{{-- COMPANY TYPE DROPDOWN --}}
-
 									</div> <!-- col -->
 									<!-- col -->
 									<div class="col-12 col">
@@ -246,11 +242,10 @@
 												State
 												<span class="required">*</span>
 											</label>
-											<input type="text" class="d-none form-control" name="state" placeholder="South Carolina" value="{{ old('state') }}">
-											<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ old('state') }}">
+											<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state">
 												<option value="" selected>Choose One</option>
 												@foreach ($states as $abbr => $name)
-												<option value="{{$abbr}}">{{ $name }}</option>
+													<option value="{{$abbr}}" {{ old('state') == $abbr ? 'selected' : '' }}>{{ $name }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -275,7 +270,6 @@
 										{{-- COMPANY INCORP_DATE --}}
 										<div class="form-group">
 											<label>Incorporated Date</label>
-											<input type="text" class="d-none form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="Date Company was Incorporated" value="{{ old('incorp_date') }}">
 											<div class="input-group">
 												<input type="date" class="form-control {{ $errors->has('incorp_date') ? 'has-error' : '' }}" name="incorp_date" placeholder="01/01/2010" value="{{ old('incorp_date') }}">
 												<div class="input-group-append">

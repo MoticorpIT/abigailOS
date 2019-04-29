@@ -27,21 +27,12 @@ class Task extends Model
 	public function asset() {
 		return $this->belongsTo(Asset::class);
 	}
-
 	public function main_task()
 	{
-	    return $this->belongsTo(self::class, 'task_id');
+	    return $this->belongsTo(self::class, 'parent_id');
 	}
-
 	public function sub_tasks()
 	{
-	    return $this->hasMany(self::class, 'task_id');
+	    return $this->hasMany(self::class, 'parent_id');
 	}
-
-	// public function parent_task() {
-	// 	return $this->belongsTo(self::class, 'task_id');
-	// }
-	// public function sub_tasks() {
-	// 	return $this->hasMany(self::class, 'task_id');
-	// }
 }

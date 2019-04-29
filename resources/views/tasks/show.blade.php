@@ -8,6 +8,10 @@
 
 <h1>Task Profile</h1>
 
+<a href="{{ route('tasks.edit', $task) }}" id="submit-btn" type="submit" class="btn mb-4">
+	Edit Task
+</a>
+
 @include('layouts.errors')
 
 <div class="form-group">
@@ -24,7 +28,7 @@
 		</label>
 		<ul id="sub-task-block">
 			@foreach($sub_tasks as $sub_task)
-				<li><a href="/tasks/{{ $sub_task->id }}">{{ $sub_task->task }}</a></li>
+				<li><a href="{{ route('tasks.show', $sub_task) }}">{{ $sub_task->task }}</a></li>
 			@endforeach
 		</ul>
 	</div>
@@ -37,8 +41,8 @@
 	<label>
 		Parent Task
 	</label>
-	<select class="form-control" name="task_id" disabled read-only>
-		<option value="{{$task->task_id}}">{{ $task->main_task->task ?? 'NA' }}</option>
+	<select class="form-control" name="parent_id" disabled read-only>
+		<option value="{{$task->parent_id}}">{{ $task->main_task->task ?? 'NA' }}</option>
 	</select>
 </div>
 
@@ -47,7 +51,7 @@
 		Task Type
 	</label>
 	<select class="form-control" name="task_type_id" disabled read-only>
-		<option value="{{$task->task_type_id}}">{{ $task->taskType->name }}</option>
+		<option value="{{$task->task_type_id ?? ''}}">{{ $task->taskType->name ?? 'NA' }}</option>
 	</select>
 </div>
 
@@ -63,7 +67,7 @@
 		Prioritiy
 	</label>
 	<select class="form-control" name="priority_id" disabled read-only>
-		<option value="{{$task->priority_id}}">{{ $task->priority->name }}</option>
+		<option value="{{$task->priority_id ?? ''}}">{{ $task->priority->name ?? 'NA' }}</option>
 	</select>
 </div>
 
@@ -110,10 +114,6 @@
 		<option value="{{$task->asset_id}}">{{ $task->asset->name ?? 'NA' }}</option>
 	</select>
 </div>
-
-<a href="{{ route('tasks.edit', $task) }}" id="submit-btn" type="submit" class="btn">
-	Edit Task
-</a>
 
 @include('layouts/modals/task-add-subtask')
 @endsection

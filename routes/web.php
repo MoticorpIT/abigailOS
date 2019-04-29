@@ -16,12 +16,7 @@ $this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // DASHBOARD ROUTE
-// Route::group( ['middleware' => 'auth' ], function() {
-// 	Route::get('/dashboard', function () {
-// 	    return view('dashboard');
-// 	});
-// });
-Route::get('dashboard', 'DashboardController@show')->name('dashboard');
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
 // ACCOUNT RELATED ROUTES
 Route::resource('account-logo', 'AccountLogoController');
@@ -63,8 +58,8 @@ Route::resource('tenants', 'TenantController');
 
 // USER RELATED ROUTES
 Route::resource('avatar', 'AvatarController');
-Route::get('users/{user}/edit-pw', 'UserController@editPassword'); // Change Password view
-Route::put('users/{user}/update-pw', 'UserController@updatePassword'); // Change Password save
+Route::get('users/{user}/edit-pw', 'UserController@editPassword')->name('passwords.edit'); // Change Password view
+Route::put('users/{user}/update-pw', 'UserController@updatePassword')->name('passwords.update'); // Change Password save
 Route::get('users/export', 'UserController@export')->name('users.export'); // Export To CSV
 Route::resource('users', 'UserController');
 

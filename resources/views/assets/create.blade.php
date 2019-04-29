@@ -6,18 +6,18 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/assets">
+			<form method="POST" action="{{ route('assets.store') }}">
 				@csrf
 
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
-							<a href="/dashboard/">
+							<a href="{{ route('dashboard') }}">
 								Dashboard
 							</a>
 						</li>
 						<li class="breadcrumb-item">
-							<a href="/assets/">
+							<a href="{{ route('assets.index') }}">
 								Asset Table
 							</a>
 						</li>
@@ -32,7 +32,7 @@
 
 					{{-- BUTTON SET --}}
 					<div class="float-right button-set">
-						<a href="/assets/" class="btn btn-round">
+						<a href="{{ route('assets.index') }}" class="btn btn-round">
 							Cancel
 						</a>
 						<button id="submit-btn" type="submit" class="btn btn-primary d-block d-sm-inline">
@@ -174,9 +174,7 @@
 											<select class="form-control" id="asset_type_id" name="asset_type_id">
 												<option value="">Choose One</option>
 												@foreach($asset_types as $id => $asset_type)
-													<option value="{{ $id }}">
-														{{ $asset_type }}
-													</option>
+													<option value="{{ $id }}" {{ old('asset_type_id') == $id ? 'selected' : '' }}>{{ $asset_type }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -188,9 +186,7 @@
 												Asset Status
 											</label>
 											<select class="form-control" disabled readonly>
-												<option value="1">
-													Active
-												</option>
+												<option value="1">Active</option>
 											</select>
 											<input type="hidden" id="status_id" name="status_id" value="1">
 										</div>
@@ -237,7 +233,7 @@
 											<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ old('state') }}">
 												<option value="" selected>Choose One</option>
 												@foreach ($states as $abbr => $name)
-												<option value="{{$abbr}}">{{ $name }}</option>
+													<option value="{{$abbr}}" {{ old('state') == $abbr ? 'selected' : '' }}>{{ $name }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -266,7 +262,7 @@
 											<select class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" name="company_id" value="{{ old('company_id') }}">
 												<option value="" selected>Choose One</option>
 												@foreach ($companies as $company)
-												<option value="{{$company->id}}">{{ $company->name }}</option>
+													<option value="{{$company->id}}" {{ old('company_id') == $company->id ? 'selected' : '' }}>{{ $company->name }}</option>
 												@endforeach
 											</select>
 										</div>

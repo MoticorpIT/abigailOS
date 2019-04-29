@@ -2,13 +2,11 @@
 
 @section('content')
 
-<p>This page will not exsist in the production version. To view contracts, visit assets and/or tenants. Leaving it here for now because contract.store and contract.update are currently redirecting here. Once the redirect location is determined, this view/route will be gone</p>
-
 <div class="db-boxes-row row no-gutters mb-3">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
-				<i class="fas fa-exclamation-circle"></i> 'Active' Contracts
+				<i class="fas fa-exclamation-circle"></i> Contracts <small class="text-muted">Active</small>
 				<a href="{{ route('contracts.create') }}" class="btn btn-primary d-block-small float-right">
 					<i class="fas fa-exclamation-circle"></i>
 					Create Contract
@@ -28,7 +26,7 @@
 					</thead>
 					<tbody>
 						@foreach($contracts as $contract)
-							@if($contract->term_ended != null)
+							@if($contract->term_ended == null)
 								<tr>
 									<td class="id">
 										{{ $contract->id }}
@@ -59,11 +57,8 @@
 	<div class="col-12">
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
-				<i class="fas fa-exclamation-circle"></i> 'Inactive' Contracts
-				<a href="{{ route('contracts.create') }}" class="btn btn-primary d-block-small float-right">
-					<i class="fas fa-exclamation-circle"></i>
-					Create Contract
-				</a>
+				<i class="fas fa-exclamation-circle"></i> 
+				Contracts <small class="text-muted">Expired</small>
 			</h1>
 
 			<div class="asset-table-wrapper table-wrapper table-responsive">

@@ -25,6 +25,11 @@
 		<label>Rent Due Date</label>
 		<div class="input-group">
 			<input type="text" class="form-control" name="rent_due_date" placeholder="Day of month rent is due" value="{{ old('rent_due_date') }}">
+			<div class="input-group-append">
+				<div class="input-group-text">
+					<i class="fas fa-calendar-alt"></i>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -35,7 +40,7 @@
 		<select class="form-control" name="term_length">
 	        <option value="" selected>Choose One</option>
 	        @foreach ($term_lengths as $abbr => $name)
-	            <option value="{{$abbr}}">{{ $name }}</option>
+	            <option value="{{$abbr}}" {{ old('term_length') == $abbr ? 'selected' : '' }}>{{ $name }}</option>
 	        @endforeach
 	    </select>
 	</div>
@@ -43,7 +48,12 @@
 	<div class="form-group">
 		<label>Term Start Date</label>
 		<div class="input-group">
-			<input type="text" class="form-control" name="term_start" placeholder="When does the contract start?" value="{{ old('term_start') }}">
+			<input type="date" class="form-control" name="term_start" value="{{ old('term_start') }}">
+			<div class="input-group-append">
+				<div class="input-group-text">
+					<i class="fas fa-calendar-alt"></i>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -61,7 +71,7 @@
 		<select class="form-control" name="tenant_id" value="{{ old('tenant_id') }}">
 			<option value="" selected>Choose One</option>
 			@foreach ($tenants as $tenant)
-				<option value="{{$tenant->id}}">{{ $tenant->first_name }} {{ $tenant->last_name }}</option>
+				<option value="{{$tenant->id}}" {{ old('tenant_id') == $tenant->id ? 'selected' : '' }}>{{ $tenant->first_name }} {{ $tenant->last_name }}</option>
 			@endforeach
 		</select>
 	</div>
@@ -73,7 +83,7 @@
 		<select class="form-control" name="asset_id" value="{{ old('asset_id') }}">
 			<option value="" selected>Choose One</option>
 			@foreach ($assets as $asset)
-				<option value="{{$asset->id}}">{{ $asset->name }}</option>
+				<option value="{{$asset->id}}" {{ old('asset_id') == $asset->id ? 'selected' : '' }}>{{ $asset->name }}</option>
 			@endforeach
 		</select>
 	</div>

@@ -178,10 +178,10 @@
 												Account Standing
 												<span class="required">*</span>
 											</label>
-											<input type="hidden" id="account_standing_id" name="account_standing_id" value="1">
 											<select class="form-control" disabled readonly>
 												<option value="1">Current</option>
 											</select>
+											<input type="hidden" id="account_standing_id" name="account_standing_id" value="1">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -189,10 +189,10 @@
 											<label>
 												Tenant Status
 											</label>
-											<input type="hidden" id="status_id" name="status_id" value="1">
 											<select class="form-control" readonly disabled>
 												<option value="1" selected>Active</option>
 											</select>
+											<input type="hidden" id="status_id" name="status_id" value="1">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col">
@@ -279,11 +279,10 @@
 												State
 												<span class="required">*</span>
 											</label>
-											<input class="d-none form-control" name="state" value="{{ old('state') }}">
-											<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ old('state') }}">
+											<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state">
 												<option value="" selected>Choose One</option>
 												@foreach ($states as $abbr => $name)
-												<option value="{{$abbr}}">{{ $name }}</option>
+													<option value="{{$abbr}}" {{ old('state') == $abbr ? 'selected' : '' }}>{{ $name }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -312,7 +311,4 @@
 	</div> <!-- col -->
 </div> <!-- db boxes -->
 
-
-<!-- Images Modal -->
-{{-- @include('layouts/modals/view-images') --}}
 @endsection

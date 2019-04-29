@@ -207,7 +207,7 @@ $( document ).ready(function() {
 		});
 	});
 
-	// STORE TASK - FORM ON TASK.SHOW - FOR ADDING A SUB-TASK
+	// STORE SUBTASK - FORM ON TASK.SHOW
 	$(".add-task-ajax").click(function(e){
 		// Prevent default button action
 		e.preventDefault();
@@ -217,7 +217,7 @@ $( document ).ready(function() {
 
 		// Set FormData array
 		var formData = {
-			task_id: $("#task_id").val(),
+			parent_id: $("#parent_id").val(),
 			account_id: $("#account_id").val(),
 			company_id: $("#company_id").val(),
 			asset_id: $("#asset_id").val(),
