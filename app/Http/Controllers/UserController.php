@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Exports\UsersExport;
 use App\Http\Requests\UpdatePassword;
-
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
@@ -19,7 +18,7 @@ class UserController extends Controller
     }
 
     /* Export to Excel File */
-    public function export() 
+    public function export()
     {
         return Excel::download(new UsersExport, 'abigailos-users.xlsx');
     }
@@ -59,21 +58,21 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:5'
         ]);
-        
+
         /* CREATE AND SAVE NEW USER TO DATABASE */
         $user = User::create([
             'name' => request('name'),
             'email' => request('email'),
             'password' => Hash::make(request('password'))
         ]);
-        
+
         /* SET TOASTR FLASH MESSAGES */
         if (!$user->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The user was saved successfully!', 'Abigail Says...');
 		}
-		
+
 		/* REDIRECT USER AFTER SAVE */
 		return redirect()->route('users.show', $user);
     }
@@ -120,26 +119,26 @@ class UserController extends Controller
             'email' => 'required|email',
             'is_active' => 'required|boolean'
         ]);
-        
+
         /* SAVE VALIDATED DATA TO DATABASE */
         $user->fill([
             'name' => request('name'),
             'email' => request('email'),
             'is_active' => request('is_active')
         ])->save();
-        
+
         /* CONFIRM UPDATE AND REDIRECT USER */
         if (!$user->save()) {
         	// if not saved
             toastr()->error('An error has occured please try again.', 'Abigail Says...');
-        } elseif($request->status_id == 2) { 
+        } elseif($request->status_id == 2) {
         	// if deleted
         	toastr()->success('The user was deleted successfully', 'Abigail Says...');
         } else {
         	// if edited
         	toastr()->success('The user was edited successfully!', 'Abigail Says...');
         }
-        
+
         /* REDIRECT USER */
         return redirect()->route('users.show', $user);
     }
@@ -164,7 +163,7 @@ class UserController extends Controller
 		} else {
 			toastr()->success('Your password was updated successfully!', 'Abigail Says...');
 		}
-		
+
 		/* REDIRECT USER AFTER SAVE */
         return redirect()->route('users.show', $user);
     }

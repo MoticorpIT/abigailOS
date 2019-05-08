@@ -1,6 +1,9 @@
 $( document ).ready(function() {
 
-	// ASSET IMAGE SELECT->SUBMIT
+	/*------------------------------------------------------------\
+	\	UPLOAD ASSET IMAGES
+	\	View files: layouts/modals/images-view on assets.edit
+	\------------------------------------------------------------*/
 	$('#uploadFileField').change(function(){
 		// Set .ajax variables
 		var url = $(this).parent('#asset-img-form').attr("action");
@@ -20,8 +23,8 @@ $( document ).ready(function() {
 		    url: url,
 		    data: formData,
 		    type: 'POST',
-		    contentType: false, 
-		    processData: false, 
+		    contentType: false,
+		    processData: false,
 		    success: function (data) {
 				console.log('ajax complete');
 				// Reload page + add ?openmodal=1 to url
@@ -34,9 +37,15 @@ $( document ).ready(function() {
 
 		// Prevent default button action
 	    return false;
-	})
+    })
 
-	// STORE NOTE
+
+	/*------------------------------------------------------------\
+	\	STORE NOTE
+    \	View files: layouts/modals/note-add which is on
+    \       layouts/components/notes which is on .show pages
+    \       for accounts, assets, companies, tenants
+	\------------------------------------------------------------*/
 	$(".add-note-ajax").click(function(e){
 		/* TO DO:
 			1. Allow edit + delete functionality without a reload
@@ -99,7 +108,7 @@ $( document ).ready(function() {
 									<button type="button" class="btn btn-secondary btn-sm edit-note-link notes-button" data-toggle="modal" data-target="#edit-note-modal-${data[0].asset_id}">
 										<i class="fas fa-edit"></i>
 									</button>
-									
+
 									<button type="button" class="notes-button btn btn-danger btn-sm delete-note-link" data-toggle="modal" data-target="#delete-note-modal-${data[0].asset_id}">
 										<i class="fas fa-trash-alt"></i>
 									</button>
@@ -121,7 +130,13 @@ $( document ).ready(function() {
 		});
 	});
 
-	// UPDATE NOTE
+
+	/*------------------------------------------------------------\
+	\	UPDATE NOTE
+    \	View files: layouts/modals/note-edit which is on
+    \       layouts/components/notes which is on .show pages
+    \       for accounts, assets, companies, tenants
+	\------------------------------------------------------------*/
 	$(".edit-note-ajax").click(function(e){
 		// Prevent default button action
 		e.preventDefault();
@@ -164,7 +179,14 @@ $( document ).ready(function() {
 		});
 	});
 
-	// 'DELETE' NOTE - Actually changes status_id to 2 (inactive)
+
+	/*------------------------------------------------------------\
+    \	DELETE NOTE
+    \   - Updates status_id from 1 to 0 (inactive)
+    \	View files: layouts/modals/note-delete which is on
+    \       layouts/components/notes which is on .show pages
+    \       for accounts, assets, companies, tenants
+	\------------------------------------------------------------*/
 	$(".delete-note-ajax").click(function(e){
 		// Prevent default button action
 		e.preventDefault();
@@ -207,7 +229,11 @@ $( document ).ready(function() {
 		});
 	});
 
-	// STORE SUBTASK - FORM ON TASK.SHOW
+
+	/*------------------------------------------------------------\
+	\	STORE SUBTASK
+    \	View files: layouts/modals/task-add-subtask on tasks.show
+	\------------------------------------------------------------*/
 	$(".add-task-ajax").click(function(e){
 		// Prevent default button action
 		e.preventDefault();

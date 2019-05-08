@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Payment;
-use App\Invoice;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller

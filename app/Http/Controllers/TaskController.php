@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Task;
 use App\Account;
 use App\Asset;
 use App\Company;
-use App\User;
 use App\Http\Requests\TaskRequest;
-
-use Illuminate\Http\Request;
+use App\Task;
+use App\User;
 use Illuminate\Support\Facades\Config;
 
 class TaskController extends Controller
@@ -37,7 +35,7 @@ class TaskController extends Controller
 	public function create()
 	{
 		// Database Queries
-		$tasks = Task::all(); // for parent/child association 
+		$tasks = Task::all(); // for parent/child association
 		$users = User::active()->get();
 		$accounts = Account::active()->get();
 		$companies = Company::active()->get();
@@ -73,7 +71,7 @@ class TaskController extends Controller
 			return response()->json([$task, $subid, $subtask]);
 
 		} else {
-			
+
 			if(!$task->save()) {
 				toastr()->error('An error has occured please try again.', 'Abigail Says...');
 			} else {
@@ -127,11 +125,11 @@ class TaskController extends Controller
 	{
 		// Validate Data from Form
 		$validData = $request->validated();
-		
+
 		// Fill and Save new Task
 		$task->fill($validData);
 		$task->save();
-		
+
 		// Set Notifications
 		if (!$task->save()) {
 			// if not saved
@@ -140,7 +138,7 @@ class TaskController extends Controller
 			// if edited
 			toastr()->success('Your task was edited successfully!', 'Abigail Says...');
 		}
-		
+
 		// Redirect
 		return redirect()->route('tasks.show', $task);
 	}

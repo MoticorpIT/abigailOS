@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Contract;
 use App\Asset;
-use App\Tenant;
+use App\Contract;
 use App\Http\Requests\ContractRequest;
-
-use Illuminate\Http\Request;
+use App\Tenant;
 use Illuminate\Support\Facades\Config;
 
 class ContractController extends Controller
