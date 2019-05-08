@@ -14,13 +14,13 @@ class TaskTypesTableSeeder extends Seeder
         DB::table('task_types')->insert(
         	[
         		[
-        			'name' => 'Task Type 1',
+        			'name' => 'Rent Owed',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => 'Task Type 2',
+        			'name' => 'Payment Due',
         			'created_at' => date("Y-m-d H:i:s")
         		],[
-        			'name' => 'Task Type 3',
+        			'name' => 'Filing Due',
         			'created_at' => date("Y-m-d H:i:s")
         		]
         	]

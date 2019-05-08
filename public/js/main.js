@@ -60,8 +60,8 @@ $(function(){
 	/*------------------------------------------------------------\
 	\	Enable upload btn + show file name on file selection
 	\	
-	\	View files: accounts.edit, assets.edit,
-	\		companies.edit and tenants.edit
+	\	View files: accounts.edit, companies.edit
+			tenants.edit and users.edit
 	\------------------------------------------------------------*/
 	$('.single-file-upload').change(function(){
 		if ($(this).val()) {
@@ -75,8 +75,9 @@ $(function(){
 
 
 	/*------------------------------------------------------------\
-	\	Pass task data to task modal
-	\	View files: dashboard 
+	\	Pass task data to task modals
+	\	View files: dashboard, layouts/modals/task-complete,
+			layouts/modals/task-reschedule 
 	\------------------------------------------------------------*/
 	$('.task-modal-trigger').on('click', function() {
 		let data = $(this).data();
