@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 
-use App\Company;
-use App\CompanyType;
 use App\Account;
 use App\Asset;
-use App\Note;
-use App\Status;
+use App\Company;
 use App\Exports\CompanyExport;
 use App\Http\Requests\CompanyRequest;
-
-use Illuminate\Http\Request;
+use App\Note;
 use Illuminate\Support\Facades\Config;
-
 use Maatwebsite\Excel\Facades\Excel;
 
 class CompanyController extends Controller
@@ -28,7 +22,7 @@ class CompanyController extends Controller
 
 
 	// Export to Excel File
-	public function export() 
+	public function export()
 	{
 		return Excel::download(new CompanyExport, 'abigailos-companies.xlsx');
 	}
@@ -87,7 +81,7 @@ class CompanyController extends Controller
 		$assets = Asset::where('company_id', $id)->get();
 		$accounts = Account::where('company_id', $id)->get();
 		$notes = Note::where('company_id', $id)->active()->ordered()->get();
-		
+
 		return view('companies.show', compact('company', 'assets', 'notes', 'accounts'));
 	}
 
@@ -114,19 +108,19 @@ class CompanyController extends Controller
 		// Fill Data and Save Company
 		$company->fill($validData);
 		$company->save();
-		
+
 		// Set Notifications
 		if (!$company->save()) {
 			// if not saved
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
-		} elseif($request->status_id == 2) { 
+		} elseif($request->status_id == 2) {
 			// if deleted
 			toastr()->success('The company was deleted successfully', 'Abigail Says...');
 		} else {
 			// if edited
 			toastr()->success('The company was edited successfully!', 'Abigail Says...');
 		}
-		
+
 		// Redirect
 		return redirect()->route('companies.show', $company);
 	}

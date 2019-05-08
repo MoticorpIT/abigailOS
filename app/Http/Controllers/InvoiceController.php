@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Invoice;
 use App\Contract;
+use App\Invoice;
 use App\Http\Requests\InvoiceRequest;
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 class InvoiceController extends Controller
@@ -103,7 +101,7 @@ class InvoiceController extends Controller
 		// Fill Data and Save Invoice
 		$invoice->fill($validData);
 		$invoice->save();
-		
+
 		// Set Notifications
 		if (!$invoice->save()) {
 			// if not saved
@@ -112,7 +110,7 @@ class InvoiceController extends Controller
 			// if edited
 			toastr()->success('The invoice was edited successfully!', 'Abigail Says...');
 		}
-		
+
 		// Redirect
 		return redirect()->route('invoices.show', $invoice);
 	}

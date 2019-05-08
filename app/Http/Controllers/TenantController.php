@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Tenant;
-use App\Contract;
-use App\Note;
-use App\AccountStanding;
-use App\Status;
 use App\Exports\TenantExport;
 use App\Http\Requests\TenantRequest;
-
-use Illuminate\Http\Request;
+use App\Note;
+use App\Tenant;
 use Illuminate\Support\Facades\Config;
-
 use Maatwebsite\Excel\Facades\Excel;
 
 class TenantController extends Controller
@@ -25,12 +19,12 @@ class TenantController extends Controller
 
 
 	// Export Tenants To Excel File
-	public function export() 
+	public function export()
 	{
 		return Excel::download(new TenantExport, 'abigailos-tenants.xlsx');
 	}
 
- 
+
 	// Show All Tenants (table)
 	public function index()
 	{
@@ -38,7 +32,7 @@ class TenantController extends Controller
 		return view('tenants.index', compact('tenants'));
 	}
 
- 
+
 	// Tenant Create Form (view)
 	public function create()
 	{
@@ -51,16 +45,16 @@ class TenantController extends Controller
 		return view('tenants.create', compact('statuses','account_standings','states'));
 	}
 
- 
+
 	// Store a New Tenant
 	public function store(TenantRequest $request)
 	{
 		// Validate Data from Form
 		$validData = $request->validated();
-		
+
 		// Create Tenant
 		$tenant = Tenant::create($validData);
-		
+
 		// Set Notifications
 		$tenant->save();
 		if (!$tenant->save()) {
@@ -86,7 +80,7 @@ class TenantController extends Controller
 		$states = Config::get('constants.states');
 		$statuses = Config::get('constants.statuses');
 		$account_standings = Config::get('constants.account_standings');
-		
+
 		return view('tenants.show', compact('tenant', 'notes', 'states', 'statuses', 'account_standings'));
 	}
 
@@ -112,23 +106,23 @@ class TenantController extends Controller
 	{
 		// Validate Data from Form
 		$validData = $request->validated();
-		
+
 		// Fill and Save Tenant
 		$tenant->fill($validData);
 		$tenant->save();
-		
+
 		// Set Notifications
 		if (!$tenant->save()) {
 			// if not saved
 			toastr()->error('An error has occurred. If it persists, contact the manager.');
-		} elseif($request->status_id == 2) { 
+		} elseif($request->status_id == 2) {
 			// if deleted
 			toastr()->success('The tenant was deleted successfully', 'Abigail Says...');
 		} else {
 			// if edited
 			toastr()->success('The tenant was edited successfully!', 'Abigail Says...');
 		}
-		
+
 		// Redirect
 		return redirect()->route('tenants.show', $tenant);
 	}
