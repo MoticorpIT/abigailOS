@@ -30,6 +30,10 @@ class Company extends Model implements HasMedia
 					->width(350)
 					->height(350)
 					->withResponsiveImages();
+                $this->addMediaConversion('invoice')
+                    ->width(100)
+                    ->height(100)
+                    ->withResponsiveImages();
 			});
 	}
 	public function logo() {

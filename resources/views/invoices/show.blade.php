@@ -51,9 +51,9 @@
 								<address itemscope itemprop="address" itemtype="http://schema.org/PostalAddress">
 									<div class="logo">
 										@if ($invoice->contract->asset->company->logo_id == null)
-											<img src="/media/images/company-default-logo-thumb.png" alt="Default Company Logo" />
+											<img src="/media/images/company-default-logo-invoice.png" alt="Default Company Logo" />
 										@else
-											<img src="{{ $invoice->contract->asset->company->logo->getURL('thumb') ?? '' }}" alt="{{ $invoice->contract->asset->company->name }}'s Logo" />
+											<img src="{{ $invoice->contract->asset->company->logo->getURL('invoice') ?? '' }}" alt="{{ $invoice->contract->asset->company->name }}'s Logo" />
 										@endif
 										{{-- <img src="https://placehold.it/200x100"/> --}}
 									</div>
