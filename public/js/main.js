@@ -63,11 +63,11 @@ $(function(){
 	\------------------------------------------------------------*/
 	$('.single-file-upload').change(function(){
 		if ($(this).val()) {
-		// Enable Upload Button
-		$('.single-file-upload-btn').removeAttr('disabled');
-			let fileName = $(this).val().replace('C:\\fakepath\\', '');
-			// Replace the "Choose a file" label
-			$(this).next('.custom-file-label').html(fileName);
+            // Enable Upload Button
+            $('.single-file-upload-btn').removeAttr('disabled');
+            let fileName = $(this).val().replace('C:\\fakepath\\', '');
+            // Replace the "Choose a file" label
+            $(this).next('.custom-file-label').html(fileName);
 		}
 	});
 
@@ -91,7 +91,7 @@ $(function(){
     \	View files: layouts/progressbar for accounts.edit,
     \       companies.edit, tenants.edit, users.edit
 	\------------------------------------------------------------*/
-    $('.single-file-upload-btn).on('click', function () {
+    $('.single-file-upload-btn').on('click', function() {
         $('.edit-in-progress').removeClass('d-none');
         $('.message').html('Upload in Progress');
     })
