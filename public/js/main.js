@@ -1,19 +1,18 @@
 $(function(){
 
 	/*------------------------------------------------------------\
-	\	Bootstrap Initializers
-	\	https://getbootstrap.com/docs/4.2/components/ 
+	\	BOOTSTRAP INITIALIZERS
+	\	- https://getbootstrap.com/docs/4.2/components/
 	\------------------------------------------------------------*/
-	// Tooltip Initializer 
+	// Tooltip Initializer
 	$('[data-toggle="tooltip"]').tooltip({
 		container: 'body'
 	});
 
 
 	/*------------------------------------------------------------\
-	\	DataTable Initializer
-	\	https://datatables.net/
-	\
+	\	DATATABLE INITIALIZER
+	\	- https://datatables.net/
 	\	View files: accounts.index, assets.index, companies.index
 	\		contracts.index, invoices.index, payments.index,
 	\		tasks.index, tenants.index and users.index
@@ -35,7 +34,7 @@ $(function(){
 
 
 	/*------------------------------------------------------------\
-	\	Toggle for mobile sidebar menu 
+	\	TOGGLE FOR MOBILE SIDEBAR MENU
 	\	View files: layouts/sidebar
 	\------------------------------------------------------------*/
 	$('.toggle-nav').click(function() {
@@ -49,7 +48,7 @@ $(function(){
 
 
 	/*------------------------------------------------------------\
-	\	Trigger file selection window on Asset images modal
+	\	TRIGGER FILE SELECTION WINDOW ON ASSET IMAGES MODAL
 	\	View files: layouts/images-view
 	\------------------------------------------------------------*/
 	$('.uploadFileButton').on('click', function(){
@@ -58,10 +57,9 @@ $(function(){
 
 
 	/*------------------------------------------------------------\
-	\	Enable upload btn + show file name on file selection
-	\	
+	\	ENABLE UPLOAD BTN + SHOW FILE NAME ON FILE SELECTION
 	\	View files: accounts.edit, companies.edit
-			tenants.edit and users.edit
+	\		tenants.edit and users.edit
 	\------------------------------------------------------------*/
 	$('.single-file-upload').change(function(){
 		if ($(this).val()) {
@@ -70,14 +68,14 @@ $(function(){
 			let fileName = $(this).val().replace('C:\\fakepath\\', '');
 			// Replace the "Choose a file" label
 			$(this).next('.custom-file-label').html(fileName);
-		} 
+		}
 	});
 
 
 	/*------------------------------------------------------------\
-	\	Pass task data to task modals
+	\	PASS TASK DATA TO TASK MODALS
 	\	View files: dashboard, layouts/modals/task-complete,
-			layouts/modals/task-reschedule 
+	\		layouts/modals/task-reschedule
 	\------------------------------------------------------------*/
 	$('.task-modal-trigger').on('click', function() {
 		let data = $(this).data();
@@ -85,6 +83,17 @@ $(function(){
 		$("#complete-task-modal #task-due-date-orig, #reschedule-task-modal #task-due-date-orig").val( cleanerDate );
 		$("#complete-task-modal #task-description, #reschedule-task-modal #task-description").val( data.task );
 		$("#complete-task-modal a[href], #reschedule-task-modal a[href]").attr('href', `/tasks/${data.id}/edit`);
-	});
+    });
+
+
+    /*------------------------------------------------------------\
+	\	SHOW PROGRESS BAR DURING FILE UPLOAD
+    \	View files: layouts/progressbar for accounts.edit,
+    \       companies.edit, tenants.edit, users.edit
+	\------------------------------------------------------------*/
+    $('.single-file-upload-btn).on('click', function () {
+        $('.edit-in-progress').removeClass('d-none');
+        $('.message').html('Upload in Progress');
+    })
 
 });
