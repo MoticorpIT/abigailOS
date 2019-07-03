@@ -9,17 +9,17 @@
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="/dashboard/">
+						<a href="{{ route('dashboard') }}">
 							Dashboard
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/tenants/">
-							Tenant Table
+						<a href="{{ route('invoices.index') }}">
+							Invoice Table
 						</a>
 					</li>
 					<li class="breadcrumb-item active" aria-current="page">
-						Tenant Profile<span class="d-none d-sm-inline">: asdf</span>
+						Invoice <span class="d-none d-sm-inline">#{{$invoice->invoice_num}}</span>
 					</li>
 				</ol>
 			</nav>
@@ -29,12 +29,12 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/tenants/" class="btn btn-round">Go Back</a>
+					<a href="{{ route('invoices.index') }}" class="btn btn-round">Go Back</a>
 					<a href="javascript:window.print()" class="btn btn-secondary">
 						<i class="fas fa-print"></i>
 						Print Invoice
 					</a>
-					<a href="/tenants//edit" class="btn btn-primary">
+					<a href="{{ route('invoices.edit', $invoice) }}" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Invoice
 					</a>
@@ -50,7 +50,12 @@
 							<div class="company-info">
 								<address itemscope itemprop="address" itemtype="http://schema.org/PostalAddress">
 									<div class="logo">
-										<img src="https://placehold.it/200x100"/>
+										@if ($invoice->contract->asset->company->logo_id == null)
+											<img src="/media/images/company-default-logo-invoice.png" alt="Default Company Logo" />
+										@else
+											<img src="{{ $invoice->contract->asset->company->logo->getURL('invoice') ?? '' }}" alt="{{ $invoice->contract->asset->company->name }}'s Logo" />
+										@endif
+										{{-- <img src="https://placehold.it/200x100"/> --}}
 									</div>
 									<div class="company-details">
 										<div class="company-details-content">
@@ -75,7 +80,7 @@
 								<div class="invoice-details">
 									<div class="form-group statement-date">
 										<label for="statement-date">Statement Date:</label>
-										<input class="form-control" type="text" name="statement-date" disabled readonly value="11/6/88" />
+										<input class="form-control" type="text" name="statement-date" disabled readonly value="{{ cleanDate($invoice->due_date) }}" />
 									</div> <!-- form group -->
 									<div class="form-group customer-id">
 										<label for="invoice-id">Invoice ID:</label>
@@ -129,7 +134,7 @@
 									<input class="form-control balance-due" type="text" name="balance-due" disabled readonly value="{{ cleanMoneyWithCents($invoice->amount_due) }}" />
 									<div class="form-group due-date">
 										<label for="due-date">Due Date:</label>
-										<input class="form-control" type="text" name="due-date" disabled readonly value="{{ $invoice->due_date }}" />
+										<input class="form-control" type="text" name="due-date" disabled readonly value="{{ cleanDate($invoice->due_date) }}" />
 									</div> <!-- form group -->
 								</div> <!-- balance details -->
 							</div> <!-- property-info -->
@@ -190,7 +195,7 @@
 								</tbody>
 							</table>
 							<div class="total-detail">
-								<h4 class="title">Balance Due: <span>{{ cleanMoneyWithCents($invoice->amount_due) }}</span></h4>
+								<h4 class="title">Balance Due: <span>{{ cleanMoneyWithCents($invoice->balance) }}</span></h4>
 							</div> <!-- total detail -->
 						</div> <!-- col -->
 					</div> <!-- row -->

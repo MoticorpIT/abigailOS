@@ -7,7 +7,7 @@
 		<div class="lowerlevel db-box">
 			<h1 class="page-heading">
 				<i class="fas fa-exclamation-circle"></i> Invoices
-				<a href="/invoices/create" class="btn btn-primary d-block-small float-right">
+				<a href="{{ route('invoices.create') }}" class="btn btn-primary d-block-small float-right">
 					<i class="fas fa-exclamation-circle"></i>
 					Create Invoice
 				</a>
@@ -25,7 +25,7 @@
 							<th class="text-left">Contract</th>
 							<th class="text-left">Status</th>
 							<th class="view-button text-left not-mobile-p">
-								View
+								Actions
 							</th>
 						</tr>
 					</thead>
@@ -33,14 +33,19 @@
 						@foreach($invoices as $invoice)
 							<tr>
 								<td class="text-left">{{ $invoice->invoice_num }}</td>
-								<td class="text-left">{{ $invoice->due_date }}</td>
+								<td class="text-left">{{ cleanDate($invoice->due_date) }}</td>
 								<td class="text-left">{{ $invoice->repeats }}</td>
-								<td class="text-left">{{ $invoice->amount_due }}</td>
-								<td class="text-left">{{ $invoice->balance }}</td>
+								<td class="text-left">{{ cleanMoneyWithCents($invoice->amount_due) }}</td>
+								<td class="text-left">{{ cleanMoneyWithCents($invoice->balance) }}</td>
 								<td class="text-left">{{ $invoice->contract->tenant->last_name }}/{{ $invoice->contract->asset->name }}</td>
-								<td class="text-left">{{ $invoice->status_id }}</td>
+								<td class="text-left">{{ $invoice->status->name }}</td>
 								<td class="view-button">
-									<a href="/invoices/{{ $invoice->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+									<a href="{{ route('invoices.show', $invoice) }}" class="btn btn-secondary btn-sm view-link">
+										<i class="fas fa-eye"></i>
+									</a>
+									<a href="{{ route('invoices.edit', $invoice) }}" class="btn btn-secondary btn-sm view-link">
+										<i class="fas fa-pencil-alt"></i>
+									</a>
 								</td>
 							</tr>
 						@endforeach

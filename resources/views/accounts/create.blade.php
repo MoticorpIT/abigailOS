@@ -6,18 +6,18 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			<form method="POST" action="/accounts" enctype="multipart/form-data">
-				{{ csrf_field() }}
+			<form method="POST" action="{{ route('accounts.store') }}">
+				@csrf
 
 				<nav aria-label="breadcrumb" class="d-none d-sm-block">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
-							<a href="/dashboard/">
+							<a href="{{ route('dashboard') }}">
 								Dashboard
 							</a>
 						</li>
 						<li class="breadcrumb-item">
-							<a href="/accounts/">
+							<a href="{{ route('accounts.index') }}">
 								Accounts Table
 							</a>
 						</li>
@@ -57,17 +57,9 @@
 							<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 								<div class="profile-image">
 									<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-										<img src="https://via.placeholder.com/400x400" />
+                                        <img src="/media/images/account-default-logo-profile.png" alt="Default Account Logo" />
 									</a>
 								</div> <!-- profile image -->
-								<div class="col-12 col profile-image-updater">
-									{{-- Asset image --}}
-									<div class="form-group">
-										<a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
-											<i class="fas fa-images"></i> Update Images
-										</a>
-									</div>
-								</div> <!-- col -->
 
 								<nav class="profile-tabs">
 									<div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
@@ -160,7 +152,7 @@
 											<label>
 												Created On
 											</label>
-											<input class="form-control" name="created-at" value="Now" placeholder="n/a" readonly disabled>
+											<input class="form-control" placeholder="Now" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -168,7 +160,7 @@
 											<label>
 												Updated On
 											</label>
-											<input class="form-control" name="updated-at" value="Now" placeholder="n/a" readonly disabled>
+											<input class="form-control" placeholder="n/a" readonly disabled>
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
@@ -181,7 +173,7 @@
 											<select class="form-control {{ $errors->has('account_type_id') ? 'has-error' : '' }}" id="account_type_id" name="account_type_id">
 												<option value="" selected>Choose One</option>
 												@foreach($account_types as $id => $account_type)
-												<option value="{{ $id }}">{{ $account_type }}</option>
+													<option value="{{ $id }}" {{ old('account_type_id') == $id ? 'selected' : '' }}>{{ $account_type }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -191,9 +183,10 @@
 											<label>
 												Account Status
 											</label>
-											<select class="form-control" id="status_id" name="status_id" readonly disabled>
-												<option value="1" selected>Active</option>
+											<select class="form-control" disabled readonly>
+												<option value="1">Active</option>
 											</select>
+											<input type="hidden" id="status_id" name="status_id" value="1">
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col">
@@ -239,11 +232,10 @@
 												State
 												<span class="required">*</span>
 											</label>
-											<input type="text" class="d-none form-control" name="state" placeholder="South Carolina" value="{{ old('state') }}">
-											<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state" value="{{ old('state') }}">
+											<select class="form-control {{ $errors->has('state') ? 'has-error' : '' }}" name="state">
 												<option value="" selected>Choose One</option>
 												@foreach ($states as $abbr => $name)
-												<option value="{{$abbr}}">{{ $name }}</option>
+													<option value="{{ $abbr }}" {{ old('state') == $abbr ? 'selected' : '' }}>{{ $name }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -267,28 +259,28 @@
 									<div class="col-12 col-md-3 col">
 										{{-- Contact Last Name --}}
 										<div class="form-group">
-											<label>Contact Name:</label>
+											<label>Contact Name</label>
 											<input class="form-control {{ $errors->has('contact_name') ? 'has-error' : '' }}" name="contact_name" value="{{ old('contact_name') }}" >
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
 										{{-- Contact Phone 1 --}}
 										<div class="form-group">
-											<label>Contact Phone 1:</label>
+											<label>Contact Phone 1</label>
 											<input class="form-control {{ $errors->has('contact_phone_1') ? 'has-error' : '' }}" name="contact_phone_1" value="{{ old('contact_phone_1') }}" >
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
 										{{-- Contact Phone 2 --}}
 										<div class="form-group">
-											<label>Contact Phone 2:</label>
+											<label>Contact Phone 2</label>
 											<input class="form-control {{ $errors->has('contact_phone_2') ? 'has-error' : '' }}" name="contact_phone_2" value="{{ old('contact_phone_2') }}" >
 										</div>
 									</div> <!-- col -->
 									<div class="col-12 col-md-3 col">
 										{{-- Contact Email --}}
 										<div class="form-group">
-											<label>Contact Email:</label>
+											<label>Contact Email</label>
 											<input class="form-control {{ $errors->has('contact_email') ? 'has-error' : '' }}" name="contact_email" value="{{ old('contact_email') }}" >
 										</div>
 									</div> <!-- col -->
@@ -320,10 +312,10 @@
 											<label>
 												Company
 											</label>
-											<select class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" name="company_id" value="{{ old('company_id') }}">
+											<select class="form-control {{ $errors->has('company_id') ? 'has-error' : '' }}" name="company_id">
 												<option value="" selected>Choose One</option>
 												@foreach ($companies as $company)
-													<option value="{{$company->id}}">{{ $company->name }}</option>
+													<option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>{{ $company->name }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -334,10 +326,10 @@
 											<label>
 												Asset
 											</label>
-											<select class="form-control {{ $errors->has('asset_id') ? 'has-error' : '' }}" name="asset_id" value="{{ old('asset_id') }}">
+											<select class="form-control {{ $errors->has('asset_id') ? 'has-error' : '' }}" name="asset_id">
 												<option value="" selected>Choose One</option>
 												@foreach ($assets as $asset)
-													<option value="{{$asset->id}}">{{ $asset->name }}</option>
+													<option value="{{ $asset->id }}" {{ old('asset_id') == $asset->id ? 'selected' : '' }}>{{ $asset->name }}></option>
 												@endforeach
 											</select>
 										</div>
@@ -354,9 +346,5 @@
 		</div> <!-- db-box -->
 	</div> <!-- col -->
 </div> <!-- db boxes -->
-
-<!-- Images Modal -->
-{{-- @include('layouts/modals/view-images') --}}
-
 
 @endsection

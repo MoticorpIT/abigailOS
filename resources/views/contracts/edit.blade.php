@@ -3,9 +3,8 @@
 @section('content')
 <h1>Edit a Contract</h1>
 
-<form method="POST" action="/contracts/{{ $contract->id }}">
-	{{ csrf_field() }}
-	{{ method_field('PATCH') }}
+<form method="POST" action="{{ route('contracts.update', $contract) }}">
+	@csrf @method('PATCH')
 
 	@include('layouts.errors')
 
@@ -46,7 +45,7 @@
 	<div class="form-group">
 		<label>Term Start Date</label>
 		<div class="input-group">
-			<input type="text" class="form-control" name="term_start" placeholder="When does the contract start?" value="{{ $contract->term_start }}">
+			<input type="text" class="form-control" name="term_start" placeholder="When does the contract start?" value="{{ cleanDatePicker($contract->term_start) }}">
 		</div>
 	</div>
 
@@ -74,7 +73,7 @@
 		<label>
 			Asset
 		</label>
-		<select class="form-control" name="asset_id"">
+		<select class="form-control" name="asset_id">
 			<option value="" selected>Choose One</option>
 			@foreach ($assets as $asset)
 				<option value="{{ $asset->id }}" {{ $contract->asset_id == $asset->id ? 'selected' : '' }}>

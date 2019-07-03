@@ -10,15 +10,15 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form method="POST" action="/tasks">
-				{{ csrf_field() }}
+			<form method="POST" action="{{ route('tasks.store') }}" id="subtask-add-form">
+				@csrf
 
 				<div class="modal-body">
 					<div class="media task-item">
 						<div class="media-body">
 
 							{{-- Hidden Fields - All Data Pulled from Parent Task --}}
-							<input type="hidden" name="task_id" id="task_id" value="{{ $task->id }}">
+							<input type="hidden" name="parent_id" id="parent_id" value="{{ $task->id }}">
 							<input type="hidden" name="account_id" id="account_id" value="{{ $task->account_id }}">
 							<input type="hidden" name="company_id" id="company_id" value="{{ $task->company_id }}">
 							<input type="hidden" name="asset_id" id="asset_id" value="{{ $task->asset_id }}">
@@ -34,7 +34,7 @@
 							{{-- PARENT TASK
 								- FOR VIEWING ONLY
 								- Used only to show the parent task for the subtask being added
-								- The Parent's task_id is passed above in a hidden input (#task_id)
+								- The Parent's parent_id is passed above in a hidden input (#parent_id)
 								- No data is passed from this input
 							--}}
 							<div class="form-group">
@@ -61,7 +61,7 @@
 							<div class="form-group">
 								<label>Due Date</label>
 								<div class="input-group">
-									<input style="width:100%" type="text" name="due_date" id="due_date" value="">
+									<input type="date" id="due_date" class="form-control" name="due_date" value="{{ old('due_date') }}">
 								</div>
 							</div>
 
@@ -81,7 +81,7 @@
 							{{-- REPEATS DROPDOWN --}}
 							<div class="form-group">
 								<label>Repeats</label>
-								<select class="form-control" name="repeats" id="repeats">
+								<select class="form-control" name="repeats" id="repeats" value="{{ old('repeats') }}">
 									<option value="0" selected>No</option>
 									<option value="1">Yes</option>
 								</select>
@@ -105,7 +105,7 @@
 
 				{{-- FORM BUTTONS --}}
 				<div class="modal-footer">
-					<a href="" data-dismiss="modal" class="cancel-link">Cancel</a>
+					<a data-dismiss="modal" class="cancel-link">Cancel</a>
 					<button id="submit-btn" type="button" class="add-task-ajax btn btn-primary">
 						<i class="far fa-check-circle"></i>
 						Add Note

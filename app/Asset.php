@@ -2,18 +2,56 @@
 
 namespace App;
 
-class Asset extends Model
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
+class Asset extends Model implements HasMedia
 {
+	use HasMediaTrait;
+
+	// Datefields to be Mutated to Carbon Instances
+	protected $dates = [
+        'acquired_date'
+    ];
+	
+	// SCOPES
 	public function scopeActive($query) {
     	return $query->where('status_id',1);
 	}
+	// SCOPES - END
+
+	// MEDIA/IMAGES - START
+	public function registerMediaCollections()
+	{
+		$this->addMediaCollection('assets')
+			->registerMediaConversions(function (Media $media = null) {
+				$this->addMediaConversion('main')
+					->width(985)
+					->height(616)
+					->withResponsiveImages();
+				$this->addMediaConversion('profile')
+					->width(350)
+					->height(350)
+					->withResponsiveImages();
+				$this->addMediaConversion('thumb')
+					->width(194)
+					->height(121)
+					->withResponsiveImages();
+			});
+	}
+	public function profileImage() {
+		return $this->hasOne(Media::class, 'id', 'profile_img_id');
+	}
+	// MEDIA/IMAGES - END
+
     public function company() {
 		return $this->belongsTo(Company::class);
 	}
 	public function accounts() {
 		return $this->hasMany(Account::class);
 	}
-	public function AssetType() {
+	public function assetType() {
 		return $this->belongsTo(AssetType::class, 'asset_type_id');
 	}
 	public function status() {
@@ -27,9 +65,6 @@ class Asset extends Model
 	}
 	public function tasks() {
 		return $this->hasMany(Task::class);
-	}
-	public function images() {
-		return $this->hasMany(Image::class);
 	}
 	public function files() {
 		return $this->hasMany(File::class);

@@ -9,17 +9,16 @@
 <div class="db-boxes-row row no-gutters">
 	<div class="col-12">
 		<div class="lowerlevel db-box">
-			{{ csrf_field() }}
 
 			<nav aria-label="breadcrumb" class="d-none d-sm-block">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="/dashboard/">
+						<a href="{{ route('dashboard') }}">
 							Dashboard
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="/companies/">
+						<a href="{{ route('companies.index') }}">
 							Company Table
 						</a>
 					</li>
@@ -35,8 +34,8 @@
 
 				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/companies/" class="btn btn-round">Go Back</a>
-					<a href="/companies/{{ $company->id }}/edit" class="btn btn-primary">
+					<a href="{{ route('companies.index') }}" class="btn btn-round">Go Back</a>
+					<a href="{{ route('companies.edit', $company) }}" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Company
 					</a>
@@ -62,18 +61,12 @@
 						{{-- LEFT COLUMN CONTENT --}}
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
 							<div class="profile-image">
-								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-									<img src="https://via.placeholder.com/400x400" />
-								</a>
+								@if ($company->logo_id == null)
+									<img src="/media/images/company-default-logo-profile.png" alt="Default Company Logo" />
+								@else
+									<img src="{{ $company->logo->getURL('profile') ?? '' }}" alt="{{ $company->name }}'s Logo" />
+								@endif
 							</div> <!-- profile image -->
-							<div class="col-12 col profile-image-updater">
-								{{-- Asset image --}}
-								<div class="form-group">
-									<a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
-										<i class="fas fa-images"></i> Update Images
-									</a>
-								</div>
-							</div> <!-- col -->
 
 							{{-- Contact Tabs --}}
 							<nav class="profile-tabs">
@@ -177,28 +170,36 @@
 							<div class="tab-content profile-tabs-content" id="">
 								<div class="tab-pane fade show active" id="assoc-acc-tab-content" role="tabpanel" aria-labelledby="assoc-acc-tab-button">
 									<ul class="reset assoc-list acc">
-										@foreach($accounts as $account)
-										<li class="assoc-list-item">
-											<a href="#0" class="assoc-list-link">
-												<span class="name">
-													{{ $account->name }}
-												</span>
-											</a>
-										</li>
-										@endforeach
+										@if(count($accounts) != 0)
+											@foreach($accounts as $account)
+											<li class="assoc-list-item">
+												<a href="{{ route('accounts.show', $account) }}" class="assoc-list-link">
+													<span class="name">
+														{{ $account->name }}
+													</span>
+												</a>
+											</li>
+											@endforeach
+										@else
+											<div>There are no associated accounts</div>
+										@endif
 									</ul>
 								</div>
 								<div class="tab-pane fade" id="assoc-ass-tab-content" role="tabpanel" aria-labelledby="assoc-ass-tab-button">
 									<ul class="reset assoc-list acc">
-										@foreach($assets as $asset)
-										<li class="assoc-list-item">
-											<a href="#0" class="assoc-list-link">
-												<span class="name">
-													{{ $asset->name }}
-												</span>
-											</a>
-										</li>
-										@endforeach
+										@if(count($assets) != 0)
+											@foreach($assets as $asset)
+											<li class="assoc-list-item">
+												<a href="{{ route('assets.show', $asset) }}" class="assoc-list-link">
+													<span class="name">
+														{{ $asset->name }}
+													</span>
+												</a>
+											</li>
+											@endforeach
+										@else
+											<div>There are no associated assets</div>
+										@endif
 									</ul>
 								</div>
 								<div class="tab-pane fade" id="assoc-hide-tab-content" role="tabpanel" aria-labelledby="assoc-hide-tab-button">
@@ -222,7 +223,7 @@
 										<label for="created-at">
 											Created On
 										</label>
-										<input type="text" class="form-control" name="created-at" value="{{ $company->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="created-at" value="{{ cleanDate($company->created_at) }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -231,7 +232,7 @@
 										<label for="updated-at">
 											Updated On
 										</label>
-										<input type="text" class="form-control" name="updated-at" value="{{ $company->undated_at != null ? $company->updated_at->format('m/d/y') : '' }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="updated-at" value="{{ $company->updated_at != null ? cleanDate($company->updated_at) : '' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -327,7 +328,7 @@
 								<div class="col-12 col-md-4 col">
 									<div class="form-group">
 										<label>Incorporated Date</label>
-										<input type="text" class="form-control" name="incorp_date" value="{{ $company->incorp_date }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="incorp_date" value="{{ $company->incorp_date != null ? cleanDate($company->incorp_date) : '' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -379,9 +380,6 @@
 </div> <!-- col -->
 </div> <!-- db boxes -->
 
-
-<!-- Images Modal -->
-@include('layouts/modals/view-images')
 <!-- ADD NOTES MODEL -->
 @include('layouts/modals/note-add')
 

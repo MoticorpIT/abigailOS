@@ -22,9 +22,10 @@ class UsersExport implements FromCollection, WithHeadings, ShouldAutoSize
         return [
             '#',
             'Name',
+            'Avatar_ID',
             'Email',
             'Password',
-            'Status',
+            'Status_ID',
             'Created',
             'Updated'
         ];

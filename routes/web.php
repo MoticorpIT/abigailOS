@@ -1,17 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// TEST LANDING PAGE
+Route::get('/bentley', function () {
+	return view('bentley');
+});
 
-// LOGIN ROUTE - IF LOGGED IN, GOING TO / WILL REDIRECT TO /dashboard
+// LOGIN.SHOW ROUTE
 Route::get('/', function () {
     return view('auth/login');
 });
@@ -22,32 +16,32 @@ $this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // DASHBOARD ROUTE
-Route::group( ['middleware' => 'auth' ], function() {
-	Route::get('/dashboard', function () {
-	    return view('dashboard');
-	});
-});
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
 // ACCOUNT RELATED ROUTES
-Route::get('accounts/export', 'AccountController@export'); // Export To CSV
+Route::resource('account-logo', 'AccountLogoController');
+Route::get('accounts/export', 'AccountController@export')->name('accounts.export'); // Export To CSV
 Route::resource('accounts', 'AccountController');
-Route::resource('accountTypes', 'AccountTypeController');
+Route::resource('account-types', 'AccountTypeController');
 
 // ASSET RELATED ROUTES
-Route::get('assets/export', 'AssetController@export'); // Export To CSV
+Route::resource('images', 'AssetImageController');
+Route::get('assets/{asset}/download-one-image', 'AssetImageController@downloadOneImage')->name('images.downloadOne'); // Download Single Image
+Route::get('assets/{asset}/download-all-images', 'AssetImageController@downloadAllImages')->name('images.downloadAll'); // Download All Images
+Route::get('assets/export', 'AssetController@export')->name('assets.export'); // Export To CSV
 Route::resource('assets', 'AssetController');
-Route::resource('assetTypes', 'AssetTypeController');
+Route::resource('asset-types', 'AssetTypeController');
 
 // COMPANY RELATED ROUTES
-Route::get('companies/export', 'CompanyController@export'); // Export To CSV
+Route::resource('company-logo', 'CompanyLogoController');
+Route::get('companies/export', 'CompanyController@export')->name('companies.export'); // Export To CSV
 Route::resource('companies', 'CompanyController');
-Route::resource('companyTypes', 'CompanyTypeController');
+Route::resource('company-types', 'CompanyTypeController');
 
-// HODGEPODGE ROUTES
+// STAND ALONE (resourceful) ROUTES
 Route::resource('contracts', 'ContractController');
 Route::resource('invoices', 'InvoiceController');
 Route::resource('notes', 'NoteController');
-Route::resource('images', 'ImageController');
 Route::resource('payments', 'PaymentController');
 Route::resource('priorities', 'PriorityController');
 Route::resource('repeats', 'RepeatController');
@@ -55,15 +49,17 @@ Route::resource('statuses', 'StatusController');
 
 // TASK RELATED ROUTES
 Route::resource('tasks', 'TaskController');
-Route::resource('taskTypes', 'TaskTypeController');
+Route::resource('task-types', 'TaskTypeController');
 
 // TENANT RELATED ROUTES
-Route::get('tenants/export', 'TenantController@export'); // Export To CSV
+Route::resource('tenant-image', 'TenantImageController');
+Route::get('tenants/export', 'TenantController@export')->name('tenants.export'); // Export To CSV
 Route::resource('tenants', 'TenantController');
 
 // USER RELATED ROUTES
-Route::get('users/{user}/edit-pw', 'UserController@editPassword'); // Change Password view
-Route::put('users/{user}/update-pw', 'UserController@updatePassword'); // Change Password save
-Route::get('users/export', 'UserController@export'); // Export To CSV
+Route::resource('avatar', 'AvatarController');
+Route::get('users/{user}/edit-pw', 'UserController@editPassword')->name('passwords.edit'); // Change Password view
+Route::put('users/{user}/update-pw', 'UserController@updatePassword')->name('passwords.update'); // Change Password save
+Route::get('users/export', 'UserController@export')->name('users.export'); // Export To CSV
 Route::resource('users', 'UserController');
 

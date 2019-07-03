@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('ajax-scripts')
-    <script src="{{ asset('/js/ajax.js') }}"></script>
+<script src="{{ asset('/js/ajax.js') }}"></script>
 @endsection
 
 @section('content')
@@ -11,31 +11,31 @@
 	<div class="col-12">
 		<div class="lowerlevel db-box">
 
-      <nav aria-label="breadcrumb" class="d-none d-sm-block">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="/dashboard/">
-              Dashboard
-            </a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="/tenants/">
-              Tenant Table
-            </a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Tenant Profile<span class="d-none d-sm-inline">: {{ $tenant->first_name }} {{ $tenant->last_name }}</span>
-          </li>
-        </ol>
-      </nav>
+			<nav aria-label="breadcrumb" class="d-none d-sm-block">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="{{ route('dashboard') }}">
+							Dashboard
+						</a>
+					</li>
+					<li class="breadcrumb-item">
+						<a href="{{ route('tenants.index') }}">
+							Tenant Table
+						</a>
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">
+						Tenant Profile<span class="d-none d-sm-inline">: {{ $tenant->first_name }} {{ $tenant->last_name }}</span>
+					</li>
+				</ol>
+			</nav>
 
 			<h1 class="page-heading">
 				<i class="fas fa-users"></i> Tenant Profile
 
-        {{-- BUTTON SET --}}
+				{{-- BUTTON SET --}}
 				<div class="float-right button-set">
-					<a href="/tenants/" class="btn btn-round">Go Back</a>
-					<a href="/tenants/{{ $tenant->id }}/edit" class="btn btn-primary">
+					<a href="{{ route('tenants.index') }}" class="btn btn-round">Go Back</a>
+					<a href="{{ route('tenants.edit', $tenant) }}" class="btn btn-primary">
 						<i class="fas fa-edit"></i>
 						Edit Tenant
 					</a>
@@ -54,36 +54,29 @@
 					</div> <!-- row -->
 					<div class="row profile-row">
 						<div class="col-12 col-sm-5 col-md-4 col-lg-3 profile-image-col">
-              <div class="profile-image">
-								<a href="#0" class="" data-toggle="modal" data-target="#update-images">
-									<img src="https://via.placeholder.com/400x400" />
-								</a>
+							<div class="profile-image">
+								@if ($tenant->image_id == null)
+									<img src="/media/images/tenant-default-image-profile.png" alt="Default Tenants Image" />
+								@else
+									<img src="{{ $tenant->image->getURL('profile') ?? '' }}" alt="{{ $tenant->name }}s Image" />
+								@endif
 							</div> <!-- profile image -->
 
-              <div class="col-12 col profile-image-updater">
-							  {{-- Asset image --}}
-							  <div class="form-group">
-                  <a href="#0" class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-images">
-                    <i class="fas fa-images"></i> Update Images
-                  </a>
-							  </div>
-              </div> <!-- col -->
-
 							<nav class="profile-tabs">
-							  <div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
-							    <a class="nav-item nav-link active" id="phone-tab-button" data-toggle="tab" href="#phone-tab-content" role="tab" aria-controls="phone-tab" aria-selected="true">
+								<div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
+									<a class="nav-item nav-link active" id="phone-tab-button" data-toggle="tab" href="#phone-tab-content" role="tab" aria-controls="phone-tab" aria-selected="true">
 										<i class="fas fa-phone"></i>
 									</a>
-							    <a class="nav-item nav-link" id="fax-tab-button" data-toggle="tab" href="#fax-tab-content" role="tab" aria-controls="fax-tab" aria-selected="false">
+									<a class="nav-item nav-link" id="fax-tab-button" data-toggle="tab" href="#fax-tab-content" role="tab" aria-controls="fax-tab" aria-selected="false">
 										<i class="fas fa-fax"></i>
 									</a>
-							    <a class="nav-item nav-link" id="email-tab-button" data-toggle="tab" href="#email-tab-content" role="tab" aria-controls="email-tab" aria-selected="false">
+									<a class="nav-item nav-link" id="email-tab-button" data-toggle="tab" href="#email-tab-content" role="tab" aria-controls="email-tab" aria-selected="false">
 										<i class="fas fa-at"></i>
 									</a>
-							  </div>
+								</div>
 							</nav>
 							<div class="tab-content profile-tabs-content" id="nav-tabContent">
-							  <div class="tab-pane fade show active" id="phone-tab-content" role="tabpanel" aria-labelledby="phone-tab-button">
+								<div class="tab-pane fade show active" id="phone-tab-content" role="tabpanel" aria-labelledby="phone-tab-button">
 									{{-- Tenant PHONE_1 --}}
 									<div class="form-group">
 										<label>
@@ -91,13 +84,13 @@
 											Phone 1
 										</label>
 										<div class="input-group">
-							        <input class="form-control" name="phone_1" value="{{ $tenant->phone_1 }}" readonly disabled placeholder="n/a">
+											<input class="form-control" name="phone_1" value="{{ cleanPhone($tenant->phone_1) }}" readonly disabled placeholder="n/a">
 											<div class="input-group-append d-none d-lg-block">
-							          <div class="input-group-text">
-							          	<i class="fas fa-phone"></i>
-							          </div>
-							        </div>
-							      </div>
+												<div class="input-group-text">
+													<i class="fas fa-phone"></i>
+												</div>
+											</div>
+										</div>
 									</div>
 									{{-- Tenant PHONE_2 --}}
 									<div class="form-group">
@@ -106,16 +99,16 @@
 											Phone 2
 										</label>
 										<div class="input-group">
-							        <input class="form-control" name="phone_2" value="{{ $tenant->phone_2 }}" placeholder="n/a" readonly disabled >
+											<input class="form-control" name="phone_2" value="{{ cleanPhone($tenant->phone_2) }}" placeholder="n/a" readonly disabled >
 											<div class="input-group-append d-none d-lg-block">
-							          <div class="input-group-text">
-							          	<i class="fas fa-phone"></i>
-							          </div>
-							        </div>
-							      </div>
+												<div class="input-group-text">
+													<i class="fas fa-phone"></i>
+												</div>
+											</div>
+										</div>
 									</div>
-							  </div>
-							  <div class="tab-pane fade" id="fax-tab-content" role="tabpanel" aria-labelledby="fax-tab-button">
+								</div>
+								<div class="tab-pane fade" id="fax-tab-content" role="tabpanel" aria-labelledby="fax-tab-button">
 									{{-- Tenant FAX --}}
 									<div class="form-group">
 										<label>
@@ -123,16 +116,16 @@
 											Fax
 										</label>
 										<div class="input-group">
-							        <input class="form-control" name="fax" value="{{ $tenant->fax }}" placeholder="n/a" readonly disabled>
+											<input class="form-control" name="fax" value="{{ cleanPhone($tenant->fax) }}" placeholder="n/a" readonly disabled>
 											<div class="input-group-append d-none d-lg-block">
-							          <div class="input-group-text">
-							          	<i class="fas fa-fax"></i>
-							          </div>
-							        </div>
-							      </div>
+												<div class="input-group-text">
+													<i class="fas fa-fax"></i>
+												</div>
+											</div>
+										</div>
 									</div>
-							  </div>
-							  <div class="tab-pane fade" id="email-tab-content" role="tabpanel" aria-labelledby="email-tab-button">
+								</div>
+								<div class="tab-pane fade" id="email-tab-content" role="tabpanel" aria-labelledby="email-tab-button">
 									{{-- Tenant EMAIL --}}
 									<div class="form-group">
 										<label>
@@ -140,15 +133,15 @@
 											Email
 										</label>
 										<div class="input-group">
-							        <input class="form-control" name="email" value="{{ $tenant->email }}" placeholder="n/a" readonly disabled>
+											<input class="form-control" name="email" value="{{ $tenant->email }}" placeholder="n/a" readonly disabled>
 											<div class="input-group-append d-none d-lg-block">
-							          <div class="input-group-text">
-							          	<i class="fas fa-at"></i>
-							          </div>
-							        </div>
-							      </div>
+												<div class="input-group-text">
+													<i class="fas fa-at"></i>
+												</div>
+											</div>
+										</div>
 									</div>
-							  </div>
+								</div>
 							</div>
 
 							<nav class="profile-tabs associated">
@@ -169,7 +162,7 @@
 							<div class="tab-content profile-tabs-content" id="">
 								<div class="tab-pane fade show active" id="assoc-acc-tab-content" role="tabpanel" aria-labelledby="assoc-acc-tab-button">
 									<ul class="reset assoc-list acc">
-									@foreach($contracts as $contract)
+										@foreach($tenant->contracts as $contract)
 										<li class="assoc-list-item">
 											<a href="#0" class="assoc-list-link">
 												<span class="name">
@@ -177,7 +170,7 @@
 												</span>
 											</a>
 										</li>
-									@endforeach
+										@endforeach
 									</ul>
 								</div>
 								<div class="tab-pane fade" id="assoc-ass-tab-content" role="tabpanel" aria-labelledby="assoc-ass-tab-button">
@@ -203,7 +196,7 @@
 										<label for="created-at">
 											Created On
 										</label>
-										<input type="text" class="form-control" name="created-at" value="{{ $tenant->created_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="created-at" value="{{ cleanDate($tenant->created_at) }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -212,7 +205,7 @@
 										<label for="updated-at">
 											Updated On
 										</label>
-										<input type="text" class="form-control" name="updated-at" value="{{ $tenant->updated_at->format('m/d/y') }}" disabled readonly placeholder="n/a">
+										<input type="text" class="form-control" name="updated-at" value="{{ $tenant->updated_at != null ? cleanDate($tenant->updated_at) : 'n/a' }}" disabled readonly placeholder="n/a">
 									</div>
 								</div> <!-- col -->
 
@@ -258,14 +251,14 @@
 									{{-- Co-Tenant Phone 1 --}}
 									<div class="form-group">
 										<label>Co-Tenant Phone 1:</label>
-										<input class="form-control" name="co_phone_1" value="{{ $tenant->co_phone_1 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="co_phone_1" value="{{ $tenant->co_phone_1 != null ? cleanPhone($tenant->co_phone_1) : '' }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
 									{{-- Co-Tenant Phone 2 --}}
 									<div class="form-group">
 										<label>Co-Tenant Phone 2:</label>
-										<input class="form-control" name="co_phone_2" value="{{ $tenant->co_phone_2 }}" placeholder="n/a" readonly disabled>
+										<input class="form-control" name="co_phone_2" value="{{ $tenant->co_phone_2 != null ? cleanPhone($tenant->co_phone_2) : '' }}" placeholder="n/a" readonly disabled>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
@@ -311,13 +304,13 @@
 								<div class="col-12 col-md-4 col">
 									{{-- TENANT STATE --}}
 									<div class="form-group">
-									    <label>
-									        State
-									    </label>
-									    <input class="d-none form-control" name="state" value="{{ $tenant->state }}">
-									    <select class="form-control" name="state" value="{{ $tenant->state }}" readonly disabled>
-									        <option value="" selected>{{ $tenant->state }}</option>
-									    </select>
+										<label>
+											State
+										</label>
+										<input class="d-none form-control" name="state" value="{{ $tenant->state }}">
+										<select class="form-control" name="state" value="{{ $tenant->state }}" readonly disabled>
+											<option value="" selected>{{ $tenant->state }}</option>
+										</select>
 									</div>
 								</div> <!-- col -->
 								<div class="col-12 col-md-4 col">
@@ -347,7 +340,5 @@
 
 <!-- ADD NOTE MODAL -->
 @include('layouts/modals/note-add')
-<!-- Images Modal -->
-@include('layouts/modals/view-images')
 
 @endsection

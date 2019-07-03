@@ -7,7 +7,7 @@
 			<div class="lowerlevel db-box">
 				<h1 class="page-heading">
 					<i class="fas fa-dollar-sign"></i> Payments
-					<a href="/accounts/create" class="btn btn-primary d-block-small float-right">
+					<a href="{{ route('payments.create') }}" class="btn btn-primary d-block-small float-right">
 						<i class="fas fa-plus-square"></i>
 						Create Payment
 					</a>
@@ -17,40 +17,34 @@
 					<table class="tenant-table data-table dt-responsive table table-striped table-hover table-bordered" width="100%">
 						<thead>
 							<tr>
-								<th class="id all">
-									ID
+								<th class="created-on">
+									Date
 								</th>
-								<th class="amount-paid">
-									Amount Paid
+								<th class="invoice-id">
+									Invoice
 								</th>
 								<th class="payment-method">
-									Payment Method
+									Method
 								</th>
 								<th class="check-num">
 									Check Number
 								</th>
-								<th class="invoice-id">
-									Invoice ID
-								</th>
-								<th class="created-on">
-									Created
-								</th>
-								<th class="updated-on none">
-									Updated
+								<th class="amount-paid">
+									Amount
 								</th>
 								<th class="view-button not-mobile-p">
-									View
+									Actions
 								</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($payments->sortBy('id') as $payment)
+							@foreach($payments as $payment)
 								<tr class="status-{{ $payment->status_id }}">
 									<td class="id all">
-										{{ $payment->id }}
+										{{ cleanDate($payment->created_at) }}
 									</td>
-									<td class="amount-paid">
-										${{ $payment->amount_paid }}
+									<td class="invoice-id">
+										{{ $payment->invoice->invoice_num }}
 									</td>
 									<td class="payment-method">
 										{{ $payment->method }}
@@ -58,24 +52,16 @@
 									<td class="check-num">
 										{{ $payment->check_num }}
 									</td>
-									<td class="invoice-id">
-										{{ $payment->invoice_id }}
-									</td>
-									<td class="created-on">
-										<span class="date">
-											{{ $payment->created_at->format('m/d/y') }}
-										</span>
-									</td>
-									<td class="updated-on none">
-										<span class="date">
-											{{ $payment->updated_at->format('m/d/y h:i a') }}
-										</span>
-										<span class="date-readable">
-											{{ $payment->updated_at->diffForHumans($payment->created_at) }}
-										</span>
+									<td class="amount-paid">
+										{{ cleanMoneyWithCents($payment->amount_paid) }}
 									</td>
 									<td class="view-button not-mobile-p">
-										<a href="/payments/{{ $payment->id }}" class="btn btn-secondary btn-sm view-link"><i class="fas fa-eye"></i></a>
+										<a href="{{ route('payments.show', $payment) }}" class="btn btn-secondary btn-sm view-link">
+											<i class="fas fa-eye"></i>
+										</a>
+										<a href="{{ route('payments.edit', $payment) }}" class="btn btn-secondary btn-sm view-link">
+											<i class="fas fa-pencil-alt"></i>
+										</a>
 									</td>
 								</tr>
 							@endforeach

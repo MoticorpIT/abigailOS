@@ -88,9 +88,9 @@ return [
     ],
 
     'task_types' => [
-        '1' => 'Task Type 1',
-		'2' => 'Task Type 2',
-		'3' => 'Task Type 3'
+        '1' => 'Rent Owed',
+		'2' => 'Payment Due',
+		'3' => 'Filing Due'
     ],
 
     'priorities' => [

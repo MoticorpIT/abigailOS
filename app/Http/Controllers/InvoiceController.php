@@ -2,172 +2,116 @@
 
 namespace App\Http\Controllers;
 
-use App\Invoice;
 use App\Contract;
-use Illuminate\Http\Request;
+use App\Invoice;
+use App\Http\Requests\InvoiceRequest;
 use Illuminate\Support\Facades\Config;
 
 class InvoiceController extends Controller
 {
-    /** CHECK IF USER IS LOGGED IN */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	// Check if User is Logged In
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    	// DATABASE QUERIES
-        $invoices = Invoice::all();
 
-        return view('invoices.index', compact('invoices'));
-    }
+	// Show All Invoices (table)
+	public function index()
+	{
+		// Database Queries
+		$invoices = Invoice::with(['contract', 'contract.tenant', 'contract.asset'])->get();
+		return view('invoices.index', compact('invoices'));
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    	// DATABASE QUERIES
-    	$contracts = Contract::notEnded()->get();
 
-    	// CONFIG/CONSTANTS.PHP 'QUERIES'
-        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
-        $statuses = Config::get('constants.statuses');
-        $priorities = Config::get('constants.priorities');
+	// Invoice Create Form (view)
+	public function create()
+	{
+		// Database Queries
+		$contracts = Contract::with(['asset', 'tenant'])->notEnded()->get();
 
-        return view('invoices.create', compact('contracts', 'priorities', 'statuses'));
-    }
+		// Config/Constants.php 'Queries'
+		// Changes need to be made in the constants.php file AND on the DB
+		$statuses = Config::get('constants.statuses');
+		$priorities = Config::get('constants.priorities');
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        /* VALIDATE DATA COMING IN FROM FORM */
-        $this->validate(request(), [
-            'invoice_num' => 'unique:invoices|required',
-            'due_date' => 'required',
-            'repeats' => 'required',
-            'amount_due' => 'required',
-            'balance' => 'nullable',
-            'contract_id' => 'required',
-            'priority_id' => 'nullable',
-            'status_id' => 'required',
-        ]);
+		return view('invoices.create', compact('contracts', 'priorities', 'statuses'));
+	}
 
-        /* CREATE THE NEW INVOICE */
-        $invoice = new Invoice(
-            [
-                'invoice_num' => $request->invoice_num,
-				'due_date' => $request->due_date,
-				'repeats' => $request->repeats,
-				'amount_due' => $request->amount_due,
-				'balance' => $request->balance,
-				'contract_id' => $request->contract_id,
-				'priority_id' => $request->priority_id,
-				'status_id' => $request->status_id,
-            ]
-        );
-        
-        /* SAVE THE NEW INVOICE TO DATABASE */
-        $invoice->save();
 
-        /* SET TOASTR FLASH MESSAGES */
-        if (!$invoice->save()) {
+	// Store a New Invoice
+	public function store(InvoiceRequest $request)
+	{
+		// Validate Form Data
+		$validData = $request->validated();
+
+		// Create Invoice
+		$invoice = Invoice::create($validData);
+
+		// Save the Invoice
+		$invoice->save();
+
+		// Set Notifications
+		if (!$invoice->save()) {
 			toastr()->error('An error has occured please try again.', 'Abigail Says...');
 		} else {
 			toastr()->success('The invoice was saved successfully!', 'Abigail Says...');
 		}
 
-		/* Redirect User After Save */
-        return redirect('invoices');
-    }
+		// Redirect
+		return redirect()->route('invoices.show', $invoice);
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Invoice  $invoice
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-    	// DATABASE QUERIES
-    	$invoice = Invoice::findOrFail($id);
 
-    	// CONFIG/CONSTANTS.PHP 'QUERIES'
-        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
-        $statuses = Config::get('constants.statuses');
-        $priorities = Config::get('constants.priorities');
+	// Show One Invoice
+	public function show($id)
+	{
+		$invoice = Invoice::with(['contract', 'contract.asset', 'contract.asset.company', 'contract.tenant'])->findOrFail($id);
+		// Config/Constants.php 'Queries'
+		// Changes need to be made in the constants.php file AND on the DB
+		$statuses = Config::get('constants.statuses');
+		$priorities = Config::get('constants.priorities');
 
-        return view('invoices.show', compact('invoice', 'statuses', 'priorities'));
-    }
+		return view('invoices.show', compact('invoice', 'statuses', 'priorities'));
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Invoice  $invoice
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    	// DATABASE QUERIES
-    	$invoice = Invoice::findOrFail($id);
-    	$contracts = Contract::notEnded()->get();
 
-    	// CONFIG/CONSTANTS.PHP 'QUERIES'
-        // If either need to be changed, they need to be changed in the constants.php file AND on the DB
-        $statuses = Config::get('constants.statuses');
-        $priorities = Config::get('constants.priorities');
+	// Invoice Edit Form (view)
+	public function edit(Invoice $invoice)
+	{
+		// Database Queries
+		$contracts = Contract::with(['tenant', 'asset'])->notEnded()->get();
 
-        return view('invoices.edit', compact('invoice', 'contracts', 'statuses', 'priorities'));
-    }
+		// Config/Constants.php 'Queries'
+		// Changes need to be made in the constants.php file AND on the DB
+		$statuses = Config::get('constants.statuses');
+		$priorities = Config::get('constants.priorities');
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Invoice  $invoice
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Invoice $invoice)
-    {
-    	/* VALIDATE DATA FROM FORM */
-    	$data = $request->validate([
-            'invoice_num' => 'required',
-            'due_date' => 'required',
-            'repeats' => 'required',
-            'amount_due' => 'required',
-            'balance' => 'nullable',
-            'contract_id' => 'required',
-            'priority_id' => 'nullable',
-            'status_id' => 'required',
-        ]);
-        
-        /* SAVE VALIDATED DATA TO DATABASE */
-        $invoice->fill($data);
-        $invoice->save();
-        
-        /* SET TOASTR FLASH MESSAGES */
-        if (!$invoice->save()) {
-        	// if not saved
-            toastr()->error('An error has occurred. If it persists, contact the manager.');
-        } else {
-        	// if edited
-        	toastr()->success('The invoice was edited successfully!', 'Abigail Says...');
-        }
-		
-		/* REDIRECT USER AFTER SAVE */
-        return redirect('invoices');
-    }
+		return view('invoices.edit', compact('invoice', 'contracts', 'statuses', 'priorities'));
+	}
+
+
+	// Update an Existing Invoice
+	public function update(InvoiceRequest $request, Invoice $invoice)
+	{
+		// Validate Data from Form
+		$validData = $request->validated();
+
+		// Fill Data and Save Invoice
+		$invoice->fill($validData);
+		$invoice->save();
+
+		// Set Notifications
+		if (!$invoice->save()) {
+			// if not saved
+			toastr()->error('An error has occurred. If it persists, contact the manager.');
+		} else {
+			// if edited
+			toastr()->success('The invoice was edited successfully!', 'Abigail Says...');
+		}
+
+		// Redirect
+		return redirect()->route('invoices.show', $invoice);
+	}
 }

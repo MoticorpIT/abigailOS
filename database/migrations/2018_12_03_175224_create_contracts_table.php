@@ -19,7 +19,7 @@ class CreateContractsTable extends Migration
             $table->decimal('rent_amount', 8, 2);
             $table->string('rent_due_date');
             $table->string('term_length')->nullable();
-            $table->string('term_start');
+            $table->date('term_start');
             $table->string('term_ended')->nullable();
             $table->integer('tenant_id');
             $table->integer('asset_id');
