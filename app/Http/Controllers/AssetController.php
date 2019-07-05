@@ -30,7 +30,11 @@ class AssetController extends Controller
     public function index()
     {
         $assets = Asset::with(['company', 'assetType'])->get();
-        return view('assets.index', compact('assets'));
+
+        $activeAssets = $assets->where('status_id', 1);
+        $inactiveAssets = $assets->where('status_id', 2);
+
+        return view('assets.index', compact('activeAssets', 'inactiveAssets'));
     }
 
     // Asset Create Form (view)

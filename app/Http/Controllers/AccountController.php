@@ -28,8 +28,14 @@ class AccountController extends Controller
     // Show All Accounts (table)
     public function index()
     {
+        // Database Query
         $accounts = Account::all();
-        return view('accounts.index', compact('accounts'));
+
+        // Filter Query Results
+        $activeAccounts = $accounts->where('status_id', 1);
+        $inactiveAccounts = $accounts->where('status_id', 2);
+
+        return view('accounts.index', compact('activeAccounts', 'inactiveAccounts'));
     }
 
     // Account Create Form (view)

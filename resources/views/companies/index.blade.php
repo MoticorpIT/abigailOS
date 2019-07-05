@@ -19,6 +19,7 @@
 			</h1>
 
 			<div class="company-table-wrapper table-wrapper table-responsive">
+                {{-- ACTIVE COMPANIES --}}
 				<table class="company-table data-table table table-striped table-hover table-bordered" width="100%">
 					<thead>
 						<tr>
@@ -55,82 +56,51 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach($companies as $company)
-						<tr class="status-{{ $company->status_id }}">
-							<td class="name all">
-								<span class="name-span">{{ $company->name }}</span>
-							</td>
-							<td class="id none">
-								{{ $company->id }}
-							</td>
-							<td class="contact">
-								<div class="btn-group contact-button">
-									<a href="tel:{{ clickablePhone($company->phone_1) }}" class="btn btn-secondary">
-										<span><i class="fas fa-phone"></i> {{ cleanPhone($company->phone_1) }}</span>
-									</a>
-									<button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="sr-only">Toggle Dropdown</span>
-									</button>
-									<div class="dropdown-menu dropdown-menu-right">
-										@if($company->phone_2)
-										<a class="dropdown-item" href="tel:{{ clickablePhone($company->phone_2) }}">
-											<span><i class="fas fa-phone"></i> {{ cleanPhone($company->phone_2) }}</span>
-										</a>
-										@endif
-										@if($company->fax)
-										<a class="dropdown-item">
-											<span><i class="fas fa-fax"></i> {{ cleanPhone($company->fax) }}</span>
-										</a>
-										@endif
-										@if($company->email)
-										<a class="dropdown-item" href="mailto:{{ $company->email }}">
-											<span><i class="fas fa-at"></i> {{ $company->email }}</span>
-										</a>
-										@endif
-									</div>
-								</div> <!-- btn group -->
-							</td>
-							<td class="street-address">
-								<span class="item">{{ $company->street_1 }}</span>
-								<span class="item">{{ $company->street_2 }}</span>
-							</td>
-							<td class="city">
-								{{ $company->city }}
-							</td>
-							<td class="state">
-								{{ $company->state }}
-							</td>
-							<td class="zip">
-								{{ $company->zip }}
-							</td>
-							<td class="created-on none">
-								<span class="date">
-									{{ cleanDate($company->created_at) ?? '' }}
-								</span>
-							</td>
-							<td class="updated-on none">
-								@if($company->updated_at != null)
-									<span class="date">
-										{{ $company->updated_at != null ? cleanDate($company->updated_at) : '' }}
-									</span>
-									<span class="date-readable">
-										{{ $company->updated_at != null ? $company->updated_at->diffForHumans() : '' }}
-									</span>
-								@else
-									<span class="date">
-										NA
-									</span>
-								@endif
-							</td>
-							<td class="view-button not-mobile-p">
-								<a href="{{ route('companies.show', $company) }}" class="btn btn-secondary btn-sm view-link">
-									<i class="fas fa-eye"></i>
-								</a>
-								<a href="{{ route('companies.edit', $company) }}" class="btn btn-secondary btn-sm view-link">
-									<i class="fas fa-pencil-alt"></i>
-								</a>
-							</td>
+						@foreach($activeCompanies as $company)
+						    @include('layouts.components.companies-table')
+						@endforeach
+					</tbody>
+                </table> <!-- company table -->
+
+                {{-- INACTIVE COMPANIES --}}
+                <table class="company-table data-table table table-striped table-hover table-bordered" width="100%">
+					<thead>
+						<tr>
+							<th class="name all">
+								Name
+							</th>
+							<th class="id none">
+								ID
+							</th>
+							<th class="contact">
+								Contact
+							</th>
+							<th class="street-address">
+								Street Address
+							</th>
+							<th class="city">
+								City
+							</th>
+							<th class="state">
+								State
+							</th>
+							<th class="zip">
+								Zip
+							</th>
+							<th class="created-on none">
+								Created
+							</th>
+							<th class="updated-on none">
+								Updated
+							</th>
+							<th class="view-button not-mobile-p">
+								Actions
+							</th>
 						</tr>
+					</thead>
+					<tbody>
+						@foreach($inactiveCompanies as $company)
+						    @include('layouts.components.companies-table')
 						@endforeach
 					</tbody>
 				</table> <!-- company table -->
