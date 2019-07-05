@@ -28,8 +28,12 @@ class TenantController extends Controller
 	// Show All Tenants (table)
 	public function index()
 	{
-		$tenants = Tenant::all();
-		return view('tenants.index', compact('tenants'));
+        $tenants = Tenant::all();
+
+        $activeTenants = $tenants->where('status_id', 1);
+        $inactiveTenants = $tenants->where('status_id', 2);
+
+		return view('tenants.index', compact('activeTenants', 'inactiveTenants'));
 	}
 
 

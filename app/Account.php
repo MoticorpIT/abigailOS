@@ -33,7 +33,7 @@ class Account extends Model implements HasMedia
 
 	public function scopeActive($query) {
     	return $query->where('status_id',1);
-	}
+    }
     public function company() {
 		return $this->belongsTo(Company::class);
 	}

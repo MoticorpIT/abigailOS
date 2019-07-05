@@ -32,8 +32,12 @@ class CompanyController extends Controller
 	public function index()
 	{
 		// DATABASE QUERIES
-		$companies = Company::all();
-		return view('companies.index', compact('companies'));
+        $companies = Company::all();
+
+        $activeCompanies = $companies->where('status_id', 1);
+        $inactiveCompanies = $companies->where('status_id', 2);
+
+		return view('companies.index', compact('activeCompanies', 'inactiveCompanies'));
 	}
 
 
